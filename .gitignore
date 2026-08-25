@@ -1,10 +1,6 @@
-# Secrets & credentials
-.env
+# Secrets & credentials (other env variants still ignored)
 .env.*
 !.env.example
-
-# Rule chứa username/password môi trường DEV/UAT — không đưa lên remote
-.cursor/rules/dms-env-login.mdc
 
 # Python virtualenv
 .venv/

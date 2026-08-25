@@ -1,0 +1,27 @@
+---
+description: Môi trường DEV/UAT DMS và thông tin đăng nhập để đối chiếu UI
+alwaysApply: true
+---
+
+# DMS môi trường & đăng nhập
+
+Dùng khi cần đối chiếu UI/UX website thật. **Không** hard-code username/password vào source Prototype.
+
+## DEV (nguồn UI hiện tại — module CTKM)
+
+- URL: https://eco-dms-dev.finviet.com.vn/promotion/event
+- Username: `THAO999`
+- Password: `Thao@12345`
+- User: Thảo BA, role Admin
+
+## UAT
+
+- URL: https://ht-portal-uat.finviet.com.vn/
+- Trước đây dùng VUBA / Dms@12345.
+- `VUBA` **không tồn tại trên DEV** (thông báo "Người dùng không tồn tại").
+
+## Ghi chú
+
+- Website = source of truth cho UI/UX.
+- Tài liệu nội bộ = source of truth cho business rule.
+- Không commit credential vào git.
