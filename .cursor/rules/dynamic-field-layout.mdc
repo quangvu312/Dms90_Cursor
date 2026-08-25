@@ -1,0 +1,26 @@
+---
+description: DYNAMIC FIELD LAYOUT — field phụ từ điều kiện đặt vào hàng kế tiếp cùng grid, không tự chèn row dọc dưới condition field.
+globs: mockup_dms90/**/*.{tsx,ts,js,css}
+alwaysApply: false
+---
+
+# DYNAMIC FIELD LAYOUT RULE
+
+Khi một field điều kiện sinh ra field phụ trên form `mockup_dms90`:
+
+1. Không tự tạo thêm một row nếu row kế tiếp còn vị trí cột phù hợp.
+2. Field phụ ưu tiên đặt vào grid/hàng kế tiếp cùng các field đang có.
+3. Luôn tận dụng khoảng trống trước khi tạo thêm line.
+4. Form compact, ổn định khi switch condition.
+5. Không dùng spacer / min-height / visibility:hidden / absolute / translate để giữ chỗ.
+6. Dynamic field phải conditional render thật sự.
+7. Chỉ tạo row riêng nếu requirement hoặc nội dung cần full width.
+
+Ví dụ (Loại hợp đồng):
+
+```text
+Line 1: Mã | Tên | Đối tượng xem
+Line 2: Ghi chú | Dynamic (Chức vụ / Vùng / …) | Trạng thái
+```
+
+Tài liệu: `Docs/design-system/component-guideline.md` (mục DYNAMIC FIELD LAYOUT RULE).

@@ -1,0 +1,159 @@
+/* FilterPanel — clone ant-pro-table-search / ant-pro-query-filter (eco-dms-dev) */
+
+.dms-filter-card.dms-card {
+  margin-bottom: var(--filter-to-table-gap);
+}
+
+.dms-filter-card > .dms-card__header {
+  display: none;
+}
+
+.dms-filter-card > .dms-card__body {
+  padding: var(--filter-panel-padding-y) var(--filter-panel-padding-x);
+}
+
+.dms-filter-panel {
+  min-width: 0;
+}
+
+.dms-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: var(--filter-column-gap);
+  row-gap: var(--filter-row-gap);
+  align-items: end;
+}
+
+.dms-filter-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.dms-filter-item > .dms-form-item {
+  margin-bottom: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.dms-filter-item .dms-form-item__label {
+  font-size: var(--filter-label-font-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--filter-label-line-height);
+  color: var(--color-text);
+  margin-bottom: var(--filter-label-margin-bottom);
+}
+
+.dms-filter-item .dms-input,
+.dms-filter-item select.dms-select,
+.dms-filter-item .dms-select__control,
+.dms-filter-item .dms-datepicker .dms-input {
+  height: var(--filter-control-height);
+  min-height: var(--filter-control-height);
+  font-size: var(--filter-control-font-size);
+  line-height: var(--line-height-base);
+  padding: 4px 11px;
+  border: 0.8px solid var(--filter-control-border-color);
+  border-radius: var(--filter-control-border-radius);
+}
+
+.dms-filter-item .dms-multiselect__control {
+  min-height: var(--filter-control-height);
+  font-size: var(--filter-control-font-size);
+  padding: 4px 11px;
+  border: 0.8px solid var(--filter-control-border-color);
+  border-radius: var(--filter-control-border-radius);
+}
+
+.dms-filter-item .dms-datepicker {
+  width: 100%;
+}
+
+.dms-filter-item .dms-datepicker .dms-input {
+  padding-right: 32px;
+}
+
+.dms-filter-item .dms-select,
+.dms-filter-item .dms-multiselect,
+.dms-filter-item .dms-searchbox__input {
+  width: 100%;
+}
+
+.dms-filter-item .dms-input {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dms-filter-panel.is-collapsed .dms-filter-item.is-advanced {
+  display: none;
+}
+
+.dms-filter-panel__actions {
+  grid-column: 4 / 5;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--filter-action-gap);
+  height: var(--filter-control-height);
+  min-width: 0;
+  white-space: nowrap;
+}
+
+.dms-filter-panel__actions .dms-btn {
+  height: var(--btn-height);
+  flex: 0 0 auto;
+}
+
+.dms-filter-panel__actions .dms-btn--link {
+  height: var(--btn-height);
+  padding: 0 8px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.dms-filter-daterange {
+  display: flex;
+  align-items: center;
+  height: var(--filter-control-height);
+  min-width: 0;
+  padding: 0 11px;
+  gap: var(--spacing-sm);
+  background: var(--color-bg-container);
+  border: 0.8px solid var(--filter-control-border-color);
+  border-radius: var(--filter-control-border-radius);
+}
+
+.dms-filter-daterange__sep {
+  flex: 0 0 auto;
+  color: var(--color-text-secondary);
+  line-height: 1;
+}
+
+.dms-filter-daterange .dms-datepicker {
+  flex: 1;
+  min-width: 0;
+}
+
+.dms-filter-daterange .dms-datepicker .dms-input {
+  height: 32px;
+  min-height: 0;
+  padding: 0 22px 0 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+}
+
+.dms-filter-daterange .dms-datepicker__icon {
+  right: 0;
+}
+
+.dms-filter-item .dms-field-picker {
+  height: var(--filter-control-height);
+}
+
+.dms-filter-item .dms-field-picker__input {
+  height: var(--filter-control-height);
+  min-height: var(--filter-control-height);
+}

@@ -1,0 +1,97 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 128 },
+  "items": [
+    {
+      "id": "102296",
+      "sku": "102296",
+      "name": "F25-Bộ 2 Anlene Total 10 Vani 800G ＆ 400G_HKM",
+      "image": "",
+      "baseUnit": "Hộp",
+      "categoryPath": "Thực phẩm bổ sung > Sữa bột > Anlene",
+      "categoryCode": "ANLENE",
+      "businessUnit": "FMCG",
+      "businessUnitCode": "FMCG",
+      "status": "ACTIVE",
+      "taxName": "VAT 8%",
+      "taxCode": "VAT08",
+      "vat": "8%",
+      "createdAt": "15-03-2026 09:30:00",
+      "updatedAt": "28-07-2026 14:22:10",
+      "createdBy": "service-account-erp-ht",
+      "updatedBy": "Vũ BA",
+      "hasTransaction": true,
+      "baseUnitCode": "HOP",
+      "conversionUnits": [
+        { "unit": "Thùng", "value": "12" }
+      ],
+      "attributes": {
+        "division": "Nutrition",
+        "segmentation": "Adult",
+        "productType": "Powder Milk",
+        "indication": "Bone Health",
+        "function": "Supplement",
+        "brand": "Anlene",
+        "costElements": "CE-001",
+        "method": "Retail",
+        "pathology": "Osteoporosis Prevention",
+        "skinLaye": "N/A"
+      }
+    },
+    {
+      "id": "224035",
+      "sku": "224035",
+      "name": "Kẹo Gừng Gingerbon _ Gingerbon Ginger Candy 20 Gói X 144 G",
+      "image": "",
+      "baseUnit": "Gói",
+      "categoryPath": "Thức ăn > Đồ ăn nhẹ > Kẹo",
+      "categoryCode": "KEO",
+      "businessUnit": "FMCG",
+      "businessUnitCode": "FMCG",
+      "status": "ACTIVE",
+      "taxName": "VAT 8%",
+      "taxCode": "VAT08",
+      "vat": "8%",
+      "createdAt": "10-01-2026 08:15:00",
+      "updatedAt": "20-07-2026 11:05:33",
+      "createdBy": "service-account-erp-ht",
+      "updatedBy": "Admin",
+      "hasTransaction": false,
+      "baseUnitCode": "GOI",
+      "conversionUnits": [
+        { "unit": "Thùng", "value": "20" }
+      ],
+      "attributes": {
+        "division": "Confectionery",
+        "segmentation": "Mass",
+        "productType": "Candy",
+        "brand": "Gingerbon"
+      }
+    },
+    {
+      "id": "188332",
+      "sku": "188332",
+      "name": "Bánh que Pocky Kem Matcha Trà Xanh 35g x 5 Hộp",
+      "image": "",
+      "baseUnit": "Hộp",
+      "categoryPath": "Thức ăn > Đồ ăn nhẹ > Bánh quy",
+      "categoryCode": "BANHQUY",
+      "businessUnit": "FMCG",
+      "businessUnitCode": "FMCG",
+      "status": "INACTIVE",
+      "taxName": "VAT 10%",
+      "taxCode": "VAT10",
+      "vat": "10%",
+      "createdAt": "05-06-2025 16:40:00",
+      "updatedAt": "01-07-2026 09:00:00",
+      "createdBy": "service-account-erp-ht",
+      "updatedBy": "Vũ BA",
+      "hasTransaction": true,
+      "baseUnitCode": "HOP",
+      "conversionUnits": [],
+      "attributes": {
+        "division": "Snacks",
+        "brand": "Pocky"
+      }
+    }
+  ]
+}

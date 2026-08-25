@@ -1,0 +1,117 @@
+<ol><li class="auto-cursor-target">Cấu tr&uacute;c h&igrave;nh thức khuyến m&atilde;i<h3 style="text-align: left;"><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Khuyến m&atilde;i b&igrave;nh thường (NORMAL)</strong></h3><ul><li>C&aacute;c <strong>h&igrave;nh thức</strong> được nh&oacute;m với nhau bởi<span>&nbsp;</span><code><strong>and</strong></code><span>&nbsp;</span>hoặc<span>&nbsp;</span><strong><code>or</code></strong>, mỗi nh&oacute;m c&oacute; thể chứa h&igrave;nh thức hoặc nh&oacute;m kh&aacute;c<ul><li><strong>h&igrave;nh thức</strong>: m&ocirc; tả về h&igrave;nh thức khuyến m&atilde;i m&agrave; người d&ugrave;ng được nhận&nbsp;</li><li><strong>and</strong>: được nhận tất cả h&igrave;nh thức khuyến m&atilde;i trong danh s&aacute;ch</li><li><strong>or</strong>: được nhận một h&igrave;nh thức khuyến m&atilde;i trong danh s&aacute;ch</li></ul></li><li><p class="auto-cursor-target">V&iacute; dụ: Giảm gi&aacute; bội số 10000 tr&ecirc;n tổng đơn v&agrave; tặng k&egrave;m bội số 2 sản phẩm trong danh s&aacute;ch SKU1, SKU2</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="5a5e4425-19ee-454a-9e89-a35381b2a32a"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "all": [
+    {
+      "operator": "discountFixedAmount",
+      "value": {
+        "discount_amount": 10000,
+        "calculate_on": "totalAmountOfOrder"
+      }
+    },
+    {
+      "operator": "attachProducts",
+      "value": {
+        "total_quantity": 2,
+        "skus": [
+          {
+            "id": "1",
+            "sku": "SKU1"
+          },
+          {
+            "id": "2",
+            "sku": "SKU2"
+          }
+        ]
+      }
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><h3 style="text-align: left;"><strong>Khuyến m&atilde;i Bậc thang (SIDE STEP)</strong></h3></li><li>C&aacute;c g&oacute;i h&igrave;nh thức được thể hiện bởi<span>&nbsp;</span><strong>any</strong><span>&nbsp;</span>hoặc<span>&nbsp;</span><strong>or</strong>, b&ecirc;n trong sẽ chứa c&aacute;c điều kiện c&ugrave;ng với<span>&nbsp;</span><strong>id_package</strong><span>&nbsp;</span>để định danh từng g&oacute;i</li><li>C&aacute;c <strong>h&igrave;nh thức</strong> được nh&oacute;m với nhau bởi<span>&nbsp;</span><code><strong>and</strong></code><span>&nbsp;</span>hoặc<span>&nbsp;</span><strong><code>or</code></strong>, mỗi nh&oacute;m c&oacute; thể chứa h&igrave;nh thức hoặc nh&oacute;m kh&aacute;c<ul><li><strong>h&igrave;nh thức</strong>: m&ocirc; tả về h&igrave;nh thức khuyến m&atilde;i m&agrave; người d&ugrave;ng được nhận&nbsp;</li><li><strong>and</strong>: được nhận tất cả h&igrave;nh thức khuyến m&atilde;i trong danh s&aacute;ch</li><li><strong>or</strong>: được nhận một h&igrave;nh thức khuyến m&atilde;i trong danh s&aacute;ch</li></ul></li><li><p class="auto-cursor-target">V&iacute; dụ: <strong>G&oacute;i 1: </strong>Giảm 10% tổng số tiền nh&oacute;m sản phẩm (tối đa 200k), <strong>G&oacute;i 2: </strong>Tặng sản phẩm trong danh s&aacute;ch, <strong>G&oacute;i 3: </strong>Tặng sản phẩm trong danh s&aacute;ch</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="4bcfae56-ed88-4c23-8816-d70e761f82e9"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "any": [
+    {
+      "id_package": "6b12b371-5844-40db-823c-4c2c95b1e48a",             //===============================> Gói thứ nhất                     
+      "all": [
+        {
+          "fact": "data",
+          "operator": "discountPercent",
+          "value": {
+            "calculate_on": "totalAmountOfSkus",
+            "discount_percent": 10,
+            "discount_maximum_amount": "20000"
+          },
+          "params": {
+            "rule": "RULE",
+            "id": "26d68d84-cb90-43a4-83e8-393ccbd07fc3",
+            "option": "ActionSetupPercentDiscount"
+          },
+          "id": "14497124-3047-423c-893d-bd694fab36d2"
+        }
+      ],
+      "kind_of_user": "MERCHANT",
+      "slot_desired": 3,
+      "budget_desired": {
+        "type_of_budget": "SLOT",
+        "value_of_budget": 12
+      },
+      "kind_of_deduction": "DESIRED"
+    },
+    {
+      "id_package": "abd3c440-e1d9-4cb0-8534-68d9e204465b",        //=====================================> Gói thứ 2
+      "all": [
+        {
+          "fact": "data",
+          "operator": "attachProducts",
+          "value": {
+            "total_quantity": 2,
+            "skus": [
+              {
+                "id": "553",
+                "sku": "DMSP001"
+              },
+              {
+                "id": "554",
+                "sku": "DMSP002"
+              }
+            ]
+          },
+          "params": {
+            "rule": "RULE",
+            "id": "26d68d84-cb90-43a4-83e8-393ccbd07fc3",
+            "option": "ActionSetupAmountDiscount"
+          },
+          "id": "0cef757f-3fce-42c6-8d59-e46b8c3b0b01"
+        }
+      ],
+      "kind_of_deduction": "ALL_PRODUCTS",
+      "slot_desired": "3"
+    },
+    {
+      "id_package": "129b1c16-472d-4ae3-94cf-fff6dbaa7648",     //========================================> Gói thứ 3
+      "all": [
+        {
+          "fact": "data",
+          "operator": "attachProducts",
+          "value": {
+            "total_quantity": 2,
+            "skus": [
+              {
+                "id": "553",
+                "sku": "DMSP001"
+              },
+              {
+                "id": "554",
+                "sku": "DMSP002"
+              }
+            ]
+          },
+          "params": {
+            "rule": "RULE",
+            "id": "26d68d84-cb90-43a4-83e8-393ccbd07fc3",
+            "option": "ActionSetupAmountDiscount"
+          },
+          "id": "8916b26c-91c2-4423-ae15-5034f883c128"
+        }
+      ],
+      "kind_of_deduction": "DESIRED",
+      "slot_desired": "3"
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li></ul></li><li class="auto-cursor-target"><p class="auto-cursor-target">Danh s&aacute;ch h&igrave;nh thức khuyến m&atilde;i</p><table class="wrapped fixed-table"><colgroup><col style="width: 264.0px;" /><col style="width: 154.0px;" /><col style="width: 282.0px;" /><col style="width: 404.0px;" /><col style="width: 508.0px;" /></colgroup><tbody><tr><th>H&igrave;nh thức khuyến m&atilde;i</th><th colspan="1">Định danh</th><th>T&iacute;nh dựa tr&ecirc;n</th><th>Dữ liệu mẫu</th><th colspan="1">Ghi ch&uacute;</th></tr><tr><td>Giảm số tiền cố định</td><td style="text-align: center;"><strong><code>discountFixedAmount</code></strong></td><td><p>Tổng gi&aacute; trị đơn h&agrave;ng</p></td><td><p><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>discountFixedAmount</strong>&quot;,</code><br /><code>&nbsp; &quot;value&quot;: {</code><br /><code>&nbsp; &nbsp; &quot;discount_amount&quot;: 10000,</code><br /><code>&nbsp; &nbsp; &quot;calculate_on&quot;: &quot;totalAmountOfOrder&quot;</code><br /><code>&nbsp; }</code><br /><code>}</code></p></td><td colspan="1"><ul><li><code><strong>value.calculate_on</strong></code>:<ul><li><strong><code>totalAmountOfOrder</code></strong>: T&iacute;nh khuyến m&atilde;i tr&ecirc;n tổng gi&aacute; trị đơn h&agrave;ng</li><li><strong><code>totalAmountOfOrder</code></strong>: T&iacute;nh khuyến m&atilde;i tr&ecirc;n tổng gi&aacute; trị nh&oacute;m sản phẩm</li></ul></li></ul></td></tr><tr><td colspan="1">Giảm số tiền theo phần trăm</td><td colspan="1"><strong><code>discountPercent</code></strong></td><td colspan="1">Tổng gi&aacute; trị đơn h&agrave;ng</td><td colspan="1"><p><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;,</code><br /><code>&nbsp; &quot;value&quot;: {</code><br /><code>&nbsp; &nbsp; &quot;discount_percent&quot;: 10,</code><br /><code>&nbsp; &nbsp; &quot;discount_maximum_amount&quot;: 10000,</code><br /><code>&nbsp; &nbsp; &quot;calculate_on&quot;: &quot;totalAmountOfOrder&quot;</code><br /><code>&nbsp; }</code><br /><code>}</code></p></td><td colspan="1"><ul><li><code><strong>value.calculate_on</strong></code>:<ul><li><strong><code>totalAmountOfOrder</code></strong>: T&iacute;nh khuyến m&atilde;i tr&ecirc;n tổng gi&aacute; trị đơn h&agrave;ng</li><li><strong><code>totalAmountOfOrder</code></strong>: T&iacute;nh khuyến m&atilde;i tr&ecirc;n tổng gi&aacute; trị nh&oacute;m sản phẩm</li></ul></li></ul></td></tr><tr><td colspan="1">Tặng k&egrave;m sản phẩm c&ugrave;ng loại</td><td colspan="1"><strong><code>attachSameProduct</code></strong></td><td colspan="1"><br /></td><td colspan="1"><p><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>attachSameProduct</strong>&quot;,</code><br /><code>&nbsp; &quot;value&quot;: {</code><br /><code>&nbsp; &nbsp; &quot;quantity&quot;: 1,</code></p><p style="margin-left: 40.0px;">&quot;<strong>lo_date_criteria</strong>&quot;: &nbsp; &nbsp; &nbsp;{</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;field&quot;: &quot;info_lo_date&quot;,</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;operator&quot;: &quot;range&quot;,</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;value&quot;: {</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&quot;start&quot;: &quot;2025-06-01T00:00:00.000Z&quot;,</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;end&quot;: &nbsp; &quot;2025-06-30T23:59:59.000Z&quot;</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp; &nbsp; },</p><p style="margin-left: 40.0px;">&nbsp;gift_recommended: BY_CONDITION/ BY_CONFIG</p><p style="margin-left: 40.0px;"><br /><code>&nbsp; }</code><br /><code>}</code></p></td><td colspan="1"><ul><li><strong>gift_recommended</strong>: skus chỉ xuất hiện khi cấu h&igrave;nh về LoDate&nbsp;</li><li><strong>BY_CONDITION</strong>: Lấy điều kiện LoDate từ cấu h&igrave;nh Condition</li><li><strong>BY_CONFIG</strong>: Lấy điều kiện LoDate từ việc nguời d&ugrave;ng tự cấu h&igrave;nh</li><li><strong>lo_date_criteria</strong>: th&ocirc;ng tin n&agrave;y chỉ c&oacute; xuất hiện khi cấu h&igrave;nh lodate</li></ul></td></tr><tr><td colspan="1">Tặng k&egrave;m n sản phẩm trong danh s&aacute;ch</td><td colspan="1"><strong><code>attachProducts</code></strong></td><td colspan="1"><br /></td><td colspan="1"><p><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>attachProducts</strong>&quot;,</code><br /><code>&nbsp; &quot;value&quot;: {</code><br /><code>&nbsp; &nbsp; &quot;total_quantity&quot;: 2,</code><br /><code>&nbsp; &nbsp; &quot;skus&quot;: [</code><br /><code>&nbsp; &nbsp; &nbsp; {</code><br /><code>&nbsp; &nbsp; &nbsp; &nbsp; &quot;id&quot;: &quot;1&quot;,</code><br /><code>&nbsp; &nbsp; &nbsp; &nbsp; &quot;sku&quot;: &quot;SKU1&quot;,</code></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;<strong>lo_date_criteria</strong>&quot;: &nbsp;{</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;field&quot;: &quot;info_lo_date&quot;,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;operator&quot;: &quot;range&quot;,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;value&quot;: {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;start&quot;: &quot;2025-06-01T00:00:00.000Z&quot;,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;end&quot;: &nbsp; &quot;2025-06-30T23:59:59.000Z&quot;</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }.<code>&nbsp; &nbsp; &nbsp; </code></p><p>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; <code>{</code><br /><code>&nbsp; &nbsp; &nbsp; &nbsp; &quot;id&quot;: &quot;2&quot;,</code><br /><code>&nbsp; &nbsp; &nbsp; &nbsp; &quot;sku&quot;: &quot;SKU2&quot;,</code></p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;<strong>lo_date_criteria</strong>&quot;: {</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;field&quot;: &quot;info_bach_no&quot;,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;operator&quot;: &quot;bach_no&quot;,</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &quot;value&quot;: [&quot;LO_123213&quot;, &quot;LO_3b2hhc3&quot;, &quot;LO_376ewbc&quot;]</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; }</p><p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;}<br /><code>&nbsp; &nbsp; ],</code></p><p>&nbsp; &nbsp; &nbsp;&quot;gift_recommended&quot;:&nbsp; BY_CONFIG<br /><code>&nbsp; }</code><br /><code>}</code></p></td><td colspan="1"><ul><li><strong>lo_date_criteria</strong>: th&ocirc;ng tin n&agrave;y chỉ c&oacute; xuất hiện khi cấu h&igrave;nh lodate</li><li><strong>gift_recommended</strong>: skus chỉ xuất hiện khi cấu h&igrave;nh về LoDate&nbsp;</li><li><strong>BY_CONFIG</strong>: Lấy điều kiện LoDate từ việc nguời d&ugrave;ng tự cấu h&igrave;nh</li></ul></td></tr><tr><td colspan="1">Đồng gi&aacute; sản phẩm</td><td colspan="1"><strong><code>flatPrice</code></strong></td><td colspan="1"><br /></td><td colspan="1"><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>flatPrice</strong>&quot;,</code><br /><code>&nbsp; &quot;value&quot;: {</code><br /><code>&nbsp; &nbsp; &quot;flat_price&quot;: 2000,</code><br /><code>&nbsp; &nbsp; &quot;calculate_on&quot;: &quot;<strong>allProductsInCondition</strong>&quot;</code><br /><code>&nbsp; }</code><br /><code>}</code></td><td colspan="1"><ul><li><code><strong>allProductsInCondition</strong></code>:&nbsp;Giảm trừ tr&ecirc;n tất cả sản phẩm thoả điều kiện</li></ul></td></tr></tbody></table><p class="auto-cursor-target"><br /></p></li></ol>

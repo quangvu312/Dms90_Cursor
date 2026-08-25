@@ -1,0 +1,17 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "code": "HT",
+      "name": "HƯƠNG THỦY - LẠC VIỆT",
+      "companyCode": "HT",
+      "companyName": "HƯƠNG THỦY - LẠC VIỆT",
+      "status": "ACTIVE",
+      "createdAt": "05-01-2024 08:00:00",
+      "updatedAt": "12-06-2025 09:00:00",
+      "createdBy": "admin",
+      "updatedBy": "VUBA"
+    }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 1 }
+}

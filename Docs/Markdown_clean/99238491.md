@@ -1,0 +1,36 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+# Danh sách các chức năng sử dụng tọa độ google map
+
+* Dưới đây là danh sách tổng hợp các màn hình trên hệ thống DMS90 có sử dụng tính năng liên quan đến tọa độ (Kinh độ/Vĩ độ) và khoảng cách, được phân loại theo môi trường hoạt động dựa trên tài liệu đặc tả:
+
+| Môi trường | Màn hình | Chức năng sử dụng |
+| --- | --- | --- |
+| **App Salesman** | Chấm công (Đầu ngày / Cuối ngày) | - Lấy **tọa độ GPS** hiện tại để gắn vào hình ảnh chụp chấm công.  - Tính toán **khoảng cách (m)** từ vị trí thực tế đến địa điểm chấm công cấu hình. Nếu vượt **khoảng cách cho phép**, cảnh báo bôi đỏ và yêu cầu chọn/nhập lý do,,,. |
+| **App Salesman** | Màn hình Viếng thăm / Bản đồ tuyến | - Hiển thị vị trí các điểm bán trên tuyến lên bản đồ thông qua **tọa độ**.  - Tính toán và hiển thị **khoảng cách** thực tế từ thiết bị đến tọa độ điểm bán.  - Hỗ trợ tự động sắp xếp ưu tiên danh sách điểm bán theo **khoảng cách từ gần đến xa** (đường chim bay). |
+| **App Salesman** | Nhiệm vụ Check-in / Check-out | - Kiểm tra **khoảng cách** thiết bị so với **tọa độ** điểm bán. Cảnh báo lỗi và yêu cầu giải trình nếu sai lệch vượt cấu hình cho phép,,,,,.  - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh check-in, check-out. |
+| **App Salesman** | Nhiệm vụ Bày hàng | - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh bày hàng |
+| **App Salesman** | Nhiệm vụ Khảo sát | - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh khảo sát |
+| **App Salesman** | Chương trình trưng bày | - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh đăng ký CTTB  - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh khi chụp CTTB |
+| **App Salesman** | Chương trình tích lũy | - Lấy **tọa độ (kinh độ, vĩ độ)** gắn vào thông tin của các hình ảnh đăng ký CTTL |
+| **App Salesman** | Tạo mới / Chỉnh sửa / Chi tiết Điểm bán | - Tự động lấy **tọa độ (kinh độ, vĩ độ)** tại vị trí nhân viên đang đứng khi tạo mới điểm bán để ghim lên bản đồ (không được tùy ý di chuyển định vị),. |
+| **App Manager** | Chấm công (Đầu ngày / Cuối ngày) | - Tương tự App Salesman: Lấy **tọa độ GPS** gắn vào ảnh, đo lường **khoảng cách** so với điểm chuẩn, chặn hoặc yêu cầu lý do nếu vượt ngưỡng **khoảng cách cho phép**,. |
+| **App Manager** | Kế hoạch làm việc (Thực hiện công việc) | - Ứng dụng lấy thông tin **vị trí tọa độ** hiện tại khi cấp quản lý ghi nhận "Địa điểm thực hiện" công việc trong ngày. |
+| **App Manager** | Bản đồ tuyến bán hàng | - Đọc **kinh độ, vĩ độ** để hiển thị các điểm bán thuộc tuyến lên **bản đồ** dưới dạng các mốc địa chỉ và vẽ đường nối thứ tự viếng thăm. |
+| **App Manager** | Giám sát lộ trình nhân viên | - Thể hiện vị trí của nhân viên trên bản đồ tại **tọa độ** có tương tác dữ liệu gần nhất,.- Xem chi tiết lộ trình: Vẽ đường nối các **tọa độ** điểm bán đã ghé thăm và tính toán độ lệch **khoảng cách** lúc check-in/out. |
+| **App Manager** | Duyệt điều chỉnh / Thông tin Điểm bán | - Cấp quản lý xem thông tin **tọa độ (kinh độ, vĩ độ)** và vị trí điểm bán hiển thị trên **bản đồ** để đối chiếu trước khi ra quyết định duyệt/từ chối,. |
+| **Web Portal (HO)** | Quản lý điểm bán (Tạo mới / Cập nhật / Xem chi tiết) | - Khi người dùng nhập địa chỉ điểm bán, hệ thống tìm vị trí trên **bản đồ** và tự động sinh ra **tọa độ (Kinh độ, Vĩ độ)**. Có thể kéo thả con trỏ trên bản đồ để làm mới tọa độ,,. |
+| **Web Portal (HO)** | Bản đồ tuyến trên danh sách Tuyến | - Hiển thị vị trí các cửa hàng trong tuyến lên **bản đồ** theo **tọa độ**.- Hỗ trợ tính năng đề xuất sắp xếp lại thứ tự viếng thăm bằng thuật toán tính **độ dài quãng đường di chuyển (khoảng cách theo Google Maps)** ngắn nhất,,. |
+| **Web Portal (HO)** | Báo cáo: Truy vấn tọa độ nhân viên | - Quản lý xem vị trí hoạt động của nhân viên trực tuyến trên **bản đồ**. Mốc hiển thị dựa trên **tọa độ (kinh độ, vĩ độ)** tại lần nhân viên có tương tác với hệ thống,,. |
+| **Web Portal (NPP)** | Quản lý điểm bán (Tạo mới / Cập nhật / Xem chi tiết) | - Khi người dùng nhập địa chỉ điểm bán, hệ thống tìm vị trí trên **bản đồ** và tự động sinh ra **tọa độ (Kinh độ, Vĩ độ)**. Có thể kéo thả con trỏ trên bản đồ để làm mới tọa độ,,. |
+| **Web Portal (NPP)** | Bản đồ tuyến trên danh sách Tuyến | - Hiển thị vị trí các cửa hàng trong tuyến lên **bản đồ** theo **tọa độ**.- Hỗ trợ tính năng đề xuất sắp xếp lại thứ tự viếng thăm bằng thuật toán tính **độ dài quãng đường di chuyển (khoảng cách theo Google Maps)** ngắn nhất,,. |

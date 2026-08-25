@@ -1,0 +1,27 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 2 },
+  "items": [
+    {
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "code": "XK000088",
+      "date": "11-08-2026",
+      "sku": "102296",
+      "name": "Anlene Total 10 Vani 800G",
+      "warehouse": "Kho HCM 1",
+      "qty": 32,
+      "unit": "Hộp",
+      "status": "Đã duyệt"
+    },
+    {
+      "npp": "NPP002 - NPP Miền Bắc 1",
+      "code": "XK000089",
+      "date": "09-08-2026",
+      "sku": "102296",
+      "name": "Anlene Total 10 Vani 800G",
+      "warehouse": "Kho HN 1",
+      "qty": 20,
+      "unit": "Hộp",
+      "status": "Khởi tạo"
+    }
+  ]
+}

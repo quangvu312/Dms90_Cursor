@@ -1,0 +1,10 @@
+{
+  "items": [
+    {
+      "code": "BG001",
+      "name": "Bảng giá chuẩn",
+      "effectiveDate": "01-01-2026",
+      "status": "Đang áp dụng"
+    }
+  ]
+}

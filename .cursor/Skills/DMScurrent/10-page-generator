@@ -1,0 +1,300 @@
+# PAGE GENERATOR
+
+Bạn là Prototype Generator của dự án DMS.
+
+Nhiệm vụ của bạn KHÔNG phải tự thiết kế giao diện.
+
+Nhiệm vụ của bạn là sinh một màn hình Prototype hoàn chỉnh dựa trên tài liệu nghiệp vụ (Confluence) và Prototype Framework hiện có.
+
+==================================================
+BƯỚC 1. TÌM TÀI LIỆU
+==================================================
+
+Trước khi sinh bất kỳ màn hình nào, luôn thực hiện:
+
+1. Đọc Docs/index.md.
+2. Tìm tài liệu liên quan đến tính năng.
+3. Đọc toàn bộ các file markdown liên quan.
+4. Nếu cần thì đọc Docs/Glossary.
+5. Tóm tắt yêu cầu nghiệp vụ trước khi bắt đầu tạo UI.
+
+Không được bỏ qua bước phân tích tài liệu.
+
+Nếu có nhiều tài liệu mô tả cùng một tính năng:
+
+- Tài liệu Core
+- Tài liệu Enhancement
+- Tài liệu Customize theo khách hàng
+
+=> Phải tổng hợp tất cả trước khi sinh giao diện.
+
+==================================================
+BƯỚC 2. PHÂN TÍCH NGHIỆP VỤ
+==================================================
+
+Từ tài liệu hãy xác định:
+
+- Mục đích màn hình
+- Người sử dụng
+- Quyền sử dụng
+- Luồng nghiệp vụ
+- Chức năng CRUD
+- Điều kiện tìm kiếm
+- Bộ lọc
+- Danh sách cột
+- Thông tin chi tiết
+- Rule validate
+- Business Rule
+- Approval Flow
+- Import / Export
+- Cấu hình liên quan
+- Thông báo lỗi
+
+Không được tự tạo thêm field ngoài tài liệu.
+
+==================================================
+BƯỚC 3. TÁI SỬ DỤNG COMPONENT
+==================================================
+
+Trước khi viết giao diện:
+
+Luôn tìm trong
+
+Prototype/components/
+
+Nếu đã tồn tại Component thì bắt buộc sử dụng lại.
+
+Ví dụ:
+
+- Button
+- Input
+- Table
+- Select
+- DatePicker
+- Modal
+- Tabs
+- Card
+- Tag
+- Upload
+- Tree
+- Filter Panel
+- Pagination
+- Breadcrumb
+- Sidebar
+- Header
+
+Không được tạo lại Component đã tồn tại.
+
+Nếu thiếu Component:
+
+Dừng lại.
+
+Giải thích lý do.
+
+Xin phép trước khi tạo Component mới.
+
+==================================================
+BƯỚC 4. XÁC ĐỊNH MẪU MÀN HÌNH
+==================================================
+
+Phân loại màn hình thuộc nhóm nào:
+
+- Danh mục (Master Data)
+- Giao dịch
+- Phê duyệt
+- Dashboard
+- Báo cáo
+- Workflow
+- Import
+- Export
+- Cấu hình
+- Lịch sử
+
+Chọn mẫu gần nhất.
+
+Giữ bố cục thống nhất với toàn hệ thống.
+
+==================================================
+BƯỚC 5. SINH MÀN HÌNH
+==================================================
+
+Chỉ sinh file trong:
+
+Prototype/pages/<feature>/
+
+Ví dụ:
+
+Prototype/pages/store-rank/
+
+Chỉ tạo:
+
+page.js
+
+Không tạo CSS mới.
+
+Không tạo style cho Button.
+
+Không tạo style cho Table.
+
+Phải sử dụng Design System hiện có.
+
+==================================================
+BƯỚC 6. CẬP NHẬT ROUTER
+==================================================
+
+Tự động cập nhật:
+
+Prototype/router/router.js
+
+Đăng ký Route mới.
+
+Ví dụ:
+
+#/master/store-rank
+
+==================================================
+BƯỚC 7. CẬP NHẬT MENU
+==================================================
+
+Tự động thêm Menu vào đúng nhóm.
+
+Không hardcode Menu trong page.
+
+==================================================
+BƯỚC 8. SINH MOCK DATA
+==================================================
+
+Tạo:
+
+Prototype/data/<feature>.json
+
+Sinh dữ liệu mô phỏng hợp lý.
+
+Tối thiểu:
+
+30 bản ghi.
+
+Bao gồm:
+
+- Mã
+- Tên
+- Trạng thái
+- Ngày tạo
+- Ngày cập nhật
+
+==================================================
+BƯỚC 9. NỘI DUNG MÀN HÌNH
+==================================================
+
+Màn hình phải bao gồm:
+
+- Breadcrumb
+- Tiêu đề
+- Khu vực tìm kiếm
+- Bộ lọc nâng cao
+- Thanh công cụ
+- Bảng dữ liệu
+- Phân trang
+- Empty State
+- Loading State
+- Error State
+- Permission State
+
+Chỉ sử dụng Component hiện có.
+
+==================================================
+BƯỚC 10. CRUD
+==================================================
+
+Nếu tài liệu mô tả CRUD thì phải sinh:
+
+- Danh sách
+- Thêm mới
+- Chỉnh sửa
+- Xem chi tiết
+- Popup xác nhận xóa
+- Validate
+- Business Rule
+
+==================================================
+BƯỚC 11. KẾT QUẢ
+==================================================
+
+Sau khi hoàn thành phải trả về:
+
+1. Tóm tắt nghiệp vụ
+
+2. Danh sách file đã tạo
+
+3. Route đã thêm
+
+4. Menu đã thêm
+
+5. Component đã sử dụng
+
+6. Mock Data đã tạo
+
+7. Component còn thiếu (nếu có)
+
+8. Các giả định (nếu bắt buộc)
+
+==================================================
+SELF REVIEW
+==================================================
+
+Trước khi kết thúc hãy tự kiểm tra:
+
+✓ Toàn bộ Field đều lấy từ tài liệu
+
+✓ Không tạo Component trùng
+
+✓ Không tạo CSS trùng
+
+✓ Đã thêm Route
+
+✓ Đã thêm Menu
+
+✓ Đã sinh Mock Data
+
+✓ SPA vẫn hoạt động
+
+✓ Đúng Design System
+
+✓ Đúng Business Rule
+
+✓ Đúng Validate
+
+✓ Đúng Error Message
+
+Nếu có lỗi:
+
+Tự sửa trước khi trả kết quả.
+
+==================================================
+QUY TẮC BẮT BUỘC
+==================================================
+
+- Không tự suy đoán Business Rule.
+- Không tự thêm Field.
+- Không tự thêm Workflow.
+- Luôn ưu tiên Confluence.
+- Luôn tái sử dụng Component.
+- Luôn tái sử dụng Design System.
+- Giữ kiến trúc SPA.
+- Không reload trang.
+- Không tạo CSS trùng.
+- Không dùng inline style.
+- Không dùng Bootstrap.
+- Không dùng Tailwind.
+- Không dùng React.
+- Chỉ sử dụng Vanilla JavaScript Framework hiện có.
+
+Nếu tài liệu chưa đủ thông tin:
+
+Dừng lại.
+
+Liệt kê thông tin còn thiếu.
+
+Hỏi người dùng trước khi tiếp tục.
+
+Không được tự suy đoán.

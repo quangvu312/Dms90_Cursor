@@ -1,0 +1,256 @@
+{
+  "employee": { "name": "Nguyễn Thị Xuân", "code": "135260" },
+  "route": {
+    "code": "ROUTE0000000286",
+    "label": "[Cici] Route 02 NPP Lan Thà... (002)",
+    "fullLabel": "[Cici] Route 02 NPP Lan Thà (002)"
+  },
+  "visits": [
+    { "code": "HCM_00188891", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 33", "phone": "0911233488", "address": "Hoàng Việt 33, QUẬN TÂN BÌNH, TP HCM", "distance": "83.00 m" },
+    { "code": "HCM_00188892", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 34", "phone": "0911233489", "address": "Hoàng Việt 34, QUẬN TÂN BÌNH, TP HCM", "distance": "15.00 m" },
+    { "code": "HCM_00188893", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 35", "phone": "0911233490", "address": "Hoàng Việt 35, QUẬN TÂN BÌNH, TP HCM", "distance": "394.00 m" }
+  ],
+  "careCustomers": [
+    { "code": "HCM_00188913", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 55", "phone": "0911233510", "address": "Hoàng Việt 55, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188914", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 56", "phone": "0911233511", "address": "Hoàng Việt 56, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188915", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 57", "phone": "0911233512", "address": "Hoàng Việt 57, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188916", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 58", "phone": "0911233513", "address": "Hoàng Việt 58, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188917", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 59", "phone": "0911233514", "address": "Hoàng Việt 59, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188918", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 60", "phone": "0911233515", "address": "Hoàng Việt 60, QUẬN TÂN BÌNH, TP HCM" },
+    { "code": "HCM_00188919", "name": "[Cici] Tạp hóa ÁNH SÁNG PHƯƠNG ĐÔNG 61", "phone": "0911233516", "address": "Hoàng Việt 61, QUẬN TÂN BÌNH, TP HCM" }
+  ],
+  "newCustomers": [
+    {
+      "date": "Wednesday, 08/07/2026",
+      "items": [
+        { "id": "AGI_00524622", "name": "8/7 - new 2", "address": "Ag 2, Phường Long Xuyên, AN GIANG", "time": "14:34 - 08/07/2026", "status": "Hoạt động" },
+        { "id": "BGI_00524621", "name": "8/7- new 1", "address": "Bg 1, Không Biết Địa Chỉ, BAC GIANG, BAC GIANG", "time": "14:31 - 08/07/2026", "status": "Hoạt động" }
+      ]
+    },
+    {
+      "date": "Thursday, 07/05/2026",
+      "items": [
+        { "id": "CGI_00524620", "name": "7/5 - new 1", "address": "Cg 1, Phường Châu Phú A, AN GIANG", "time": "09:12 - 07/05/2026", "status": "Ngưng hoạt động" },
+        { "id": "DGI_00524619", "name": "7/5 - new 2", "address": "Dg 2, Phường Châu Phú B, AN GIANG", "time": "08:45 - 07/05/2026", "status": "Ngưng hoạt động" }
+      ]
+    }
+  ],
+  "moreMenu": [
+    { "key": "khuyen-mai", "label": "Chương trình khuyến mãi", "icon": "percent" },
+    { "key": "khach-hang", "label": "Khách hàng", "icon": "store" },
+    { "key": "thong-bao", "label": "Thông báo", "icon": "bell", "badge": 2 },
+    { "key": "nghi-phep", "label": "Nghỉ phép", "icon": "calendar" },
+    { "key": "khao-sat", "label": "Khảo sát", "icon": "clipboard" },
+    { "key": "ho-tro", "label": "Hỗ trợ", "icon": "headset" },
+    { "key": "telling-story", "label": "Telling Story", "icon": "book" },
+    { "key": "hop-dong", "label": "Hợp đồng", "icon": "file" },
+    { "key": "cai-dat", "label": "Cài đặt ứng dụng", "icon": "settings" }
+  ],
+  "managedCustomers": [
+    { "code": "CH000286", "name": "Cửa hàng Lan Thà" },
+    { "code": "CH000152", "name": "Tạp hóa Minh Anh" },
+    { "code": "CH000365", "name": "Siêu thị Hồng Phát" }
+  ],
+  "contracts": [
+    {
+      "id": "HD0000125",
+      "code": "HD0000125",
+      "name": "Hợp đồng thương mại 2026",
+      "customerCode": "CH000286",
+      "customerName": "Cửa hàng Lan Thà",
+      "type": "Hợp đồng thương mại",
+      "signedDate": "2025-12-25",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "status": "Đã duyệt",
+      "note": "Áp dụng chiết khấu theo phụ lục 01.",
+      "files": [
+        { "name": "Hop_dong_HD0000125.pdf", "size": "2.4 MB" },
+        { "name": "Phu_luc_HD0000125.pdf", "size": "1.2 MB" }
+      ]
+    },
+    {
+      "id": "HD0000126",
+      "code": "HD0000126",
+      "name": "Hợp đồng trưng bày Tạp hóa Minh Anh",
+      "customerCode": "CH000152",
+      "customerName": "Tạp hóa Minh Anh",
+      "type": "Hợp đồng trưng bày",
+      "signedDate": "2026-03-02",
+      "startDate": "2026-03-15",
+      "endDate": "2026-09-15",
+      "status": "Chờ duyệt",
+      "note": "Chờ phòng kinh doanh xác nhận hạn mức.",
+      "files": [
+        { "name": "Hop_dong_trung_bay_HD0000126.pdf", "size": "1.8 MB" }
+      ]
+    },
+    {
+      "id": "HD0000127",
+      "code": "HD0000127",
+      "name": "Hợp đồng khách hàng Siêu thị Hồng Phát",
+      "customerCode": "CH000365",
+      "customerName": "Siêu thị Hồng Phát",
+      "type": "Hợp đồng khách hàng",
+      "signedDate": "2026-01-10",
+      "startDate": "2026-02-01",
+      "endDate": "2026-07-31",
+      "status": "Từ chối",
+      "note": "",
+      "files": [
+        { "name": "HD0000127_khach_hang.pdf", "size": "980 KB" }
+      ]
+    },
+    {
+      "id": "HD0000128",
+      "code": "HD0000128",
+      "name": "Hợp đồng mẫu khu vực miền Nam 2025",
+      "customerCode": "CH000286",
+      "customerName": "Cửa hàng Lan Thà",
+      "type": "Hợp đồng mẫu",
+      "signedDate": "2025-01-05",
+      "startDate": "2025-01-15",
+      "endDate": "2025-12-31",
+      "status": "Hết hiệu lực",
+      "note": "Đã hết hạn, thay bằng HD0000125.",
+      "files": [
+        { "name": "Hop_dong_mau_mien_Nam_2025_HD0000128.pdf", "size": "3.1 MB" }
+      ]
+    },
+    {
+      "id": "HD0000129",
+      "code": "HD0000129",
+      "name": "Hợp đồng thương mại chuỗi bán lẻ Siêu thị Hồng Phát kèm điều khoản chiết khấu quý 2 năm 2026",
+      "customerCode": "CH000365",
+      "customerName": "Siêu thị Hồng Phát",
+      "type": "Hợp đồng thương mại",
+      "signedDate": "2026-04-01",
+      "startDate": "2026-04-15",
+      "endDate": "2026-12-31",
+      "status": "Đã duyệt",
+      "note": "Áp dụng cho toàn bộ SKU ngành hàng bánh kẹo.",
+      "files": [
+        { "name": "Hop_dong_thuong_mai_chuoi_ban_le_Sieu_thi_Hong_Phat_HD0000129.pdf", "size": "4.6 MB" },
+        { "name": "Phu_luc_chiet_khau_Q2_2026_HD0000129.pdf", "size": "890 KB" },
+        { "name": "Bang_gia_ap_dung_HD0000129.pdf", "size": "1.5 MB" }
+      ]
+    },
+    {
+      "id": "HD0000130",
+      "code": "HD0000130",
+      "name": "Phụ lục hợp đồng Lan Thà 2026",
+      "customerCode": "CH000286",
+      "customerName": "Cửa hàng Lan Thà",
+      "type": "Hợp đồng khách hàng",
+      "signedDate": "2026-05-20",
+      "startDate": "2026-06-01",
+      "endDate": "2026-12-31",
+      "status": "Đã duyệt",
+      "note": "",
+      "files": [
+        { "name": "Phu_luc_01_HD0000130.pdf", "size": "720 KB" },
+        { "name": "Phu_luc_02_HD0000130.pdf", "size": "640 KB" },
+        { "name": "Bien_ban_ban_giao_HD0000130.pdf", "size": "510 KB" }
+      ]
+    },
+    {
+      "id": "HD0000131",
+      "code": "HD0000131",
+      "name": "Hợp đồng trưng bày Tết 2027",
+      "customerCode": "CH000152",
+      "customerName": "Tạp hóa Minh Anh",
+      "type": "Hợp đồng trưng bày",
+      "signedDate": "2026-08-01",
+      "startDate": "2026-12-01",
+      "endDate": "2027-02-15",
+      "status": "Chờ duyệt",
+      "note": "",
+      "files": [
+        { "name": "HD0000131.pdf", "size": "1.1 MB" }
+      ]
+    },
+    {
+      "id": "HD0000132",
+      "code": "HD0000132",
+      "name": "Hợp đồng khách hàng Hồng Phát 2025",
+      "customerCode": "CH000365",
+      "customerName": "Siêu thị Hồng Phát",
+      "type": "Hợp đồng khách hàng",
+      "signedDate": "2024-12-10",
+      "startDate": "2025-01-01",
+      "endDate": "2025-12-31",
+      "status": "Hết hiệu lực",
+      "note": "Không gia hạn.",
+      "files": [
+        { "name": "HD0000132.pdf", "size": "2.0 MB" },
+        { "name": "Phu_luc_cu_HD0000132.pdf", "size": "430 KB" }
+      ]
+    },
+    {
+      "id": "HD0000133",
+      "code": "HD0000133",
+      "name": "Hợp đồng mẫu Cửa hàng Lan Thà",
+      "customerCode": "CH000286",
+      "customerName": "Cửa hàng Lan Thà",
+      "type": "Hợp đồng mẫu",
+      "signedDate": "2026-02-18",
+      "startDate": "2026-03-01",
+      "endDate": "2026-08-31",
+      "status": "Từ chối",
+      "note": "Thiếu chữ ký đại diện điểm bán.",
+      "files": [
+        { "name": "Hop_dong_mau_Lan_Tha_HD0000133.pdf", "size": "1.3 MB" }
+      ]
+    },
+    {
+      "id": "HD0000134",
+      "code": "HD0000134",
+      "name": "Hợp đồng thương mại Tạp hóa Minh Anh",
+      "customerCode": "CH000152",
+      "customerName": "Tạp hóa Minh Anh",
+      "type": "Hợp đồng thương mại",
+      "signedDate": "2026-01-20",
+      "startDate": "2026-02-01",
+      "endDate": "2026-12-31",
+      "status": "Đã duyệt",
+      "note": "",
+      "files": [
+        { "name": "Hop_dong_HD0000134.pdf", "size": "2.2 MB" }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "SO0193566",
+      "erpCode": "ERP-987654321",
+      "time": "00:00, 28/07/2026",
+      "storeName": "NORTH - lần 3 - 254",
+      "storeAddress": "NORTH - lần 3 - 254, Phường Bắc Giang, BAC NINH",
+      "storeId": "BNI_00516048",
+      "distributor": "[QC][MT] NPP - lock inventories-3000005",
+      "source": "APP",
+      "type": "Đơn đặt",
+      "warehouse": "Kho bán - [QC][MT] NPP - lock inventories-3000005",
+      "total": "536,000 đ",
+      "status": "Khởi tạo"
+    },
+    {
+      "id": "SO0193565",
+      "erpCode": "ERP-112233445",
+      "time": "00:00, 28/07/2026",
+      "storeName": "NORTH - lần 3 - 254",
+      "storeAddress": "NORTH - lần 3 - 254, Phường Bắc Giang, BAC NINH",
+      "storeId": "BNI_00516048",
+      "distributor": "[QC][MT] NPP - lock inventories-3000005",
+      "source": "APP",
+      "type": "Đơn đặt",
+      "warehouse": "Kho bán - [QC][MT] NPP - lock inventories-3000005",
+      "total": "2,208,400 đ",
+      "status": "Khởi tạo"
+    }
+  ],
+  "products": [
+    { "id": "224005", "name": "Kẹo Cà Phê Esprézzo Nhân Mocha_Esprézzo Centerfilled Mocha Coffee Candy 20 Gói x 150g", "uom": "Gói", "price": 14000 },
+    { "id": "224013", "name": "Kẹo Gừng Gingerbon_Gingerbon Ginger Candy 20 Gói x 125g", "uom": "Bịch", "price": 14701 }
+  ]
+}

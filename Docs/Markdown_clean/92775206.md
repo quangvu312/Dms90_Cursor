@@ -1,0 +1,136 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story | <https://hotro.finviet.com.vn/browse/ECD-6131>  Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6126  Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6127  Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6128  Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6129 |
+| Epic |  |
+| Feature |  |
+| Description | Từ yêu cầu: [[OR-4492] Checkbox “Sale đi giao hàng” - Finviet - Management System](https://hotro.finviet.com.vn/browse/OR-4492) |
+| Document version | RedV1.0.0 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+# I Dữ liệu chung - Thêm Hình thức giao hàng
+
+* Màn hình Dữ liệu chung, bổ sung thêm Loại = Hình thức giao hàng (Delivery\_Type)
+* Hiện tại sẽ tạo 2 dữ liệu là:
+  + Kho giao hàng
+  + NVBH tự giao hàng
+* Đối với đơn **Indirect Sales**: Hiển thị mặc định = Kho giao hàng
+* Đối với đơn **Direct Sales**:
+  + Hiện tại ERP Hương Thủy chỉ hỗ trợ sync thông tin dữ liệu dạng true/false nên là:
+    - Nếu user chọn option **Nhân viên bán hàng tự giao hàng**thì sẽ sync qua Hương Thủy = true
+    - Nếu user chọn các option còn lại thì sẽ sync qua Hương Thủy = false
+    - Còn lại sau này khi HT phát triển thêm các hình thức giao hàng khác thì sẽ phát triển thêm
+  + Hiển thị mặc định = Kho giao hàng
+
+# II. App SM - BỔ SUNG HÌNH THỨC GIAO HÀNG
+
+Link UI:
+
+## 1 Viếng thăm/Chăm sóc → Đặt hàng
+
+### 1.1 Đơn hàng hôm nay → Bộ lọc tìm kiếm
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * Thêm filter Hình thức giao hàng * Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng * Cho phép chọn nhiều loại hình thức giao hàng để lọc đơn hàng * Sau khi chọn hiển thị đơn hàng có hình thức giao hàng đã chọn. |
+
+### 1.2 Đơn hàng hôm nay → Chi tiết đơn hàng
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * Thêm Hình thức giao hàng: Hiển thị hình thức giao hàng của đơn hàng |
+
+### 1.3 Đơn hàng hôm nay → Đặt hàng → Xác nhận đơn hàng
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * Thêm selectbox chọn Hình thức giao hàng * Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng * Chỉ được chọn 1 loại hình thức giao hàng * Bắt buộc chọn hình thức giao hàng * Không hiển thị mặc định giá trị nào, bắt buộc phải chọn thông tin trước khi Gửi đơn hàng, nếu không chọn thì hiển thị thông báo: Vui lòng chọn Hình thức giao hàng!Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6206 |
+
+## 2 Menu đơn hàng
+
+* Thêm bộ lọc Hình thức đơn hàng ở filter
+* Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+* Nội dung tương tự đã mô tả bên trên
+
+## 3 Chi tiết điểm bán → Lịch sử đơn hàng
+
+* Thêm bộ lọc Hình thức đơn hàng ở filter
+* Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+* Nội dung tương tự đã mô tả bên trên
+
+4 Chi tiết điểm bán → Chương trình trưng bày
+
+* Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+
+## 5 Chi tiết điểm bán → Chương trình tích lũy
+
+* Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+
+## 6 Chỉnh sửa đơn hàng
+
+* Giữ lại thông tin Hình thức giao hàng đã chọn khi tạo đơn hàng
+
+## 7 Đặt lại đơn hàng
+
+* Giữ lại thông tin Hình thức giao hàng của đơn cũ
+
+## 8 Các báo cáo có liên quan đến màn hình Chi tiết đơn hàng
+
+* Bổ sung thông tin Hình thức giao hàng ở các báo cáo sau
+* Các báo cáo sau:
+  + Báo cáo KPI
+    - Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+  + Báo cáo theo dõi đơn hàng
+    - Thêm bộ lọc Hình thức đơn hàng ở filter
+    - Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+  + Báo cáo doanh số ngày
+    - Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+  + Báo cáo doanh số tháng
+    - Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+  + Báo cáo chương trình trưng bày
+    - Thêm Hình thức giao hàng ở Chi tiết đơn hàng
+
+# III. App Manager - Bổ sung hình thức giao hàng
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * Bổ sung thông tin Hình thức giao hàng ở **Chi tiết đơn hàng** trongcác màn hình sau   + Chức năng Chương trình trưng bày   + Chức năng Chương trình tích lũy   + Các báo cáo sau:     - Báo cáo KPI       * Thêm Hình thức giao hàng ở Chi tiết đơn hàng     - Báo cáo theo dõi đơn hàng       * Thêm bộ lọc Hình thức đơn hàng ở filter       * Thêm Hình thức giao hàng ở Chi tiết đơn hàng     - Báo cáo doanh số ngày       * Thêm Hình thức giao hàng ở Chi tiết đơn hàng     - Báo cáo doanh số tháng       * Thêm Hình thức giao hàng ở Chi tiết đơn hàng |
+
+# IV. Portal HO - Bổ sung hình thức giao hàng
+
+## 1 Quản Lý Bán Hàng → Tổng Hợp Đơn hàng Điểm Bán
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * **Vùng tìm kiếm:** Thêm filter Hình thức giao hàng   + Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng   + Cho phép chọn nhiều loại hình thức giao hàng để lọc đơn hàng   + Sau khi chọn hiển thị đơn hàng có hình thức giao hàng đã chọn. * **Lưới danh sách**: Thêm cột "Hình thức giao hàng" sau cột "Nhân viên" |
+|  | * Thêm Hình thức giao hàng ở Chi tiết đơn hàng |
+
+## 2 Báo cáo → Bán Hàng → Tổng Hợp Đơn Hàng Bán NPP
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * **Vùng tìm kiếm:** Thêm filter Hình thức giao hàng   + Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng   + Cho phép chọn nhiều loại hình thức giao hàng để lọc đơn hàng   + Sau khi chọn hiển thị đơn hàng có hình thức giao hàng đã chọn. * **Lưới danh sách**: Thêm cột "Hình thức giao hàng" sau cột "Nghiệp vụ tạo đơn" |
+| **Export excel** | * Thêm Hình thức giao hàng sau cột "Nghiệp vụ tạo đơn" |
+
+# V. Portal NPP - Bổ sung hình thức giao hàng
+
+## 1 Quản lý bán hàng → Đơn bán hàng
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * **Vùng tìm kiếm:** Thêm filter Hình thức giao hàng   + Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng   + Cho phép chọn nhiều loại hình thức giao hàng để lọc đơn hàng   + Sau khi chọn hiển thị đơn hàng có hình thức giao hàng đã chọn. |
+|  | * Thêm Hình thức giao hàng ở Chi tiết đơn hàng |
+|  | * Thêm selectbox chọn Hình thức giao hàng * Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng * Chỉ được chọn 1 loại hình thức giao hàng * Bắt buộc chọn hình thức giao hàng * Mặc định hình thức giao hàng = Kho giao hàng |
+
+## 2 Báo cáo → Báo cáo phân tích → Tổng Hợp Đơn Hàng Bán
+
+| Màn hình | Mô tả điều chỉnh |
+| --- | --- |
+|  | * **Vùng tìm kiếm:** Thêm filter Hình thức giao hàng   + Danh sách Hình thức giao hàng lấy từ Dữ liệu chung, Loại = Hình thức giao hàng   + Cho phép chọn nhiều loại hình thức giao hàng để lọc đơn hàng   + Sau khi chọn hiển thị đơn hàng có hình thức giao hàng đã chọn. * **Lưới danh sách**: Thêm cột "Hình thức giao hàng" sau cột "Nghiệp vụ tạo đơn" |
+| **Export excel** | * Thêm Hình thức giao hàng sau cột "Nghiệp vụ tạo đơn" |
+
+# VI. Migrate Data những đơn hàng cũ
+
+* Những đơn hàng cũ đã khởi tạo: Mặc định lưu Hình thức giao hàng = Kho giao hàng

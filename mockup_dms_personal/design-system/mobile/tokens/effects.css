@@ -1,0 +1,26 @@
+/**
+ * DMS90 App SaleMan — Motion & Elevation
+ * Nguồn: Figma Hand-off DMS-90 (05/2026, 12/2025)
+ * https://www.figma.com/design/JLQNtUG3rqvGnh1h6quGJP/Hand-off_DMS-90
+ */
+:root {
+  --sa-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --sa-ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --sa-duration-fast: 140ms;
+  --sa-duration-normal: 220ms;
+
+  /* Hand-off: Floating Item — DROP_SHADOW #BFBFBF offset (0,2) radius 6 spread 2 */
+  --sa-shadow-float: 0 2px 3px rgba(191, 191, 191, 0.42), 0 2px 6px rgba(191, 191, 191, 0.18);
+  --sa-shadow-card: 0 2px 3px rgba(191, 191, 191, 0.38);
+  --sa-shadow-phone: 0 16px 40px rgba(15, 23, 42, 0.14), 0 4px 12px rgba(15, 23, 42, 0.08);
+  --sa-shadow-nav: 0 -1px 0 var(--sa-border);
+
+  --sa-focus-ring: 0 0 0 3px color-mix(in srgb, var(--sa-blue) 22%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --sa-duration-fast: 0ms;
+    --sa-duration-normal: 0ms;
+  }
+}

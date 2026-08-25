@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "code": "VAT08", "name": "VAT 8%", "rate": "8" },
+    { "code": "VAT10", "name": "VAT 10%", "rate": "10" },
+    { "code": "VAT00", "name": "VAT 0%", "rate": "0" }
+  ]
+}

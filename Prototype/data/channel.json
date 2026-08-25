@@ -1,0 +1,15 @@
+{
+  "items": [
+    { "id": "1", "code": "M&B", "name": "MOM & BABY", "status": "ACTIVE", "createdAt": "13-11-2025 14:13:29", "updatedAt": "06-04-2026 10:02:18", "createdBy": "service-account-erp-ht", "updatedBy": "service-account-erp-ht" },
+    { "id": "2", "code": "GT", "name": "GENERAL TRADE", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "service-account-erp-ht" },
+    { "id": "3", "code": "SUB", "name": "SUB", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "4", "code": "OTH", "name": "OTHERS", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "5", "code": "ONP", "name": "ON-PREMISE", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "6", "code": "MTI", "name": "MTI", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "7", "code": "MT", "name": "MODERN TRADE", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "8", "code": "MK", "name": "MOM-KIDS", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "9", "code": "INT", "name": "INTERNAL", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" },
+    { "id": "10", "code": "IND", "name": "INDUSTRY", "status": "ACTIVE", "createdAt": "17-10-2025 10:40:09", "updatedAt": "06-04-2026 16:53:43", "createdBy": "service-account-erp-ht", "updatedBy": "" }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 15 }
+}

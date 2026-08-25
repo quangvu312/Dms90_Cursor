@@ -1,0 +1,70 @@
+/**
+ * DMS90 App SaleMan — Typography Tokens
+ * Nguồn Hand-off Figma JLQNtUG3rqvGnh1h6quGJP (node 7105:7003+)
+ *
+ * Font family: Helvetica Neue
+ * Styles đã xác nhận:
+ * - Small/12px Regular | Medium — 12 / 400|500 / lh 1.5
+ * - Base/14px Regular — 14 / 400 / lh 1.5
+ * - text-sm/normal — 14 / 400 / lh 20
+ * - text-xs/normal — 12 / 400 / lh 16
+ * - text-base/bold — 16 / 700 / lh 24
+ * - Large/18px Bold — 18 / 700 / lh 1.5 (Navigation bar title)
+ */
+:root {
+  --sa-font-family: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  --sa-font-display: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+
+  --sa-text-xs: 12px;
+  --sa-text-sm: 12px;
+  --sa-text-base: 14px;
+  --sa-text-md: 14px;
+  --sa-text-lg: 15px;
+  --sa-text-xl: 16px;
+  --sa-text-2xl: 18px;
+  --sa-text-3xl: 20px;
+
+  --sa-weight-normal: 400;
+  --sa-weight-medium: 500;
+  --sa-weight-semibold: 600;
+  --sa-weight-bold: 700;
+
+  /* Body / field mặc định = Regular (Figma Base/14px) */
+  --sa-text-default-weight: var(--sa-weight-normal);
+  /* Title navigation / section = Bold theo Figma Large/18 & text-base/bold */
+  --sa-text-title-weight: var(--sa-weight-bold);
+  --sa-text-emphasis-weight: var(--sa-weight-medium);
+
+  --sa-leading-tight: 1.25;
+  --sa-leading-normal: 1.5;
+  --sa-leading-relaxed: 1.625;
+  --sa-leading-title: 24px;
+
+  --sa-tracking-tight: -0.01em;
+
+  /* Card text roles */
+  --sa-card-title-size: var(--sa-text-md);
+  --sa-card-title-weight: var(--sa-weight-normal);
+  --sa-card-body-size: var(--sa-text-sm);
+  --sa-card-body-weight: var(--sa-weight-normal);
+  --sa-card-value-size: var(--sa-text-md);
+  --sa-card-value-weight: var(--sa-weight-normal);
+  --sa-card-money-size: var(--sa-text-md);
+  --sa-card-money-weight: var(--sa-weight-normal);
+  --sa-card-caption-size: var(--sa-text-sm);
+  --sa-card-caption-weight: var(--sa-weight-normal);
+
+  /* Route banner */
+  --sa-route-label-size: var(--sa-text-base);
+  --sa-route-label-weight: var(--sa-weight-normal);
+  --sa-route-label-color: var(--sa-text-primary);
+  --sa-route-caption-size: var(--sa-text-sm);
+  --sa-route-caption-weight: var(--sa-weight-normal);
+  --sa-route-caption-color: var(--sa-label-muted);
+  --sa-route-link-size: var(--sa-text-xs);
+  --sa-route-link-weight: var(--sa-weight-normal);
+  --sa-route-link-color: var(--sa-text-link);
+  --sa-route-padding-y: var(--sa-space-2);
+  --sa-route-padding-x: 12px;
+  --sa-route-padding-left: 14px;
+}

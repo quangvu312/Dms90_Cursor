@@ -1,0 +1,1314 @@
+{
+  "programs": [
+    {
+      "id": "cttb-01",
+      "code": "CTTB_000001",
+      "name": "Trưng bày hè 2026",
+      "content": "<p>Chương trình trưng bày hè 2026 — kệ chiến lược nước giải khát.</p>",
+      "status": "INIT",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "registerStart": "01-08-2026",
+      "registerEnd": "10-08-2026",
+      "periodCount": 1,
+      "createdAt": "20-07-2026 09:12:00",
+      "createdBy": "NV0001 - Nguyễn An",
+      "updatedAt": "20-07-2026 09:12:00",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-08-2026",
+          "buyEnd": "31-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-02",
+      "code": "CTTB_000002",
+      "name": "Gondola tầng 1 — siêu thị khu vực miền Nam",
+      "content": "<p>Gondola tầng 1 áp dụng điểm bán Merchant, yêu cầu hợp đồng điện tử.</p>",
+      "status": "INIT",
+      "type": "MERCHANT",
+      "contractRequired": "E_CONTRACT",
+      "contractTemplate": "HD-CTTB-01.pdf",
+      "registerMode": "WEB",
+      "rewardMode": "PROGRAM",
+      "autoApprove": true,
+      "priority": 2,
+      "startDate": "05-08-2026",
+      "endDate": "20-09-2026",
+      "registerStart": "05-08-2026",
+      "registerEnd": "15-08-2026",
+      "periodCount": 2,
+      "createdAt": "22-07-2026 14:00:00",
+      "createdBy": "NV0001 - Nguyễn An",
+      "updatedAt": "22-07-2026 14:00:00",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "05-08-2026",
+          "buyEnd": "20-09-2026"
+        },
+        {
+          "name": "Kỳ 2",
+          "buyStart": "05-08-2026",
+          "buyEnd": "20-09-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": [
+        {
+          "type": "STORE_TYPE",
+          "values": [
+            "Siêu thị"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cttb-03",
+      "code": "CTTB_000003",
+      "name": "Kệ chiến lược quý 3",
+      "content": "<p>Kệ chiến lược quý 3 — 2 kỳ, trả thưởng theo kỳ.</p>",
+      "status": "RUNNING",
+      "storyId": "ST003",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "01-07-2026",
+      "endDate": "31-08-2026",
+      "registerStart": "01-07-2026",
+      "registerEnd": "15-07-2026",
+      "periodCount": 2,
+      "createdAt": "15-06-2026 08:30:00",
+      "createdBy": "NV0002 - Trần Bình",
+      "updatedAt": "01-07-2026 08:00:00",
+      "updatedBy": "NV0002 - Trần Bình",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-07-2026",
+          "buyEnd": "31-08-2026"
+        },
+        {
+          "name": "Kỳ 2",
+          "buyStart": "01-07-2026",
+          "buyEnd": "31-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-04",
+      "code": "CTTB_000004",
+      "name": "Trưng bày nước giải khát",
+      "content": "<p>Tự động duyệt tham gia. Đăng ký trên App.</p>",
+      "status": "RUNNING",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": true,
+      "priority": 3,
+      "startDate": "01-08-2026",
+      "endDate": "15-09-2026",
+      "registerStart": "01-08-2026",
+      "registerEnd": "20-08-2026",
+      "periodCount": 2,
+      "createdAt": "01-07-2026 10:00:00",
+      "createdBy": "NV0002 - Trần Bình",
+      "updatedAt": "01-08-2026 09:00:00",
+      "updatedBy": "NV0002 - Trần Bình",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-08-2026",
+          "buyEnd": "15-09-2026"
+        },
+        {
+          "name": "Kỳ 2",
+          "buyStart": "01-08-2026",
+          "buyEnd": "15-09-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-05",
+      "code": "CTTB_000005",
+      "name": "Back to school 2026",
+      "content": "<p>Chương trình sắp diễn ra, Merchant hợp đồng giấy.</p>",
+      "status": "UPCOMING",
+      "type": "MERCHANT",
+      "contractRequired": "PAPER",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PROGRAM",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "20-08-2026",
+      "endDate": "30-09-2026",
+      "registerStart": "15-08-2026",
+      "registerEnd": "25-08-2026",
+      "periodCount": 1,
+      "createdAt": "01-08-2026 11:20:00",
+      "createdBy": "NV0003 - Lê Chi",
+      "updatedAt": "01-08-2026 11:20:00",
+      "updatedBy": "NV0003 - Lê Chi",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "20-08-2026",
+          "buyEnd": "30-09-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-06",
+      "code": "CTTB_000006",
+      "name": "Campaign POSM giữa năm",
+      "content": "<p>Chương trình đã kết thúc.</p>",
+      "status": "ENDED",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "01-06-2026",
+      "endDate": "10-08-2026",
+      "registerStart": "01-06-2026",
+      "registerEnd": "10-06-2026",
+      "periodCount": 2,
+      "createdAt": "10-05-2026 09:00:00",
+      "createdBy": "NV0001 - Nguyễn An",
+      "updatedAt": "11-08-2026 00:00:00",
+      "updatedBy": "Hệ thống",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-06-2026",
+          "buyEnd": "10-08-2026"
+        },
+        {
+          "name": "Kỳ 2",
+          "buyStart": "01-06-2026",
+          "buyEnd": "10-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-07",
+      "code": "CTTB_000007",
+      "name": "POSM bị từ chối duyệt",
+      "content": "<p>Từ chối duyệt do ngân sách.</p>",
+      "status": "REJECTED",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 5,
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "registerStart": "01-08-2026",
+      "registerEnd": "10-08-2026",
+      "periodCount": 1,
+      "reason": "Lý do từ chối duyệt: ngân sách chưa được phê duyệt",
+      "createdAt": "28-07-2026 16:40:00",
+      "createdBy": "NV0003 - Lê Chi",
+      "updatedAt": "29-07-2026 10:00:00",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-08-2026",
+          "buyEnd": "31-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-08",
+      "code": "CTTB_000008",
+      "name": "Chương trình hết hạn duyệt",
+      "content": "<p>Hết hạn duyệt.</p>",
+      "status": "EXPIRED",
+      "type": "MERCHANT",
+      "contractRequired": "E_CONTRACT",
+      "contractTemplate": "HD-CTTB-01.pdf",
+      "registerMode": "WEB",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "01-07-2026",
+      "endDate": "05-08-2026",
+      "registerStart": "01-07-2026",
+      "registerEnd": "05-07-2026",
+      "periodCount": 1,
+      "createdAt": "01-06-2026 09:00:00",
+      "createdBy": "NV0004 - Phạm Dũng",
+      "updatedAt": "06-08-2026 00:00:00",
+      "updatedBy": "Hệ thống",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-07-2026",
+          "buyEnd": "05-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-09",
+      "code": "CTTB_000009",
+      "name": "Ngưng giữa kỳ — kiểm tra hình ảnh",
+      "content": "<p>Ngưng hoạt động giữa kỳ.</p>",
+      "status": "STOPPED",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 2,
+      "startDate": "01-07-2026",
+      "endDate": "31-08-2026",
+      "registerStart": "01-07-2026",
+      "registerEnd": "10-07-2026",
+      "periodCount": 2,
+      "reason": "Lý do ngưng hoạt động: sai hình mẫu trưng bày",
+      "createdAt": "20-06-2026 13:15:00",
+      "createdBy": "NV0002 - Trần Bình",
+      "updatedAt": "05-08-2026 14:20:00",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-07-2026",
+          "buyEnd": "31-08-2026"
+        },
+        {
+          "name": "Kỳ 2",
+          "buyStart": "01-07-2026",
+          "buyEnd": "31-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-10",
+      "code": "CTTB_000010",
+      "name": "Chương trình quý 1 (ngoài kỳ lọc tháng 8)",
+      "content": "<p>Ngoài kỳ lọc tháng 8.</p>",
+      "status": "ENDED",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "01-01-2026",
+      "endDate": "28-02-2026",
+      "registerStart": "01-01-2026",
+      "registerEnd": "10-01-2026",
+      "periodCount": 1,
+      "createdAt": "15-12-2025 09:00:00",
+      "createdBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-03-2026 00:00:00",
+      "updatedBy": "Hệ thống",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "01-01-2026",
+          "buyEnd": "28-02-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-11",
+      "code": "CTTB_000011",
+      "name": "Trưng bày cuối năm — tên dài để kiểm tra truncate trên bảng danh sách và không làm tràn layout ngang của trang",
+      "content": "<p>Tên dài kiểm tra truncate.</p>",
+      "status": "INIT",
+      "type": "MERCHANT",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PROGRAM",
+      "autoApprove": false,
+      "priority": 9,
+      "startDate": "10-08-2026",
+      "endDate": "31-12-2026",
+      "registerStart": "10-08-2026",
+      "registerEnd": "31-08-2026",
+      "periodCount": 1,
+      "createdAt": "08-08-2026 08:00:00",
+      "createdBy": "NV0005 - Võ Em",
+      "updatedAt": "08-08-2026 08:00:00",
+      "updatedBy": "NV0005 - Võ Em",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "10-08-2026",
+          "buyEnd": "31-12-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    },
+    {
+      "id": "cttb-12",
+      "code": "CTTB_000012",
+      "name": "Trưng bày hè 2026-Copy",
+      "content": "<p>Bản sao chương trình hè 2026.</p>",
+      "status": "INIT",
+      "type": "SALEMAN",
+      "contractRequired": "NONE",
+      "contractTemplate": "",
+      "registerMode": "WEB_APP",
+      "rewardMode": "PERIOD",
+      "autoApprove": false,
+      "priority": 1,
+      "startDate": "12-08-2026",
+      "endDate": "31-08-2026",
+      "registerStart": "12-08-2026",
+      "registerEnd": "20-08-2026",
+      "periodCount": 1,
+      "createdAt": "12-08-2026 17:05:00",
+      "createdBy": "NV0001 - Nguyễn An",
+      "updatedAt": "12-08-2026 17:05:00",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "periods": [
+        {
+          "name": "Kỳ 1",
+          "buyStart": "12-08-2026",
+          "buyEnd": "31-08-2026"
+        }
+      ],
+      "quotas": [
+        {
+          "maxSlots": "1",
+          "imageReq": "1",
+          "reviewReq": "1",
+          "faces": "1",
+          "rewardType": "CASH",
+          "cashAmount": "100000"
+        }
+      ],
+      "targets": []
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg-01",
+      "programId": "cttb-03",
+      "storeCode": "ST000101",
+      "storeName": "Tạp hóa Minh Anh",
+      "phone": "0901000101",
+      "address": "12 Nguyễn Trãi",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0001",
+      "routeName": "Tuyến Q1 sáng",
+      "distCode": "NPP0001",
+      "distName": "NPP Minh Phát",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 2,
+      "registeredAt": "02-07-2026 09:10:00",
+      "approvedAt": "03-07-2026 14:00:00",
+      "registeredBy": "NV0101 - Trần Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "03-07-2026 14:00:00",
+      "images": [
+        {
+          "name": "dk-01.jpg",
+          "at": "02-07-2026 09:10:00",
+          "by": "NV0101 - Trần Sale"
+        }
+      ]
+    },
+    {
+      "id": "reg-02",
+      "programId": "cttb-03",
+      "storeCode": "ST000102",
+      "storeName": "Cửa hàng Thanh Hà",
+      "phone": "0901000102",
+      "address": "45 Lê Lợi",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0001",
+      "routeName": "Tuyến Q1 sáng",
+      "distCode": "NPP0001",
+      "distName": "NPP Minh Phát",
+      "status": "APPROVED",
+      "quota": "Hạn mức 2",
+      "slots": 1,
+      "registeredAt": "04-07-2026 11:22:00",
+      "approvedAt": "04-07-2026 16:00:00",
+      "registeredBy": "NV0101 - Trần Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "04-07-2026 16:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-03",
+      "programId": "cttb-03",
+      "storeCode": "ST000103",
+      "storeName": "Đại lý Hoàng Long",
+      "phone": "0901000103",
+      "address": "8 Cách Mạng Tháng 8",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0002",
+      "routeName": "Tuyến Q3 chiều",
+      "distCode": "NPP0001",
+      "distName": "NPP Minh Phát",
+      "status": "PENDING",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "10-08-2026 08:40:00",
+      "approvedAt": "",
+      "registeredBy": "NV0102 - Lê Sale",
+      "updatedBy": "NV0102 - Lê Sale",
+      "updatedAt": "10-08-2026 08:40:00",
+      "images": [
+        {
+          "name": "dk-03.jpg",
+          "at": "10-08-2026 08:40:00",
+          "by": "NV0102 - Lê Sale"
+        }
+      ]
+    },
+    {
+      "id": "reg-04",
+      "programId": "cttb-03",
+      "storeCode": "ST000104",
+      "storeName": "Tạp hóa bị từ chối",
+      "phone": "0901000104",
+      "address": "99 Hai Bà Trưng",
+      "province": "Hà Nội",
+      "routeCode": "ROUTE0003",
+      "routeName": "Tuyến HN1",
+      "distCode": "NPP0002",
+      "distName": "NPP Hà Thành",
+      "status": "REJECTED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "05-07-2026 10:00:00",
+      "approvedAt": "",
+      "reason": "Không đáp ứng hình mẫu",
+      "registeredBy": "NV0103 - Phạm Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "06-07-2026 09:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-05",
+      "programId": "cttb-04",
+      "storeCode": "ST000201",
+      "storeName": "Siêu thị mini Bình Tân",
+      "phone": "0902000201",
+      "address": "21 Tân Hòa Đông",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0004",
+      "routeName": "Tuyến Bình Tân",
+      "distCode": "NPP0003",
+      "distName": "NPP Tây Sài Gòn",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 3,
+      "registeredAt": "02-08-2026 09:00:00",
+      "approvedAt": "02-08-2026 09:00:00",
+      "registeredBy": "NV0104 - Võ Sale",
+      "updatedBy": "NV0104 - Võ Sale",
+      "updatedAt": "02-08-2026 09:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-06",
+      "programId": "cttb-04",
+      "storeCode": "ST000202",
+      "storeName": "Cửa hàng hết hạn duyệt",
+      "phone": "0902000202",
+      "address": "3 Kinh Dương Vương",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0004",
+      "routeName": "Tuyến Bình Tân",
+      "distCode": "NPP0003",
+      "distName": "NPP Tây Sài Gòn",
+      "status": "EXPIRED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "01-08-2026 07:30:00",
+      "approvedAt": "",
+      "registeredBy": "NV0104 - Võ Sale",
+      "updatedBy": "Hệ thống",
+      "updatedAt": "21-08-2026 00:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-07",
+      "programId": "cttb-06",
+      "storeCode": "ST000301",
+      "storeName": "Tạp hóa kết thúc CT",
+      "phone": "0903000301",
+      "address": "15 Trần Hưng Đạo",
+      "province": "Đà Nẵng",
+      "routeCode": "ROUTE0005",
+      "routeName": "Tuyến DN1",
+      "distCode": "NPP0004",
+      "distName": "NPP Đà Nẵng",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "05-06-2026 09:00:00",
+      "approvedAt": "06-06-2026 10:00:00",
+      "registeredBy": "NV0105 - Đỗ Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "06-06-2026 10:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-08",
+      "programId": "cttb-06",
+      "storeCode": "ST000302",
+      "storeName": "Điểm bán ngưng đăng ký",
+      "phone": "0903000302",
+      "address": "77 Nguyễn Văn Linh",
+      "province": "Đà Nẵng",
+      "routeCode": "ROUTE0005",
+      "routeName": "Tuyến DN1",
+      "distCode": "NPP0004",
+      "distName": "NPP Đà Nẵng",
+      "status": "STOPPED",
+      "quota": "Hạn mức 2",
+      "slots": 2,
+      "registeredAt": "08-06-2026 13:00:00",
+      "approvedAt": "09-06-2026 09:00:00",
+      "reason": "Ngưng hoạt động tất cả kỳ",
+      "registeredBy": "NV0105 - Đỗ Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-08-2026 11:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-09",
+      "programId": "cttb-09",
+      "storeCode": "ST000401",
+      "storeName": "Cửa hàng chương trình ngưng",
+      "phone": "0904000401",
+      "address": "2 Pasteur",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0001",
+      "routeName": "Tuyến Q1 sáng",
+      "distCode": "NPP0001",
+      "distName": "NPP Minh Phát",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "02-07-2026 09:00:00",
+      "approvedAt": "03-07-2026 09:00:00",
+      "registeredBy": "NV0101 - Trần Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "03-07-2026 09:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-10",
+      "programId": "cttb-10",
+      "storeCode": "ST000501",
+      "storeName": "Điểm bán quý 1",
+      "phone": "0905000501",
+      "address": "10 Lý Thường Kiệt",
+      "province": "Hà Nội",
+      "routeCode": "ROUTE0006",
+      "routeName": "Tuyến HN2",
+      "distCode": "NPP0002",
+      "distName": "NPP Hà Thành",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "10-01-2026 09:00:00",
+      "approvedAt": "11-01-2026 09:00:00",
+      "registeredBy": "NV0106 - Bùi Sale",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "11-01-2026 09:00:00",
+      "images": []
+    },
+    {
+      "id": "reg-11",
+      "programId": "cttb-04",
+      "storeCode": "ST000203",
+      "storeName": "Tạp hóa chờ duyệt A",
+      "phone": "0902000203",
+      "address": "55 Hòa Bình",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0004",
+      "routeName": "Tuyến Bình Tân",
+      "distCode": "NPP0003",
+      "distName": "NPP Tây Sài Gòn",
+      "status": "PENDING",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "12-08-2026 10:15:00",
+      "approvedAt": "",
+      "registeredBy": "NV0104 - Võ Sale",
+      "updatedBy": "NV0104 - Võ Sale",
+      "updatedAt": "12-08-2026 10:15:00",
+      "images": []
+    },
+    {
+      "id": "reg-12",
+      "programId": "cttb-04",
+      "storeCode": "ST000204",
+      "storeName": "Tạp hóa chờ duyệt B",
+      "phone": "0902000204",
+      "address": "18 An Dương Vương",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0004",
+      "routeName": "Tuyến Bình Tân",
+      "distCode": "NPP0003",
+      "distName": "NPP Tây Sài Gòn",
+      "status": "PENDING",
+      "quota": "Hạn mức 2",
+      "slots": 2,
+      "registeredAt": "13-08-2026 14:00:00",
+      "approvedAt": "",
+      "registeredBy": "Import - NV0001 - Nguyễn An",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "13-08-2026 14:00:00",
+      "images": [
+        {
+          "name": "hop-dong.pdf",
+          "at": "13-08-2026 14:00:00",
+          "by": "NV0001 - Nguyễn An"
+        }
+      ]
+    },
+    {
+      "id": "reg-13",
+      "programId": "cttb-02",
+      "storeCode": "ST000601",
+      "storeName": "Merchant auto duyệt",
+      "phone": "0906000601",
+      "address": "1 Nguyễn Huệ",
+      "province": "TP. Hồ Chí Minh",
+      "routeCode": "ROUTE0001",
+      "routeName": "Tuyến Q1 sáng",
+      "distCode": "NPP0001",
+      "distName": "NPP Minh Phát",
+      "status": "APPROVED",
+      "quota": "Hạn mức 1",
+      "slots": 1,
+      "registeredAt": "09-08-2026 09:00:00",
+      "approvedAt": "09-08-2026 09:00:00",
+      "registeredBy": "NV0101 - Trần Sale",
+      "updatedBy": "NV0101 - Trần Sale",
+      "updatedAt": "09-08-2026 09:00:00",
+      "images": []
+    }
+  ],
+  "progress": [
+    {
+      "id": "prg-01",
+      "registrationId": "reg-01",
+      "programId": "cttb-03",
+      "periodCode": "K260000000001",
+      "periodName": "Kỳ 1",
+      "status": "ENDED",
+      "result": "PASS",
+      "startDate": "01-07-2026",
+      "endDate": "31-07-2026",
+      "photoCount": 6,
+      "requestCount": 2,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-08-2026 08:00:00",
+      "images": [
+        {
+          "name": "k1-1.jpg",
+          "at": "15-07-2026 10:00:00"
+        },
+        {
+          "name": "k1-2.jpg",
+          "at": "20-07-2026 11:00:00"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-07-2026",
+          "endDate": "15-07-2026",
+          "status": "PASS",
+          "photoCount": 3,
+          "passCount": 1,
+          "reviewCount": 1,
+          "requestCount": 1
+        },
+        {
+          "name": "Giai đoạn 2",
+          "startDate": "16-07-2026",
+          "endDate": "31-07-2026",
+          "status": "PASS",
+          "photoCount": 3,
+          "passCount": 1,
+          "reviewCount": 1,
+          "requestCount": 1
+        }
+      ]
+    },
+    {
+      "id": "prg-02",
+      "registrationId": "reg-01",
+      "programId": "cttb-03",
+      "periodCode": "K260000000002",
+      "periodName": "Kỳ 2",
+      "status": "RUNNING",
+      "result": "PENDING",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "photoCount": 2,
+      "requestCount": 1,
+      "updatedBy": "NV0101 - Trần Sale",
+      "updatedAt": "10-08-2026 09:00:00",
+      "images": [
+        {
+          "name": "k2-1.jpg",
+          "at": "10-08-2026 09:00:00"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-08-2026",
+          "endDate": "15-08-2026",
+          "status": "PENDING",
+          "photoCount": 2,
+          "passCount": 0,
+          "reviewCount": 1,
+          "requestCount": 1
+        }
+      ]
+    },
+    {
+      "id": "prg-03",
+      "registrationId": "reg-02",
+      "programId": "cttb-03",
+      "periodCode": "K260000000003",
+      "periodName": "Kỳ 1",
+      "status": "ENDED",
+      "result": "FAIL",
+      "startDate": "01-07-2026",
+      "endDate": "31-07-2026",
+      "photoCount": 1,
+      "requestCount": 1,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-08-2026 08:00:00",
+      "images": [],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-07-2026",
+          "endDate": "31-07-2026",
+          "status": "FAIL",
+          "photoCount": 1,
+          "passCount": 0,
+          "reviewCount": 1,
+          "requestCount": 1
+        }
+      ]
+    },
+    {
+      "id": "prg-04",
+      "registrationId": "reg-02",
+      "programId": "cttb-03",
+      "periodCode": "K260000000004",
+      "periodName": "Kỳ 2",
+      "status": "RUNNING",
+      "result": "PENDING",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "photoCount": 0,
+      "requestCount": 0,
+      "updatedBy": "NV0101 - Trần Sale",
+      "updatedAt": "01-08-2026 00:00:00",
+      "images": [],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-08-2026",
+          "endDate": "31-08-2026",
+          "status": "PENDING",
+          "photoCount": 0,
+          "passCount": 0,
+          "reviewCount": 0,
+          "requestCount": 0
+        }
+      ]
+    },
+    {
+      "id": "prg-05",
+      "registrationId": "reg-05",
+      "programId": "cttb-04",
+      "periodCode": "K260000000005",
+      "periodName": "Kỳ 1",
+      "status": "RUNNING",
+      "result": "PENDING",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "photoCount": 4,
+      "requestCount": 2,
+      "updatedBy": "NV0104 - Võ Sale",
+      "updatedAt": "12-08-2026 16:00:00",
+      "images": [
+        {
+          "name": "ngk-1.jpg",
+          "at": "08-08-2026 10:00:00"
+        }
+      ],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-08-2026",
+          "endDate": "20-08-2026",
+          "status": "PENDING",
+          "photoCount": 4,
+          "passCount": 0,
+          "reviewCount": 2,
+          "requestCount": 2
+        }
+      ]
+    },
+    {
+      "id": "prg-06",
+      "registrationId": "reg-05",
+      "programId": "cttb-04",
+      "periodCode": "K260000000006",
+      "periodName": "Kỳ 2",
+      "status": "NOT_STARTED",
+      "result": "PENDING",
+      "startDate": "01-09-2026",
+      "endDate": "15-09-2026",
+      "photoCount": 0,
+      "requestCount": 0,
+      "updatedBy": "Hệ thống",
+      "updatedAt": "02-08-2026 09:00:00",
+      "images": [],
+      "stages": [
+        {
+          "name": "Giai đoạn 1",
+          "startDate": "01-09-2026",
+          "endDate": "15-09-2026",
+          "status": "PENDING",
+          "photoCount": 0,
+          "passCount": 0,
+          "reviewCount": 0,
+          "requestCount": 0
+        }
+      ]
+    },
+    {
+      "id": "prg-07",
+      "registrationId": "reg-07",
+      "programId": "cttb-06",
+      "periodCode": "K260000000007",
+      "periodName": "Kỳ 1",
+      "status": "ENDED",
+      "result": "PASS",
+      "startDate": "01-06-2026",
+      "endDate": "30-06-2026",
+      "photoCount": 5,
+      "requestCount": 1,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-07-2026 08:00:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-08",
+      "registrationId": "reg-07",
+      "programId": "cttb-06",
+      "periodCode": "K260000000008",
+      "periodName": "Kỳ 2",
+      "status": "ENDED",
+      "result": "PASS",
+      "startDate": "01-07-2026",
+      "endDate": "10-08-2026",
+      "photoCount": 3,
+      "requestCount": 1,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "11-08-2026 08:00:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-09",
+      "registrationId": "reg-08",
+      "programId": "cttb-06",
+      "periodCode": "K260000000009",
+      "periodName": "Kỳ 1",
+      "status": "STOPPED",
+      "result": "PENDING",
+      "startDate": "01-06-2026",
+      "endDate": "30-06-2026",
+      "reason": "Ngưng hoạt động tất cả kỳ",
+      "photoCount": 0,
+      "requestCount": 0,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-08-2026 11:00:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-10",
+      "registrationId": "reg-09",
+      "programId": "cttb-09",
+      "periodCode": "K260000000010",
+      "periodName": "Kỳ 1",
+      "status": "STOPPED",
+      "result": "PENDING",
+      "startDate": "01-07-2026",
+      "endDate": "31-07-2026",
+      "reason": "sai hình mẫu trưng bày",
+      "photoCount": 1,
+      "requestCount": 0,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "05-08-2026 14:20:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-11",
+      "registrationId": "reg-09",
+      "programId": "cttb-09",
+      "periodCode": "K260000000011",
+      "periodName": "Kỳ 2",
+      "status": "STOPPED",
+      "result": "PENDING",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "reason": "sai hình mẫu trưng bày",
+      "photoCount": 0,
+      "requestCount": 0,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "05-08-2026 14:20:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-12",
+      "registrationId": "reg-01",
+      "programId": "cttb-03",
+      "periodCode": "K260000000012",
+      "periodName": "Kỳ 3",
+      "status": "NOT_STARTED",
+      "result": "PENDING",
+      "startDate": "01-09-2026",
+      "endDate": "30-09-2026",
+      "photoCount": 0,
+      "requestCount": 0,
+      "updatedBy": "Hệ thống",
+      "updatedAt": "03-07-2026 14:00:00",
+      "images": [],
+      "stages": []
+    },
+    {
+      "id": "prg-13",
+      "registrationId": "reg-10",
+      "programId": "cttb-10",
+      "periodCode": "K260000000013",
+      "periodName": "Kỳ 1",
+      "status": "ENDED",
+      "result": "PASS",
+      "startDate": "01-01-2026",
+      "endDate": "31-01-2026",
+      "photoCount": 2,
+      "requestCount": 1,
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "01-02-2026 08:00:00",
+      "images": [],
+      "stages": []
+    }
+  ],
+  "rewards": [
+    {
+      "id": "rw-01",
+      "code": "TT0000000001",
+      "programId": "cttb-03",
+      "progressId": "prg-01",
+      "storeCode": "ST000101",
+      "result": "RECEIVED",
+      "rewardType": "CASH",
+      "amount": 200000,
+      "startDate": "01-08-2026",
+      "endDate": "10-08-2026",
+      "orderCode": "",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "11-08-2026 09:10:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-02",
+      "code": "TT0000000002",
+      "programId": "cttb-03",
+      "progressId": "prg-03",
+      "storeCode": "ST000102",
+      "result": "WAITING",
+      "rewardType": "CASH",
+      "amount": 150000,
+      "startDate": "01-08-2026",
+      "endDate": "10-08-2026",
+      "orderCode": "",
+      "updatedBy": "Hệ thống",
+      "updatedAt": "01-08-2026 00:00:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-03",
+      "code": "TT0000000003",
+      "programId": "cttb-06",
+      "progressId": "prg-07",
+      "storeCode": "ST000301",
+      "result": "EXPIRED",
+      "rewardType": "GIFT",
+      "amount": 0,
+      "startDate": "01-07-2026",
+      "endDate": "05-07-2026",
+      "gifts": [
+        { "code": "SP000101", "name": "Nước giải khát 330ml", "uom": "Lon", "qty": 12 }
+      ],
+      "orderCode": "",
+      "updatedBy": "Hệ thống",
+      "updatedAt": "06-07-2026 00:00:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-04",
+      "code": "TT0000000004",
+      "programId": "cttb-06",
+      "progressId": "prg-08",
+      "storeCode": "ST000301",
+      "result": "REJECTED",
+      "rewardType": "CASH",
+      "amount": 100000,
+      "startDate": "11-08-2026",
+      "endDate": "20-08-2026",
+      "reason": "Không đủ hình ảnh",
+      "orderCode": "",
+      "updatedBy": "NV0001 - Nguyễn An",
+      "updatedAt": "12-08-2026 10:20:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-05",
+      "code": "TT0000000005",
+      "programId": "cttb-04",
+      "progressId": "prg-05",
+      "storeCode": "ST000201",
+      "result": "WAITING",
+      "rewardType": "CASH",
+      "amount": 300000,
+      "startDate": "01-09-2026",
+      "endDate": "10-09-2026",
+      "orderCode": "",
+      "updatedBy": "Hệ thống",
+      "updatedAt": "01-08-2026 00:00:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-06",
+      "code": "TT0000000006",
+      "programId": "cttb-10",
+      "progressId": "prg-13",
+      "storeCode": "ST000501",
+      "result": "RECEIVED",
+      "rewardType": "CASH",
+      "amount": 50000,
+      "startDate": "01-02-2026",
+      "endDate": "10-02-2026",
+      "orderCode": "DH000088",
+      "updatedBy": "NV0106 - Bùi Sale",
+      "updatedAt": "11-02-2026 08:00:00",
+      "roleGroup": ""
+    },
+    {
+      "id": "rw-07",
+      "code": "TT0000000007",
+      "programId": "cttb-04",
+      "progressId": "prg-05",
+      "storeCode": "ST000201",
+      "result": "WAITING",
+      "rewardType": "GIFT",
+      "amount": 0,
+      "startDate": "01-09-2026",
+      "endDate": "10-09-2026",
+      "gifts": [
+        { "code": "SP000201", "name": "Ly thủy tinh POSM", "uom": "Cái", "qty": 2 },
+        { "code": "SP000202", "name": "Áo mưa trưng bày", "uom": "Cái", "qty": 1 }
+      ],
+      "orderCode": "",
+      "updatedBy": "Hệ thống",
+      "updatedAt": "13-08-2026 16:00:00",
+      "roleGroup": ""
+    }
+  ],
+  "rewardHistory": [
+    {
+      "at": "11-08-2026 09:10:00",
+      "user": "NV0001",
+      "userName": "Nguyễn An",
+      "roleGroup": "",
+      "code": "TT0000000001",
+      "field": "Kết quả trả thưởng",
+      "oldValue": "Chờ trả thưởng",
+      "newValue": "Đã trả thưởng"
+    },
+    {
+      "at": "12-08-2026 10:20:00",
+      "user": "NV0001",
+      "userName": "Nguyễn An",
+      "roleGroup": "",
+      "code": "TT0000000004",
+      "field": "Kết quả trả thưởng",
+      "oldValue": "Chờ trả thưởng",
+      "newValue": "Từ chối"
+    },
+    {
+      "at": "12-08-2026 10:20:00",
+      "user": "NV0001",
+      "userName": "Nguyễn An",
+      "roleGroup": "",
+      "code": "TT0000000004",
+      "field": "Lý do từ chối",
+      "oldValue": "",
+      "newValue": "Không đủ hình ảnh"
+    }
+  ]
+}

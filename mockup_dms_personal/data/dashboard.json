@@ -1,0 +1,102 @@
+{
+  "dateRange": {
+    "start": "01/08/2026",
+    "end": "20/08/2026"
+  },
+  "stats": [
+    {
+      "label": "Số đơn hàng",
+      "icon": "📋",
+      "iconBg": "#fff0f6",
+      "values": [{ "label": "", "value": 45 }]
+    },
+    {
+      "label": "Doanh số",
+      "icon": "💲",
+      "iconBg": "#f6ffed",
+      "values": [
+        { "label": "Trước VAT", "value": 169854334, "suffix": " VND" },
+        { "label": "Sau VAT", "value": 178718890, "suffix": " VND" }
+      ]
+    },
+    {
+      "label": "Điểm bán",
+      "icon": "📍",
+      "iconBg": "#fff7e6",
+      "values": [
+        { "label": "Mới", "value": 2 },
+        { "label": "Đang hoạt động", "value": 40978 }
+      ]
+    },
+    {
+      "label": "Nhân viên bán hàng",
+      "icon": "👤",
+      "iconBg": "#f9f0ff",
+      "values": [
+        { "label": "Mới", "value": 4040 },
+        { "label": "Đang hoạt động", "value": 12053 }
+      ]
+    },
+    {
+      "label": "Nhà phân phối",
+      "icon": "🏠",
+      "iconBg": "#e6fffb",
+      "values": [
+        { "label": "Mới", "value": 0 },
+        { "label": "Đang hoạt động", "value": 1346 }
+      ]
+    },
+    {
+      "label": "Viếng thăm",
+      "icon": "📅",
+      "iconBg": "#fffbe6",
+      "values": [
+        { "label": "Điểm bán", "value": 9 },
+        { "label": "Lượt viếng thăm", "value": 11 }
+      ]
+    }
+  ],
+  "rankings": [
+    {
+      "title": "Top 10 sản phẩm bán chạy (Sau VAT)",
+      "items": [
+        { "label": "102296 - F25-Bộ 2 Anlene Total 10 Vani 800G & 400G_HKM", "percent": 100 },
+        { "label": "212036 - TĂM BÔNG KHÁNG KHUẨN SAKURA TIÊU CHUẨN ZIPPER...", "percent": 28 },
+        { "label": "102283 - TPBS Anlene Hương Vani 800G", "percent": 18 },
+        { "label": "102233 - TPBS Anlene Gold 3X Hương Vani 400G", "percent": 12 },
+        { "label": "102316 - TPBS Anlene Total 10 Hương Vani 800G", "percent": 10 },
+        { "label": "102290 - TPBS Anlene Total 10 Hương Vani 800G", "percent": 8 },
+        { "label": "102240 - TPBS Anlene Gold 5X Hương Vani 800g", "percent": 7 },
+        { "label": "102276 - Anlene Heart Plus...", "percent": 6 },
+        { "label": "224035 - Kẹo Gừng Gingerbon Classic", "percent": 5 },
+        { "label": "102210 - TPBS Anlene MoveMax Hương Vani", "percent": 4 }
+      ]
+    },
+    {
+      "title": "Top 10 nhân viên bán hàng doanh số cao nhất (Sau VAT)",
+      "items": [
+        { "label": "ERPTTSSM001 - [ERP][TTS] NVBH - Thủy Vân", "percent": 100 },
+        { "label": "QCMTNEWSMNORTH - QCMTNEW - SM - NORTH - BÁN HÀNG...", "percent": 8 },
+        { "label": "ERPQCMTSM001 - ERP QC MT SM 001 - KÊNH M&B...", "percent": 7 },
+        { "label": "SMVH3ABV - [VH] SM ABV", "percent": 6 },
+        { "label": "SMFV16 - SMFV16", "percent": 5 },
+        { "label": "QCMTNEWSNORTH - QCMTNEW - SS - NORTH -...", "percent": 4 },
+        { "label": "QCMTSM10 - QCMT SM 10 - NPP RECKITT", "percent": 3 },
+        { "label": "CTSM001 - [TTS] CENTRAL - NVBH0 - Sa Môn Quét Rác", "percent": 2 }
+      ]
+    },
+    {
+      "title": "Top 10 NPP có doanh số cao nhất (Sau VAT)",
+      "items": [
+        { "label": "ERPHCM - ERP_HCM", "percent": 100 },
+        { "label": "ERPMEKONG - ERP_MEKONG", "percent": 7 },
+        { "label": "5160044 - [TTS-HCM] NPP - 5160044", "percent": 6 },
+        { "label": "9901124 - VPDD RECKITT BENCKISER (THAILAND)...", "percent": 5 },
+        { "label": "1002324 - 20250926_[QC] [VH] 3", "percent": 4 },
+        { "label": "1148790 - [TTS-HCM] NPP - 1148790", "percent": 3 },
+        { "label": "CTNPP001100 - CENTRAL NPP 001100", "percent": 2 },
+        { "label": "3000005 - [QC][MT] NPP - lock inventories-3000005", "percent": 2 }
+      ]
+    }
+  ]
+}

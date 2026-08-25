@@ -1,0 +1,17 @@
+---
+description: Không tự ý đổi style shared component; prototype là source of truth về UI khi module đã có reference.
+globs: mockup_dms90/**/*.{tsx,ts,css,js},Prototype/**/*.{js,css,html},Docs/design-system/**
+alwaysApply: true
+---
+
+# COMPONENT STYLE CONSISTENCY RULE
+
+- Không được tự ý thay đổi style của shared component.
+- Khi module đã có reference chuẩn trong `prototype`, **prototype là source of truth về component style**.
+- Feature mới phải reuse component/style hiện tại (`FilterPanel`, `DatePicker`, `Select`, `ActionIconButton`, `Button`, `Table`, …).
+- Chỉ thay đổi behavior/data khi requirement yêu cầu.
+- Nếu bắt buộc cần style khác, phải tạo **scoped variant**, không sửa default/global style.
+- Không thay icon/component bằng icon khác (Lucide, emoji, Unicode) nếu chưa có requirement.
+- Không copy đè toàn bộ module từ `prototype` nếu `mockup_dms90` đã có requirement mới hơn — chỉ lấy UI/component/style.
+
+Tài liệu: `Docs/design-system/component-guideline.md` (mục COMPONENT STYLE CONSISTENCY).

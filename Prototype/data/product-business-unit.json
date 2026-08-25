@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "code": "FMCG", "name": "FMCG", "status": "ACTIVE" },
+    { "code": "PHARMA", "name": "Pharma", "status": "ACTIVE" },
+    { "code": "MT", "name": "Modern Trade", "status": "ACTIVE" }
+  ]
+}

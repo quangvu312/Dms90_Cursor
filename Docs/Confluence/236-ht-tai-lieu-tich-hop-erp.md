@@ -1,0 +1,2504 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0  RedV1.1.0: Thay đổi cách lấy giá ở US Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654  RedV1.2.0 : Cho phép update mức thuế khi sản phẩm đã có phát sinh giao dịch Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6060 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+ú
+
+# 1 Tích hợp Master Data
+
+## 1.1 Quy trình tích hợp
+
+trueIntegration\_CustomercVPYjn6vNkQ-PeCBjaeXfalse8004ae0aab76e12765214acbeedfea180e077971e8dautotoptrue10624
+
+## 1.2 Dữ liệu tích hợp
+
+### 1.2.1 Thông tin điểm bán (Customer Master Data)
+
+* Chỉ tích hợp điểm bán thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Khi thực hiện check trùng điểm bán để tạo mới, thực hiện check trùng trên các điểm bán có trạng thái "Hoạt động"
+* Đánh dấu điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS ngoại trừ: **Kinh độ, Vĩ độ, Hình ảnh điểm bán, Địa chỉ theo tọa độ**
+
+|  |  |  |
+| --- | --- | --- |
+| Portal | Có thể upload Hình ảnh điểm bán | Khi vào màn hình này hệ thống sẽ hiển thị kinh độ, vĩ độ theo địa chỉ đã nhập (Địa chỉ đồng bộ từ Hương Thủy)  User có thể kéo thả và cập nhật vị trí trên bản đồ và lưu lại thông tin. |
+| App Salesman | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Định vị trên bản đồ, hệ thống mở màn hình phụ như sau:     * Hiển thị vị trí điểm bán ngay tại thời điểm nhân viên điều chỉnh điểm bán, không được thay đổi * Zoom In vào vị trí của điểm bán * Không di chuyển định vị trên bản đồ, nhưng có thể zoomin, zoomout và kéo bản đồ để xem   Sau khi điều chỉnh → Nhấn Cập nhật để lưu lại thông tin.  Quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất) | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Hình ảnh điểm bán, hệ thống mở màn hình phụ như sau:      Chụp ảnh theo yêu cầu  Số lượng ảnh đã chụp/ Số lượng hình ảnh tối đa (Tối đa 10 ảnh)  Sau khi cập nhật, quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất)  Lưu ý:**Không được xóa hình ảnh cũ đã lưu trước đó, chỉ được xóa hình mới chụp.**  Trường hợp đã chụp đủ 10 ảnh, theo quy tắc Ảnh upload/Ảnh chụp trực tiếp |
+
+* Khi điều chỉnh thông tin điểm bán direct sales trên DMS → Chỉ lưu thông tin trên DMS không sync về ERP
+* Điểm bán Indirect sales vẫn tạo mới/chỉnh sửa trên DMS bình thường.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Điểm bán đã tồn tại (Check trên tất cả trạng thái của điểm bán) * Các trường dữ liệu liên kết gửi qua không đúng định dạng hoặc không tồn tại trên DMS hoặc bị ngưng hoạt động | * Bỏ qua thông tin Kinh độ, Vĩ độ, Tọa độ địa chỉ, vì các thông tin này sẽ được tạo trên DMS  * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã điểm bán không tồn tại trên DMS * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+* NPP Direct của HT không tạo mới điểm bán trên hệ thống DMS, điểm bán toàn bộ được tạo từ ERP HT.
+* NPP Indirect:
+  + Enhance cho điểm bán Indirect của HT: Kênh và loại điểm bán required: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4931
+  + NPP Indirect của HT không cho phép tao mới điểm bán trên portal NPP (Duyên BU Confirm), nên hiện tại sử dụng phân quyền để ẩn chức năng tạo mới trên portal NPP (Apply đối với NPP Indirect).
+  + Vẫn tạo mới/chỉnh sửa trên trên App SM và Portal HO
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| CustId | Nvarchar | 50 | x | Mã điểm bán | code (\*) | String | ID cung cấp từ phía partner (maxlength=200) | Thông báo:   * Mã điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| CustName | Nvarchar | 200 | x | Tên điểm bán | name (\*) | String | Tên điểm bán maxlength=500 | Thông báo:   * Tên điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Channel | Nvarchar | 10 | x | Kênh điểm bán | sale\_channel\_id | Number | Kênh bán hàng (vd: sale\_channel\_id=1) |  |
+| ClassId | Nvarchar | 6 | x | Nhóm điểm bán |  |  |  |  |
+| ShopType | Nvarchar | 10 | x | Loại Điểm Bán | store\_type\_code | Number | Loại điểm bán (vd: store\_type\_id=1) |  |
+| Status | Nvarchar | 1 | x | Trạng Thái: + A = Xử Lý Hoàn Tất + I = Ngưng Hoạt Động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxDflt | Nvarchar | 1 | x | Mức Thuế Mặc Định C - KH tính thuế theo SP K - KH không tính thuế |  |  |  |  |
+| TaxRegNbr | Nvarchar | 15 | x | Mã Số Thuế |  |  |  |  |
+| BranchID | Nvarchar | 30 | x | Mã Chi Nhánh | distributor\_ids (\*) | String | Nhà phân phối, chọn nhiều (vd: distributor\_ids="1,2,3") | Thông báo:   * Nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! * Nhà phân phối không tồn tại, vui lòng kiểm tra lại! |
+| SalesProvince | Nvarchar | 30 | x | Tỉnh Bán Hàng |  |  |  |  |
+| Addr1 | Nvarchar | max | x | Số Nhà (tab Địa Chỉ, vùng Địa Chỉ Chính) | address (\*) | String | địa chỉ cửa hàng, maxlength=2000 |  |
+| Ward | Nvarchar | 100 |  | Phường/Xã (tab Địa Chỉ, vùng Địa Chỉ Chính) | ward\_code | String | Phường/xã (vd: ward\_code="13") |  |
+| Territory | Nvarchar | 10 | x | Vùng Bán Hàng (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| State | Nvarchar | 10 | x | Tỉnh/TP Thoại (tab Địa Chỉ, vùng Địa Chỉ Chính) | province\_code (\*) | String | Tỉnh/thành (vd: province\_code="01") |  |
+| District | Nvarchar | 30 | x | Quận/Huyện (tab Địa Chỉ, vùng Địa Chỉ Chính) | district\_code (\*) | String | Quận/huyện (vd: district\_code="06") |  |
+| Country | Nvarchar | 10 | x | Đất Nước (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| Attn | Nvarchar | 200 | x | Người Liên Hệ Chính |  |  |  |  |
+| Terms | Nvarchar | 10 | x | Điều khoản thanh toán |  |  |  |  |
+| InActive | Nvarchar | 1 |  | Trạng thái hoạt động 0 = hoạt động, 1 = không hoạt động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| EMailAddr | Nvarchar | 100 |  | Địa chỉ Email | representative\_emai | String | Email chủ cửa hàng, maxlength=200 |  |
+| Zip | Nvarchar | 20 |  | Mã bưu chính |  |  |  |  |
+| Fax | Nvarchar | 20 |  | Số Fax |  |  |  |  |
+| Phone | Nvarchar | 20 |  | Số Điện Thoại | phone | String | Số điện thoại điểm bán, maxlength={10,12} chỉ nhập số |  |
+| TaxLocId | Nvarchar | 20 |  | Mã khu vực thuế |  |  |  |  |
+| TaxID00 | Nvarchar | 20 |  | Mã thuế phụ 00 |  |  |  |  |
+| TaxID01 | Nvarchar | 20 |  | Mã thuế phụ 01 |  |  |  |  |
+| TaxID02 | Nvarchar | 20 |  | Mã thuế phụ 02 |  |  |  |  |
+| TaxID03 | Nvarchar | 20 |  | Mã thuế phụ 03 |  |  |  |  |
+| BillAttn | Nvarchar | 200 |  | Người nhận hóa đơn |  |  |  |  |
+| BillAddr1 | Nvarchar | max |  | Địa chỉ hóa đơn |  |  |  |  |
+| BillCountry | Nvarchar | 3 |  | Quốc gia hóa đơn |  |  |  |  |
+| BillState | Nvarchar | 10 |  | Tỉnh/TP hóa đơn |  |  |  |  |
+| BillDistrict | Nvarchar | 30 |  | Quận/Huyện hóa đơn |  |  |  |  |
+| BillWard | Nvarchar | 100 |  | Phường/Xã hóa đơn |  |  |  |  |
+| BillFax | Nvarchar | 20 |  | Fax hóa đơn |  |  |  |  |
+| BillName | Nvarchar | 200 |  | Tên đơn vị nhận hóa đơn |  |  |  |  |
+| BillPhone | Nvarchar | 20 |  | SĐT hóa đơn |  |  |  |  |
+| BillZip | Nvarchar | 20 |  | Mã bưu điện hóa đơn |  |  |  |  |
+| InvoiceAccount | Nvarchar | 50 |  | Tài khoản thanh toán |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | sale\_channel\_code | String | Kênh bán hàng (vd: sale\_channel\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_code | String | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_code | String | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | longtitude | Number | Kinh độ (vd: longtitude=103,5634584) | Điều chỉnh trên DMS |
+|  |  |  |  |  | latitude | Number | Vĩ độ (vd: latitude=132,9854236) | Điều chỉnh trên DMS |
+|  |  |  |  |  | map\_address | String | Địa chỉ hiển thị trên bản đồ (vd: map\_address="34 Hoàng Việt") | Điều chỉnh trên DMS |
+|  |  |  |  |  | files | Object[] | Hình ảnh cửa hàng, max=10 |  |
+|  |  |  |  |  | file\_type (\*) | String | group file thuộc về | Chưa có thông tin này |
+|  |  |  |  |  | file\_name | String | Tên file gốc | Chưa có thông tin này |
+|  |  |  |  |  | file\_url (\*) | String | Địa chỉ file | Chưa có thông tin này |
+|  |  |  |  |  | file\_size | Number | Kích thước file | Chưa có thông tin này |
+|  |  |  |  |  | mime\_type | String | Kiểu file | Chưa có thông tin này |
+|  |  |  |  |  | width | Number | Độ rộng file image | Chưa có thông tin này |
+|  |  |  |  |  | heigh | Number | Độ cao file image | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_id | Number | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_id | Number | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | representative\_name | String | Tên chủ cửa hàng, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_emai | String | Email chủ cửa hàng, maxlength=200 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_id | String | CMND/CCCD của chủ cửa hàng, maxlength=20 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_date | String | Ngày cấp CMND/CCCD | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_place | String | Nơi cấp, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_address | String | Hộ khẩu thường trú, maxlength=500 | Chưa có thông tin này |
+
+### 1.2.2 Thông tin cấu trúc cây sản phẩm
+
+* Tích hợp câu trúc cây sản phẩm 1 chiều từ ERP → DMS
+* Đánh dấu cấu trúc cây thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã phân cấp đã tồn tại (Check trên tất cả trạng thái của phân cấp) * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Mã phân cấp không tồn tại trên DMS * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã phân cấp không tồn tại trên DMS hoặc Mã phân cấp đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+**b. Dữ liệu tích hợp**
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| NodeID | nvarchar | 30 | x | Mã | code (\*) | String | Mã phân cấp | Thông báo:   * Mã phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã phân cấp đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã phân cấp không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã phân cấp không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeLevel | smallint |  | x | Mức Note: Cấu trúc cây của HT hiện tại đang chỉ có 3 mức | level(\*) | String | Cấp độ của cây phân cấp. | Thông báo:   * Cấp độ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Cấp độ không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeIDLevel1 | nvarchar | 30 |  | Mã Số Parent Mức 1 Nếu Có |  |  |  |  |
+| NodeIDLevel2 | nvarchar | 30 |  | Mã Số Parent Mức 2 Nếu Có |  |  |  |  |
+| Descr | nvarchar | 200 | x | Diễn Giải | name (\*) | String | Tên phân cấp | Thông báo:   * Tên phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | parent\_code | String | Cấp cha (Nếu = null tức là cấp cao nhất) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.3 Thông tin sản phẩm
+
+* Tích hợp sản phẩm thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu sản phẩm thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã sản phẩm đã tồn tại (Check trên tất cả trạng thái của sản phẩm) * Phân cấp sản phẩm không tồn tại hoặc phân cấp bị ngưng hoạt động * Không tồn đơn vị kinh doanh hoặc đơn vị kinh doanh bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã sản phẩm không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin   + Trường hợp sản phẩm đã có trong transaction     - Vẫn cho phép update các trường thông tin cơ bản của sản phẩm     - Ngoại trừ đơn vị cơ bản và quy đổi -> Thì được phép thêm quy đổi mới, không được update đơn vị cơ bản với quy đổi hiện tại     - Nếu có update sẽ báo message và dừng xử lý: Sản phẩm đã phát sinh giao dịch, không được cập nhật đơn vị và quy đổi của sản phẩm.     - RedV1.2.0:       * Cho phép update mức thuế của sản phẩm       * Đồng thời kiểm tra trong tất cả bảng giá bán còn hiệu lực để update lại toàn bộ giá bán cho sản phẩm đó theo mức thuế mới (Vì HT gửi qua giá trước thuế, DMS FV sẽ nhận giá trước thuế \* mức thuế = Giá sau thuế và hiển thị lên bảng giá)       * Bảng giá còn hiệu lực là bảng giá có:         + Từ ngày ≤ Ngày hiện tại <= Đến ngày         + Từ ngày ≤ Ngày hiện tại và Đến ngày trống         + Từ ngày > Ngày hiện tại (bảng giá tương lai) * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã sản phẩm không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Lưu ý |  |  |
+
+#### b. Dữ liệu tích hợp
+
+##### ----- Danh mục sản phẩm
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm | code (\*)đi | String | Mã sản phẩm (bắt buộc). | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! |
+| ClassID | Nvarchar | 10 | x | Nhóm sản phẩm, mặc định là "Product" |  |  |  |  |
+| Descr | Nvarchar | 100 | x | Diễn giải sản phẩm | name (\*) | String | Tên sản phẩm (bắt buộc). | Thông báo:   * Tên sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Descr1 | Nvarchar | 100 | x | Diễn giải bổ sung |  |  |  |  |
+| DfltPOUnit | Nvarchar | 15 | x | Đơn vị mua |  |  |  |  |
+| DfltSOUnit | Nvarchar | 15 | x | Đơn vị bán | business\_unit\_code | Number | ID đơn vị kinh doanh của sản phẩm (bắt buộc). |  |
+| StkUnit | Nvarchar | 15 | x | Đơn vị lưu kho | basic\_package\_unit (\*) | Number | ID đơn vị đóng gói cơ bản (bắt buộc). | Thông báo:   * Đơn vị cơ bản bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Đơn vị cơ bản không đúng định dạng, vui lòng kiểm tra lại! * Đơn vị cơ bản không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkItem | smallint |  | x | Quản lý tồn kho:  1 = Không cho bán âm, 0 = Được bán âm |  |  |  |  |
+| InvtType | Nvarchar | 1 | x | Loại sản phẩm. Mặc định "F" |  |  |  |  |
+| LotSerFxdLen | smallint |  |  | Chiều dài mã lô |  |  |  |  |
+| LotSerFxdTyp | Nvarchar | 1 |  | Kiểu mã lô |  |  |  |  |
+| LotSerTrack | Nvarchar | 2 | x | Quản lý theo lô: L = Có, N = Không |  |  |  |  |
+| NodeID | Nvarchar | 30 | x | Mức phân cấp nhãn hàng | category\_code (\*) | Number | ID danh mục của sản phẩm (bắt buộc) | Thông báo:   * Danh mục sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Danh mục sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Danh mục sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| NodeIDLevel1 | Nvarchar | 30 |  | Mức phân cấp nhãn hàng cấp 1 |  |  |  |  |
+| Status | Nvarchar | 2 | x | Trạng thái sản phẩm: AC = Đang hoạt động, IN = Ngưng | status (\*) | String | Trạng thái của sản phẩm (bắt buộc). Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxCat | Nvarchar | 10 | x | Thuế VAT. VD: VAT08, VAT10 | tax\_code (\*) | Number | Thuế VAT (bắt buộc) | Thông báo:   * Thuế VAT bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Thuế VAT không đúng định dạng, vui lòng kiểm tra lại! * Thuế VAT không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkVol | decimal |  |  | Thể tích lưu kho |  |  |  |  |
+| StkWt | decimal |  |  | Trọng lượng lưu kho |  |  |  |  |
+| StkWtUnit | Nvarchar | 15 |  | Đơn vị trọng lượng (ví dụ: THUNG) |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: 1 = Thêm, 2 = Sửa,  3 = Xoá |  |  |  |  |
+| UnitConversion | UnitConversion | Object | x | Đơn vị quy đổi | product\_units | Object[] | Danh sách các đơn vị quy đổi. (có thể null) |  |
+|  |  |  |  |  | image | String | URL hình ảnh của sản phẩm (có thể để null). | Chưa có thông tin này |
+|  |  |  |  |  | package\_unit\_code | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+##### ----- Đơn vị quy đổi
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm |  |  |  |  |
+| UnitType | Nvarchar | 2 | x | Loại quy đổi đơn vị |  |  |  |  |
+| FromUnit | Nvarchar | 15 | x | Đơn vị gốc | package\_unit\_id | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+| ToUnit | Nvarchar | 15 | x | Đơn vị quy đổi |  |  |  |  |
+| MultDiv | Nvarchar | 1 | x | M: Nhân, D: Chia | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+
+### 1.2.4 Thông tin Thuế
+
+* Tích hợp 1 chiều từ ERP → DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Thuế:
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã thuế đã tồn tại (Check trên tất cả trạng thái của Mã thuế) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã thuế không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã thuế không tồn tại trên DMS hoặc  đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| catID | Text | 30 | x | Mã thuế | code (\*) | String | Mã của thuế (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã thuế đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã thuế không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| descr | Text | 200 | x | Mô tả | name (\*) | String | Tên của thuế (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| taxRate | decimal | 30 | x | Mức thuế | rate (\*) | String | Tỷ lệ thuế | Thông báo:   * Tỷ lệ thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Tỷ lệ thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.5 Thông tin kênh bán hàng
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu kênh bán hàng thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã kênh bán hàng đã tồn tại (Check trên tất cả trạng thái của Mã kênh) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kênh bán hàng không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã kênh bán hàng không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| Code | nvarchar | 10 | x | Mã Kênh | code (\*) | String | Mã của kênh bán hàng (maxlength = 200, bắt buộc). | Thông báo:   * Mã kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kênh bán hàng đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kênh bán hàng không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kênh bán hàng không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của kênh bán hàng (maxlength = 500, bắt buộc). | Thông báo:   * Tên kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Type | nvarchar | 5 | x | Loại Kênh, có 2 loại: + BH: Bán Hàng + KH: điểm bán |  |  |  |  |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | company\_code | Number | Id của công ty (bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | status (\*) | String | Trạng thái hoạt động của kênh bán hàng. Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+### 1.2.6 Thông tin nhóm điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhóm điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Nhóm điểm bán: [HO] [HT] Nhóm điểm bán
+
+|  | Giao diện thay đổi | Mô tả |
+| --- | --- | --- |
+| Portal |  | Màn hình Tạo mới/Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên phải trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Salesman |  | Màn hình Tạo mới/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Quản lý |  | Màn hình Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhóm điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã nhóm điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhóm điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóab | * Mã Nhóm điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| ClassId | nvarchar | 10 | x | Mã nhóm | code (\*) | String | Mã của nhóm khách hàng (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhóm điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhóm điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhóm điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của nhóm khách hàng (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.7 Thông tin Loại điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Loại điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Loại điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã Loại điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Loại điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Loại điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | Mã của loại điểm bán (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã loại điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã loại điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã loại điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên của loại điểm bán (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | status | String | Trạng thái hoạt động của loại điểm bán (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.8 Thông tin Nhà phân phối (Distributor Master)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhà phân phối thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+* Khi tạo mới NPP:  
+  + Hệ thống tự động khóa sổ tháng liền kề trước tháng tạo NPP.  
+    - Ví dụ: Ngày tạo NPP là 20/4/2026 → Tháng chốt sổ cho NPP = tháng 3
+  + Hệ thống tự động khóa số ngày cuối cùng của tháng liền kề trước tháng tạo NPP.
+    - Ví dụ: Ngày tạo NPP là 20/4/2026 → Ngày chốt sổ cho NPP = 31/3/2026
+  + Chức năng Khóa sổ thực hiện theo document:[[HO] Chốt sổ/ Mở chốt sổ](https://kb.finviet.com.vn/pages/viewpage.action?pageId=53039371)
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhà phân phối đã tồn tại (Check trên tất cả trạng thái của Mã Nhà phân phối) * Dữ liệu gửi qua không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhà phân phối không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Nhà phân phối không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | ID cung cấp từ phía partner (maxlen = 200) | Thông báo:   * Mã nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhà phân phối đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhà phân phối không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên Nhà phân phối | Thông báo:   * Tên nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | phone | String | Số đt | Số điện thoại có thể có nhiều, mỗi Số điện thoại cách nhau dấu , |
+|  |  |  |  |  | email | String | Email | Email có thể có nhiều, mỗi email cách nhau dấu , |
+|  |  |  |  |  | parent\_id | String | Mã NPP cha |  |
+|  |  |  |  |  | province\_code (\*) | String | Mã code Tỉnh |  |
+|  |  |  |  |  | district\_code (\*) | String | Mã code Quận/Huyện |  |
+|  |  |  |  |  | ward\_code | String | Mã code Phường/xã |  |
+|  |  |  |  |  | address | String | Địa chỉ |  |
+|  |  |  |  |  | type | String | Loại NPP (DIRECT, INDIRECT) | Finviet tự lưu thông tin này để phân biệt   * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.9 Thông tin Bảng giá (Pricing)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Bảng giá thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* FV sẽ gửi API 2 bảng giá cho Sellin và Sellout để Hương Thủy mapping
+* Không tạo mới trên DMS FV
+* **Lưu ý**:
+  + Sử dụng config khi khởi chạy hệ thống ENABLE\_ERP\_PRICE\_SYNC
+    - True: Sync giá bán từ ERP Hương Thủy
+    - False: Không sync giá bán từ ERP Hương Thủy, tạo giá thủ công trên DMS
+  + Update Tháng 6/2025: 
+    - Hương Thủy có 4 cấp độ giá: Giá từng khách hàng → Giá theo kênh → Giá theo nhóm → Giá mặc định
+    - FV chưa đáp ứng giá theo cấp độ nên tạm thời sẽ lấy bảng giá mặc định của Hương Thủy.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Bảng giá đã tồn tại (Check trên tất cả trạng thái của Mã Bảng giá) * Vùng bán hàng không tồn tại hoặc đã ngưng hoạt động * Danh sách NPP không tồn tại hoặc đã ngưng hoạt động * Sản phẩm không tồn tại hoặc đã ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Đã duyệt * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Bảng giá không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Bảng giá không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+##### --- Bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| PriceID | Nvarchar | 100 | x | Mã Bảng Giá | code (\*) | String | Mã bảng giá | Thông báo:   * Mã bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã bảng giá đã tồn tại, , vui lòng kiểm tra lại! * Mã bảng giá không đúng định dạng, vui lòng kiểm tra lại! |
+| Status | Nvarchar | 10 | x | Trạng Thái C = Xử Lý Hoàn Tất H = Chờ Xử Lý | status | String | Trạng thái bảng giá (INIT, APPROVED, CANCELED, PAUSED) |  |
+| FromDate | datetime |  | x | Ngày Hiệu Lực | from\_date (\*) | String | Ngày áp dụng | Thông báo:   * Ngày áp dụng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Ngày áp dụng không đúng định dạng, vui lòng kiểm tra lại! |
+| ToDate | datetime |  | x | Ngày Kết Thúc | to\_date | String | Đến ngày kết thúc |  |
+| PriceCat | Nvarchar | 2 | x | Loại IT = Sản Phẩm IC = Sản Phẩm và điểm bán CT = Sản Phẩm và Kênh Bán Hàng CC = Sản Phẩm và Nhóm điểm bán |  |  |  |  |
+| Channel | Nvarchar | Max |  | Kênh được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustID | Nvarchar | Max |  | điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustClassID | Nvarchar | Max |  | Nhóm điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| Prom | bit |  | x | Khuyến Mãi |  |  |  |  |
+| Public | bit |  | x | Chung 1 = Áp dụng cho cho toàn bộ NPP 0 = Áp dụng cho các NPP thuộc ApplyForGeo. |  |  |  |  |
+| BranchID | Nvarchar | 20 | x | Mã Chi nhánh | distributor\_list | Array Object | Danh sách npp |  |
+| ApplyForGeo | Nvarchar | 2 | x | Nếu public = 0, thì bảng giá áp dụng theo danh sách NPP vùng bán hàng và Kênh bán hàng | region\_id | String | Id vùng |  |
+| StatusAction | Int |  | x | Trạng thái hành động:  + 1: Thêm mới.  + 2: Chỉnh sửa.  + 3: Xóa. |  |  |  |  |
+| Lines | ItemSelected | Array<ItemSelected> | x | Danh sách sản phẩm áp dụng giá bán |  |  |  |  |
+|  |  |  |  |  | name (\*) | String | Tên bảng giá | Thông báo:   * Tên bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | area\_id | String | Id khu vực |  |
+|  |  |  |  |  | price\_adjustment | String | Cờ cho phép npp chỉnh sửa giá bán (ON, OFF) |  |
+|  |  |  |  |  | distributor\_list (\*) | Array Object | Danh sách npp |  |
+|  |  |  |  |  | distributor\_list.\*.distributor\_code | Number | Id của npp |  |
+|  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |
+
+##### --- Chi tiết bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã Sản Phẩm | product\_list.\*.product\_code | Number | Id sản phẩm | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Mã sản phẩm không tồn tại hoặc bị ngưng hoạt động, vui lòng kiểm tra lại! |
+| SlsUnit | Nvarchar | 15 | x | Đơn Vị Bán |  |  |  |  |
+| QtyBreak | decimal |  | x | Số Lượng |  |  |  |  |
+| Price | decimal |  | x | Giá | product\_list.\*.base\_price | Number | Giá bán trước thuế | FV sẽ tự tính tiền thuế và lưu vào bảng giả là giá bán sau thuế |
+|  |  |  |  |  | product\_list (\*) | Array Object | Danh sách sản phẩm |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | priority\_type | String | 4 Cấp ưu tiên (Store > SaleChannel > StoreGroup > Default ) |  |
+
+### 1.2.10 Thông tin Nhân viên (Salesman Data)
+
+* Tích hợp 1 chiều từ ERP → DMS (Chỉ tích hợp tạo mới, không tích hợp chỉnh sửa)
+* Nhân viên bên ERP sẽ phân loại Direct/Indirect, ERP gửi về cho DMS và không được chỉnh sửa.
+
+| Chức năng | Màn hình | Mô tả |
+| --- | --- | --- |
+| Màn hình điều chỉnh |  | Màn hình Chỉnh sửa nhân viên/ Chi tiết nhân viên  Hiện tại: Chưa có thông tin Kho bán hàng  Cần điều chỉnh, đối với nhân viên có loại = Direct Sales:   * Thêm thông tin Kho bán hàng   + Dạng selectbox onechoice để user chọn   + Danh sách kho vật lý được load từ ERP.   + Trong select box hiển thị Mã kho - Tên kho   + Hiển thị kho mặc định từ ERP, user có thể chọn lại, chỉ chọn 1 kho   + Lưu thông tin kho mặc định user đã chọn   **Lưu ý****:**   * Data của Hương Thủy có trường hợp quản lý vượt cấp, không theo cấu trúc salesforce, nghĩa là cây salesforce chuẩn SD->RSM->ASM->SS-SM * Nhưng Hương Thủy RSM có thể quản lý SM * Nên đối với các trường hợp vai trò của Quản lý trực tiếp không tuân theo cây salesforce chuẩn thì sẽ để trống trường Quản lý trực tiếp. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhân viên đã tồn tại (Check trên tất cả trạng thái của Mã Nhân viên) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| branchID | nvarchar | 20 | x | Mã chi nhánh |  |  |  |  |
+| slsperId | nvarchar | 50 | x | Mã nhân viên bán hàng | code (\*) | String | Mã người dùng | Thông báo:   * Mã nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhân viên đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhân viên không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhân viên không đúng định dạng, vui lòng kiểm tra lại! |
+| name | nvarchar | 100 | x | Tên nhân viên | name (\*) | String | Họ và tên người dùng | Thông báo:   * Tên nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| position | nvarchar | 10 | x | Chức danh + AM = Quản Lý Khu Vực + RM = Quản Lý Vùng + S = Nhân Viên Bán Hàng + SS = Giám Sát Bán Hàng | position (\*) | String | Chức vụ người dùng (VD: Giám sát bán hàng) | Thông báo:   * Chức vụ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Chức vụ không đúng định dạng, vui lòng kiểm tra lại! * Chức vụ không tồn tại, vui lòng kiểm tra lại! |
+| addr1 | nvarchar | 500 |  | Mã địa chỉ | address | String | Địa chỉ cụ thể |  |
+| eMailAddr | nvarchar | 100 |  | Địa chỉ email | email | String | Địa chỉ email |  |
+| phone | nvarchar | 20 |  | Số điện thoại | phone | String | Số điện thoại người dùng |  |
+| state | nvarchar | 10 |  | Tỉnh/Thành phố | province\_id | Number | ID tỉnh/thành phố |  |
+| country | nvarchar | 10 |  | Quốc gia |  |  |  |  |
+| supID | nvarchar | 20 |  | Mã nhà cung cấp | manager\_id | Number | ID của người quản lý trực tiếp |  |
+| siteID | nvarchar | 10 | x | Mã Kho Note: đối với Position S thì mới có dữ liệu cột này | warehouse\_physical\_default\_id | String | ID kho bán hàng mặc định của nhân viên |  |
+| channel | nvarchar | 10 |  | Kênh phân phối | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| territory | nvarchar | 10 | x | Khu vực | area\_group\_ids | Array[Number] | Danh sách ID nhóm khu vực mà người dùng phụ trách | * Đối với nhân viên có chức vụ = Quản lý vùng/Quản lý khu vực vì ERP không có thông tin này nên cho phép chỉnh sửa thông tin nhân viên để user bổ sung thông tin Vùng/Khu Vực |
+| active | Integer |  | x | Trạng thái 1 = Nhân Viên đang làm 0 = Nhân Viên nghỉ việc | status | String (ACTIVE, INACTIVE, ...) | Trạng thái tài khoản (ACTIVE, INACTIVE, v.v.) |  |
+| channelHT | nvarchar | 10 | x | Mã kênh hỗ trợ | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | password (\*) | String | password | Điều chỉnh trên DMS |
+|  |  |  |  |  | role\_codes (\*) | Array[String] | Danh sách mã vai trò của người dùng | Chưa có thông tin |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.11 Kho
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Kho thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+* Không tạo mới trên DMS FV
+* ERP sync kho qua FV, thì kho này dùng cho direct và cho luồng đặt đơn PO indirect lên ERP
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Kho đã tồn tại (Check trên tất cả trạng thái của Mã Kho) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kho không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Kho không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| SiteID | nvarchar | 30 | x | Mã kho | warehouse\_list.code (\* ) | String | ID kho cung cấp từ partner | Thông báo:   * Mã kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kho đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kho không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kho không đúng định dạng, vui lòng kiểm tra lại! |
+| Name | nvarchar | 200 | x | Tên kho | [warehouse\_list.name](http://warehouse_list.name) (\* ) | String | Tên kho (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| CpnyID | nvarchar | 30 | x | Chi nhánh | distributor\_code (\*) | String | ID của NPP cung cấp từ partner | Thông báo:   * Nhà phân phối của kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối của kho không tồn tại, vui lòng kiểm tra lại! * Nhà phân phối của kho không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | warehouse\_list (\*) | String | Danh sách chi nhánh kho của NPP |  |
+|  |  |  |  |  | warehouse\_list..status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.12 Dữ liệu địa lý hành chính
+
+* Dữ liệu địa lý hành chính Tỉnh/Thành Phố, Quận/Huyện sẽ sync 1 chiều từ ERP → DMS
+* ERP không có thông tin Phường Xã, DMS sẽ mặc định tạo 1 phường xã cho 1 quận/huyện của ERP. Tên Phường Xã = Tên Quận Huyện
+ 
+
+# 2 Tích hợp Transaction Data (TBU)
+
+## 2.1. Đồng bộ tồn kho sản phẩm
+
+trueSƠ ĐỒ FINAL UmoDcH\_7QxIE1pTY-Ygefalse700autotoptrue64136
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Gọi API cập nhật tồn kho sản phẩm | DMS Finviet | Cứ sau 3-5 phút, DMS Finviet tự động gọi API cập nhật tồn kho do ERP Hương Thủy cung cấp. |
+| 2 | Gửi reponse thông tin tồn kho | ERP Hương Thủy | ERP Hương Thủy gửi thông tin tồn kho mới nhất cho DMS Finviet. |
+| 3 | Cập nhật tồn kho | DMS Finviet | DMS Finviet cập nhật lại tồn kho trên hệ thống. |
+
+## 2.2. Áp dụng CTKM trên đơn hàng
+
+### 2.2.1. Quy trình
+
+trueSƠ ĐỒ FINAL E4qxtPtCYDiwwD2euFba1false1000autotop66523750true
+
+**Lưu ý:**
+
++ Trước khi đơn xác nhận thì hiển thị theo những cái user chọn, apply CTKM có update thì ko quan tâm, cho tới khi xác nhận cũng sẽ update lại theo ERP. (sellout direct, purchase)
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn Áp dụng CTKM | Người dùng | Người dùng chọn áp dụng CTKM trên đơn hàng.   * Nếu ERP Hương Thủy đã Tạo đơn hàng SO, bỏ qua bước 2,3 và tiếp tục bước 4. * Nếu ERP Hương Thủy chưa Tạo đơn hàng SO, tiếp tục bước 2. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO. |
+| 4 | Gọi API Kiểm tra CTKM | DMS Finviet | DMS Finviet thực hiện gọi API Kiểm tra CTKM do ERP Hương Thủy cung cấp. |
+| 5 | Gửi response CTKM khả dụng của đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi thông tin CTKM khả dụng cho đơn hàng cho DMS Finviet. |
+| 6 | Hiển thị danh sách CTKM khả dụng của đơn hàng | DMS Finviet | DMS Finviet hiển thị danh sách CTKM có thể áp dụng cho đơn hàng. |
+| 7 | Chọn CTKM áp dụng | Người dùng | Người dùng thực hiện chọn CTKM muốn áp dụng cho đơn hàng và áp dụng. |
+| 8 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra CTKM. |
+| 9 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi kết quả áp dụng các CTKM của đơn hàng.   * Nếu thành công: Tiếp tục bước 10.1. * Nếu thất bại: Tiếp tục bước 10.2. |
+| 10.1 | Ghi nhận và tính toán lại đơn hàng | DMS Finviet | DMS Finviet ghi nhận và tính toán lại đơn hàng kèm CTKM đã áp dụng thành công. |
+| 11.1 | Báo lỗi áp dụng CTKM thất bại | DMS Finviet | DMS Finviet báo lỗi áp dụng CTKM thất bại và quay lại bước 6. |
+
+### 2.3.2. Cập nhật giao diện
+
+Giao diện SMApp: [SM-APP] [HT] Đơn hàng - Thay đổi màn hình Khuyến mãi
+
+Giao diện portal NPP:
+
+| Title | Wireframe | Description |
+| --- | --- | --- |
+| Màn hình *Áp dụng CTKM* |  | 1. Loại CTKM: Chỉ bao gồm CTKM ontop, mặc định hưởng tất cả CTKM do Hương Thủy trả về. 2. Thông tin CTKM bao gồm:    * Checkbox: Chỉ hiển thị nếu CTKM có CTKM con (alterpolicy khác null), mặc định uncheck.    * Tên CTKM: Do Hương Thủy trả về    * Chi tiết CTKM: Click vào button infor → hiển thị chi tiết CTKM do HT trả về.    * Số sản phẩm tối đa được chọn: Là số sản phẩm mà người dùng có thể được chọn trong danh sách sản phẩm, tương ứng với maxitem do HT trả về.    * Thành tiền = Số tiền được hưởng trong CTKM.    * Danh sách trả khuyến mãi:      + Checkbox:        - Hệ thống mặc định chọn sẵn các quà tặng bên trong CTKM = maxitem HT trả về theo thứ tự từ trên xuống dưới.        - Cho phép người dùng uncheck/check miễn số lượng sản phẩm được check <= maxitem, cho phép không check SP nào.      + Mã sản phẩm: Do HT trả về.      + Tên sản phẩm: Do HT trả về.      + Số lượng/Giảm giá:        - Nếu hình thức KM là tặng sản phẩm → hiển thị số lượng sản phẩm được hưởng do HT trả về, không cho phép chỉnh sửa        - Nếu hình thức KM là giảm giá → hiển thị số tiền được giám do HT trả về, không cho phép chỉnh sửa.      + Đơn vị: Do HT trả về.  * Lưu ý: Khi check các CTKM có alterpolicy khác null. * + - Hệ thống thực hiện check chọn quà tặng trong CTKM cha như trên và hiển thị các CTKM con.     - Thông tin CTKM con giống với thông tin CTKM mô tả như trên. |
+| Màn hình *Xem* *chi tiết CTKM đã áp dụng trên đơn* |  | Bao gồm danh sách khuyến mãi đã được chọn tại màn hình Áp dụng CTKM  Mỗi CTKM - hình thức khuyến mãi là 1 dòng. Nếu CTKM là tặng X trong nhóm sản phẩm → Mỗi SKU tách xuống 1 dòng (chỉ hiển thị các SKU được lựa chọn tặng)   | Tên trường | Mô tả | | --- | --- | | Chương trình khuyến mãi | Hiển thị tên CTKM | | Thể lệ chương trình | Mô tả thể lệ chương trình | | Mã SKU | Hiển thị Mã SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Tên SKU | Hiển thị tên SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Số lượng | Hiển thị số lượng SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Đơn vị | Hiển thị tên đơn vị của SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Khuyến mãi | Hiển thị giá trị tiền khuyến mãi | |
+
+## 2.3. Đơn hàng - Luồng Direct Sales
+
+### 2.3.1. Tạo mới đơn hàng đặt từ SMApp
+
+trueSƠ ĐỒ FINAL \_1nl6CzjSQuimAQcpcuM1false1000autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn sản phẩm, số lượng | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng. |
+| 2 | Xác nhận danh sách sản phẩm | Người dùng | Người dùng xác nhận danh sách sản phẩm. |
+| 3 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 4 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO theo request của DMS Finviet.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 5 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 6 | Đặt đơn hàng | Người dùng | Người dùng thực hiện đặt đơn hàng. |
+| 7 | Gọi API lấy số dư tồn kho | DMS Finviet | DMS Finviet gọi API Lấy số dư tồn kho do ERP Hương Thủy cung cấp. |
+| 8 | Gửi response thông tin tồn kho mới nhất | ERP Hương Thủy | ERP Hương Thủy kiểm tra số lượng sản phẩm trên đơn và tồn kho.   * Nếu tồn kho đủ, tiếp tục bước 9.1. * Nếu tồn kho không đủ, tiếp tục bước 9.2. |
+| 9.1 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 10. * Nếu không, tiếp tục bước 12. |
+| 9.2 | Báo lỗi tồn kho không đủ | DMS Finviet | DMS Finviet báo lỗi tồn kho sản phẩm không đủ. |
+| 10 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 11 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 5 - Quy trình Áp dụng CTKM (bước 9.2.). * Nếu áp dụng thành công, tiếp tục bước 12. |
+| 12 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 13 | Gửi response xác nhận đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi response xác nhận đơn hàng. |
+| 14 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+
+### 2.3.2. Đồng bộ cập nhật thông tin đơn hàng (không bao gồm cập nhật trạng thái)
+
+#### 2.3.2.1. Đồng bộ cập nhật thông tin đơn hàng từ Finviet SM App sang ERP Hương Thủy
+
+**Lưu ý:**DMS Finviet chỉ được chỉnh sửa đơn hàng trạng thái "Khởi tạo"
+
+trueSƠ ĐỒ FINAL WDC1obpp1IcVMy5w1SCE1false600995f3800d490879d4800cd6305d43b0eed7f1c9eautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | Finviet SM App | Người dùng thực hiện cập nhật thông tin đơn hàng trên Finviet SM App. |
+| 2 | Gọi API Tạo đơn hàng | Finviet SM App | Finviet SM App thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng từ DMS Finviet. |
+
+#### 2.3.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang Finviet SMApp
+
+**Lưu ý:**DMS Finviet cập nhật thông tin đơn hàng theo ERP Hương Thủy mà không quan tâm trạng thái.
+
+trueSƠ ĐỒ FINAL aVUTX9YFLwJzr5DOmUOA1false6007d5d8cab75235888450ade2d3ba103f8d6284e1cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | ERP Hương Thủy | Người dùng thực hiện cập nhật thông tin đơn hàng trên ERP Hương Thủy. |
+| 2 | Gọi API Tạo đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API Cập nhật thông tin đơn hàng do Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | SM App | SM App cập nhật thông tin đơn hàng từ ERP Hương Thủy. |
+
+**Lưu ý:** Khi cập nhật thông tin, SM App ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công
+
+### 2.3.3. Đồng bộ cập nhật trạng thái đơn hàng
+
+trueSƠ ĐỒ FINAL SrxwrfXPt5kR5NXn4GUV1false600autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật trạng thái đơn hàng. |
+| 2 | Gọi API cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy gọi API cập nhật trạng thái đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật trạng thái đơn hàng | Finviet SM App | DMS Finviet cập nhật trạng thái đơn hàng theo request của ERP Hương Thủy.  Mapping trạng thái đơn hàng:   | STT | ERP Hương Thủy | DMS Finviet | Ghi chú | | --- | --- | --- | --- | | 1 | 10 - Đặt hàng | Khởi tạo | Sell out init | | 2 | 20 - Đặt hàng | Khởi tạo | Sell out init | | 3 | 22 - Tạo PGH, 1 phần | Đã duyệt | Sell out approve | | 4 | 23 - Tạo PGH | Đã duyệt | Sell out approve | | 5 | 25 - Tạo PXK, 1 phần | Đã duyệt | Sell out approve | | 6 | 30 - Tạo PXK | Đã duyệt | Sell out approve | | 7 | 35 - Đã xuất kho, 1 phần | Đã duyệt | Sell out approve | | 8 | 40 - Đã xuất kho | Đã duyệt | Sell out approve | | 9 | 45 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 10 | 55 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 11 | 50 - Đã giao hàng, chưa HĐ | Đã duyệt | Sell out approve | | 12 | 60 - Đã xuất hóa đơn | Đã duyệt | Sell out approve | | 13 | 65 - Đã giao hàng, 1 phần | Đã duyệt | Sell out approve | | 14 | 70 - Đã giao hàng | Đã duyệt | Sell out approve | | 15 | 80 - Huỷ | Đã huỷ | Hủy Sellout + PXK | | 16 | 85 - Ngưng giao hàng | Đã huỷ | Hủy Sellout + PXK | | 17 | 90 - Đã đóng | Đã giao hàng | Tạo mới phiếu xuất kho đã duyệt |   **Lưu ý:**  Nếu HT update ngược lên 90 thì   * Hủy phiếu xuất tạo lại theo ERP, không update kho. * Đơn Sellout vẫn giữ status APPROVED (trừ 80,85)   Đơn ERP mà đã xác nhận thì ko edit / xoá |
+
+## 2.4. Đơn hàng - Luồng Indirect Sales
+
+### 2.4.1. Tạo mới đơn hàng đặt từ NPP DMS Finviet
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Tạo Purchase Order | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 2 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 3 | Tạo đơn Purchase Order | Người dùng | Người dùng thực hiện tạo đơn Purchase Order. |
+| 4 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 5. * Nếu không, tiếp tục bước 7. |
+| 5 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 6 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 2 - Quy trình Áp dụng CTKM (bước 9.2). * Nếu áp dụng thành công, tiếp tục bước 7. |
+| 7 | Tạo Purchase Order thành công | DMS Finviet | DMS Finviet tạo mới Purchase Order trạng thái "Khởi tạo". |
+| 8 | Duyệt Purchase Order | Người dùng | Người dùng thực hiện duyệt PO. |
+| 9 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 10 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+| 11 | Xử lý đơn hàng | ERP Hương Thuỷ | ERP xử lý hoàn tất đơn hàng. |
+| 12 | Tạo sell-in | DMS Finviet | DMS Finviet tạo đơn sell-in trạng thái "Đã duyệt". |
+| 13 | Tạo phiếu nhập hàng | DMS Finviet | DMS Finviet tạo phiếu nhập hàng trạng thái "Khởi tạo". |
+| 14 | Cập nhật tồn kho của NPP | DMS Finviet | DMS Finviet cập nhật tồn kho của NPP. |
+
+**Lưu ý:**
+
+* Khi tạo đơn sell-in và phiếu nhập hàng, hệ thống ghi nhận
+
+* + User tạo = service-account-erp-ht
+  + Ngày tạo = Ngày tạo đơn thành công
+
+* Khi DMS Finviet gửi đơn hàng qua ERP Hương Thủy, gửi kèm thông tin nhân viên bán hàng mặc định do Hương Thủy chỉ định.
+
+* Luồng NPP đặt hàng (indirect): NPP đặt lên ERP, chọn kho của ERP > Tới sellin / PNK thì NPP chọn kho chính nó để nhập vào
+
+### 2.4.2. Đồng bộ cập nhật thông tin đơn hàng
+
+#### 2.4.2.1. Đồng bộ cập nhật thông tin đơn hàng từ DMS Finviet sang ERP Hương Thủy
+
+trueSƠ ĐỒ FINAL J9WvCUdQFBiU4PW1a-GT1false300cb45e58ffabfd7cded81862ea34e2de13b3055b6autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | DMS Finviet | Người dùng thực hiện cập nhật thông tin đơn hàng trên hệ thống DMS Finviet. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng theo request từ DMS Finviet. |
+
+#### 2.4.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang DMS Finviet
+
+trueSƠ ĐỒ FINAL oJDWGC0ZhdB9qaZeK5Ls1false30048a666a161abec1e41b82e67497fe3f4d8fa0a3cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật thông tin đơn hàng trên hệ thống. |
+| 2 | Gọi API Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API cập nhật thông tin đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | DMS Finviet | DMS Finviet cập nhật thông tin đơn hàng theo resquest từ ERP Hương Thủy. |
+
+**Lưu ý:** Sau khi DMS Finviet cập nhật thông tin, hệ thống ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS
+
+### 2.4.3. Đồng bộ đơn hàng sell - out (NPP trên FV bán xuống merchant) từ DMS Finviet sang ERP Hương Thủy
+
+trueImport đơn sell out1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload đơn hàng lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin đơn hàng sellout lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import: <https://docs.google.com/spreadsheets/d/1nAcl7ONOGC2kQVFqrf2SsMaoCYrHBONNNQcOVzKqXeg/edit?gid=0#gid=0>
+* Hệ thống sẽ upload tất cả các đơn hàng (tất cả trạng thái) có thời gian tạo mới/cập nhật (created\_date/updated\_date) phát sinh sau lần upload gần nhất.
+
+| STT | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | LineType | Hàng bán/Hàng KM |
+| 25 | Mã SP /Product code | Mã SKU của sản phẩm  Trường hợp sản phẩm bị ngưng hoạt động thì vẫn sẽ gửi thông tin theo đơn hàng |
+| 26 | Tên SP /Product Name | Tên của sản phẩm |
+| 27 | ĐVT /Unit | Đơn vị tính trên đơn (HT bán theo đơn vị cơ bản) |
+| 28 | PackingQty | Giá trị quy đổi giữa đơn vị cơ bản và đơn vị quy đổi lớn nhất |
+| 29 | HSD /Expiry Date | Hạn sử dụng của lô sản phẩm tương ứng. |
+| 30 | Ngày SX /Production Date | Ngày sản xuất của lô sản phẩm tương ứng. |
+| 31 | Mã nhãn 1 /Brand code 1 | Mã phân cấp sản phẩm cấp 1 của sản phẩm |
+| 32 | Nhãn1 /Brand 1 | Tên phân cấp sản phẩm cấp 1 của sản phẩm |
+| 33 | Mã nhãn 2 / Brand code 2 | Mã phân cấp sản phẩm cấp 2 của sản phẩm |
+| 34 | Nhãn1 /Brand 2 | Tên phân cấp sản phẩm cấp 2 của sản phẩm |
+| 35 | Số Lo / Lot No. | Số lô của sản phẩm |
+| 36 | Số lượng /Qty | Số lượng theo từng lô của sản phẩm |
+| 37 | BoxQty | Số lượng theo đơn vị lớn nhất của sản phẩm.  = Qty/PackingQty (chỉ lấy phần chẵn) Ví dụ: Qty =330, PackingQty = 32 => BoxQty = 10 |
+| 38 | OddQty | Số lượng lẻ còn lại =  (Qty/PackingQty - BoxQty)\*PackingQty  Ví dụ: (330/32 - 10) \* 32 = 10 |
+| 39 | Đơn giá /Sale Price | Đơn giá của sản phẩm, giá trước VAT |
+| 40 | Giá Net /NetPrice | Đơn giá trung bình sau khi trừ chiết khấu của sản phẩm.  = NetAmt/Qty |
+| 41 | % CKMD /%Basic Discount | Hiển thị rỗng |
+| 42 | Số Tiền CKMD /Basic Discount | Hiển thị rỗng |
+| 43 | %CTKM /Promtion % | % chiết khấu theo promotion |
+| 44 | CTKM /Promtion Amount | Số tiền chiết khấu theo promotion  = %CTKM \* Qty \* Sale Price |
+| 45 | Tổng %CK /Total Discount | = %Basic Discount + Promtion % |
+| 46 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Total Discount \* Qty \* Sale Price |
+| 47 | Thành tiền /Amount | Thành tiền trước VAT trước CK =  Qty \* Sale Price |
+| 48 | Thành Tiền /NetAmt | Thành tiền trước VAT sau CK = Amount - Total Discount amount |
+| 49 | Mã thuế suất /VATID | Mã thuế suất của sản phẩm |
+| 50 | Thuế /TaxRate | Giá trị thuế suất của sản phẩm. |
+| 51 | Thành Tiền sau VAT /TotalAmt | Thành tiền sau VAT sau CK = NetAmount \* (1 + TaxRate) |
+| 52 | NWeight | Hiển thị rỗng |
+| 53 | GWeight | Hiển thị rỗng |
+| 54 | Mã CTKM/Promo No | Mã CTKM được hưởng |
+| 55 | Ghi chú dòng/Remark lines | Ghi chú trên từng dòng sản phẩm, nếu không có => hiển thị rỗng |
+| 56 | Ghi Chú Tổng/Remarks | Ghi chú của đơn hàng , nếu không có => hiển thị rỗng |
+
+* **Đối với CTKM giảm tiền/chiết khấu trên tổng đơn, hệ thống tách dòng theo từng CTKM và điền các thông tin sau:**
+
+|  |  |  |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | %CTKM /Promtion % | % chiết khấu theo promotion  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 25 | CTKM /Promtion Amount | Số tiền chiết khấu = Tổng số tiền chiết khấu trên đơn theo promotion. |
+| 26 | Tổng %CK /Total Discount | = %Basic Discount + Promtion %  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 27 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Tổng số tiền CKMD + Tổng số tiền chiết khấu theo promotion |
+| 28 | **Mã CTKM/Promo No** | Mã CTKM được hưởng |
+| Lưu ý: Các trường còn lại để trống. | | |
+
+### 2.4.4. Đồng bộ tồn kho NPP (NPP trên FV bán xuống merchant)
+
+trueImport đơn sell out6VP22lBI0euw8FGYmxfN1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload tồn kho NPP lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin thông tin NPP lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import:
+
+|  | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã kho / WarehouseID | * Mã định danh duy nhất của kho hàng. * Dùng để phân biệt các kho trong hệ thống (ví dụ: Kho Quận 9, Kho Nhà Bè). * Là cơ sở để xác định nơi lưu trữ hàng hóa. |
+| 2 | Tên kho / Warehouse Name | Tên hiển thị của kho  Sắp xếp dữ liệu theo Tên kho |
+| 3 | Mã SP / Product Code | Mã sản phẩm  Chỉ đồng bộ các sản phẩm có trạng thái Đang hoạt động  Trường hợp nhãn sản phẩm bị inactive thì vẫn đồng bộ thông tin tồn kho bình thường |
+| 4 | Tên SP / Product Name | Tên sản phẩm |
+| 5 | SL / Qty (Tồn kho) | Tổng số lượng sản phẩm hiện đang có mặt trong kho, bao gồm cả số lượng đã giữ chỗ cho đơn hàng khác (nếu có). Đây là con số tổng tồn thực tế tại kho, chưa trừ đặt hàng.  Chỉ đồng bộ khi số lượng tồn kho > 0 và có sự thay đổi (tăng/giảm)  Trường hợp số lượng tồn kho = 0 thì chỉ sync lần = 0 đầu tiên, các lần tiếp theo nếu vẫn = 0 thì sẽ ko đồng bộ nữa, cho tới khi nào tồn kho thay đổi thì mới đồng bộ lại |
+| 6 | Allocated | Số lượng sản phẩm đã được phân bổ cho các đơn hàng khác (ví dụ: khách đã đặt nhưng chưa giao). Phần này không còn khả năng sử dụng cho đơn hàng mới. |
+| 7 | AvailQty (SL sẵn sàng bán) | Là số lượng có thể bán được ngay lập tức. Tính bằng "Tồn kho – Allocated". Là con số dùng để kiểm tra khả dụng khi tạo đơn hàng mới. |
+| 8 | SL thùng / Case Qty | Số lượng sản phẩm tính theo đơn vị thùng (nếu sản phẩm có quy cách đóng gói). |
+| 9 | SL lẻ còn lại / Remaining Qty | Phần số lượng dư ra không đủ thành 1 thùng. Có thể được bán lẻ, hoặc giữ lại để gom lô sau. |
+| 10 | Lô / BactNo | * Mã lô sản xuất dùng để kiểm soát truy xuất nguồn gốc * Trường hợp sản phẩm có nhiều lô thì mỗi lô nằm trên 1 dòng * Thông tin tồn kho cũng sẽ được tính dựa trên thông tin lô |
+| 11 | %Shelflife | * Tỷ lệ phần trăm thời hạn sử dụng còn lại của lô hàng, tính từ ngày sản xuất đến hạn sử dụng. * %Shelflife = [(HSD - Ngày hiện tại) / (HSD - NSX)] × 100 |
+| 12 | Ngày sản xuất / Product date | Ngày sản phẩm được sản xuất hoặc đóng gói.  Ngày sản xuất dựa trên thông tin lô |
+| 13 | Hạn sử dụng / Expiry date | Ngày sản phẩm hết hạn sử dụng.  Hạn sử dụng dựa trên thông tin lô |
+| 14 | Quy cách / Qty Per Case | Quy cách của sản phẩm từ đơn vị lớn nhất -> đơn vị cơ bản (ví dụ: 1 thùng có 12 chai). |
+| 15 | Tình trạng tồn kho | Mặc định = Hàng bán |
+| 16 | Nhãn 1. | Mã phân cấp sản phẩm cấp 2 |
+| 17 | Nhãn 2. | Mã phân cấp sản phẩm cấp 3 |
+| 18 | Tên Nhãn 2 | Tên phân cấp sản phẩm cấp 3 |
+| 19 | Số ngày lưu kho | * Số ngày sản phẩm đã nằm trong kho kể từ ngày nhập kho = Ngày hiện tại - Ngày nhập kho |
+| 20 | Tên đơn vị tính / Unit Desc | Đơn vị cơ bản của sản phẩm |
+| 21 | Ngày Nhập Kho | * Ngày lô hàng được nhập thực tế vào kho. * Ngày này sẽ dựa trên thông tin lô |
+
+### 2.4.5. Điều chỉnh thông tin đơn hàng
+
+* Bỏ trường "Giảm trừ" trên thông tin đơn hàng
+* Phạm vi áp dụng: Đơn Purchase Order, Đơn sell-out
+
+## 2.5 Tổng hợp lưu ý đơn hàng
+
+| Luồng đơn hàng | Kênh bán hàng | Xuất kho | Giá bán |
+| --- | --- | --- | --- |
+| Direct Sales | * Nếu kênh điểm bán **Active/Inactive** -> Lấy theo kênh config , lưu đơn theo kênh điểm bán * Nếu kênh điểm bán không có -> lấy theo kênh config , lưu đơn theo kênh config | Xuất kho: theo kênh config Xuất kho: 1-1 - 1 PXK - 1 Đơn SO | RedV1.1.0: Thay đổi cách lấy giá như ở US: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654 |
+| Indirect Sales | * Nếu kênh điểm bán active -> Lấy theo kênh điểm bán, DS SP load theo kênh điểm bán * Nếu kênh điểm bán inactive -> Lấy theo kênh config, DS SP lấy tồn kho theo kênh config * Nếu kênh điểm bán không có -> lấy theo kênh config, DS SP lấy tồn kho theo kênh config | Xuất kho: bán kênh nào xuất kho kênh đó Xuất kho: 1-n - 1 PXK - Nhiều đơn SO |  |
+| Số lượng tối đa | 1. Số lượng sản phẩm tối đa khi tạo đơn hàng: 1000 2. Số lô tối đa trên 1 sản phẩm khi tạo đơn hàng: 1000 3. Số lượng sản phẩm tối đa trên 1 CTKM trên đơn hàng: 1000   (1. Max item on product\_list: 1000 2. Max batch\_no on product\_list:1000 3. Max item on promotion\_list:1000)    Báo lỗi: 1/ Chỉ được thêm tối đa 1000 sản phẩm trên đơn hàng! 2/ Sản phẩm @Mã sản phẩm - Tên sản phẩm: Chỉ được thêm tối đa 1000 lô! -> Mess cho 1 sản phẩm, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random sản phẩm lỗi bất kỳ) 3/ CTKM @Mã CTKM - Tên CTKM chỉ được tặng tối đa 1000 sản phẩm! -> Mess cho 1 CTKM, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random CTKM lỗi bất kỳ)  Để c note vào doc luôn | | |
+
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0  RedV1.1.0: Thay đổi cách lấy giá ở US Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+ú
+
+# 1 Tích hợp Master Data
+
+## 1.1 Quy trình tích hợp
+
+trueIntegration\_CustomercVPYjn6vNkQ-PeCBjaeXfalse8004ae0aab76e12765214acbeedfea180e077971e8dautotoptrue10624
+
+## 1.2 Dữ liệu tích hợp
+
+### 1.2.1 Thông tin điểm bán (Customer Master Data)
+
+* Chỉ tích hợp điểm bán thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Khi thực hiện check trùng điểm bán để tạo mới, thực hiện check trùng trên các điểm bán có trạng thái "Hoạt động"
+* Đánh dấu điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS ngoại trừ: **Kinh độ, Vĩ độ, Hình ảnh điểm bán, Địa chỉ theo tọa độ**
+
+|  |  |  |
+| --- | --- | --- |
+| Portal | Có thể upload Hình ảnh điểm bán | Khi vào màn hình này hệ thống sẽ hiển thị kinh độ, vĩ độ theo địa chỉ đã nhập (Địa chỉ đồng bộ từ Hương Thủy)  User có thể kéo thả và cập nhật vị trí trên bản đồ và lưu lại thông tin. |
+| App Salesman | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Định vị trên bản đồ, hệ thống mở màn hình phụ như sau:     * Hiển thị vị trí điểm bán ngay tại thời điểm nhân viên điều chỉnh điểm bán, không được thay đổi * Zoom In vào vị trí của điểm bán * Không di chuyển định vị trên bản đồ, nhưng có thể zoomin, zoomout và kéo bản đồ để xem   Sau khi điều chỉnh → Nhấn Cập nhật để lưu lại thông tin.  Quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất) | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Hình ảnh điểm bán, hệ thống mở màn hình phụ như sau:      Chụp ảnh theo yêu cầu  Số lượng ảnh đã chụp/ Số lượng hình ảnh tối đa (Tối đa 10 ảnh)  Sau khi cập nhật, quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất)  Lưu ý:**Không được xóa hình ảnh cũ đã lưu trước đó, chỉ được xóa hình mới chụp.**  Trường hợp đã chụp đủ 10 ảnh, theo quy tắc Ảnh upload/Ảnh chụp trực tiếp |
+
+* Khi điều chỉnh thông tin điểm bán direct sales trên DMS → Chỉ lưu thông tin trên DMS không sync về ERP
+* Điểm bán Indirect sales vẫn tạo mới/chỉnh sửa trên DMS bình thường.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Điểm bán đã tồn tại (Check trên tất cả trạng thái của điểm bán) * Các trường dữ liệu liên kết gửi qua không đúng định dạng hoặc không tồn tại trên DMS hoặc bị ngưng hoạt động | * Bỏ qua thông tin Kinh độ, Vĩ độ, Tọa độ địa chỉ, vì các thông tin này sẽ được tạo trên DMS  * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã điểm bán không tồn tại trên DMS * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+* NPP Direct của HT không tạo mới điểm bán trên hệ thống DMS, điểm bán toàn bộ được tạo từ ERP HT.
+* NPP Indirect:
+  + Enhance cho điểm bán Indirect của HT: Kênh và loại điểm bán required: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4931
+  + NPP Indirect của HT không cho phép tao mới điểm bán trên portal NPP (Duyên BU Confirm), nên hiện tại sử dụng phân quyền để ẩn chức năng tạo mới trên portal NPP (Apply đối với NPP Indirect).
+  + Vẫn tạo mới/chỉnh sửa trên trên App SM và Portal HO
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| CustId | Nvarchar | 50 | x | Mã điểm bán | code (\*) | String | ID cung cấp từ phía partner (maxlength=200) | Thông báo:   * Mã điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| CustName | Nvarchar | 200 | x | Tên điểm bán | name (\*) | String | Tên điểm bán maxlength=500 | Thông báo:   * Tên điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Channel | Nvarchar | 10 | x | Kênh điểm bán | sale\_channel\_id | Number | Kênh bán hàng (vd: sale\_channel\_id=1) |  |
+| ClassId | Nvarchar | 6 | x | Nhóm điểm bán |  |  |  |  |
+| ShopType | Nvarchar | 10 | x | Loại Điểm Bán | store\_type\_code | Number | Loại điểm bán (vd: store\_type\_id=1) |  |
+| Status | Nvarchar | 1 | x | Trạng Thái: + A = Xử Lý Hoàn Tất + I = Ngưng Hoạt Động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxDflt | Nvarchar | 1 | x | Mức Thuế Mặc Định C - KH tính thuế theo SP K - KH không tính thuế |  |  |  |  |
+| TaxRegNbr | Nvarchar | 15 | x | Mã Số Thuế |  |  |  |  |
+| BranchID | Nvarchar | 30 | x | Mã Chi Nhánh | distributor\_ids (\*) | String | Nhà phân phối, chọn nhiều (vd: distributor\_ids="1,2,3") | Thông báo:   * Nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! * Nhà phân phối không tồn tại, vui lòng kiểm tra lại! |
+| SalesProvince | Nvarchar | 30 | x | Tỉnh Bán Hàng |  |  |  |  |
+| Addr1 | Nvarchar | max | x | Số Nhà (tab Địa Chỉ, vùng Địa Chỉ Chính) | address (\*) | String | địa chỉ cửa hàng, maxlength=2000 |  |
+| Ward | Nvarchar | 100 |  | Phường/Xã (tab Địa Chỉ, vùng Địa Chỉ Chính) | ward\_code | String | Phường/xã (vd: ward\_code="13") |  |
+| Territory | Nvarchar | 10 | x | Vùng Bán Hàng (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| State | Nvarchar | 10 | x | Tỉnh/TP Thoại (tab Địa Chỉ, vùng Địa Chỉ Chính) | province\_code (\*) | String | Tỉnh/thành (vd: province\_code="01") |  |
+| District | Nvarchar | 30 | x | Quận/Huyện (tab Địa Chỉ, vùng Địa Chỉ Chính) | district\_code (\*) | String | Quận/huyện (vd: district\_code="06") |  |
+| Country | Nvarchar | 10 | x | Đất Nước (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| Attn | Nvarchar | 200 | x | Người Liên Hệ Chính |  |  |  |  |
+| Terms | Nvarchar | 10 | x | Điều khoản thanh toán |  |  |  |  |
+| InActive | Nvarchar | 1 |  | Trạng thái hoạt động 0 = hoạt động, 1 = không hoạt động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| EMailAddr | Nvarchar | 100 |  | Địa chỉ Email | representative\_emai | String | Email chủ cửa hàng, maxlength=200 |  |
+| Zip | Nvarchar | 20 |  | Mã bưu chính |  |  |  |  |
+| Fax | Nvarchar | 20 |  | Số Fax |  |  |  |  |
+| Phone | Nvarchar | 20 |  | Số Điện Thoại | phone | String | Số điện thoại điểm bán, maxlength={10,12} chỉ nhập số |  |
+| TaxLocId | Nvarchar | 20 |  | Mã khu vực thuế |  |  |  |  |
+| TaxID00 | Nvarchar | 20 |  | Mã thuế phụ 00 |  |  |  |  |
+| TaxID01 | Nvarchar | 20 |  | Mã thuế phụ 01 |  |  |  |  |
+| TaxID02 | Nvarchar | 20 |  | Mã thuế phụ 02 |  |  |  |  |
+| TaxID03 | Nvarchar | 20 |  | Mã thuế phụ 03 |  |  |  |  |
+| BillAttn | Nvarchar | 200 |  | Người nhận hóa đơn |  |  |  |  |
+| BillAddr1 | Nvarchar | max |  | Địa chỉ hóa đơn |  |  |  |  |
+| BillCountry | Nvarchar | 3 |  | Quốc gia hóa đơn |  |  |  |  |
+| BillState | Nvarchar | 10 |  | Tỉnh/TP hóa đơn |  |  |  |  |
+| BillDistrict | Nvarchar | 30 |  | Quận/Huyện hóa đơn |  |  |  |  |
+| BillWard | Nvarchar | 100 |  | Phường/Xã hóa đơn |  |  |  |  |
+| BillFax | Nvarchar | 20 |  | Fax hóa đơn |  |  |  |  |
+| BillName | Nvarchar | 200 |  | Tên đơn vị nhận hóa đơn |  |  |  |  |
+| BillPhone | Nvarchar | 20 |  | SĐT hóa đơn |  |  |  |  |
+| BillZip | Nvarchar | 20 |  | Mã bưu điện hóa đơn |  |  |  |  |
+| InvoiceAccount | Nvarchar | 50 |  | Tài khoản thanh toán |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | sale\_channel\_code | String | Kênh bán hàng (vd: sale\_channel\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_code | String | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_code | String | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | longtitude | Number | Kinh độ (vd: longtitude=103,5634584) | Điều chỉnh trên DMS |
+|  |  |  |  |  | latitude | Number | Vĩ độ (vd: latitude=132,9854236) | Điều chỉnh trên DMS |
+|  |  |  |  |  | map\_address | String | Địa chỉ hiển thị trên bản đồ (vd: map\_address="34 Hoàng Việt") | Điều chỉnh trên DMS |
+|  |  |  |  |  | files | Object[] | Hình ảnh cửa hàng, max=10 |  |
+|  |  |  |  |  | file\_type (\*) | String | group file thuộc về | Chưa có thông tin này |
+|  |  |  |  |  | file\_name | String | Tên file gốc | Chưa có thông tin này |
+|  |  |  |  |  | file\_url (\*) | String | Địa chỉ file | Chưa có thông tin này |
+|  |  |  |  |  | file\_size | Number | Kích thước file | Chưa có thông tin này |
+|  |  |  |  |  | mime\_type | String | Kiểu file | Chưa có thông tin này |
+|  |  |  |  |  | width | Number | Độ rộng file image | Chưa có thông tin này |
+|  |  |  |  |  | heigh | Number | Độ cao file image | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_id | Number | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_id | Number | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | representative\_name | String | Tên chủ cửa hàng, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_emai | String | Email chủ cửa hàng, maxlength=200 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_id | String | CMND/CCCD của chủ cửa hàng, maxlength=20 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_date | String | Ngày cấp CMND/CCCD | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_place | String | Nơi cấp, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_address | String | Hộ khẩu thường trú, maxlength=500 | Chưa có thông tin này |
+
+### 1.2.2 Thông tin cấu trúc cây sản phẩm
+
+* Tích hợp câu trúc cây sản phẩm 1 chiều từ ERP → DMS
+* Đánh dấu cấu trúc cây thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã phân cấp đã tồn tại (Check trên tất cả trạng thái của phân cấp) * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Mã phân cấp không tồn tại trên DMS * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã phân cấp không tồn tại trên DMS hoặc Mã phân cấp đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+**b. Dữ liệu tích hợp**
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| NodeID | nvarchar | 30 | x | Mã | code (\*) | String | Mã phân cấp | Thông báo:   * Mã phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã phân cấp đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã phân cấp không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã phân cấp không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeLevel | smallint |  | x | Mức Note: Cấu trúc cây của HT hiện tại đang chỉ có 3 mức | level(\*) | String | Cấp độ của cây phân cấp. | Thông báo:   * Cấp độ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Cấp độ không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeIDLevel1 | nvarchar | 30 |  | Mã Số Parent Mức 1 Nếu Có |  |  |  |  |
+| NodeIDLevel2 | nvarchar | 30 |  | Mã Số Parent Mức 2 Nếu Có |  |  |  |  |
+| Descr | nvarchar | 200 | x | Diễn Giải | name (\*) | String | Tên phân cấp | Thông báo:   * Tên phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | parent\_code | String | Cấp cha (Nếu = null tức là cấp cao nhất) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.3 Thông tin sản phẩm
+
+* Tích hợp sản phẩm thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu sản phẩm thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã sản phẩm đã tồn tại (Check trên tất cả trạng thái của sản phẩm) * Phân cấp sản phẩm không tồn tại hoặc phân cấp bị ngưng hoạt động * Không tồn đơn vị kinh doanh hoặc đơn vị kinh doanh bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã sản phẩm không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin   + Trường hợp sản phẩm đã có trong transaction     - Vẫn cho phép update các trường thông tin cơ bản của sản phẩm     - Ngoại trừ đơn vị cơ bản và quy đổi -> Thì được phép thêm quy đổi mới, không được update đơn vị cơ bản với quy đổi hiện tại     - Nếu có update sẽ báo message và dừng xử lý: Sản phẩm đã phát sinh giao dịch, không được cập nhật đơn vị và quy đổi của sản phẩm. * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã sản phẩm không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Lưu ý |  |  |
+
+#### b. Dữ liệu tích hợp
+
+##### ----- Danh mục sản phẩm
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm | code (\*)đi | String | Mã sản phẩm (bắt buộc). | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! |
+| ClassID | Nvarchar | 10 | x | Nhóm sản phẩm, mặc định là "Product" |  |  |  |  |
+| Descr | Nvarchar | 100 | x | Diễn giải sản phẩm | name (\*) | String | Tên sản phẩm (bắt buộc). | Thông báo:   * Tên sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Descr1 | Nvarchar | 100 | x | Diễn giải bổ sung |  |  |  |  |
+| DfltPOUnit | Nvarchar | 15 | x | Đơn vị mua |  |  |  |  |
+| DfltSOUnit | Nvarchar | 15 | x | Đơn vị bán | business\_unit\_code | Number | ID đơn vị kinh doanh của sản phẩm (bắt buộc). |  |
+| StkUnit | Nvarchar | 15 | x | Đơn vị lưu kho | basic\_package\_unit (\*) | Number | ID đơn vị đóng gói cơ bản (bắt buộc). | Thông báo:   * Đơn vị cơ bản bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Đơn vị cơ bản không đúng định dạng, vui lòng kiểm tra lại! * Đơn vị cơ bản không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkItem | smallint |  | x | Quản lý tồn kho:  1 = Không cho bán âm, 0 = Được bán âm |  |  |  |  |
+| InvtType | Nvarchar | 1 | x | Loại sản phẩm. Mặc định "F" |  |  |  |  |
+| LotSerFxdLen | smallint |  |  | Chiều dài mã lô |  |  |  |  |
+| LotSerFxdTyp | Nvarchar | 1 |  | Kiểu mã lô |  |  |  |  |
+| LotSerTrack | Nvarchar | 2 | x | Quản lý theo lô: L = Có, N = Không |  |  |  |  |
+| NodeID | Nvarchar | 30 | x | Mức phân cấp nhãn hàng | category\_code (\*) | Number | ID danh mục của sản phẩm (bắt buộc) | Thông báo:   * Danh mục sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Danh mục sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Danh mục sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| NodeIDLevel1 | Nvarchar | 30 |  | Mức phân cấp nhãn hàng cấp 1 |  |  |  |  |
+| Status | Nvarchar | 2 | x | Trạng thái sản phẩm: AC = Đang hoạt động, IN = Ngưng | status (\*) | String | Trạng thái của sản phẩm (bắt buộc). Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxCat | Nvarchar | 10 | x | Thuế VAT. VD: VAT08, VAT10 | tax\_code (\*) | Number | Thuế VAT (bắt buộc) | Thông báo:   * Thuế VAT bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Thuế VAT không đúng định dạng, vui lòng kiểm tra lại! * Thuế VAT không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkVol | decimal |  |  | Thể tích lưu kho |  |  |  |  |
+| StkWt | decimal |  |  | Trọng lượng lưu kho |  |  |  |  |
+| StkWtUnit | Nvarchar | 15 |  | Đơn vị trọng lượng (ví dụ: THUNG) |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: 1 = Thêm, 2 = Sửa,  3 = Xoá |  |  |  |  |
+| UnitConversion | UnitConversion | Object | x | Đơn vị quy đổi | product\_units | Object[] | Danh sách các đơn vị quy đổi. (có thể null) |  |
+|  |  |  |  |  | image | String | URL hình ảnh của sản phẩm (có thể để null). | Chưa có thông tin này |
+|  |  |  |  |  | package\_unit\_code | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+##### ----- Đơn vị quy đổi
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm |  |  |  |  |
+| UnitType | Nvarchar | 2 | x | Loại quy đổi đơn vị |  |  |  |  |
+| FromUnit | Nvarchar | 15 | x | Đơn vị gốc | package\_unit\_id | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+| ToUnit | Nvarchar | 15 | x | Đơn vị quy đổi |  |  |  |  |
+| MultDiv | Nvarchar | 1 | x | M: Nhân, D: Chia | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+
+### 1.2.4 Thông tin Thuế
+
+* Tích hợp 1 chiều từ ERP → DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Thuế:
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã thuế đã tồn tại (Check trên tất cả trạng thái của Mã thuế) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã thuế không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã thuế không tồn tại trên DMS hoặc  đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| catID | Text | 30 | x | Mã thuế | code (\*) | String | Mã của thuế (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã thuế đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã thuế không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| descr | Text | 200 | x | Mô tả | name (\*) | String | Tên của thuế (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| taxRate | decimal | 30 | x | Mức thuế | rate (\*) | String | Tỷ lệ thuế | Thông báo:   * Tỷ lệ thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Tỷ lệ thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.5 Thông tin kênh bán hàng
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu kênh bán hàng thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã kênh bán hàng đã tồn tại (Check trên tất cả trạng thái của Mã kênh) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kênh bán hàng không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã kênh bán hàng không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| Code | nvarchar | 10 | x | Mã Kênh | code (\*) | String | Mã của kênh bán hàng (maxlength = 200, bắt buộc). | Thông báo:   * Mã kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kênh bán hàng đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kênh bán hàng không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kênh bán hàng không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của kênh bán hàng (maxlength = 500, bắt buộc). | Thông báo:   * Tên kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Type | nvarchar | 5 | x | Loại Kênh, có 2 loại: + BH: Bán Hàng + KH: điểm bán |  |  |  |  |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | company\_code | Number | Id của công ty (bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | status (\*) | String | Trạng thái hoạt động của kênh bán hàng. Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+### 1.2.6 Thông tin nhóm điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhóm điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Nhóm điểm bán: [HO] [HT] Nhóm điểm bán
+
+|  | Giao diện thay đổi | Mô tả |
+| --- | --- | --- |
+| Portal |  | Màn hình Tạo mới/Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên phải trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Salesman |  | Màn hình Tạo mới/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Quản lý |  | Màn hình Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhóm điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã nhóm điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhóm điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóab | * Mã Nhóm điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| ClassId | nvarchar | 10 | x | Mã nhóm | code (\*) | String | Mã của nhóm khách hàng (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhóm điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhóm điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhóm điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của nhóm khách hàng (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.7 Thông tin Loại điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Loại điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Loại điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã Loại điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Loại điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Loại điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | Mã của loại điểm bán (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã loại điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã loại điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã loại điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên của loại điểm bán (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | status | String | Trạng thái hoạt động của loại điểm bán (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.8 Thông tin Nhà phân phối (Distributor Master)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhà phân phối thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhà phân phối đã tồn tại (Check trên tất cả trạng thái của Mã Nhà phân phối) * Dữ liệu gửi qua không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhà phân phối không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Nhà phân phối không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | ID cung cấp từ phía partner (maxlen = 200) | Thông báo:   * Mã nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhà phân phối đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhà phân phối không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên Nhà phân phối | Thông báo:   * Tên nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | phone | String | Số đt | Số điện thoại có thể có nhiều, mỗi Số điện thoại cách nhau dấu , |
+|  |  |  |  |  | email | String | Email | Email có thể có nhiều, mỗi email cách nhau dấu , |
+|  |  |  |  |  | parent\_id | String | Mã NPP cha |  |
+|  |  |  |  |  | province\_code (\*) | String | Mã code Tỉnh |  |
+|  |  |  |  |  | district\_code (\*) | String | Mã code Quận/Huyện |  |
+|  |  |  |  |  | ward\_code | String | Mã code Phường/xã |  |
+|  |  |  |  |  | address | String | Địa chỉ |  |
+|  |  |  |  |  | type | String | Loại NPP (DIRECT, INDIRECT) | Finviet tự lưu thông tin này để phân biệt   * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.9 Thông tin Bảng giá (Pricing)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Bảng giá thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* FV sẽ gửi API 2 bảng giá cho Sellin và Sellout để Hương Thủy mapping
+* Không tạo mới trên DMS FV
+* **Lưu ý**:
+  + Sử dụng config khi khởi chạy hệ thống ENABLE\_ERP\_PRICE\_SYNC
+    - True: Sync giá bán từ ERP Hương Thủy
+    - False: Không sync giá bán từ ERP Hương Thủy, tạo giá thủ công trên DMS
+  + Update Tháng 6/2025: 
+    - Hương Thủy có 4 cấp độ giá: Giá từng khách hàng → Giá theo kênh → Giá theo nhóm → Giá mặc định
+    - FV chưa đáp ứng giá theo cấp độ nên tạm thời sẽ lấy bảng giá mặc định của Hương Thủy.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Bảng giá đã tồn tại (Check trên tất cả trạng thái của Mã Bảng giá) * Vùng bán hàng không tồn tại hoặc đã ngưng hoạt động * Danh sách NPP không tồn tại hoặc đã ngưng hoạt động * Sản phẩm không tồn tại hoặc đã ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Đã duyệt * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Bảng giá không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Bảng giá không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+##### --- Bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| PriceID | Nvarchar | 100 | x | Mã Bảng Giá | code (\*) | String | Mã bảng giá | Thông báo:   * Mã bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã bảng giá đã tồn tại, , vui lòng kiểm tra lại! * Mã bảng giá không đúng định dạng, vui lòng kiểm tra lại! |
+| Status | Nvarchar | 10 | x | Trạng Thái C = Xử Lý Hoàn Tất H = Chờ Xử Lý | status | String | Trạng thái bảng giá (INIT, APPROVED, CANCELED, PAUSED) |  |
+| FromDate | datetime |  | x | Ngày Hiệu Lực | from\_date (\*) | String | Ngày áp dụng | Thông báo:   * Ngày áp dụng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Ngày áp dụng không đúng định dạng, vui lòng kiểm tra lại! |
+| ToDate | datetime |  | x | Ngày Kết Thúc | to\_date | String | Đến ngày kết thúc |  |
+| PriceCat | Nvarchar | 2 | x | Loại IT = Sản Phẩm IC = Sản Phẩm và điểm bán CT = Sản Phẩm và Kênh Bán Hàng CC = Sản Phẩm và Nhóm điểm bán |  |  |  |  |
+| Channel | Nvarchar | Max |  | Kênh được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustID | Nvarchar | Max |  | điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustClassID | Nvarchar | Max |  | Nhóm điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| Prom | bit |  | x | Khuyến Mãi |  |  |  |  |
+| Public | bit |  | x | Chung 1 = Áp dụng cho cho toàn bộ NPP 0 = Áp dụng cho các NPP thuộc ApplyForGeo. |  |  |  |  |
+| BranchID | Nvarchar | 20 | x | Mã Chi nhánh | distributor\_list | Array Object | Danh sách npp |  |
+| ApplyForGeo | Nvarchar | 2 | x | Nếu public = 0, thì bảng giá áp dụng theo danh sách NPP vùng bán hàng và Kênh bán hàng | region\_id | String | Id vùng |  |
+| StatusAction | Int |  | x | Trạng thái hành động:  + 1: Thêm mới.  + 2: Chỉnh sửa.  + 3: Xóa. |  |  |  |  |
+| Lines | ItemSelected | Array<ItemSelected> | x | Danh sách sản phẩm áp dụng giá bán |  |  |  |  |
+|  |  |  |  |  | name (\*) | String | Tên bảng giá | Thông báo:   * Tên bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | area\_id | String | Id khu vực |  |
+|  |  |  |  |  | price\_adjustment | String | Cờ cho phép npp chỉnh sửa giá bán (ON, OFF) |  |
+|  |  |  |  |  | distributor\_list (\*) | Array Object | Danh sách npp |  |
+|  |  |  |  |  | distributor\_list.\*.distributor\_code | Number | Id của npp |  |
+|  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |
+
+##### --- Chi tiết bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã Sản Phẩm | product\_list.\*.product\_code | Number | Id sản phẩm | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Mã sản phẩm không tồn tại hoặc bị ngưng hoạt động, vui lòng kiểm tra lại! |
+| SlsUnit | Nvarchar | 15 | x | Đơn Vị Bán |  |  |  |  |
+| QtyBreak | decimal |  | x | Số Lượng |  |  |  |  |
+| Price | decimal |  | x | Giá | product\_list.\*.base\_price | Number | Giá bán trước thuế | FV sẽ tự tính tiền thuế và lưu vào bảng giả là giá bán sau thuế |
+|  |  |  |  |  | product\_list (\*) | Array Object | Danh sách sản phẩm |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | priority\_type | String | 4 Cấp ưu tiên (Store > SaleChannel > StoreGroup > Default ) |  |
+
+### 1.2.10 Thông tin Nhân viên (Salesman Data)
+
+* Tích hợp 1 chiều từ ERP → DMS (Chỉ tích hợp tạo mới, không tích hợp chỉnh sửa)
+* Nhân viên bên ERP sẽ phân loại Direct/Indirect, ERP gửi về cho DMS và không được chỉnh sửa.
+
+| Chức năng | Màn hình | Mô tả |
+| --- | --- | --- |
+| Màn hình điều chỉnh |  | Màn hình Chỉnh sửa nhân viên/ Chi tiết nhân viên  Hiện tại: Chưa có thông tin Kho bán hàng  Cần điều chỉnh, đối với nhân viên có loại = Direct Sales:   * Thêm thông tin Kho bán hàng   + Dạng selectbox onechoice để user chọn   + Danh sách kho vật lý được load từ ERP.   + Trong select box hiển thị Mã kho - Tên kho   + Hiển thị kho mặc định từ ERP, user có thể chọn lại, chỉ chọn 1 kho   + Lưu thông tin kho mặc định user đã chọn   **Lưu ý****:**   * Data của Hương Thủy có trường hợp quản lý vượt cấp, không theo cấu trúc salesforce, nghĩa là cây salesforce chuẩn SD->RSM->ASM->SS-SM * Nhưng Hương Thủy RSM có thể quản lý SM * Nên đối với các trường hợp vai trò của Quản lý trực tiếp không tuân theo cây salesforce chuẩn thì sẽ để trống trường Quản lý trực tiếp. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhân viên đã tồn tại (Check trên tất cả trạng thái của Mã Nhân viên) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| branchID | nvarchar | 20 | x | Mã chi nhánh |  |  |  |  |
+| slsperId | nvarchar | 50 | x | Mã nhân viên bán hàng | code (\*) | String | Mã người dùng | Thông báo:   * Mã nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhân viên đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhân viên không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhân viên không đúng định dạng, vui lòng kiểm tra lại! |
+| name | nvarchar | 100 | x | Tên nhân viên | name (\*) | String | Họ và tên người dùng | Thông báo:   * Tên nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| position | nvarchar | 10 | x | Chức danh + AM = Quản Lý Khu Vực + RM = Quản Lý Vùng + S = Nhân Viên Bán Hàng + SS = Giám Sát Bán Hàng | position (\*) | String | Chức vụ người dùng (VD: Giám sát bán hàng) | Thông báo:   * Chức vụ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Chức vụ không đúng định dạng, vui lòng kiểm tra lại! * Chức vụ không tồn tại, vui lòng kiểm tra lại! |
+| addr1 | nvarchar | 500 |  | Mã địa chỉ | address | String | Địa chỉ cụ thể |  |
+| eMailAddr | nvarchar | 100 |  | Địa chỉ email | email | String | Địa chỉ email |  |
+| phone | nvarchar | 20 |  | Số điện thoại | phone | String | Số điện thoại người dùng |  |
+| state | nvarchar | 10 |  | Tỉnh/Thành phố | province\_id | Number | ID tỉnh/thành phố |  |
+| country | nvarchar | 10 |  | Quốc gia |  |  |  |  |
+| supID | nvarchar | 20 |  | Mã nhà cung cấp | manager\_id | Number | ID của người quản lý trực tiếp |  |
+| siteID | nvarchar | 10 | x | Mã Kho Note: đối với Position S thì mới có dữ liệu cột này | warehouse\_physical\_default\_id | String | ID kho bán hàng mặc định của nhân viên |  |
+| channel | nvarchar | 10 |  | Kênh phân phối | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| territory | nvarchar | 10 | x | Khu vực | area\_group\_ids | Array[Number] | Danh sách ID nhóm khu vực mà người dùng phụ trách | * Đối với nhân viên có chức vụ = Quản lý vùng/Quản lý khu vực vì ERP không có thông tin này nên cho phép chỉnh sửa thông tin nhân viên để user bổ sung thông tin Vùng/Khu Vực |
+| active | Integer |  | x | Trạng thái 1 = Nhân Viên đang làm 0 = Nhân Viên nghỉ việc | status | String (ACTIVE, INACTIVE, ...) | Trạng thái tài khoản (ACTIVE, INACTIVE, v.v.) |  |
+| channelHT | nvarchar | 10 | x | Mã kênh hỗ trợ | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | password (\*) | String | password | Điều chỉnh trên DMS |
+|  |  |  |  |  | role\_codes (\*) | Array[String] | Danh sách mã vai trò của người dùng | Chưa có thông tin |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.11 Kho
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Kho thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+* Không tạo mới trên DMS FV
+* ERP sync kho qua FV, thì kho này dùng cho direct và cho luồng đặt đơn PO indirect lên ERP
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Kho đã tồn tại (Check trên tất cả trạng thái của Mã Kho) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kho không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Kho không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| SiteID | nvarchar | 30 | x | Mã kho | warehouse\_list.code (\* ) | String | ID kho cung cấp từ partner | Thông báo:   * Mã kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kho đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kho không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kho không đúng định dạng, vui lòng kiểm tra lại! |
+| Name | nvarchar | 200 | x | Tên kho | [warehouse\_list.name](http://warehouse_list.name) (\* ) | String | Tên kho (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| CpnyID | nvarchar | 30 | x | Chi nhánh | distributor\_code (\*) | String | ID của NPP cung cấp từ partner | Thông báo:   * Nhà phân phối của kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối của kho không tồn tại, vui lòng kiểm tra lại! * Nhà phân phối của kho không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | warehouse\_list (\*) | String | Danh sách chi nhánh kho của NPP |  |
+|  |  |  |  |  | warehouse\_list..status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.12 Dữ liệu địa lý hành chính
+
+* Dữ liệu địa lý hành chính Tỉnh/Thành Phố, Quận/Huyện sẽ sync 1 chiều từ ERP → DMS
+* ERP không có thông tin Phường Xã, DMS sẽ mặc định tạo 1 phường xã cho 1 quận/huyện của ERP. Tên Phường Xã = Tên Quận Huyện
+ 
+
+# 2 Tích hợp Transaction Data (TBU)
+
+## 2.1. Đồng bộ tồn kho sản phẩm
+
+trueSƠ ĐỒ FINAL UmoDcH\_7QxIE1pTY-Ygefalse700autotoptrue64136
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Gọi API cập nhật tồn kho sản phẩm | DMS Finviet | Cứ sau 3-5 phút, DMS Finviet tự động gọi API cập nhật tồn kho do ERP Hương Thủy cung cấp. |
+| 2 | Gửi reponse thông tin tồn kho | ERP Hương Thủy | ERP Hương Thủy gửi thông tin tồn kho mới nhất cho DMS Finviet. |
+| 3 | Cập nhật tồn kho | DMS Finviet | DMS Finviet cập nhật lại tồn kho trên hệ thống. |
+
+## 2.2. Áp dụng CTKM trên đơn hàng
+
+### 2.2.1. Quy trình
+
+trueSƠ ĐỒ FINAL E4qxtPtCYDiwwD2euFba1false1000autotop66523750true
+
+**Lưu ý:**
+
++ Trước khi đơn xác nhận thì hiển thị theo những cái user chọn, apply CTKM có update thì ko quan tâm, cho tới khi xác nhận cũng sẽ update lại theo ERP. (sellout direct, purchase)
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn Áp dụng CTKM | Người dùng | Người dùng chọn áp dụng CTKM trên đơn hàng.   * Nếu ERP Hương Thủy đã Tạo đơn hàng SO, bỏ qua bước 2,3 và tiếp tục bước 4. * Nếu ERP Hương Thủy chưa Tạo đơn hàng SO, tiếp tục bước 2. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO. |
+| 4 | Gọi API Kiểm tra CTKM | DMS Finviet | DMS Finviet thực hiện gọi API Kiểm tra CTKM do ERP Hương Thủy cung cấp. |
+| 5 | Gửi response CTKM khả dụng của đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi thông tin CTKM khả dụng cho đơn hàng cho DMS Finviet. |
+| 6 | Hiển thị danh sách CTKM khả dụng của đơn hàng | DMS Finviet | DMS Finviet hiển thị danh sách CTKM có thể áp dụng cho đơn hàng. |
+| 7 | Chọn CTKM áp dụng | Người dùng | Người dùng thực hiện chọn CTKM muốn áp dụng cho đơn hàng và áp dụng. |
+| 8 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra CTKM. |
+| 9 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi kết quả áp dụng các CTKM của đơn hàng.   * Nếu thành công: Tiếp tục bước 10.1. * Nếu thất bại: Tiếp tục bước 10.2. |
+| 10.1 | Ghi nhận và tính toán lại đơn hàng | DMS Finviet | DMS Finviet ghi nhận và tính toán lại đơn hàng kèm CTKM đã áp dụng thành công. |
+| 11.1 | Báo lỗi áp dụng CTKM thất bại | DMS Finviet | DMS Finviet báo lỗi áp dụng CTKM thất bại và quay lại bước 6. |
+
+### 2.3.2. Cập nhật giao diện
+
+Giao diện SMApp: [SM-APP] [HT] Đơn hàng - Thay đổi màn hình Khuyến mãi
+
+Giao diện portal NPP:
+
+| Title | Wireframe | Description |
+| --- | --- | --- |
+| Màn hình *Áp dụng CTKM* |  | 1. Loại CTKM: Chỉ bao gồm CTKM ontop, mặc định hưởng tất cả CTKM do Hương Thủy trả về. 2. Thông tin CTKM bao gồm:    * Checkbox: Chỉ hiển thị nếu CTKM có CTKM con (alterpolicy khác null), mặc định uncheck.    * Tên CTKM: Do Hương Thủy trả về    * Chi tiết CTKM: Click vào button infor → hiển thị chi tiết CTKM do HT trả về.    * Số sản phẩm tối đa được chọn: Là số sản phẩm mà người dùng có thể được chọn trong danh sách sản phẩm, tương ứng với maxitem do HT trả về.    * Thành tiền = Số tiền được hưởng trong CTKM.    * Danh sách trả khuyến mãi:      + Checkbox:        - Hệ thống mặc định chọn sẵn các quà tặng bên trong CTKM = maxitem HT trả về theo thứ tự từ trên xuống dưới.        - Cho phép người dùng uncheck/check miễn số lượng sản phẩm được check <= maxitem, cho phép không check SP nào.      + Mã sản phẩm: Do HT trả về.      + Tên sản phẩm: Do HT trả về.      + Số lượng/Giảm giá:        - Nếu hình thức KM là tặng sản phẩm → hiển thị số lượng sản phẩm được hưởng do HT trả về, không cho phép chỉnh sửa        - Nếu hình thức KM là giảm giá → hiển thị số tiền được giám do HT trả về, không cho phép chỉnh sửa.      + Đơn vị: Do HT trả về.  * Lưu ý: Khi check các CTKM có alterpolicy khác null. * + - Hệ thống thực hiện check chọn quà tặng trong CTKM cha như trên và hiển thị các CTKM con.     - Thông tin CTKM con giống với thông tin CTKM mô tả như trên. |
+| Màn hình *Xem* *chi tiết CTKM đã áp dụng trên đơn* |  | Bao gồm danh sách khuyến mãi đã được chọn tại màn hình Áp dụng CTKM  Mỗi CTKM - hình thức khuyến mãi là 1 dòng. Nếu CTKM là tặng X trong nhóm sản phẩm → Mỗi SKU tách xuống 1 dòng (chỉ hiển thị các SKU được lựa chọn tặng)   | Tên trường | Mô tả | | --- | --- | | Chương trình khuyến mãi | Hiển thị tên CTKM | | Thể lệ chương trình | Mô tả thể lệ chương trình | | Mã SKU | Hiển thị Mã SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Tên SKU | Hiển thị tên SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Số lượng | Hiển thị số lượng SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Đơn vị | Hiển thị tên đơn vị của SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Khuyến mãi | Hiển thị giá trị tiền khuyến mãi | |
+
+## 2.3. Đơn hàng - Luồng Direct Sales
+
+### 2.3.1. Tạo mới đơn hàng đặt từ SMApp
+
+trueSƠ ĐỒ FINAL \_1nl6CzjSQuimAQcpcuM1false1000autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn sản phẩm, số lượng | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng. |
+| 2 | Xác nhận danh sách sản phẩm | Người dùng | Người dùng xác nhận danh sách sản phẩm. |
+| 3 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 4 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO theo request của DMS Finviet.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 5 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 6 | Đặt đơn hàng | Người dùng | Người dùng thực hiện đặt đơn hàng. |
+| 7 | Gọi API lấy số dư tồn kho | DMS Finviet | DMS Finviet gọi API Lấy số dư tồn kho do ERP Hương Thủy cung cấp. |
+| 8 | Gửi response thông tin tồn kho mới nhất | ERP Hương Thủy | ERP Hương Thủy kiểm tra số lượng sản phẩm trên đơn và tồn kho.   * Nếu tồn kho đủ, tiếp tục bước 9.1. * Nếu tồn kho không đủ, tiếp tục bước 9.2. |
+| 9.1 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 10. * Nếu không, tiếp tục bước 12. |
+| 9.2 | Báo lỗi tồn kho không đủ | DMS Finviet | DMS Finviet báo lỗi tồn kho sản phẩm không đủ. |
+| 10 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 11 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 5 - Quy trình Áp dụng CTKM (bước 9.2.). * Nếu áp dụng thành công, tiếp tục bước 12. |
+| 12 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 13 | Gửi response xác nhận đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi response xác nhận đơn hàng. |
+| 14 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+
+### 2.3.2. Đồng bộ cập nhật thông tin đơn hàng (không bao gồm cập nhật trạng thái)
+
+#### 2.3.2.1. Đồng bộ cập nhật thông tin đơn hàng từ Finviet SM App sang ERP Hương Thủy
+
+**Lưu ý:**DMS Finviet chỉ được chỉnh sửa đơn hàng trạng thái "Khởi tạo"
+
+trueSƠ ĐỒ FINAL WDC1obpp1IcVMy5w1SCE1false600995f3800d490879d4800cd6305d43b0eed7f1c9eautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | Finviet SM App | Người dùng thực hiện cập nhật thông tin đơn hàng trên Finviet SM App. |
+| 2 | Gọi API Tạo đơn hàng | Finviet SM App | Finviet SM App thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng từ DMS Finviet. |
+
+#### 2.3.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang Finviet SMApp
+
+**Lưu ý:**DMS Finviet cập nhật thông tin đơn hàng theo ERP Hương Thủy mà không quan tâm trạng thái.
+
+trueSƠ ĐỒ FINAL aVUTX9YFLwJzr5DOmUOA1false6007d5d8cab75235888450ade2d3ba103f8d6284e1cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | ERP Hương Thủy | Người dùng thực hiện cập nhật thông tin đơn hàng trên ERP Hương Thủy. |
+| 2 | Gọi API Tạo đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API Cập nhật thông tin đơn hàng do Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | SM App | SM App cập nhật thông tin đơn hàng từ ERP Hương Thủy. |
+
+**Lưu ý:** Khi cập nhật thông tin, SM App ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công
+
+### 2.3.3. Đồng bộ cập nhật trạng thái đơn hàng
+
+trueSƠ ĐỒ FINAL SrxwrfXPt5kR5NXn4GUV1false600autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật trạng thái đơn hàng. |
+| 2 | Gọi API cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy gọi API cập nhật trạng thái đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật trạng thái đơn hàng | Finviet SM App | DMS Finviet cập nhật trạng thái đơn hàng theo request của ERP Hương Thủy.  Mapping trạng thái đơn hàng:   | STT | ERP Hương Thủy | DMS Finviet | Ghi chú | | --- | --- | --- | --- | | 1 | 10 - Đặt hàng | Khởi tạo | Sell out init | | 2 | 20 - Đặt hàng | Khởi tạo | Sell out init | | 3 | 22 - Tạo PGH, 1 phần | Đã duyệt | Sell out approve | | 4 | 23 - Tạo PGH | Đã duyệt | Sell out approve | | 5 | 25 - Tạo PXK, 1 phần | Đã duyệt | Sell out approve | | 6 | 30 - Tạo PXK | Đã duyệt | Sell out approve | | 7 | 35 - Đã xuất kho, 1 phần | Đã duyệt | Sell out approve | | 8 | 40 - Đã xuất kho | Đã duyệt | Sell out approve | | 9 | 45 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 10 | 55 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 11 | 50 - Đã giao hàng, chưa HĐ | Đã duyệt | Sell out approve | | 12 | 60 - Đã xuất hóa đơn | Đã duyệt | Sell out approve | | 13 | 65 - Đã giao hàng, 1 phần | Đã duyệt | Sell out approve | | 14 | 70 - Đã giao hàng | Đã duyệt | Sell out approve | | 15 | 80 - Huỷ | Đã huỷ | Hủy Sellout + PXK | | 16 | 85 - Ngưng giao hàng | Đã huỷ | Hủy Sellout + PXK | | 17 | 90 - Đã đóng | Đã giao hàng | Tạo mới phiếu xuất kho đã duyệt |   **Lưu ý:**  Nếu HT update ngược lên 90 thì   * Hủy phiếu xuất tạo lại theo ERP, không update kho. * Đơn Sellout vẫn giữ status APPROVED (trừ 80,85)   Đơn ERP mà đã xác nhận thì ko edit / xoá |
+
+## 2.4. Đơn hàng - Luồng Indirect Sales
+
+### 2.4.1. Tạo mới đơn hàng đặt từ NPP DMS Finviet
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Tạo Purchase Order | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 2 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 3 | Tạo đơn Purchase Order | Người dùng | Người dùng thực hiện tạo đơn Purchase Order. |
+| 4 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 5. * Nếu không, tiếp tục bước 7. |
+| 5 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 6 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 2 - Quy trình Áp dụng CTKM (bước 9.2). * Nếu áp dụng thành công, tiếp tục bước 7. |
+| 7 | Tạo Purchase Order thành công | DMS Finviet | DMS Finviet tạo mới Purchase Order trạng thái "Khởi tạo". |
+| 8 | Duyệt Purchase Order | Người dùng | Người dùng thực hiện duyệt PO. |
+| 9 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 10 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+| 11 | Xử lý đơn hàng | ERP Hương Thuỷ | ERP xử lý hoàn tất đơn hàng. |
+| 12 | Tạo sell-in | DMS Finviet | DMS Finviet tạo đơn sell-in trạng thái "Đã duyệt". |
+| 13 | Tạo phiếu nhập hàng | DMS Finviet | DMS Finviet tạo phiếu nhập hàng trạng thái "Khởi tạo". |
+| 14 | Cập nhật tồn kho của NPP | DMS Finviet | DMS Finviet cập nhật tồn kho của NPP. |
+
+**Lưu ý:**
+
+* Khi tạo đơn sell-in và phiếu nhập hàng, hệ thống ghi nhận
+
+* + User tạo = service-account-erp-ht
+  + Ngày tạo = Ngày tạo đơn thành công
+
+* Khi DMS Finviet gửi đơn hàng qua ERP Hương Thủy, gửi kèm thông tin nhân viên bán hàng mặc định do Hương Thủy chỉ định.
+
+* Luồng NPP đặt hàng (indirect): NPP đặt lên ERP, chọn kho của ERP > Tới sellin / PNK thì NPP chọn kho chính nó để nhập vào
+
+### 2.4.2. Đồng bộ cập nhật thông tin đơn hàng
+
+#### 2.4.2.1. Đồng bộ cập nhật thông tin đơn hàng từ DMS Finviet sang ERP Hương Thủy
+
+trueSƠ ĐỒ FINAL J9WvCUdQFBiU4PW1a-GT1false300cb45e58ffabfd7cded81862ea34e2de13b3055b6autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | DMS Finviet | Người dùng thực hiện cập nhật thông tin đơn hàng trên hệ thống DMS Finviet. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng theo request từ DMS Finviet. |
+
+#### 2.4.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang DMS Finviet
+
+trueSƠ ĐỒ FINAL oJDWGC0ZhdB9qaZeK5Ls1false30048a666a161abec1e41b82e67497fe3f4d8fa0a3cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật thông tin đơn hàng trên hệ thống. |
+| 2 | Gọi API Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API cập nhật thông tin đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | DMS Finviet | DMS Finviet cập nhật thông tin đơn hàng theo resquest từ ERP Hương Thủy. |
+
+**Lưu ý:** Sau khi DMS Finviet cập nhật thông tin, hệ thống ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS
+
+### 2.4.3. Đồng bộ đơn hàng sell - out (NPP trên FV bán xuống merchant) từ DMS Finviet sang ERP Hương Thủy
+
+trueImport đơn sell out1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload đơn hàng lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin đơn hàng sellout lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import: <https://docs.google.com/spreadsheets/d/1nAcl7ONOGC2kQVFqrf2SsMaoCYrHBONNNQcOVzKqXeg/edit?gid=0#gid=0>
+* Hệ thống sẽ upload tất cả các đơn hàng (tất cả trạng thái) có thời gian tạo mới/cập nhật (created\_date/updated\_date) phát sinh sau lần upload gần nhất.
+
+| STT | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | LineType | Hàng bán/Hàng KM |
+| 25 | Mã SP /Product code | Mã SKU của sản phẩm  Trường hợp sản phẩm bị ngưng hoạt động thì vẫn sẽ gửi thông tin theo đơn hàng |
+| 26 | Tên SP /Product Name | Tên của sản phẩm |
+| 27 | ĐVT /Unit | Đơn vị tính trên đơn (HT bán theo đơn vị cơ bản) |
+| 28 | PackingQty | Giá trị quy đổi giữa đơn vị cơ bản và đơn vị quy đổi lớn nhất |
+| 29 | HSD /Expiry Date | Hạn sử dụng của lô sản phẩm tương ứng. |
+| 30 | Ngày SX /Production Date | Ngày sản xuất của lô sản phẩm tương ứng. |
+| 31 | Mã nhãn 1 /Brand code 1 | Mã phân cấp sản phẩm cấp 1 của sản phẩm |
+| 32 | Nhãn1 /Brand 1 | Tên phân cấp sản phẩm cấp 1 của sản phẩm |
+| 33 | Mã nhãn 2 / Brand code 2 | Mã phân cấp sản phẩm cấp 2 của sản phẩm |
+| 34 | Nhãn1 /Brand 2 | Tên phân cấp sản phẩm cấp 2 của sản phẩm |
+| 35 | Số Lo / Lot No. | Số lô của sản phẩm |
+| 36 | Số lượng /Qty | Số lượng theo từng lô của sản phẩm |
+| 37 | BoxQty | Số lượng theo đơn vị lớn nhất của sản phẩm.  = Qty/PackingQty (chỉ lấy phần chẵn) Ví dụ: Qty =330, PackingQty = 32 => BoxQty = 10 |
+| 38 | OddQty | Số lượng lẻ còn lại =  (Qty/PackingQty - BoxQty)\*PackingQty  Ví dụ: (330/32 - 10) \* 32 = 10 |
+| 39 | Đơn giá /Sale Price | Đơn giá của sản phẩm, giá trước VAT |
+| 40 | Giá Net /NetPrice | Đơn giá trung bình sau khi trừ chiết khấu của sản phẩm.  = NetAmt/Qty |
+| 41 | % CKMD /%Basic Discount | Hiển thị rỗng |
+| 42 | Số Tiền CKMD /Basic Discount | Hiển thị rỗng |
+| 43 | %CTKM /Promtion % | % chiết khấu theo promotion |
+| 44 | CTKM /Promtion Amount | Số tiền chiết khấu theo promotion  = %CTKM \* Qty \* Sale Price |
+| 45 | Tổng %CK /Total Discount | = %Basic Discount + Promtion % |
+| 46 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Total Discount \* Qty \* Sale Price |
+| 47 | Thành tiền /Amount | Thành tiền trước VAT trước CK =  Qty \* Sale Price |
+| 48 | Thành Tiền /NetAmt | Thành tiền trước VAT sau CK = Amount - Total Discount amount |
+| 49 | Mã thuế suất /VATID | Mã thuế suất của sản phẩm |
+| 50 | Thuế /TaxRate | Giá trị thuế suất của sản phẩm. |
+| 51 | Thành Tiền sau VAT /TotalAmt | Thành tiền sau VAT sau CK = NetAmount \* (1 + TaxRate) |
+| 52 | NWeight | Hiển thị rỗng |
+| 53 | GWeight | Hiển thị rỗng |
+| 54 | Mã CTKM/Promo No | Mã CTKM được hưởng |
+| 55 | Ghi chú dòng/Remark lines | Ghi chú trên từng dòng sản phẩm, nếu không có => hiển thị rỗng |
+| 56 | Ghi Chú Tổng/Remarks | Ghi chú của đơn hàng , nếu không có => hiển thị rỗng |
+
+* **Đối với CTKM giảm tiền/chiết khấu trên tổng đơn, hệ thống tách dòng theo từng CTKM và điền các thông tin sau:**
+
+|  |  |  |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | %CTKM /Promtion % | % chiết khấu theo promotion  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 25 | CTKM /Promtion Amount | Số tiền chiết khấu = Tổng số tiền chiết khấu trên đơn theo promotion. |
+| 26 | Tổng %CK /Total Discount | = %Basic Discount + Promtion %  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 27 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Tổng số tiền CKMD + Tổng số tiền chiết khấu theo promotion |
+| 28 | **Mã CTKM/Promo No** | Mã CTKM được hưởng |
+| Lưu ý: Các trường còn lại để trống. | | |
+
+### 2.4.4. Đồng bộ tồn kho NPP (NPP trên FV bán xuống merchant)
+
+trueImport đơn sell out6VP22lBI0euw8FGYmxfN1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload tồn kho NPP lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin thông tin NPP lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import:
+
+|  | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã kho / WarehouseID | * Mã định danh duy nhất của kho hàng. * Dùng để phân biệt các kho trong hệ thống (ví dụ: Kho Quận 9, Kho Nhà Bè). * Là cơ sở để xác định nơi lưu trữ hàng hóa. |
+| 2 | Tên kho / Warehouse Name | Tên hiển thị của kho  Sắp xếp dữ liệu theo Tên kho |
+| 3 | Mã SP / Product Code | Mã sản phẩm  Chỉ đồng bộ các sản phẩm có trạng thái Đang hoạt động  Trường hợp nhãn sản phẩm bị inactive thì vẫn đồng bộ thông tin tồn kho bình thường |
+| 4 | Tên SP / Product Name | Tên sản phẩm |
+| 5 | SL / Qty (Tồn kho) | Tổng số lượng sản phẩm hiện đang có mặt trong kho, bao gồm cả số lượng đã giữ chỗ cho đơn hàng khác (nếu có). Đây là con số tổng tồn thực tế tại kho, chưa trừ đặt hàng.  Chỉ đồng bộ khi số lượng tồn kho > 0 và có sự thay đổi (tăng/giảm)  Trường hợp số lượng tồn kho = 0 thì chỉ sync lần = 0 đầu tiên, các lần tiếp theo nếu vẫn = 0 thì sẽ ko đồng bộ nữa, cho tới khi nào tồn kho thay đổi thì mới đồng bộ lại |
+| 6 | Allocated | Số lượng sản phẩm đã được phân bổ cho các đơn hàng khác (ví dụ: khách đã đặt nhưng chưa giao). Phần này không còn khả năng sử dụng cho đơn hàng mới. |
+| 7 | AvailQty (SL sẵn sàng bán) | Là số lượng có thể bán được ngay lập tức. Tính bằng "Tồn kho – Allocated". Là con số dùng để kiểm tra khả dụng khi tạo đơn hàng mới. |
+| 8 | SL thùng / Case Qty | Số lượng sản phẩm tính theo đơn vị thùng (nếu sản phẩm có quy cách đóng gói). |
+| 9 | SL lẻ còn lại / Remaining Qty | Phần số lượng dư ra không đủ thành 1 thùng. Có thể được bán lẻ, hoặc giữ lại để gom lô sau. |
+| 10 | Lô / BactNo | * Mã lô sản xuất dùng để kiểm soát truy xuất nguồn gốc * Trường hợp sản phẩm có nhiều lô thì mỗi lô nằm trên 1 dòng * Thông tin tồn kho cũng sẽ được tính dựa trên thông tin lô |
+| 11 | %Shelflife | * Tỷ lệ phần trăm thời hạn sử dụng còn lại của lô hàng, tính từ ngày sản xuất đến hạn sử dụng. * %Shelflife = [(HSD - Ngày hiện tại) / (HSD - NSX)] × 100 |
+| 12 | Ngày sản xuất / Product date | Ngày sản phẩm được sản xuất hoặc đóng gói.  Ngày sản xuất dựa trên thông tin lô |
+| 13 | Hạn sử dụng / Expiry date | Ngày sản phẩm hết hạn sử dụng.  Hạn sử dụng dựa trên thông tin lô |
+| 14 | Quy cách / Qty Per Case | Quy cách của sản phẩm từ đơn vị lớn nhất -> đơn vị cơ bản (ví dụ: 1 thùng có 12 chai). |
+| 15 | Tình trạng tồn kho | Mặc định = Hàng bán |
+| 16 | Nhãn 1. | Mã phân cấp sản phẩm cấp 2 |
+| 17 | Nhãn 2. | Mã phân cấp sản phẩm cấp 3 |
+| 18 | Tên Nhãn 2 | Tên phân cấp sản phẩm cấp 3 |
+| 19 | Số ngày lưu kho | * Số ngày sản phẩm đã nằm trong kho kể từ ngày nhập kho = Ngày hiện tại - Ngày nhập kho |
+| 20 | Tên đơn vị tính / Unit Desc | Đơn vị cơ bản của sản phẩm |
+| 21 | Ngày Nhập Kho | * Ngày lô hàng được nhập thực tế vào kho. * Ngày này sẽ dựa trên thông tin lô |
+
+### 2.4.5. Điều chỉnh thông tin đơn hàng
+
+* Bỏ trường "Giảm trừ" trên thông tin đơn hàng
+* Phạm vi áp dụng: Đơn Purchase Order, Đơn sell-out
+
+## 2.5 Tổng hợp lưu ý đơn hàng
+
+| Luồng đơn hàng | Kênh bán hàng | Xuất kho | Giá bán |
+| --- | --- | --- | --- |
+| Direct Sales | * Nếu kênh điểm bán **Active/Inactive** -> Lấy theo kênh config , lưu đơn theo kênh điểm bán * Nếu kênh điểm bán không có -> lấy theo kênh config , lưu đơn theo kênh config | Xuất kho: theo kênh config Xuất kho: 1-1 - 1 PXK - 1 Đơn SO | RedV1.1.0: Thay đổi cách lấy giá như ở US: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654 |
+| Indirect Sales | * Nếu kênh điểm bán active -> Lấy theo kênh điểm bán, DS SP load theo kênh điểm bán * Nếu kênh điểm bán inactive -> Lấy theo kênh config, DS SP lấy tồn kho theo kênh config * Nếu kênh điểm bán không có -> lấy theo kênh config, DS SP lấy tồn kho theo kênh config | Xuất kho: bán kênh nào xuất kho kênh đó Xuất kho: 1-n - 1 PXK - Nhiều đơn SO |  |
+| Số lượng tối đa | 1. Số lượng sản phẩm tối đa khi tạo đơn hàng: 1000 2. Số lô tối đa trên 1 sản phẩm khi tạo đơn hàng: 1000 3. Số lượng sản phẩm tối đa trên 1 CTKM trên đơn hàng: 1000   (1. Max item on product\_list: 1000 2. Max batch\_no on product\_list:1000 3. Max item on promotion\_list:1000)    Báo lỗi: 1/ Chỉ được thêm tối đa 1000 sản phẩm trên đơn hàng! 2/ Sản phẩm @Mã sản phẩm - Tên sản phẩm: Chỉ được thêm tối đa 1000 lô! -> Mess cho 1 sản phẩm, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random sản phẩm lỗi bất kỳ) 3/ CTKM @Mã CTKM - Tên CTKM chỉ được tặng tối đa 1000 sản phẩm! -> Mess cho 1 CTKM, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random CTKM lỗi bất kỳ)  Để c note vào doc luôn | | |
+
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0  RedV1.1.0: Thay đổi cách lấy giá ở US Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654  RedV1.2.0 : Cho phép update mức thuế khi sản phẩm đã có phát sinh giao dịch Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6060 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+ú
+
+# 1 Tích hợp Master Data
+
+## 1.1 Quy trình tích hợp
+
+trueIntegration\_CustomercVPYjn6vNkQ-PeCBjaeXfalse8004ae0aab76e12765214acbeedfea180e077971e8dautotoptrue10624
+
+## 1.2 Dữ liệu tích hợp
+
+### 1.2.1 Thông tin điểm bán (Customer Master Data)
+
+* Chỉ tích hợp điểm bán thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Khi thực hiện check trùng điểm bán để tạo mới, thực hiện check trùng trên các điểm bán có trạng thái "Hoạt động"
+* Đánh dấu điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS ngoại trừ: **Kinh độ, Vĩ độ, Hình ảnh điểm bán, Địa chỉ theo tọa độ**
+
+|  |  |  |
+| --- | --- | --- |
+| Portal | Có thể upload Hình ảnh điểm bán | Khi vào màn hình này hệ thống sẽ hiển thị kinh độ, vĩ độ theo địa chỉ đã nhập (Địa chỉ đồng bộ từ Hương Thủy)  User có thể kéo thả và cập nhật vị trí trên bản đồ và lưu lại thông tin. |
+| App Salesman | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Định vị trên bản đồ, hệ thống mở màn hình phụ như sau:     * Hiển thị vị trí điểm bán ngay tại thời điểm nhân viên điều chỉnh điểm bán, không được thay đổi * Zoom In vào vị trí của điểm bán * Không di chuyển định vị trên bản đồ, nhưng có thể zoomin, zoomout và kéo bản đồ để xem   Sau khi điều chỉnh → Nhấn Cập nhật để lưu lại thông tin.  Quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất) | Màn hình Thông tin điểm bán, cho phép chỉnh sửa Định vị trên bản đồ và Hình ảnh điểm bán.  Click vào chỉnh sửa Hình ảnh điểm bán, hệ thống mở màn hình phụ như sau:      Chụp ảnh theo yêu cầu  Số lượng ảnh đã chụp/ Số lượng hình ảnh tối đa (Tối đa 10 ảnh)  Sau khi cập nhật, quay lại màn hình trước đó và reload lại dữ liệu mới nhất (user không cần phải refresh thủ công mới update dữ liệu mới nhất)  Lưu ý:**Không được xóa hình ảnh cũ đã lưu trước đó, chỉ được xóa hình mới chụp.**  Trường hợp đã chụp đủ 10 ảnh, theo quy tắc Ảnh upload/Ảnh chụp trực tiếp |
+
+* Khi điều chỉnh thông tin điểm bán direct sales trên DMS → Chỉ lưu thông tin trên DMS không sync về ERP
+* Điểm bán Indirect sales vẫn tạo mới/chỉnh sửa trên DMS bình thường.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Điểm bán đã tồn tại (Check trên tất cả trạng thái của điểm bán) * Các trường dữ liệu liên kết gửi qua không đúng định dạng hoặc không tồn tại trên DMS hoặc bị ngưng hoạt động | * Bỏ qua thông tin Kinh độ, Vĩ độ, Tọa độ địa chỉ, vì các thông tin này sẽ được tạo trên DMS  * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã điểm bán không tồn tại trên DMS * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+* NPP Direct của HT không tạo mới điểm bán trên hệ thống DMS, điểm bán toàn bộ được tạo từ ERP HT.
+* NPP Indirect:
+  + Enhance cho điểm bán Indirect của HT: Kênh và loại điểm bán required: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4931
+  + NPP Indirect của HT không cho phép tao mới điểm bán trên portal NPP (Duyên BU Confirm), nên hiện tại sử dụng phân quyền để ẩn chức năng tạo mới trên portal NPP (Apply đối với NPP Indirect).
+  + Vẫn tạo mới/chỉnh sửa trên trên App SM và Portal HO
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| CustId | Nvarchar | 50 | x | Mã điểm bán | code (\*) | String | ID cung cấp từ phía partner (maxlength=200) | Thông báo:   * Mã điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| CustName | Nvarchar | 200 | x | Tên điểm bán | name (\*) | String | Tên điểm bán maxlength=500 | Thông báo:   * Tên điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Channel | Nvarchar | 10 | x | Kênh điểm bán | sale\_channel\_id | Number | Kênh bán hàng (vd: sale\_channel\_id=1) |  |
+| ClassId | Nvarchar | 6 | x | Nhóm điểm bán |  |  |  |  |
+| ShopType | Nvarchar | 10 | x | Loại Điểm Bán | store\_type\_code | Number | Loại điểm bán (vd: store\_type\_id=1) |  |
+| Status | Nvarchar | 1 | x | Trạng Thái: + A = Xử Lý Hoàn Tất + I = Ngưng Hoạt Động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxDflt | Nvarchar | 1 | x | Mức Thuế Mặc Định C - KH tính thuế theo SP K - KH không tính thuế |  |  |  |  |
+| TaxRegNbr | Nvarchar | 15 | x | Mã Số Thuế |  |  |  |  |
+| BranchID | Nvarchar | 30 | x | Mã Chi Nhánh | distributor\_ids (\*) | String | Nhà phân phối, chọn nhiều (vd: distributor\_ids="1,2,3") | Thông báo:   * Nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! * Nhà phân phối không tồn tại, vui lòng kiểm tra lại! |
+| SalesProvince | Nvarchar | 30 | x | Tỉnh Bán Hàng |  |  |  |  |
+| Addr1 | Nvarchar | max | x | Số Nhà (tab Địa Chỉ, vùng Địa Chỉ Chính) | address (\*) | String | địa chỉ cửa hàng, maxlength=2000 |  |
+| Ward | Nvarchar | 100 |  | Phường/Xã (tab Địa Chỉ, vùng Địa Chỉ Chính) | ward\_code | String | Phường/xã (vd: ward\_code="13") |  |
+| Territory | Nvarchar | 10 | x | Vùng Bán Hàng (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| State | Nvarchar | 10 | x | Tỉnh/TP Thoại (tab Địa Chỉ, vùng Địa Chỉ Chính) | province\_code (\*) | String | Tỉnh/thành (vd: province\_code="01") |  |
+| District | Nvarchar | 30 | x | Quận/Huyện (tab Địa Chỉ, vùng Địa Chỉ Chính) | district\_code (\*) | String | Quận/huyện (vd: district\_code="06") |  |
+| Country | Nvarchar | 10 | x | Đất Nước (tab Địa Chỉ, vùng Địa Chỉ Chính) |  |  |  |  |
+| Attn | Nvarchar | 200 | x | Người Liên Hệ Chính |  |  |  |  |
+| Terms | Nvarchar | 10 | x | Điều khoản thanh toán |  |  |  |  |
+| InActive | Nvarchar | 1 |  | Trạng thái hoạt động 0 = hoạt động, 1 = không hoạt động | status (\*) | String | Trạng thái (INIT,ACTIVE,INACTIVE) | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| EMailAddr | Nvarchar | 100 |  | Địa chỉ Email | representative\_emai | String | Email chủ cửa hàng, maxlength=200 |  |
+| Zip | Nvarchar | 20 |  | Mã bưu chính |  |  |  |  |
+| Fax | Nvarchar | 20 |  | Số Fax |  |  |  |  |
+| Phone | Nvarchar | 20 |  | Số Điện Thoại | phone | String | Số điện thoại điểm bán, maxlength={10,12} chỉ nhập số |  |
+| TaxLocId | Nvarchar | 20 |  | Mã khu vực thuế |  |  |  |  |
+| TaxID00 | Nvarchar | 20 |  | Mã thuế phụ 00 |  |  |  |  |
+| TaxID01 | Nvarchar | 20 |  | Mã thuế phụ 01 |  |  |  |  |
+| TaxID02 | Nvarchar | 20 |  | Mã thuế phụ 02 |  |  |  |  |
+| TaxID03 | Nvarchar | 20 |  | Mã thuế phụ 03 |  |  |  |  |
+| BillAttn | Nvarchar | 200 |  | Người nhận hóa đơn |  |  |  |  |
+| BillAddr1 | Nvarchar | max |  | Địa chỉ hóa đơn |  |  |  |  |
+| BillCountry | Nvarchar | 3 |  | Quốc gia hóa đơn |  |  |  |  |
+| BillState | Nvarchar | 10 |  | Tỉnh/TP hóa đơn |  |  |  |  |
+| BillDistrict | Nvarchar | 30 |  | Quận/Huyện hóa đơn |  |  |  |  |
+| BillWard | Nvarchar | 100 |  | Phường/Xã hóa đơn |  |  |  |  |
+| BillFax | Nvarchar | 20 |  | Fax hóa đơn |  |  |  |  |
+| BillName | Nvarchar | 200 |  | Tên đơn vị nhận hóa đơn |  |  |  |  |
+| BillPhone | Nvarchar | 20 |  | SĐT hóa đơn |  |  |  |  |
+| BillZip | Nvarchar | 20 |  | Mã bưu điện hóa đơn |  |  |  |  |
+| InvoiceAccount | Nvarchar | 50 |  | Tài khoản thanh toán |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | sale\_channel\_code | String | Kênh bán hàng (vd: sale\_channel\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_code | String | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_code | String | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | longtitude | Number | Kinh độ (vd: longtitude=103,5634584) | Điều chỉnh trên DMS |
+|  |  |  |  |  | latitude | Number | Vĩ độ (vd: latitude=132,9854236) | Điều chỉnh trên DMS |
+|  |  |  |  |  | map\_address | String | Địa chỉ hiển thị trên bản đồ (vd: map\_address="34 Hoàng Việt") | Điều chỉnh trên DMS |
+|  |  |  |  |  | files | Object[] | Hình ảnh cửa hàng, max=10 |  |
+|  |  |  |  |  | file\_type (\*) | String | group file thuộc về | Chưa có thông tin này |
+|  |  |  |  |  | file\_name | String | Tên file gốc | Chưa có thông tin này |
+|  |  |  |  |  | file\_url (\*) | String | Địa chỉ file | Chưa có thông tin này |
+|  |  |  |  |  | file\_size | Number | Kích thước file | Chưa có thông tin này |
+|  |  |  |  |  | mime\_type | String | Kiểu file | Chưa có thông tin này |
+|  |  |  |  |  | width | Number | Độ rộng file image | Chưa có thông tin này |
+|  |  |  |  |  | heigh | Number | Độ cao file image | Chưa có thông tin này |
+|  |  |  |  |  | store\_location\_id | Number | Vị trí điểm bán (vd: store\_location\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | store\_rank\_id | Number | Hạng điểm bán (vd: store\_rank\_id=1) | Chưa có thông tin này |
+|  |  |  |  |  | representative\_name | String | Tên chủ cửa hàng, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_emai | String | Email chủ cửa hàng, maxlength=200 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_id | String | CMND/CCCD của chủ cửa hàng, maxlength=20 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_date | String | Ngày cấp CMND/CCCD | Chưa có thông tin này |
+|  |  |  |  |  | representative\_card\_place | String | Nơi cấp, maxlength=500 | Chưa có thông tin này |
+|  |  |  |  |  | representative\_address | String | Hộ khẩu thường trú, maxlength=500 | Chưa có thông tin này |
+
+### 1.2.2 Thông tin cấu trúc cây sản phẩm
+
+* Tích hợp câu trúc cây sản phẩm 1 chiều từ ERP → DMS
+* Đánh dấu cấu trúc cây thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã phân cấp đã tồn tại (Check trên tất cả trạng thái của phân cấp) * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Mã phân cấp không tồn tại trên DMS * Loại phân cấp không tồn tại * Không tồn tại phân cấp cha hoặc phân cấp cha bị ngưng hoạt động * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã phân cấp không tồn tại trên DMS hoặc Mã phân cấp đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+**b. Dữ liệu tích hợp**
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| NodeID | nvarchar | 30 | x | Mã | code (\*) | String | Mã phân cấp | Thông báo:   * Mã phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã phân cấp đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã phân cấp không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã phân cấp không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeLevel | smallint |  | x | Mức Note: Cấu trúc cây của HT hiện tại đang chỉ có 3 mức | level(\*) | String | Cấp độ của cây phân cấp. | Thông báo:   * Cấp độ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Cấp độ không đúng định dạng, vui lòng kiểm tra lại! |
+| NodeIDLevel1 | nvarchar | 30 |  | Mã Số Parent Mức 1 Nếu Có |  |  |  |  |
+| NodeIDLevel2 | nvarchar | 30 |  | Mã Số Parent Mức 2 Nếu Có |  |  |  |  |
+| Descr | nvarchar | 200 | x | Diễn Giải | name (\*) | String | Tên phân cấp | Thông báo:   * Tên phân cấp bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | parent\_code | String | Cấp cha (Nếu = null tức là cấp cao nhất) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.3 Thông tin sản phẩm
+
+* Tích hợp sản phẩm thuộc nhánh Direct Sales. Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu sản phẩm thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã sản phẩm đã tồn tại (Check trên tất cả trạng thái của sản phẩm) * Phân cấp sản phẩm không tồn tại hoặc phân cấp bị ngưng hoạt động * Không tồn đơn vị kinh doanh hoặc đơn vị kinh doanh bị ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã sản phẩm không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin   + Trường hợp sản phẩm đã có trong transaction     - Vẫn cho phép update các trường thông tin cơ bản của sản phẩm     - Ngoại trừ đơn vị cơ bản và quy đổi -> Thì được phép thêm quy đổi mới, không được update đơn vị cơ bản với quy đổi hiện tại     - Nếu có update sẽ báo message và dừng xử lý: Sản phẩm đã phát sinh giao dịch, không được cập nhật đơn vị và quy đổi của sản phẩm.     - RedV1.2.0:       * Cho phép update mức thuế của sản phẩm       * Đồng thời kiểm tra trong tất cả bảng giá bán còn hiệu lực để update lại toàn bộ giá bán cho sản phẩm đó theo mức thuế mới (Vì HT gửi qua giá trước thuế, DMS FV sẽ nhận giá trước thuế \* mức thuế = Giá sau thuế và hiển thị lên bảng giá)       * Bảng giá còn hiệu lực là bảng giá có:         + Từ ngày ≤ Ngày hiện tại <= Đến ngày         + Từ ngày ≤ Ngày hiện tại và Đến ngày trống         + Từ ngày > Ngày hiện tại (bảng giá tương lai) * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã sản phẩm không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Lưu ý |  |  |
+
+#### b. Dữ liệu tích hợp
+
+##### ----- Danh mục sản phẩm
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm | code (\*)đi | String | Mã sản phẩm (bắt buộc). | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! |
+| ClassID | Nvarchar | 10 | x | Nhóm sản phẩm, mặc định là "Product" |  |  |  |  |
+| Descr | Nvarchar | 100 | x | Diễn giải sản phẩm | name (\*) | String | Tên sản phẩm (bắt buộc). | Thông báo:   * Tên sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Descr1 | Nvarchar | 100 | x | Diễn giải bổ sung |  |  |  |  |
+| DfltPOUnit | Nvarchar | 15 | x | Đơn vị mua |  |  |  |  |
+| DfltSOUnit | Nvarchar | 15 | x | Đơn vị bán | business\_unit\_code | Number | ID đơn vị kinh doanh của sản phẩm (bắt buộc). |  |
+| StkUnit | Nvarchar | 15 | x | Đơn vị lưu kho | basic\_package\_unit (\*) | Number | ID đơn vị đóng gói cơ bản (bắt buộc). | Thông báo:   * Đơn vị cơ bản bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Đơn vị cơ bản không đúng định dạng, vui lòng kiểm tra lại! * Đơn vị cơ bản không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkItem | smallint |  | x | Quản lý tồn kho:  1 = Không cho bán âm, 0 = Được bán âm |  |  |  |  |
+| InvtType | Nvarchar | 1 | x | Loại sản phẩm. Mặc định "F" |  |  |  |  |
+| LotSerFxdLen | smallint |  |  | Chiều dài mã lô |  |  |  |  |
+| LotSerFxdTyp | Nvarchar | 1 |  | Kiểu mã lô |  |  |  |  |
+| LotSerTrack | Nvarchar | 2 | x | Quản lý theo lô: L = Có, N = Không |  |  |  |  |
+| NodeID | Nvarchar | 30 | x | Mức phân cấp nhãn hàng | category\_code (\*) | Number | ID danh mục của sản phẩm (bắt buộc) | Thông báo:   * Danh mục sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Danh mục sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Danh mục sản phẩm không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| NodeIDLevel1 | Nvarchar | 30 |  | Mức phân cấp nhãn hàng cấp 1 |  |  |  |  |
+| Status | Nvarchar | 2 | x | Trạng thái sản phẩm: AC = Đang hoạt động, IN = Ngưng | status (\*) | String | Trạng thái của sản phẩm (bắt buộc). Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+| TaxCat | Nvarchar | 10 | x | Thuế VAT. VD: VAT08, VAT10 | tax\_code (\*) | Number | Thuế VAT (bắt buộc) | Thông báo:   * Thuế VAT bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Thuế VAT không đúng định dạng, vui lòng kiểm tra lại! * Thuế VAT không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) |
+| StkVol | decimal |  |  | Thể tích lưu kho |  |  |  |  |
+| StkWt | decimal |  |  | Trọng lượng lưu kho |  |  |  |  |
+| StkWtUnit | Nvarchar | 15 |  | Đơn vị trọng lượng (ví dụ: THUNG) |  |  |  |  |
+| StatusAction | int |  | x | Trạng thái hành động: 1 = Thêm, 2 = Sửa,  3 = Xoá |  |  |  |  |
+| UnitConversion | UnitConversion | Object | x | Đơn vị quy đổi | product\_units | Object[] | Danh sách các đơn vị quy đổi. (có thể null) |  |
+|  |  |  |  |  | image | String | URL hình ảnh của sản phẩm (có thể để null). | Chưa có thông tin này |
+|  |  |  |  |  | package\_unit\_code | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+##### ----- Đơn vị quy đổi
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Trường Dữ Liệu | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi Chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã sản phẩm |  |  |  |  |
+| UnitType | Nvarchar | 2 | x | Loại quy đổi đơn vị |  |  |  |  |
+| FromUnit | Nvarchar | 15 | x | Đơn vị gốc | package\_unit\_id | Number | ID đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+| ToUnit | Nvarchar | 15 | x | Đơn vị quy đổi |  |  |  |  |
+| MultDiv | Nvarchar | 1 | x | M: Nhân, D: Chia | value | Number | Giá trị đơn vị quy đổi (nếu có quy đổi thì bắt buộc). |  |
+
+### 1.2.4 Thông tin Thuế
+
+* Tích hợp 1 chiều từ ERP → DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Thuế:
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã thuế đã tồn tại (Check trên tất cả trạng thái của Mã thuế) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã thuế không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * Chỉnh sửa trùng với dữ liệu khác * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã thuế không tồn tại trên DMS hoặc  đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| catID | Text | 30 | x | Mã thuế | code (\*) | String | Mã của thuế (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã thuế đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã thuế không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| descr | Text | 200 | x | Mô tả | name (\*) | String | Tên của thuế (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| taxRate | decimal | 30 | x | Mức thuế | rate (\*) | String | Tỷ lệ thuế | Thông báo:   * Tỷ lệ thuế bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Tỷ lệ thuế không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) | Chưa có thông tin này |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.5 Thông tin kênh bán hàng
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu kênh bán hàng thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã kênh bán hàng đã tồn tại (Check trên tất cả trạng thái của Mã kênh) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kênh bán hàng không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã kênh bán hàng không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| Code | nvarchar | 10 | x | Mã Kênh | code (\*) | String | Mã của kênh bán hàng (maxlength = 200, bắt buộc). | Thông báo:   * Mã kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kênh bán hàng đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kênh bán hàng không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kênh bán hàng không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của kênh bán hàng (maxlength = 500, bắt buộc). | Thông báo:   * Tên kênh bán hàng bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| Type | nvarchar | 5 | x | Loại Kênh, có 2 loại: + BH: Bán Hàng + KH: điểm bán |  |  |  |  |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | company\_code | Number | Id của công ty (bắt buộc). | Chưa có thông tin này |
+|  |  |  |  |  | status (\*) | String | Trạng thái hoạt động của kênh bán hàng. Allowed values: "ACTIVE", "INACTIVE" | Thông báo:   * Trạng thái bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Trạng thái không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | requestID | String | Mã request (GUID) | Chưa có thông tin này |
+
+### 1.2.6 Thông tin nhóm điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhóm điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+* Màn hình Master Data Nhóm điểm bán: [HO] [HT] Nhóm điểm bán
+
+|  | Giao diện thay đổi | Mô tả |
+| --- | --- | --- |
+| Portal |  | Màn hình Tạo mới/Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên phải trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Salesman |  | Màn hình Tạo mới/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+| App Quản lý |  | Màn hình Chỉnh sửa/Chi tiết điểm bán  Hiện tại: Chưa có thông tin Nhóm điểm bán  Cần điều chỉnh:   * Bổ sung thông tin Nhóm điểm bán, bổ sung bên dưới trường Kênh bán hàng * Selectbox Onechoice * Load danh sách Nhóm điểm bán đang hoạt động từ danh mục Nhóm điểm bán * Không bắt buộc chọn * Trường hợp khi chỉnh sửa Điểm bán mà Nhóm điểm bán bị ngưng hoạt động, khi lưu sẽ hiển thị thông báo: Vui lòng chọn lại Nhóm điểm bán. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhóm điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã nhóm điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhóm điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóab | * Mã Nhóm điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+  
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| ClassId | nvarchar | 10 | x | Mã nhóm | code (\*) | String | Mã của nhóm khách hàng (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhóm điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhóm điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhóm điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+| Descr | nvarchar | 200 | x | Diễn Giải Của Kênh | name (\*) | String | Tên của nhóm khách hàng (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên nhóm điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.7 Thông tin Loại điểm bán
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Loại điểm bán thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Loại điểm bán đã tồn tại (Check trên tất cả trạng thái của Mã Loại điểm bán) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Loại điểm bán không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Loại điểm bán không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | Mã của loại điểm bán (maxlength = 200, bắt buộc nhập) | Thông báo:   * Mã loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã loại điểm bán đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã loại điểm bán không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã loại điểm bán không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên của loại điểm bán (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên loại điểm bán bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | status | String | Trạng thái hoạt động của loại điểm bán (ACTIVE, INACTIVE) |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.8 Thông tin Nhà phân phối (Distributor Master)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Nhà phân phối thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* Không tạo mới trên DMS FV
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhà phân phối đã tồn tại (Check trên tất cả trạng thái của Mã Nhà phân phối) * Dữ liệu gửi qua không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+| Không hợp lệ khi Chỉnh sửa | * Mã Nhà phân phối không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Nhà phân phối không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+|  |  |  |  |  | code (\*) | String | ID cung cấp từ phía partner (maxlen = 200) | Thông báo:   * Mã nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhà phân phối đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhà phân phối không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhà phân phối không đúng định dạng, vui lòng kiểm tra lại! |
+|  |  |  |  |  | name (\*) | String | Tên Nhà phân phối | Thông báo:   * Tên nhà phân phối bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | phone | String | Số đt | Số điện thoại có thể có nhiều, mỗi Số điện thoại cách nhau dấu , |
+|  |  |  |  |  | email | String | Email | Email có thể có nhiều, mỗi email cách nhau dấu , |
+|  |  |  |  |  | parent\_id | String | Mã NPP cha |  |
+|  |  |  |  |  | province\_code (\*) | String | Mã code Tỉnh |  |
+|  |  |  |  |  | district\_code (\*) | String | Mã code Quận/Huyện |  |
+|  |  |  |  |  | ward\_code | String | Mã code Phường/xã |  |
+|  |  |  |  |  | address | String | Địa chỉ |  |
+|  |  |  |  |  | type | String | Loại NPP (DIRECT, INDIRECT) | Finviet tự lưu thông tin này để phân biệt   * Luồng Direct:  ERP ko có NPP, FV tạo NPP ERP ảo * Các NPP gửi qua từ Hương Thủy sẽ mặc định là Indirect |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.9 Thông tin Bảng giá (Pricing)
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Bảng giá thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+
+* FV sẽ gửi API 2 bảng giá cho Sellin và Sellout để Hương Thủy mapping
+* Không tạo mới trên DMS FV
+* **Lưu ý**:
+  + Sử dụng config khi khởi chạy hệ thống ENABLE\_ERP\_PRICE\_SYNC
+    - True: Sync giá bán từ ERP Hương Thủy
+    - False: Không sync giá bán từ ERP Hương Thủy, tạo giá thủ công trên DMS
+  + Update Tháng 6/2025: 
+    - Hương Thủy có 4 cấp độ giá: Giá từng khách hàng → Giá theo kênh → Giá theo nhóm → Giá mặc định
+    - FV chưa đáp ứng giá theo cấp độ nên tạm thời sẽ lấy bảng giá mặc định của Hương Thủy.
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Bảng giá đã tồn tại (Check trên tất cả trạng thái của Mã Bảng giá) * Vùng bán hàng không tồn tại hoặc đã ngưng hoạt động * Danh sách NPP không tồn tại hoặc đã ngưng hoạt động * Sản phẩm không tồn tại hoặc đã ngưng hoạt động * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Đã duyệt * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Bảng giá không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Bảng giá không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+##### --- Bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| PriceID | Nvarchar | 100 | x | Mã Bảng Giá | code (\*) | String | Mã bảng giá | Thông báo:   * Mã bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã bảng giá đã tồn tại, , vui lòng kiểm tra lại! * Mã bảng giá không đúng định dạng, vui lòng kiểm tra lại! |
+| Status | Nvarchar | 10 | x | Trạng Thái C = Xử Lý Hoàn Tất H = Chờ Xử Lý | status | String | Trạng thái bảng giá (INIT, APPROVED, CANCELED, PAUSED) |  |
+| FromDate | datetime |  | x | Ngày Hiệu Lực | from\_date (\*) | String | Ngày áp dụng | Thông báo:   * Ngày áp dụng bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Ngày áp dụng không đúng định dạng, vui lòng kiểm tra lại! |
+| ToDate | datetime |  | x | Ngày Kết Thúc | to\_date | String | Đến ngày kết thúc |  |
+| PriceCat | Nvarchar | 2 | x | Loại IT = Sản Phẩm IC = Sản Phẩm và điểm bán CT = Sản Phẩm và Kênh Bán Hàng CC = Sản Phẩm và Nhóm điểm bán |  |  |  |  |
+| Channel | Nvarchar | Max |  | Kênh được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustID | Nvarchar | Max |  | điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| CustClassID | Nvarchar | Max |  | Nhóm điểm bán được áp dụng (có thể lưu nhiều giá trị ngăn cách bằng dấu :) |  |  |  |  |
+| Prom | bit |  | x | Khuyến Mãi |  |  |  |  |
+| Public | bit |  | x | Chung 1 = Áp dụng cho cho toàn bộ NPP 0 = Áp dụng cho các NPP thuộc ApplyForGeo. |  |  |  |  |
+| BranchID | Nvarchar | 20 | x | Mã Chi nhánh | distributor\_list | Array Object | Danh sách npp |  |
+| ApplyForGeo | Nvarchar | 2 | x | Nếu public = 0, thì bảng giá áp dụng theo danh sách NPP vùng bán hàng và Kênh bán hàng | region\_id | String | Id vùng |  |
+| StatusAction | Int |  | x | Trạng thái hành động:  + 1: Thêm mới.  + 2: Chỉnh sửa.  + 3: Xóa. |  |  |  |  |
+| Lines | ItemSelected | Array<ItemSelected> | x | Danh sách sản phẩm áp dụng giá bán |  |  |  |  |
+|  |  |  |  |  | name (\*) | String | Tên bảng giá | Thông báo:   * Tên bảng giá bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+|  |  |  |  |  | area\_id | String | Id khu vực |  |
+|  |  |  |  |  | price\_adjustment | String | Cờ cho phép npp chỉnh sửa giá bán (ON, OFF) |  |
+|  |  |  |  |  | distributor\_list (\*) | Array Object | Danh sách npp |  |
+|  |  |  |  |  | distributor\_list.\*.distributor\_code | Number | Id của npp |  |
+|  |  |  |  |  |  |  |  |  |
+|  |  |  |  |  |  |  |  |  |
+
+##### --- Chi tiết bảng giá
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| InvtID | Nvarchar | 30 | x | Mã Sản Phẩm | product\_list.\*.product\_code | Number | Id sản phẩm | Thông báo:   * Mã sản phẩm bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã sản phẩm không đúng định dạng, vui lòng kiểm tra lại! * Mã sản phẩm không tồn tại hoặc bị ngưng hoạt động, vui lòng kiểm tra lại! |
+| SlsUnit | Nvarchar | 15 | x | Đơn Vị Bán |  |  |  |  |
+| QtyBreak | decimal |  | x | Số Lượng |  |  |  |  |
+| Price | decimal |  | x | Giá | product\_list.\*.base\_price | Number | Giá bán trước thuế | FV sẽ tự tính tiền thuế và lưu vào bảng giả là giá bán sau thuế |
+|  |  |  |  |  | product\_list (\*) | Array Object | Danh sách sản phẩm |  |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+|  |  |  |  |  | priority\_type | String | 4 Cấp ưu tiên (Store > SaleChannel > StoreGroup > Default ) |  |
+
+### 1.2.10 Thông tin Nhân viên (Salesman Data)
+
+* Tích hợp 1 chiều từ ERP → DMS (Chỉ tích hợp tạo mới, không tích hợp chỉnh sửa)
+* Nhân viên bên ERP sẽ phân loại Direct/Indirect, ERP gửi về cho DMS và không được chỉnh sửa.
+
+| Chức năng | Màn hình | Mô tả |
+| --- | --- | --- |
+| Màn hình điều chỉnh |  | Màn hình Chỉnh sửa nhân viên/ Chi tiết nhân viên  Hiện tại: Chưa có thông tin Kho bán hàng  Cần điều chỉnh, đối với nhân viên có loại = Direct Sales:   * Thêm thông tin Kho bán hàng   + Dạng selectbox onechoice để user chọn   + Danh sách kho vật lý được load từ ERP.   + Trong select box hiển thị Mã kho - Tên kho   + Hiển thị kho mặc định từ ERP, user có thể chọn lại, chỉ chọn 1 kho   + Lưu thông tin kho mặc định user đã chọn   **Lưu ý****:**   * Data của Hương Thủy có trường hợp quản lý vượt cấp, không theo cấu trúc salesforce, nghĩa là cây salesforce chuẩn SD->RSM->ASM->SS-SM * Nhưng Hương Thủy RSM có thể quản lý SM * Nên đối với các trường hợp vai trò của Quản lý trực tiếp không tuân theo cây salesforce chuẩn thì sẽ để trống trường Quản lý trực tiếp. |
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Nhân viên đã tồn tại (Check trên tất cả trạng thái của Mã Nhân viên) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| branchID | nvarchar | 20 | x | Mã chi nhánh |  |  |  |  |
+| slsperId | nvarchar | 50 | x | Mã nhân viên bán hàng | code (\*) | String | Mã người dùng | Thông báo:   * Mã nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã nhân viên đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã nhân viên không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã nhân viên không đúng định dạng, vui lòng kiểm tra lại! |
+| name | nvarchar | 100 | x | Tên nhân viên | name (\*) | String | Họ và tên người dùng | Thông báo:   * Tên nhân viên bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| position | nvarchar | 10 | x | Chức danh + AM = Quản Lý Khu Vực + RM = Quản Lý Vùng + S = Nhân Viên Bán Hàng + SS = Giám Sát Bán Hàng | position (\*) | String | Chức vụ người dùng (VD: Giám sát bán hàng) | Thông báo:   * Chức vụ bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Chức vụ không đúng định dạng, vui lòng kiểm tra lại! * Chức vụ không tồn tại, vui lòng kiểm tra lại! |
+| addr1 | nvarchar | 500 |  | Mã địa chỉ | address | String | Địa chỉ cụ thể |  |
+| eMailAddr | nvarchar | 100 |  | Địa chỉ email | email | String | Địa chỉ email |  |
+| phone | nvarchar | 20 |  | Số điện thoại | phone | String | Số điện thoại người dùng |  |
+| state | nvarchar | 10 |  | Tỉnh/Thành phố | province\_id | Number | ID tỉnh/thành phố |  |
+| country | nvarchar | 10 |  | Quốc gia |  |  |  |  |
+| supID | nvarchar | 20 |  | Mã nhà cung cấp | manager\_id | Number | ID của người quản lý trực tiếp |  |
+| siteID | nvarchar | 10 | x | Mã Kho Note: đối với Position S thì mới có dữ liệu cột này | warehouse\_physical\_default\_id | String | ID kho bán hàng mặc định của nhân viên |  |
+| channel | nvarchar | 10 |  | Kênh phân phối | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| territory | nvarchar | 10 | x | Khu vực | area\_group\_ids | Array[Number] | Danh sách ID nhóm khu vực mà người dùng phụ trách | * Đối với nhân viên có chức vụ = Quản lý vùng/Quản lý khu vực vì ERP không có thông tin này nên cho phép chỉnh sửa thông tin nhân viên để user bổ sung thông tin Vùng/Khu Vực |
+| active | Integer |  | x | Trạng thái 1 = Nhân Viên đang làm 0 = Nhân Viên nghỉ việc | status | String (ACTIVE, INACTIVE, ...) | Trạng thái tài khoản (ACTIVE, INACTIVE, v.v.) |  |
+| channelHT | nvarchar | 10 | x | Mã kênh hỗ trợ | channel\_id | Number | ID kênh bán hàng người dùng thuộc về |  |
+| StatusAction | int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | password (\*) | String | password | Điều chỉnh trên DMS |
+|  |  |  |  |  | role\_codes (\*) | Array[String] | Danh sách mã vai trò của người dùng | Chưa có thông tin |
+|  |  |  |  |  | requestID | String | Mã request (GUID) |  |
+
+### 1.2.11 Kho
+
+* Tích hợp 1 chiều từ ERP → DMS
+* Đánh dấu Kho thuộc Direct sales và không cho chỉnh sửa bất cứ thông tin gì trên DMS
+* Không tạo mới trên DMS FV
+* ERP sync kho qua FV, thì kho này dùng cho direct và cho luồng đặt đơn PO indirect lên ERP
+
+#### a. Lưu ý tích hợp
+
+| Chức năng | Mô tả | Lưu ý |
+| --- | --- | --- |
+| Không hợp lệ khi Tạo mới | * Thiếu các trường thông tin bắt buộc * Mã Kho đã tồn tại (Check trên tất cả trạng thái của Mã Kho) * Dữ liệu gửi qua không đúng định dạng * StatusAction không đúng định dạng | * Sau khi tạo mới lưu trạng thái = Hoạt động * User tạo mới = service-account-erp-ht * Ngày tạo = Ngày tạo dữ liệu từ ERP |
+| Không hợp lệ khi Chỉnh sửa | * Mã Kho không tồn tại trên DMS * Thiếu các trường thông tin bắt buộc * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * Chỉ ghi nhận các trường thông tin được phép chỉnh sửa, các trường thông tin không chỉnh sửa được thì không ghi nhận thông tin * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+| Không hợp lệ khi Xóa | * Mã Kho không tồn tại trên DMS hoặc đã ở trạng thái Không hoạt động * Dữ liệu gửi qua không đúng định dạng * Trạng thái gửi qua không đúng * StatusAction không đúng định dạng | * User chỉnh sửa = service-account-erp-ht * Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS * Lưu thông tin history chỉnh sửa |
+
+#### b. Dữ liệu tích hợp
+
+|  |  |  |  |  |  |  |  |  |  |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| **Hương Thủy** | | | | |  | **Finviet** | | | |
+| Tên Trường | Kiểu Dữ Liệu | Độ Dài | Bắt Buộc | Ghi chú | Field | Type | Desciption | Ghi chú |
+| SiteID | nvarchar | 30 | x | Mã kho | warehouse\_list.code (\* ) | String | ID kho cung cấp từ partner | Thông báo:   * Mã kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Mã kho đã tồn tại, vui lòng kiểm tra lại! (Trường hợp tạo mới) * Mã kho không tồn tại, vui lòng kiểm tra lại! (Trường hợp chỉnh sửa) * Mã kho không đúng định dạng, vui lòng kiểm tra lại! |
+| Name | nvarchar | 200 | x | Tên kho | [warehouse\_list.name](http://warehouse_list.name) (\* ) | String | Tên kho (maxlength = 500, bát buộc nhập) | Thông báo:   * Tên kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! |
+| CpnyID | nvarchar | 30 | x | Chi nhánh | distributor\_code (\*) | String | ID của NPP cung cấp từ partner | Thông báo:   * Nhà phân phối của kho bắt buộc phải có thông tin, vui lòng kiểm tra lại! * Nhà phân phối của kho không tồn tại, vui lòng kiểm tra lại! * Nhà phân phối của kho không đúng định dạng, vui lòng kiểm tra lại! |
+| StatusAction | Int |  | x | Trạng thái hành động: + 1: Thêm mới + 2: Chỉnh sửa + 3: Xóa |  |  |  |  |
+|  |  |  |  |  | warehouse\_list (\*) | String | Danh sách chi nhánh kho của NPP |  |
+|  |  |  |  |  | warehouse\_list..status | String | Trạng thái hoạt động (ACTIVE, INACTIVE) |  |
+
+### 1.2.12 Dữ liệu địa lý hành chính
+
+* Dữ liệu địa lý hành chính Tỉnh/Thành Phố, Quận/Huyện sẽ sync 1 chiều từ ERP → DMS
+* ERP không có thông tin Phường Xã, DMS sẽ mặc định tạo 1 phường xã cho 1 quận/huyện của ERP. Tên Phường Xã = Tên Quận Huyện
+ 
+
+# 2 Tích hợp Transaction Data (TBU)
+
+## 2.1. Đồng bộ tồn kho sản phẩm
+
+trueSƠ ĐỒ FINAL UmoDcH\_7QxIE1pTY-Ygefalse700autotoptrue64136
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Gọi API cập nhật tồn kho sản phẩm | DMS Finviet | Cứ sau 3-5 phút, DMS Finviet tự động gọi API cập nhật tồn kho do ERP Hương Thủy cung cấp. |
+| 2 | Gửi reponse thông tin tồn kho | ERP Hương Thủy | ERP Hương Thủy gửi thông tin tồn kho mới nhất cho DMS Finviet. |
+| 3 | Cập nhật tồn kho | DMS Finviet | DMS Finviet cập nhật lại tồn kho trên hệ thống. |
+
+## 2.2. Áp dụng CTKM trên đơn hàng
+
+### 2.2.1. Quy trình
+
+trueSƠ ĐỒ FINAL E4qxtPtCYDiwwD2euFba1false1000autotop66523750true
+
+**Lưu ý:**
+
++ Trước khi đơn xác nhận thì hiển thị theo những cái user chọn, apply CTKM có update thì ko quan tâm, cho tới khi xác nhận cũng sẽ update lại theo ERP. (sellout direct, purchase)
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn Áp dụng CTKM | Người dùng | Người dùng chọn áp dụng CTKM trên đơn hàng.   * Nếu ERP Hương Thủy đã Tạo đơn hàng SO, bỏ qua bước 2,3 và tiếp tục bước 4. * Nếu ERP Hương Thủy chưa Tạo đơn hàng SO, tiếp tục bước 2. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO. |
+| 4 | Gọi API Kiểm tra CTKM | DMS Finviet | DMS Finviet thực hiện gọi API Kiểm tra CTKM do ERP Hương Thủy cung cấp. |
+| 5 | Gửi response CTKM khả dụng của đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi thông tin CTKM khả dụng cho đơn hàng cho DMS Finviet. |
+| 6 | Hiển thị danh sách CTKM khả dụng của đơn hàng | DMS Finviet | DMS Finviet hiển thị danh sách CTKM có thể áp dụng cho đơn hàng. |
+| 7 | Chọn CTKM áp dụng | Người dùng | Người dùng thực hiện chọn CTKM muốn áp dụng cho đơn hàng và áp dụng. |
+| 8 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra CTKM. |
+| 9 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi kết quả áp dụng các CTKM của đơn hàng.   * Nếu thành công: Tiếp tục bước 10.1. * Nếu thất bại: Tiếp tục bước 10.2. |
+| 10.1 | Ghi nhận và tính toán lại đơn hàng | DMS Finviet | DMS Finviet ghi nhận và tính toán lại đơn hàng kèm CTKM đã áp dụng thành công. |
+| 11.1 | Báo lỗi áp dụng CTKM thất bại | DMS Finviet | DMS Finviet báo lỗi áp dụng CTKM thất bại và quay lại bước 6. |
+
+### 2.3.2. Cập nhật giao diện
+
+Giao diện SMApp: [SM-APP] [HT] Đơn hàng - Thay đổi màn hình Khuyến mãi
+
+Giao diện portal NPP:
+
+| Title | Wireframe | Description |
+| --- | --- | --- |
+| Màn hình *Áp dụng CTKM* |  | 1. Loại CTKM: Chỉ bao gồm CTKM ontop, mặc định hưởng tất cả CTKM do Hương Thủy trả về. 2. Thông tin CTKM bao gồm:    * Checkbox: Chỉ hiển thị nếu CTKM có CTKM con (alterpolicy khác null), mặc định uncheck.    * Tên CTKM: Do Hương Thủy trả về    * Chi tiết CTKM: Click vào button infor → hiển thị chi tiết CTKM do HT trả về.    * Số sản phẩm tối đa được chọn: Là số sản phẩm mà người dùng có thể được chọn trong danh sách sản phẩm, tương ứng với maxitem do HT trả về.    * Thành tiền = Số tiền được hưởng trong CTKM.    * Danh sách trả khuyến mãi:      + Checkbox:        - Hệ thống mặc định chọn sẵn các quà tặng bên trong CTKM = maxitem HT trả về theo thứ tự từ trên xuống dưới.        - Cho phép người dùng uncheck/check miễn số lượng sản phẩm được check <= maxitem, cho phép không check SP nào.      + Mã sản phẩm: Do HT trả về.      + Tên sản phẩm: Do HT trả về.      + Số lượng/Giảm giá:        - Nếu hình thức KM là tặng sản phẩm → hiển thị số lượng sản phẩm được hưởng do HT trả về, không cho phép chỉnh sửa        - Nếu hình thức KM là giảm giá → hiển thị số tiền được giám do HT trả về, không cho phép chỉnh sửa.      + Đơn vị: Do HT trả về.  * Lưu ý: Khi check các CTKM có alterpolicy khác null. * + - Hệ thống thực hiện check chọn quà tặng trong CTKM cha như trên và hiển thị các CTKM con.     - Thông tin CTKM con giống với thông tin CTKM mô tả như trên. |
+| Màn hình *Xem* *chi tiết CTKM đã áp dụng trên đơn* |  | Bao gồm danh sách khuyến mãi đã được chọn tại màn hình Áp dụng CTKM  Mỗi CTKM - hình thức khuyến mãi là 1 dòng. Nếu CTKM là tặng X trong nhóm sản phẩm → Mỗi SKU tách xuống 1 dòng (chỉ hiển thị các SKU được lựa chọn tặng)   | Tên trường | Mô tả | | --- | --- | | Chương trình khuyến mãi | Hiển thị tên CTKM | | Thể lệ chương trình | Mô tả thể lệ chương trình | | Mã SKU | Hiển thị Mã SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Tên SKU | Hiển thị tên SKU  Nếu CTKM tặng tiền, Hiển thị "-" | | Số lượng | Hiển thị số lượng SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Đơn vị | Hiển thị tên đơn vị của SP tặng  Nếu CTKM tặng tiền, Hiển thị "-" | | Khuyến mãi | Hiển thị giá trị tiền khuyến mãi | |
+
+## 2.3. Đơn hàng - Luồng Direct Sales
+
+### 2.3.1. Tạo mới đơn hàng đặt từ SMApp
+
+trueSƠ ĐỒ FINAL \_1nl6CzjSQuimAQcpcuM1false1000autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Chọn sản phẩm, số lượng | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng. |
+| 2 | Xác nhận danh sách sản phẩm | Người dùng | Người dùng xác nhận danh sách sản phẩm. |
+| 3 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 4 | Tạo đơn hàng SO | ERP Hương Thủy | ERP Hương Thủy tạo đơn hàng SO theo request của DMS Finviet.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 5 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 6 | Đặt đơn hàng | Người dùng | Người dùng thực hiện đặt đơn hàng. |
+| 7 | Gọi API lấy số dư tồn kho | DMS Finviet | DMS Finviet gọi API Lấy số dư tồn kho do ERP Hương Thủy cung cấp. |
+| 8 | Gửi response thông tin tồn kho mới nhất | ERP Hương Thủy | ERP Hương Thủy kiểm tra số lượng sản phẩm trên đơn và tồn kho.   * Nếu tồn kho đủ, tiếp tục bước 9.1. * Nếu tồn kho không đủ, tiếp tục bước 9.2. |
+| 9.1 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 10. * Nếu không, tiếp tục bước 12. |
+| 9.2 | Báo lỗi tồn kho không đủ | DMS Finviet | DMS Finviet báo lỗi tồn kho sản phẩm không đủ. |
+| 10 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 11 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 5 - Quy trình Áp dụng CTKM (bước 9.2.). * Nếu áp dụng thành công, tiếp tục bước 12. |
+| 12 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 13 | Gửi response xác nhận đơn hàng | ERP Hương Thủy | ERP Hương Thủy gửi response xác nhận đơn hàng. |
+| 14 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+
+### 2.3.2. Đồng bộ cập nhật thông tin đơn hàng (không bao gồm cập nhật trạng thái)
+
+#### 2.3.2.1. Đồng bộ cập nhật thông tin đơn hàng từ Finviet SM App sang ERP Hương Thủy
+
+**Lưu ý:**DMS Finviet chỉ được chỉnh sửa đơn hàng trạng thái "Khởi tạo"
+
+trueSƠ ĐỒ FINAL WDC1obpp1IcVMy5w1SCE1false600995f3800d490879d4800cd6305d43b0eed7f1c9eautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | Finviet SM App | Người dùng thực hiện cập nhật thông tin đơn hàng trên Finviet SM App. |
+| 2 | Gọi API Tạo đơn hàng | Finviet SM App | Finviet SM App thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng từ DMS Finviet. |
+
+#### 2.3.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang Finviet SMApp
+
+**Lưu ý:**DMS Finviet cập nhật thông tin đơn hàng theo ERP Hương Thủy mà không quan tâm trạng thái.
+
+trueSƠ ĐỒ FINAL aVUTX9YFLwJzr5DOmUOA1false6007d5d8cab75235888450ade2d3ba103f8d6284e1cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật đơn hàng | ERP Hương Thủy | Người dùng thực hiện cập nhật thông tin đơn hàng trên ERP Hương Thủy. |
+| 2 | Gọi API Tạo đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API Cập nhật thông tin đơn hàng do Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | SM App | SM App cập nhật thông tin đơn hàng từ ERP Hương Thủy. |
+
+**Lưu ý:** Khi cập nhật thông tin, SM App ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công
+
+### 2.3.3. Đồng bộ cập nhật trạng thái đơn hàng
+
+trueSƠ ĐỒ FINAL SrxwrfXPt5kR5NXn4GUV1false600autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật trạng thái đơn hàng. |
+| 2 | Gọi API cập nhật trạng thái đơn hàng | ERP Hương Thủy | ERP Hương Thủy gọi API cập nhật trạng thái đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật trạng thái đơn hàng | Finviet SM App | DMS Finviet cập nhật trạng thái đơn hàng theo request của ERP Hương Thủy.  Mapping trạng thái đơn hàng:   | STT | ERP Hương Thủy | DMS Finviet | Ghi chú | | --- | --- | --- | --- | | 1 | 10 - Đặt hàng | Khởi tạo | Sell out init | | 2 | 20 - Đặt hàng | Khởi tạo | Sell out init | | 3 | 22 - Tạo PGH, 1 phần | Đã duyệt | Sell out approve | | 4 | 23 - Tạo PGH | Đã duyệt | Sell out approve | | 5 | 25 - Tạo PXK, 1 phần | Đã duyệt | Sell out approve | | 6 | 30 - Tạo PXK | Đã duyệt | Sell out approve | | 7 | 35 - Đã xuất kho, 1 phần | Đã duyệt | Sell out approve | | 8 | 40 - Đã xuất kho | Đã duyệt | Sell out approve | | 9 | 45 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 10 | 55 - Đã xuất h/đơn, 1 phần | Đã duyệt | Sell out approve | | 11 | 50 - Đã giao hàng, chưa HĐ | Đã duyệt | Sell out approve | | 12 | 60 - Đã xuất hóa đơn | Đã duyệt | Sell out approve | | 13 | 65 - Đã giao hàng, 1 phần | Đã duyệt | Sell out approve | | 14 | 70 - Đã giao hàng | Đã duyệt | Sell out approve | | 15 | 80 - Huỷ | Đã huỷ | Hủy Sellout + PXK | | 16 | 85 - Ngưng giao hàng | Đã huỷ | Hủy Sellout + PXK | | 17 | 90 - Đã đóng | Đã giao hàng | Tạo mới phiếu xuất kho đã duyệt |   **Lưu ý:**  Nếu HT update ngược lên 90 thì   * Hủy phiếu xuất tạo lại theo ERP, không update kho. * Đơn Sellout vẫn giữ status APPROVED (trừ 80,85)   Đơn ERP mà đã xác nhận thì ko edit / xoá |
+
+## 2.4. Đơn hàng - Luồng Indirect Sales
+
+### 2.4.1. Tạo mới đơn hàng đặt từ NPP DMS Finviet
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Tạo Purchase Order | Người dùng | Người dùng thực hiện chọn sản phẩm và số lượng của từng sản phẩm muốn đặt hàng.   * Nếu người dùng muốn áp dụng CTKM, tiếp tục bước 5. * Nếu người dùng không muốn áp dụng CTKM, tiếp tục bước 6. |
+| 2 | Áp dụng CTKM | Người dùng, DMS Finviet, ERP Hương Thủy | Thực hiện quy trình Áp dụng CTKM. |
+| 3 | Tạo đơn Purchase Order | Người dùng | Người dùng thực hiện tạo đơn Purchase Order. |
+| 4 | Đơn hàng có CTKM? | DMS Finviet | DMS Finviet kiểm tra đơn hàng có đang áp dụng CTKM hay không.   * Nếu có, tiếp tục bước 5. * Nếu không, tiếp tục bước 7. |
+| 5 | Gọi API Chọn CTKM | DMS Finviet | DMS Finviet gọi API Chọn CTKM do ERP Hương Thủy cung cấp để kiểm tra lại CTKM. |
+| 6 | Gửi response kết quả áp dụng CTKM | ERP Hương Thủy | ERP Hương Thủy gửi thông tin kết quả áp dụng CTKM.   * Nếu áp dụng thất bại, quay lại bước 2 - Quy trình Áp dụng CTKM (bước 9.2). * Nếu áp dụng thành công, tiếp tục bước 7. |
+| 7 | Tạo Purchase Order thành công | DMS Finviet | DMS Finviet tạo mới Purchase Order trạng thái "Khởi tạo". |
+| 8 | Duyệt Purchase Order | Người dùng | Người dùng thực hiện duyệt PO. |
+| 9 | Gọi API Xác nhận đơn hàng | DMS Finviet | DMS Finviet gọi API Xác nhận đơn hàng do ERP Hương Thủy cung cấp. |
+| 10 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng. |
+| 11 | Xử lý đơn hàng | ERP Hương Thuỷ | ERP xử lý hoàn tất đơn hàng. |
+| 12 | Tạo sell-in | DMS Finviet | DMS Finviet tạo đơn sell-in trạng thái "Đã duyệt". |
+| 13 | Tạo phiếu nhập hàng | DMS Finviet | DMS Finviet tạo phiếu nhập hàng trạng thái "Khởi tạo". |
+| 14 | Cập nhật tồn kho của NPP | DMS Finviet | DMS Finviet cập nhật tồn kho của NPP. |
+
+**Lưu ý:**
+
+* Khi tạo đơn sell-in và phiếu nhập hàng, hệ thống ghi nhận
+
+* + User tạo = service-account-erp-ht
+  + Ngày tạo = Ngày tạo đơn thành công
+
+* Khi DMS Finviet gửi đơn hàng qua ERP Hương Thủy, gửi kèm thông tin nhân viên bán hàng mặc định do Hương Thủy chỉ định.
+
+* Luồng NPP đặt hàng (indirect): NPP đặt lên ERP, chọn kho của ERP > Tới sellin / PNK thì NPP chọn kho chính nó để nhập vào
+
+### 2.4.2. Đồng bộ cập nhật thông tin đơn hàng
+
+#### 2.4.2.1. Đồng bộ cập nhật thông tin đơn hàng từ DMS Finviet sang ERP Hương Thủy
+
+trueSƠ ĐỒ FINAL J9WvCUdQFBiU4PW1a-GT1false300cb45e58ffabfd7cded81862ea34e2de13b3055b6autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | DMS Finviet | Người dùng thực hiện cập nhật thông tin đơn hàng trên hệ thống DMS Finviet. |
+| 2 | Gọi API Tạo đơn hàng | DMS Finviet | DMS Finviet thực hiện gọi API Tạo đơn hàng do ERP Hương Thủy cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của DMS Finviet | ERP Hương Thủy | ERP Hương Thủy cập nhật thông tin đơn hàng theo request từ DMS Finviet. |
+
+#### 2.4.2.2. Đồng bộ cập nhật thông tin đơn hàng từ ERP Hương Thủy sang DMS Finviet
+
+trueSƠ ĐỒ FINAL oJDWGC0ZhdB9qaZeK5Ls1false30048a666a161abec1e41b82e67497fe3f4d8fa0a3cautotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện cập nhật thông tin đơn hàng trên hệ thống. |
+| 2 | Gọi API Cập nhật thông tin đơn hàng | ERP Hương Thủy | ERP Hương Thủy thực hiện gọi API cập nhật thông tin đơn hàng do DMS Finviet cung cấp. |
+| 3 | Cập nhật đơn hàng theo request của ERP Hương Thủy | DMS Finviet | DMS Finviet cập nhật thông tin đơn hàng theo resquest từ ERP Hương Thủy. |
+
+**Lưu ý:** Sau khi DMS Finviet cập nhật thông tin, hệ thống ghi nhận:
+
+* User chỉnh sửa = service-account-erp-ht
+* Ngày chỉnh sửa = Ngày lưu thông tin chỉnh sửa thành công trên DMS
+
+### 2.4.3. Đồng bộ đơn hàng sell - out (NPP trên FV bán xuống merchant) từ DMS Finviet sang ERP Hương Thủy
+
+trueImport đơn sell out1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload đơn hàng lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin đơn hàng sellout lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import: <https://docs.google.com/spreadsheets/d/1nAcl7ONOGC2kQVFqrf2SsMaoCYrHBONNNQcOVzKqXeg/edit?gid=0#gid=0>
+* Hệ thống sẽ upload tất cả các đơn hàng (tất cả trạng thái) có thời gian tạo mới/cập nhật (created\_date/updated\_date) phát sinh sau lần upload gần nhất.
+
+| STT | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | LineType | Hàng bán/Hàng KM |
+| 25 | Mã SP /Product code | Mã SKU của sản phẩm  Trường hợp sản phẩm bị ngưng hoạt động thì vẫn sẽ gửi thông tin theo đơn hàng |
+| 26 | Tên SP /Product Name | Tên của sản phẩm |
+| 27 | ĐVT /Unit | Đơn vị tính trên đơn (HT bán theo đơn vị cơ bản) |
+| 28 | PackingQty | Giá trị quy đổi giữa đơn vị cơ bản và đơn vị quy đổi lớn nhất |
+| 29 | HSD /Expiry Date | Hạn sử dụng của lô sản phẩm tương ứng. |
+| 30 | Ngày SX /Production Date | Ngày sản xuất của lô sản phẩm tương ứng. |
+| 31 | Mã nhãn 1 /Brand code 1 | Mã phân cấp sản phẩm cấp 1 của sản phẩm |
+| 32 | Nhãn1 /Brand 1 | Tên phân cấp sản phẩm cấp 1 của sản phẩm |
+| 33 | Mã nhãn 2 / Brand code 2 | Mã phân cấp sản phẩm cấp 2 của sản phẩm |
+| 34 | Nhãn1 /Brand 2 | Tên phân cấp sản phẩm cấp 2 của sản phẩm |
+| 35 | Số Lo / Lot No. | Số lô của sản phẩm |
+| 36 | Số lượng /Qty | Số lượng theo từng lô của sản phẩm |
+| 37 | BoxQty | Số lượng theo đơn vị lớn nhất của sản phẩm.  = Qty/PackingQty (chỉ lấy phần chẵn) Ví dụ: Qty =330, PackingQty = 32 => BoxQty = 10 |
+| 38 | OddQty | Số lượng lẻ còn lại =  (Qty/PackingQty - BoxQty)\*PackingQty  Ví dụ: (330/32 - 10) \* 32 = 10 |
+| 39 | Đơn giá /Sale Price | Đơn giá của sản phẩm, giá trước VAT |
+| 40 | Giá Net /NetPrice | Đơn giá trung bình sau khi trừ chiết khấu của sản phẩm.  = NetAmt/Qty |
+| 41 | % CKMD /%Basic Discount | Hiển thị rỗng |
+| 42 | Số Tiền CKMD /Basic Discount | Hiển thị rỗng |
+| 43 | %CTKM /Promtion % | % chiết khấu theo promotion |
+| 44 | CTKM /Promtion Amount | Số tiền chiết khấu theo promotion  = %CTKM \* Qty \* Sale Price |
+| 45 | Tổng %CK /Total Discount | = %Basic Discount + Promtion % |
+| 46 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Total Discount \* Qty \* Sale Price |
+| 47 | Thành tiền /Amount | Thành tiền trước VAT trước CK =  Qty \* Sale Price |
+| 48 | Thành Tiền /NetAmt | Thành tiền trước VAT sau CK = Amount - Total Discount amount |
+| 49 | Mã thuế suất /VATID | Mã thuế suất của sản phẩm |
+| 50 | Thuế /TaxRate | Giá trị thuế suất của sản phẩm. |
+| 51 | Thành Tiền sau VAT /TotalAmt | Thành tiền sau VAT sau CK = NetAmount \* (1 + TaxRate) |
+| 52 | NWeight | Hiển thị rỗng |
+| 53 | GWeight | Hiển thị rỗng |
+| 54 | Mã CTKM/Promo No | Mã CTKM được hưởng |
+| 55 | Ghi chú dòng/Remark lines | Ghi chú trên từng dòng sản phẩm, nếu không có => hiển thị rỗng |
+| 56 | Ghi Chú Tổng/Remarks | Ghi chú của đơn hàng , nếu không có => hiển thị rỗng |
+
+* **Đối với CTKM giảm tiền/chiết khấu trên tổng đơn, hệ thống tách dòng theo từng CTKM và điền các thông tin sau:**
+
+|  |  |  |
+| --- | --- | --- |
+| 1 | Mã Kho/WH code | Mã định danh duy nhất của kho hàng. |
+| 2 | Tên kho/Whname | Tên hiển thị của kho  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 3 | Tháng/Month | Tháng của Order\_date |
+| 4 | Ngày PO/PO date | Order\_date trên đơn  Sắp xếp dữ liệu theo tên kho + Ngày PO |
+| 5 | Ngày Xuất kho/Shipdate | Ngày xuất kho, nếu chưa xuất kho => hiển thị rỗng |
+| 6 | Số DH/SO date | Mã đặt hàng |
+| 7 | Trạng thái DH | Trạng thái của đơn hàng tại thời điểm sync data. |
+| 8 | Mã KH /Cust code | Mã khách hàng |
+| 9 | Tên KH /Cust Name | Tên khách hàng |
+| 10 | Địa chỉ /Deli. Adress | Địa chỉ của khách hàng (bao gồm cả Tỉnh/Thành, Quận/Huyện, Phường/Xã) |
+| 11 | Mã Khu vực /AreaID | Mã khu vực lấy theo địa chỉ khách hàng |
+| 12 | Khu vực /Area | Tên khu vực lấy theo địa chỉ khách hàng |
+| 13 | Mã tỉnh /ProvinceID | Mã tỉnh lấy theo địa chỉ khách hàng |
+| 14 | Tỉnh /Province | Tên tỉnh lấy theo địa chỉ khách |
+| 15 | Mã quận /District | Mã quận lấy theo địa chỉ khách hàng |
+| 16 | Quận /District | Tên quận lấy theo địa chỉ khách |
+| 17 | DT /Phone number | SDT của khách hàng, nếu không có => hiển thị rỗng |
+| 18 | Mã kênh /Channel | Mã kênh bán hàng |
+| 19 | Kênh /Channel | Tên kênh bán hàng |
+| 20 | Mã Kênh2 /Sub Channel | Hiển thị rỗng |
+| 21 | Mã nhóm KH /Biz Group | Mã nhóm KH mà khách hàng trực thuộc |
+| 22 | Tên nhóm KH /Biz Group | Tên nhóm KH mà khách hàng trực thuộc |
+| 23 | Tên NVBH /Sale person name | Tên NVBH trên đơn, nếu không có => hiển thị rỗng |
+| 24 | %CTKM /Promtion % | % chiết khấu theo promotion  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 25 | CTKM /Promtion Amount | Số tiền chiết khấu = Tổng số tiền chiết khấu trên đơn theo promotion. |
+| 26 | Tổng %CK /Total Discount | = %Basic Discount + Promtion %  Nếu loại CTKM là giảm tiền thì để trống trường này. |
+| 27 | Tổng CK /Total Discount amount | Tổng số tiền chiết khấu = Tổng số tiền CKMD + Tổng số tiền chiết khấu theo promotion |
+| 28 | **Mã CTKM/Promo No** | Mã CTKM được hưởng |
+| Lưu ý: Các trường còn lại để trống. | | |
+
+### 2.4.4. Đồng bộ tồn kho NPP (NPP trên FV bán xuống merchant)
+
+trueImport đơn sell out6VP22lBI0euw8FGYmxfN1false300autotop66523750true
+
+| STT | Quy trình | Tác nhân | Mô tả |
+| --- | --- | --- | --- |
+| 1 | Upload tồn kho NPP lên file import | DMS Finviet | Cuối ngày, DMS Finviet tự động upload thông tin thông tin NPP lên file import do ERP Hương Thủy cung cấp. |
+| 2 | Gửi file import | DMS Finviet | DMS Finviet gửi file cho ERP Hương Thủy. |
+| 3 | Nhận file import và xử lý | ERP Hương Thủy | ERP Hương Thủy nhận file và tiếp tục xử lý thông tin. |
+
+* Template import:
+
+|  | Tên cột | Mô tả |
+| --- | --- | --- |
+| 1 | Mã kho / WarehouseID | * Mã định danh duy nhất của kho hàng. * Dùng để phân biệt các kho trong hệ thống (ví dụ: Kho Quận 9, Kho Nhà Bè). * Là cơ sở để xác định nơi lưu trữ hàng hóa. |
+| 2 | Tên kho / Warehouse Name | Tên hiển thị của kho  Sắp xếp dữ liệu theo Tên kho |
+| 3 | Mã SP / Product Code | Mã sản phẩm  Chỉ đồng bộ các sản phẩm có trạng thái Đang hoạt động  Trường hợp nhãn sản phẩm bị inactive thì vẫn đồng bộ thông tin tồn kho bình thường |
+| 4 | Tên SP / Product Name | Tên sản phẩm |
+| 5 | SL / Qty (Tồn kho) | Tổng số lượng sản phẩm hiện đang có mặt trong kho, bao gồm cả số lượng đã giữ chỗ cho đơn hàng khác (nếu có). Đây là con số tổng tồn thực tế tại kho, chưa trừ đặt hàng.  Chỉ đồng bộ khi số lượng tồn kho > 0 và có sự thay đổi (tăng/giảm)  Trường hợp số lượng tồn kho = 0 thì chỉ sync lần = 0 đầu tiên, các lần tiếp theo nếu vẫn = 0 thì sẽ ko đồng bộ nữa, cho tới khi nào tồn kho thay đổi thì mới đồng bộ lại |
+| 6 | Allocated | Số lượng sản phẩm đã được phân bổ cho các đơn hàng khác (ví dụ: khách đã đặt nhưng chưa giao). Phần này không còn khả năng sử dụng cho đơn hàng mới. |
+| 7 | AvailQty (SL sẵn sàng bán) | Là số lượng có thể bán được ngay lập tức. Tính bằng "Tồn kho – Allocated". Là con số dùng để kiểm tra khả dụng khi tạo đơn hàng mới. |
+| 8 | SL thùng / Case Qty | Số lượng sản phẩm tính theo đơn vị thùng (nếu sản phẩm có quy cách đóng gói). |
+| 9 | SL lẻ còn lại / Remaining Qty | Phần số lượng dư ra không đủ thành 1 thùng. Có thể được bán lẻ, hoặc giữ lại để gom lô sau. |
+| 10 | Lô / BactNo | * Mã lô sản xuất dùng để kiểm soát truy xuất nguồn gốc * Trường hợp sản phẩm có nhiều lô thì mỗi lô nằm trên 1 dòng * Thông tin tồn kho cũng sẽ được tính dựa trên thông tin lô |
+| 11 | %Shelflife | * Tỷ lệ phần trăm thời hạn sử dụng còn lại của lô hàng, tính từ ngày sản xuất đến hạn sử dụng. * %Shelflife = [(HSD - Ngày hiện tại) / (HSD - NSX)] × 100 |
+| 12 | Ngày sản xuất / Product date | Ngày sản phẩm được sản xuất hoặc đóng gói.  Ngày sản xuất dựa trên thông tin lô |
+| 13 | Hạn sử dụng / Expiry date | Ngày sản phẩm hết hạn sử dụng.  Hạn sử dụng dựa trên thông tin lô |
+| 14 | Quy cách / Qty Per Case | Quy cách của sản phẩm từ đơn vị lớn nhất -> đơn vị cơ bản (ví dụ: 1 thùng có 12 chai). |
+| 15 | Tình trạng tồn kho | Mặc định = Hàng bán |
+| 16 | Nhãn 1. | Mã phân cấp sản phẩm cấp 2 |
+| 17 | Nhãn 2. | Mã phân cấp sản phẩm cấp 3 |
+| 18 | Tên Nhãn 2 | Tên phân cấp sản phẩm cấp 3 |
+| 19 | Số ngày lưu kho | * Số ngày sản phẩm đã nằm trong kho kể từ ngày nhập kho = Ngày hiện tại - Ngày nhập kho |
+| 20 | Tên đơn vị tính / Unit Desc | Đơn vị cơ bản của sản phẩm |
+| 21 | Ngày Nhập Kho | * Ngày lô hàng được nhập thực tế vào kho. * Ngày này sẽ dựa trên thông tin lô |
+
+### 2.4.5. Điều chỉnh thông tin đơn hàng
+
+* Bỏ trường "Giảm trừ" trên thông tin đơn hàng
+* Phạm vi áp dụng: Đơn Purchase Order, Đơn sell-out
+
+## 2.5 Tổng hợp lưu ý đơn hàng
+
+| Luồng đơn hàng | Kênh bán hàng | Xuất kho | Giá bán |
+| --- | --- | --- | --- |
+| Direct Sales | * Nếu kênh điểm bán **Active/Inactive** -> Lấy theo kênh config , lưu đơn theo kênh điểm bán * Nếu kênh điểm bán không có -> lấy theo kênh config , lưu đơn theo kênh config | Xuất kho: theo kênh config Xuất kho: 1-1 - 1 PXK - 1 Đơn SO | RedV1.1.0: Thay đổi cách lấy giá như ở US: Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-4654 |
+| Indirect Sales | * Nếu kênh điểm bán active -> Lấy theo kênh điểm bán, DS SP load theo kênh điểm bán * Nếu kênh điểm bán inactive -> Lấy theo kênh config, DS SP lấy tồn kho theo kênh config * Nếu kênh điểm bán không có -> lấy theo kênh config, DS SP lấy tồn kho theo kênh config | Xuất kho: bán kênh nào xuất kho kênh đó Xuất kho: 1-n - 1 PXK - Nhiều đơn SO |  |
+| Số lượng tối đa | 1. Số lượng sản phẩm tối đa khi tạo đơn hàng: 1000 2. Số lô tối đa trên 1 sản phẩm khi tạo đơn hàng: 1000 3. Số lượng sản phẩm tối đa trên 1 CTKM trên đơn hàng: 1000   (1. Max item on product\_list: 1000 2. Max batch\_no on product\_list:1000 3. Max item on promotion\_list:1000)    Báo lỗi: 1/ Chỉ được thêm tối đa 1000 sản phẩm trên đơn hàng! 2/ Sản phẩm @Mã sản phẩm - Tên sản phẩm: Chỉ được thêm tối đa 1000 lô! -> Mess cho 1 sản phẩm, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random sản phẩm lỗi bất kỳ) 3/ CTKM @Mã CTKM - Tên CTKM chỉ được tặng tối đa 1000 sản phẩm! -> Mess cho 1 CTKM, sau khi user điều chỉnh mới check tiếp rồi báo lỗi tiếp (random CTKM lỗi bất kỳ)  Để c note vào doc luôn | | |

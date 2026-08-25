@@ -1,0 +1,32 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description | Thay đổi thông tin   * Doanh số trước VAT  * Doanh số sau VAT * Thêm bộ lọc trạng thái đơn hàng * Thông tin đơn hàng và doanh số sẽ được tính dựa trên bộ lọc trạng thái đơn hàng |
+| Document version | RedV1.0.0  RedV1.0.1: Điều kiện tính ngày làm việc: **Sale thực hiện chấm công đầu ngày**, ngày đó sẽ được tính = **1 ngày làm việc**. |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+truenone
+
+Link doc hiện tại: [[HO] Báo cáo Phân Tích Hiệu Quả Tuyến - DMS NEW - Finviet - Document Management](https://kb.finviet.com.vn/pages/viewpage.action?pageId=53037649)
+
+# Màn hình Báo cáo Phân tích hiệu quả tuyến
+
+| Tên Trường | Loại Dữ Liệu | Chỉnh Sửa? | Bắt Buộc? | Mô tả |
+| --- | --- | --- | --- | --- |
+| Bộ lọc | | | | |
+| Trạng thái đơn hàng | Selectbox multichoice | Có | Không | * **Mở danh sách**:    + Khi người dùng nhấp vào trường "Trạng thái đơn hàng" hiển thị danh sách tất cả trạng thái đơn hàng, trừ trạng thái Hủy.   + Khi mở màn hình mặc định không chọn dữ liệu nào trong hộp chọn * **Tìm kiếm và chọn:**    + Người dùng có thể tìm kiếm bằng cách lọc nhanh theo Tên Trạng thái đơn hàng   + Người dùng có thể chọn nhiều Trạng thái đơn hàng để lọc dữ liệu   + Trường hợp không có Trạng thái đơn hàng nào phù hợp với từ khóa, hệ thống nên hiển thị trong ô select "Trống" * **Hiển thị lựa chọn:**     + Trạng thái đơn hàng đã chọn sẽ hiển thị trong hộp chọn dưới dạng các nhãn (tags).   + Trường hợp bỏ chọn Trạng thái đơn hàng trong hộp chọn thì hiểu là chọn tất cả các Trạng thái đơn hàng trong hộp chọn   + Các trạng thái đơn hàng được chọn sẽ được tính theo điều kiện "**Hoặc**"     - Nghĩa là sẽ lấy tất cả các dữ liệu có trạng thái được chọn.     - Ví dụ lấy đơn hàng có trạng thái Đã duyệt hoặc Đã xuất kho * **Kết quả lọc:**    + Thông tin các cột "**Điểm bán viếng thăm trong tuyến có đơn hàng**", "**Điểm bán viếng thăm ngoại tuyến có đơn hàng**", "**Doanh số trước VAT**", "**Doanh số sau VAT**" sẽ được tính toán dựa trên trạng thái được chọn ở trường này. * **Xóa lựa chọn:**    + Người dùng có thể nhấp vào biểu tượng xóa trên các nhãn (tag) hoặc chọn lại trong danh sách để bỏ chọn Trạng thái đơn hàng không mong muốn. |
+| Dữ liệu báo cáo | | | | |
+| Số đơn hàng | Datacolumn | Không | Không | Tính tổng số đơn hàng trong khoảng thời gian đã chọn (Đơn hàng trong tuyến)  Điều kiện tính có đơn hàng:   * Theo điều kiện được mô tả ở [Công thức tính doanh số](https://kb.finviet.com.vn/pages/viewpage.action?pageId=48443956#id-%5BHO%5DBáoCáo-Côngthứctínhdoanhsố) * Nguồn đơn hàng   + Thông tin ghi nhận khi tạo đơn hàng trên App (Đơn hàng **Trong tuyến**).   + Không ghi nhận khi thực hiện đặt hàng bên chức năng Nhiệm Vụ Chăm sóc   + Không ghi nhận khi thực hiện đặt đơn trên web có chọn thông tin nhân viên. * Trạng thái đơn hàng: Trạng thái được chọn ở trường "Trạng thái đơn hàng" ở bộ lọc |
+| Doanh số trước VAT | Datacolumn | Không | Không | Doanh số đổi thành "Doanh số trước VAT"  Tính tổng doanh số của sản phẩm trên đơn hàng của NPP được đặt hàng trong khoảng thời gian được chọn   * **Doanh số trước VAT**= Số lượng x giá bán (Giá bán chưa tính VAT, không tính toán CTKM) * Đơn hàng hợp lệ để tính toán phải thỏa tất cả các điều kiện như đã mô tả ở cột "Số đơn hàng" * Format tiền tệ phần nghìn |
+| Doanh số sau VAT | Datacolumn | Không | Không | Doanh trong ngày đổi thành "Doanh số sau VAT"   * Tính tổng doanh thu của sản phẩm trên đơn hàng của NPP được đặt hàng trong khoảng thời gian được chọn  * **Doanh số sau VAT** = Số lượng × Đơn giá sau V – Khuyến mãi + Giảm trừ * Đơn hàng hợp lệ để tính toán phải thỏa tất cả các điều kiện như đã mô tả ở cột "Số đơn hàng" * Format tiền tệ phần nghìn |
+| Số ĐB trong tuyến phát sinh ĐH | Datacolumn | Không | Không | Đếm danh sách (không trùng):   * Điểm bán nằm trong tuyến bán hàng * Nhân viên có viếng thăm theo từng ngày trong khoảng thời gian đã chọn * Điểm bán có phát sinh đơn hàng, rule đơn hàng hợp lệ như ở cột "Số đơn hàng" * Đếm cộng dồn theo khoảng thời gian đã chọn để xem báo cáo |
+| Số ĐB ngoài tuyến phát sinh ĐH | Datacolumn | Không | Không | Đếm danh sách (không trùng):     * Điểm bán nằm ngoài tuyến bán hàng có phát sinh đơn hàng * Nhân viên có viếng thăm theo từng ngày trong khoảng thời gian đã chọn * Đếm cộng dồn theo khoảng thời gian đã chọn để xem báo cáo. Đếm số điểm bán có thực hiện checkin - checkout trong ngày * Điều kiện tính có đơn hàng:    + Theo điều kiện được mô tả ở [Công thức tính doanh số](https://kb.finviet.com.vn/pages/viewpage.action?pageId=48443956#id-%5BHO%5DBáoCáo-Côngthứctínhdoanhsố)   + Nguồn đơn hàng     - Ghi nhận khi tạo đơn hàng trên App của những điểm bán nằm ngoài tuyến bán hàng, ĐB = Ngoại tuyến & phát sinh đơn bên task Viếng thăm (trừ các tuyến bán hàng viếng thăm trong tuyến có loại tuyến = "Trong tuyến" trong TTT)     - Ghi nhận khi thực hiện đặt hàng bên chức năng Nhiệm Vụ Chăm sóc        * ĐB = Trong tuyến & phát sinh đơn bên task Chăm sóc       * ĐB = Ngoại tuyến & phát sinh đơn bên task Chăm sóc     - Không Ghi nhận khi thực hiện đặt đơn trên web có chọn thông tin nhân viên.   + Trạng thái đơn hàng: Trạng thái được chọn ở trường "Trạng thái đơn hàng" ở bộ lọc   --  Bổ sung lưu ý: - Đặt hàng task Chăm sóc trước khi checkin ĐB -> Viếng thăm ĐB -> Cột "Số ĐB ngoài tuyến phát sinh ĐH" tăng - Sau khi đã checkout ĐB -> Đặt hàng task Chăm sóc -> Cột "Số ĐB ngoài tuyến phát sinh ĐH" tăng |
+| RedV1.0.1: Điều kiện tính ngày làm việc: **Sale thực hiện chấm công đầu ngày**, ngày đó sẽ được tính = **1 ngày làm việc**. | | | | |
+| Tổng ngày | Datacolumn | Không | Không | * Tổng số ngày làm việc trên tuyến trong khoảng thời gian được chọn * Ngày làm việc được tính khi **Sale thực hiện chấm công đầu ngày=> Tính là 1 ngày làm việc**   **--**  *[remove rule cũ đã define → Thay thế bởi rule mới cho HT*   * *~~thỏa tất cả điều kiện dưới đây~~*   + *~~Chấm công đầu ngày + Chấm công cuối ngày~~*   + *~~Có checkin và checkout ít nhất 1 điểm bán trong ngày~~*   + *~~Không tính các ngày có trường hợp hệ thống tự động chấm công cuối ngày~~*   + *~~Trường hợp công ty không sử dụng chức năng chấm công đầu ngày. Chỉ cần có checkin và checkout ít nhất 1 điểm bán trong ngày thì sẽ tính ngày đó có làm việc.~~*   *]* |
+
+Export file có các nội dung thay đổi ở trên.

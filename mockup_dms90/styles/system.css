@@ -1,0 +1,107 @@
+/* Quản Trị Hệ Thống */
+
+.system-page {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.system-page .dms-card__extra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.system-page .display-form-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.system-page .dms-form-item--full {
+  grid-column: 1 / -1;
+}
+
+.sys-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #2B579A;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sys-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.sys-map {
+  position: relative;
+  height: 180px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(90deg, rgba(43, 87, 154, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(43, 87, 154, 0.06) 1px, transparent 1px),
+    #e8eef5;
+  background-size: 24px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  overflow: hidden;
+}
+
+.sys-map__pin {
+  width: 14px;
+  height: 14px;
+  background: #e74c3c;
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  z-index: 2;
+}
+
+.sys-map__radius {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border: 2px dashed #2B579A;
+  border-radius: 50%;
+  background: rgba(43, 87, 154, 0.12);
+}
+
+.sys-map__label {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 12px;
+  background: #fff;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.sys-perm__table {
+  overflow: auto;
+  max-height: 360px;
+}
+
+.sys-expand {
+  padding: 8px 12px 16px 48px;
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.sys-expand div {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 1024px) {
+  .system-page .display-form-grid {
+    grid-template-columns: 1fr;
+  }
+}

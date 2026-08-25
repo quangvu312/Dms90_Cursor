@@ -1,0 +1,12 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 120 },
+  "items": [
+    {
+      "poCode": "PO0001001",
+      "supplier": "NPP HCM",
+      "orderDate": "25-07-2026",
+      "totalAmount": 500000000,
+      "status": "Đã duyệt"
+    }
+  ]
+}

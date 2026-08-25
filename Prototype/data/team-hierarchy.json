@@ -1,0 +1,52 @@
+{
+  "nodes": [
+    {
+      "id": "BU001",
+      "label": "BU Health & Assthetic",
+      "level": 1,
+      "children": [
+        {
+          "id": "DEPT001",
+          "label": "Phòng Sale Art",
+          "level": 2,
+          "children": [
+            { "id": "TEAM005", "label": "Sale Art Team", "level": 3, "selectable": true }
+          ]
+        },
+        {
+          "id": "DEPT002",
+          "label": "Boarding department",
+          "level": 2,
+          "children": [
+            { "id": "TEAM001", "label": "Sale Team", "level": 3, "selectable": true },
+            { "id": "TEAM002", "label": "MKT Team", "level": 3, "selectable": true }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "BU002",
+      "label": "BU Health & Beauty",
+      "level": 1,
+      "children": [
+        {
+          "id": "DEPT003",
+          "label": "Phòng KOL",
+          "level": 2,
+          "children": [
+            { "id": "TEAM003", "label": "KOL Team A", "level": 3, "selectable": true },
+            { "id": "TEAM006", "label": "KOL Team B", "level": 3, "selectable": true }
+          ]
+        },
+        {
+          "id": "DEPT004",
+          "label": "Make-up department",
+          "level": 2,
+          "children": [
+            { "id": "TEAM004", "label": "Make-up Team", "level": 3, "selectable": true }
+          ]
+        }
+      ]
+    }
+  ]
+}

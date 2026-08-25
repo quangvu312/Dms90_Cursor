@@ -1,0 +1,62 @@
+/* Quản Lý Tích Lũy — wizard step 4 (mốc / điều kiện). Layout list/overview reuse display.css */
+
+#accumulate-wizard-modal .dms-modal__body {
+  max-height: calc(90vh - 160px);
+}
+
+.acc-milestone {
+  border: 1px solid var(--color-border-secondary);
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  margin: 12px 0;
+}
+
+.acc-milestone__head {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  align-items: start;
+}
+
+.acc-milestone h4 {
+  margin: 12px 0 8px;
+  font-size: var(--font-size-base);
+}
+
+.acc-condition {
+  background: #fafafa;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  margin: 8px 0;
+}
+
+.acc-condition__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.acc-range {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 8px;
+  align-items: end;
+}
+
+.acc-range__lim {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  white-space: nowrap;
+  font-size: var(--font-size-sm);
+}
+
+@media (max-width: 800px) {
+  .acc-milestone__head,
+  .acc-range {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,7 @@
+| Lưu ý điều kiện tiên quyết hiển thị khảo sát  Ở chức năng này chỉ cài đặt bài khảo sát và điều kiện để hiển thị bài khảo sát  Trong nhóm nhiệm vụ của nhân viên bắt buộc phải có NHIỆM VỤ KHẢO SÁT và kết hợp với các điều kiện cài đặt trong chức năng khảo sát này thì mới có thể hiển thị khảo sát    Trường hợp nhóm nhiệm vụ không cài đặt nhiệm vụ Khảo Sát, thì bài khảo sát sẽ không hiển thị |
+| --- |
+
+| Quy tắc bắt buộc khi thực hiện khảo sát  Độ ưu tiên của bắt buộc sẽ đi như sau:   * Level 1 (cao nhất): Bắt buộc trong nhiệm vụ khảo sát, nhân viên buộc phải làm ít nhất 1 bài khảo sát mới dc thoát khỏi cửa hàng. * Level 2: Bắt buộc trong list cửa hàng khảo sát (chỉ áp dụng cho trường hợp **đối tượng khảo sát = cửa hàng**và **điều kiện áp dụng = cửa hàng**), nhân viên có cửa hàng được cài đặt khảo sát bắt buộc phải làm khảo sát, dù cho nhiệm vụ không bắt buộc thì cũng phải thực hiện khảo sát mới dc kết thúc viếng thăm cửa hàng (chỉ áp dụng cho chức năng Viếng Thăm Cửa Hàng) * Level 3: Bắt buộc câu hỏi trong từng bài khảo sát. Khi đã chọn vào thực hiện khảo sát, phải trả lời câu bắt buộc mới được hoàn thành khảo sát. Nếu ko thực hiện trả lời, thì back ra ko thực hiện khảo sát |
+| --- |
+
+true

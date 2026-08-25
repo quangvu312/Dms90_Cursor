@@ -1,0 +1,87 @@
+/* StatusTag — clone Ant Design Tag from eco-dms-dev */
+
+.dms-status-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  height: var(--status-height);
+  min-height: var(--status-height);
+  padding: var(--status-padding-y) var(--status-padding-x);
+  font-size: var(--status-font-size);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--status-line-height);
+  border-radius: var(--status-border-radius);
+  border: var(--status-border-width) solid transparent;
+  white-space: nowrap;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+.dms-status-tag--default {
+  color: var(--status-default-color);
+  background: var(--status-default-background);
+  border-color: var(--status-default-border);
+}
+
+.dms-status-tag--draft {
+  color: var(--status-draft-color);
+  background: var(--status-draft-background);
+  border-color: var(--status-draft-border);
+}
+
+.dms-status-tag--approved {
+  color: var(--status-approved-color);
+  background: var(--status-approved-background);
+  border-color: var(--status-approved-border);
+}
+
+.dms-status-tag--rejected,
+.dms-status-tag--cancelled {
+  color: var(--status-rejected-color);
+  background: var(--status-rejected-background);
+  border-color: var(--status-rejected-border);
+}
+
+.dms-status-tag--pending {
+  color: var(--status-pending-color);
+  background: var(--status-pending-background);
+  border-color: var(--status-pending-border);
+}
+
+.dms-status-tag--info {
+  color: var(--status-info-color);
+  background: var(--status-info-background);
+  border-color: var(--status-info-border);
+}
+
+.dms-status-tag--warning {
+  color: var(--status-warning-color);
+  background: var(--status-warning-background);
+  border-color: var(--status-warning-border);
+}
+
+.dms-status-tag--running {
+  color: var(--status-draft-color);
+  background: var(--status-draft-background);
+  border-color: var(--status-draft-border);
+}
+
+.dms-status-tag--success,
+.dms-status-tag--active {
+  color: var(--status-active-color);
+  background: var(--status-active-background);
+  border-color: var(--status-active-border);
+}
+
+.dms-status-tag--inactive,
+.dms-status-tag--ended {
+  color: var(--status-rejected-color);
+  background: var(--status-rejected-background);
+  border-color: var(--status-rejected-border);
+}
+
+.dms-table td .dms-status-tag {
+  display: inline-flex;
+}

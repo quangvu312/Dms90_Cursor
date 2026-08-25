@@ -1,0 +1,126 @@
+/**
+ * Helvetica Neue — khớp Hand-off Figma (JLQNtUG3rqvGnh1h6quGJP)
+ * Text styles: Regular 400 · Medium 500 · Bold 700 · line-height 1.5
+ * File: public/fonts/helvetica-neue/
+ */
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue UltraLight'),
+    local('HelveticaNeue-UltraLight'),
+    url('/fonts/helvetica-neue/helvetica-neue-ultra-light.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue UltraLight Italic'),
+    local('HelveticaNeue-UltraLightItalic'),
+    url('/fonts/helvetica-neue/helvetica-neue-ultra-light-italic.ttf') format('truetype');
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Light'),
+    local('HelveticaNeue-Light'),
+    url('/fonts/helvetica-neue/helvetica-neue-light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Light Italic'),
+    local('HelveticaNeue-LightItalic'),
+    url('/fonts/helvetica-neue/helvetica-neue-light-italic.ttf') format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue'),
+    local('HelveticaNeue'),
+    url('/fonts/helvetica-neue/helvetica-neue-regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Italic'),
+    local('HelveticaNeue-Italic'),
+    url('/fonts/helvetica-neue/helvetica-neue-italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Medium'),
+    local('HelveticaNeue-Medium'),
+    url('/fonts/helvetica-neue/helvetica-neue-medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Bold'),
+    local('HelveticaNeue-Bold'),
+    url('/fonts/helvetica-neue/helvetica-neue-bold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Bold'),
+    local('HelveticaNeue-Bold'),
+    url('/fonts/helvetica-neue/helvetica-neue-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Bold Italic'),
+    local('HelveticaNeue-BoldItalic'),
+    url('/fonts/helvetica-neue/helvetica-neue-bold-italic.ttf') format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Helvetica Neue';
+  src:
+    local('Helvetica Neue Bold Italic'),
+    local('HelveticaNeue-BoldItalic'),
+    url('/fonts/helvetica-neue/helvetica-neue-bold-italic.ttf') format('truetype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}

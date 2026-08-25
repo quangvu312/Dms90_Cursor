@@ -1,0 +1,2792 @@
+[
+  {
+    "index": 1,
+    "id": "42587304",
+    "title": "DMS NEW Home",
+    "file": "001-dms-new-home.md"
+  },
+  {
+    "index": 2,
+    "id": "42587306",
+    "title": "1_Overview Project",
+    "file": "002-1-overview-project.md"
+  },
+  {
+    "index": 3,
+    "id": "42587308",
+    "title": "2_MoM",
+    "file": "003-2-mom.md"
+  },
+  {
+    "index": 4,
+    "id": "42587310",
+    "title": "3_RequirementAnalyst",
+    "file": "004-3-requirementanalyst.md"
+  },
+  {
+    "index": 5,
+    "id": "42587312",
+    "title": "Portal HO",
+    "file": "005-portal-ho.md"
+  },
+  {
+    "index": 6,
+    "id": "42587314",
+    "title": "Salesman App",
+    "file": "006-salesman-app.md"
+  },
+  {
+    "index": 7,
+    "id": "42587316",
+    "title": "Manager App",
+    "file": "007-manager-app.md"
+  },
+  {
+    "index": 8,
+    "id": "42587319",
+    "title": "Portal NPP",
+    "file": "008-portal-npp.md"
+  },
+  {
+    "index": 9,
+    "id": "42587321",
+    "title": "4_Development",
+    "file": "009-4-development.md"
+  },
+  {
+    "index": 10,
+    "id": "42587326",
+    "title": "5_QualityControl",
+    "file": "010-5-qualitycontrol.md"
+  },
+  {
+    "index": 11,
+    "id": "42587328",
+    "title": "6_UserGuide",
+    "file": "011-6-userguide.md"
+  },
+  {
+    "index": 12,
+    "id": "42587330",
+    "title": "7_BackupDocument",
+    "file": "012-7-backupdocument.md"
+  },
+  {
+    "index": 13,
+    "id": "42587357",
+    "title": "[HO] Quản lý nhân viên DMS và Định nghĩa cây Salesforce",
+    "file": "013-ho-quan-ly-nhan-vien-dms-va-inh-nghia-cay-salesforce.md"
+  },
+  {
+    "index": 14,
+    "id": "47448119",
+    "title": "[SM-APP] Yêu cầu bán hàng trái tuyến",
+    "file": "014-sm-app-yeu-cau-ban-hang-trai-tuyen.md"
+  },
+  {
+    "index": 15,
+    "id": "47448999",
+    "title": "8. Thiết kế hệ thống",
+    "file": "015-8-thiet-ke-he-thong.md"
+  },
+  {
+    "index": 16,
+    "id": "48431412",
+    "title": "Detail Design",
+    "file": "016-detail-design.md"
+  },
+  {
+    "index": 17,
+    "id": "48431425",
+    "title": "[HO] Tuyến bán hàng",
+    "file": "017-ho-tuyen-ban-hang.md"
+  },
+  {
+    "index": 18,
+    "id": "48432218",
+    "title": "[HO] Danh sách điểm bán",
+    "file": "018-ho-danh-sach-iem-ban.md"
+  },
+  {
+    "index": 19,
+    "id": "48433125",
+    "title": "Business Requirement Document (BRD)",
+    "file": "019-business-requirement-document-brd.md"
+  },
+  {
+    "index": 20,
+    "id": "48433136",
+    "title": "BRD DMS-New",
+    "file": "020-brd-dms-new.md"
+  },
+  {
+    "index": 21,
+    "id": "48433910",
+    "title": "Common Rule",
+    "file": "021-common-rule.md"
+  },
+  {
+    "index": 22,
+    "id": "48435565",
+    "title": "Sell-in/ Đơn bán hàng của HO cho NPP",
+    "file": "022-sell-in-on-ban-hang-cua-ho-cho-npp.md"
+  },
+  {
+    "index": 23,
+    "id": "48437108",
+    "title": "[HO] Tài Khoản Người Dùng",
+    "file": "023-ho-tai-khoan-nguoi-dung.md"
+  },
+  {
+    "index": 24,
+    "id": "48437180",
+    "title": "[HO] Quản lý giá bán cho NPP (Bảng Giá mua)",
+    "file": "024-ho-quan-ly-gia-ban-cho-npp-bang-gia-mua.md"
+  },
+  {
+    "index": 25,
+    "id": "48438731",
+    "title": "[HO] Nhiệm vụ",
+    "file": "025-ho-nhiem-vu.md"
+  },
+  {
+    "index": 26,
+    "id": "48438789",
+    "title": "[HO] Nhóm nhiệm vụ",
+    "file": "026-ho-nhom-nhiem-vu.md"
+  },
+  {
+    "index": 27,
+    "id": "48438833",
+    "title": "[HO] Phân Vùng",
+    "file": "027-ho-phan-vung.md"
+  },
+  {
+    "index": 28,
+    "id": "48438897",
+    "title": "[HO] Master Data",
+    "file": "028-ho-master-data.md"
+  },
+  {
+    "index": 29,
+    "id": "48438903",
+    "title": "Quản Lý Bán Hàng",
+    "file": "029-quan-ly-ban-hang.md"
+  },
+  {
+    "index": 30,
+    "id": "48439136",
+    "title": "[SM-APP] Login/Logout Salesman App",
+    "file": "030-sm-app-login-logout-salesman-app.md"
+  },
+  {
+    "index": 31,
+    "id": "48439240",
+    "title": "[Manager_App] Đăng nhập",
+    "file": "031-manager-app-ang-nhap.md"
+  },
+  {
+    "index": 32,
+    "id": "48439249",
+    "title": "[Manager_App] Đăng xuất",
+    "file": "032-manager-app-ang-xuat.md"
+  },
+  {
+    "index": 33,
+    "id": "48439257",
+    "title": "[Manager_App] Homepage",
+    "file": "033-manager-app-homepage.md"
+  },
+  {
+    "index": 34,
+    "id": "48439313",
+    "title": "[HO] Quản lý bảng giá bán",
+    "file": "034-ho-quan-ly-bang-gia-ban.md"
+  },
+  {
+    "index": 35,
+    "id": "48440073",
+    "title": "[SM-APP] Chấm công trên Salesman App - Chức năng cũ",
+    "file": "035-sm-app-cham-cong-tren-salesman-app-chuc-nang-cu.md"
+  },
+  {
+    "index": 36,
+    "id": "48440328",
+    "title": "[SM-APP] Tạo mới điểm bán",
+    "file": "036-sm-app-tao-moi-iem-ban.md"
+  },
+  {
+    "index": 37,
+    "id": "48440329",
+    "title": "[HO] Cấu hình chấm công",
+    "file": "037-ho-cau-hinh-cham-cong.md"
+  },
+  {
+    "index": 38,
+    "id": "48443415",
+    "title": "[HO] Dữ liệu chung",
+    "file": "038-ho-du-lieu-chung.md"
+  },
+  {
+    "index": 39,
+    "id": "48443849",
+    "title": "[HO] Xử lý yêu cầu hỗ trợ",
+    "file": "039-ho-xu-ly-yeu-cau-ho-tro.md"
+  },
+  {
+    "index": 40,
+    "id": "48443883",
+    "title": "[SM-APP] Yêu cầu hỗ trợ",
+    "file": "040-sm-app-yeu-cau-ho-tro.md"
+  },
+  {
+    "index": 41,
+    "id": "48443956",
+    "title": "[HO] Báo Cáo",
+    "file": "041-ho-bao-cao.md"
+  },
+  {
+    "index": 42,
+    "id": "48443958",
+    "title": "[HO] Báo cáo giám sát",
+    "file": "042-ho-bao-cao-giam-sat.md"
+  },
+  {
+    "index": 43,
+    "id": "48443960",
+    "title": "[HO] Báo cáo chấm công",
+    "file": "043-ho-bao-cao-cham-cong.md"
+  },
+  {
+    "index": 44,
+    "id": "48443971",
+    "title": "[SM-APP] Danh sách cửa hàng chăm sóc",
+    "file": "044-sm-app-danh-sach-cua-hang-cham-soc.md"
+  },
+  {
+    "index": 45,
+    "id": "48444048",
+    "title": "[SM-APP] Nhiệm vụ chăm sóc",
+    "file": "045-sm-app-nhiem-vu-cham-soc.md"
+  },
+  {
+    "index": 46,
+    "id": "48444165",
+    "title": "[HO] Cấu hình chung",
+    "file": "046-ho-cau-hinh-chung.md"
+  },
+  {
+    "index": 47,
+    "id": "48444350",
+    "title": "Đơn đặt hàng (PO)",
+    "file": "047-on-at-hang-po.md"
+  },
+  {
+    "index": 48,
+    "id": "48444497",
+    "title": "[NPP] Nhập kho",
+    "file": "048-npp-nhap-kho.md"
+  },
+  {
+    "index": 49,
+    "id": "48444520",
+    "title": "[HO] Khảo sát",
+    "file": "049-ho-khao-sat.md"
+  },
+  {
+    "index": 50,
+    "id": "48444522",
+    "title": "[HO] Bộ Khảo Sát",
+    "file": "050-ho-bo-khao-sat.md"
+  },
+  {
+    "index": 51,
+    "id": "48444590",
+    "title": "Sell-out / Đơn hàng bán (NPP)",
+    "file": "051-sell-out-on-hang-ban-npp.md"
+  },
+  {
+    "index": 52,
+    "id": "48444752",
+    "title": "[SM-APP] Đặt hàng ở nhiệm vụ viếng thăm (không khuyến mãi)",
+    "file": "052-sm-app-at-hang-o-nhiem-vu-vieng-tham-khong-khuyen-mai.md"
+  },
+  {
+    "index": 53,
+    "id": "48445066",
+    "title": "[NPP] Xuất kho",
+    "file": "053-npp-xuat-kho.md"
+  },
+  {
+    "index": 54,
+    "id": "48445181",
+    "title": "Quy tắc chung trên hệ thống",
+    "file": "054-quy-tac-chung-tren-he-thong.md"
+  },
+  {
+    "index": 55,
+    "id": "48445372",
+    "title": "[SM-APP] Màn hình Viếng Thăm Salesman App",
+    "file": "055-sm-app-man-hinh-vieng-tham-salesman-app.md"
+  },
+  {
+    "index": 56,
+    "id": "53019084",
+    "title": "[SM-APP] Chụp hình bày hàng",
+    "file": "056-sm-app-chup-hinh-bay-hang.md"
+  },
+  {
+    "index": 57,
+    "id": "53019202",
+    "title": "[SM-APP] Nhiệm vụ trong tuyến",
+    "file": "057-sm-app-nhiem-vu-trong-tuyen.md"
+  },
+  {
+    "index": 58,
+    "id": "53021175",
+    "title": "Quản lý Kho",
+    "file": "058-quan-ly-kho.md"
+  },
+  {
+    "index": 59,
+    "id": "53021188",
+    "title": "[NPP] Chuyển kho nội bộ",
+    "file": "059-npp-chuyen-kho-noi-bo.md"
+  },
+  {
+    "index": 60,
+    "id": "53021728",
+    "title": "[HO] Tổng hợp đơn hàng điểm bán",
+    "file": "060-ho-tong-hop-on-hang-iem-ban.md"
+  },
+  {
+    "index": 61,
+    "id": "53021752",
+    "title": "Trả hàng NCC",
+    "file": "061-tra-hang-ncc.md"
+  },
+  {
+    "index": 62,
+    "id": "53021846",
+    "title": "Danh sách cấu hình chung",
+    "file": "062-danh-sach-cau-hinh-chung.md"
+  },
+  {
+    "index": 63,
+    "id": "53022092",
+    "title": "Promotion Core",
+    "file": "063-promotion-core.md"
+  },
+  {
+    "index": 64,
+    "id": "53022444",
+    "title": "NPP trả hàng",
+    "file": "064-npp-tra-hang.md"
+  },
+  {
+    "index": 65,
+    "id": "53022511",
+    "title": "Chuyển kho NPP",
+    "file": "065-chuyen-kho-npp.md"
+  },
+  {
+    "index": 66,
+    "id": "53022578",
+    "title": "Chuyển kho vansales",
+    "file": "066-chuyen-kho-vansales.md"
+  },
+  {
+    "index": 67,
+    "id": "53022607",
+    "title": "Tích hợp",
+    "file": "067-tich-hop.md"
+  },
+  {
+    "index": 68,
+    "id": "53022723",
+    "title": "Điểm bán trả lẻ",
+    "file": "068-iem-ban-tra-le.md"
+  },
+  {
+    "index": 69,
+    "id": "53023348",
+    "title": "[Manager_App] Chấm công đầu ngày",
+    "file": "069-manager-app-cham-cong-au-ngay.md"
+  },
+  {
+    "index": 70,
+    "id": "53023360",
+    "title": "Danh sách dữ liệu chung",
+    "file": "070-danh-sach-du-lieu-chung.md"
+  },
+  {
+    "index": 71,
+    "id": "53023378",
+    "title": "[Manager_App] Chấm công cuối ngày",
+    "file": "071-manager-app-cham-cong-cuoi-ngay.md"
+  },
+  {
+    "index": 72,
+    "id": "53023407",
+    "title": "[Manager_App] Lịch sử chấm công",
+    "file": "072-manager-app-lich-su-cham-cong.md"
+  },
+  {
+    "index": 73,
+    "id": "53023437",
+    "title": "[Manager_App] Báo Cáo",
+    "file": "073-manager-app-bao-cao.md"
+  },
+  {
+    "index": 74,
+    "id": "53023442",
+    "title": "[Manager_App] Duyệt điểm bán mới",
+    "file": "074-manager-app-duyet-iem-ban-moi.md"
+  },
+  {
+    "index": 75,
+    "id": "53023457",
+    "title": "Điểm bán trả hàng nguyên đơn",
+    "file": "075-iem-ban-tra-hang-nguyen-on.md"
+  },
+  {
+    "index": 76,
+    "id": "53023536",
+    "title": "[SM - APP] Khảo sát trên app saleman",
+    "file": "076-sm-app-khao-sat-tren-app-saleman.md"
+  },
+  {
+    "index": 77,
+    "id": "53023843",
+    "title": "[NPP] Kiểm kho",
+    "file": "077-npp-kiem-kho.md"
+  },
+  {
+    "index": 78,
+    "id": "53023912",
+    "title": "[HO] Báo cáo thống kê thực hiện khảo sát",
+    "file": "078-ho-bao-cao-thong-ke-thuc-hien-khao-sat.md"
+  },
+  {
+    "index": 79,
+    "id": "53024066",
+    "title": "[Manager_App] Các chức năng yêu cầu chấm công đầu ngày",
+    "file": "079-manager-app-cac-chuc-nang-yeu-cau-cham-cong-au-ngay.md"
+  },
+  {
+    "index": 80,
+    "id": "53024068",
+    "title": "[SM-APP] Các chức năng yêu cầu chấm công đầu ngày",
+    "file": "080-sm-app-cac-chuc-nang-yeu-cau-cham-cong-au-ngay.md"
+  },
+  {
+    "index": 81,
+    "id": "53024364",
+    "title": "[SM-APP] Tạo Yêu Cầu Nghỉ Phép",
+    "file": "081-sm-app-tao-yeu-cau-nghi-phep.md"
+  },
+  {
+    "index": 82,
+    "id": "53024405",
+    "title": "[HO] Báo cáo Hình Ảnh Bày Hàng",
+    "file": "082-ho-bao-cao-hinh-anh-bay-hang.md"
+  },
+  {
+    "index": 83,
+    "id": "53024421",
+    "title": "[SM-APP] Báo Cáo",
+    "file": "083-sm-app-bao-cao.md"
+  },
+  {
+    "index": 84,
+    "id": "53024877",
+    "title": "[HO] Duyệt yêu cầu nghỉ phép",
+    "file": "084-ho-duyet-yeu-cau-nghi-phep.md"
+  },
+  {
+    "index": 85,
+    "id": "53025256",
+    "title": "[SM-APP] Kiểm tra tồn kho",
+    "file": "085-sm-app-kiem-tra-ton-kho.md"
+  },
+  {
+    "index": 86,
+    "id": "53025306",
+    "title": "Điều kiện khuyến mãi",
+    "file": "086-ieu-kien-khuyen-mai.md"
+  },
+  {
+    "index": 87,
+    "id": "53025309",
+    "title": "Hình thức khuyến mãi",
+    "file": "087-hinh-thuc-khuyen-mai.md"
+  },
+  {
+    "index": 88,
+    "id": "53025479",
+    "title": "[Manager_App] Duyệt yêu cầu nghỉ phép",
+    "file": "088-manager-app-duyet-yeu-cau-nghi-phep.md"
+  },
+  {
+    "index": 89,
+    "id": "53025541",
+    "title": "[Manager_App] Bản đồ tuyến bán hàng",
+    "file": "089-manager-app-ban-o-tuyen-ban-hang.md"
+  },
+  {
+    "index": 90,
+    "id": "53025642",
+    "title": "[SM-APP] Đặt hàng",
+    "file": "090-sm-app-at-hang.md"
+  },
+  {
+    "index": 91,
+    "id": "53025644",
+    "title": "[SM-APP] Menu đơn hàng",
+    "file": "091-sm-app-menu-on-hang.md"
+  },
+  {
+    "index": 92,
+    "id": "53025827",
+    "title": "[SM-APP] Đặt hàng ở nhiệm vụ chăm sóc (không khuyến mãi)",
+    "file": "092-sm-app-at-hang-o-nhiem-vu-cham-soc-khong-khuyen-mai.md"
+  },
+  {
+    "index": 93,
+    "id": "53026111",
+    "title": "[HO] Báo cáo kiểm tồn điểm bán",
+    "file": "093-ho-bao-cao-kiem-ton-iem-ban.md"
+  },
+  {
+    "index": 94,
+    "id": "53026422",
+    "title": "[NPP] Báo cáo Tồn kho hiện tại NPP",
+    "file": "094-npp-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 95,
+    "id": "53026755",
+    "title": "DMS x Promotion",
+    "file": "095-dms-x-promotion.md"
+  },
+  {
+    "index": 96,
+    "id": "53026757",
+    "title": "[Sell-out] Áp dụng khuyến mãi cho đơn hàng bán cửa hàng",
+    "file": "096-sell-out-ap-dung-khuyen-mai-cho-on-hang-ban-cua-hang.md"
+  },
+  {
+    "index": 97,
+    "id": "53028210",
+    "title": "[SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng",
+    "file": "097-sm-app-chi-tiet-iem-ban-lich-su-on-hang.md"
+  },
+  {
+    "index": 98,
+    "id": "53028574",
+    "title": "[NPP] Báo cáo Tổng hợp đơn hàng",
+    "file": "098-npp-bao-cao-tong-hop-on-hang.md"
+  },
+  {
+    "index": 99,
+    "id": "53028636",
+    "title": "Báo cáo phân tích",
+    "file": "099-bao-cao-phan-tich.md"
+  },
+  {
+    "index": 100,
+    "id": "53028640",
+    "title": "Báo cáo doanh thu theo điểm bán",
+    "file": "100-bao-cao-doanh-thu-theo-iem-ban.md"
+  },
+  {
+    "index": 101,
+    "id": "53028685",
+    "title": "[HO] Báo cáo Tồn kho hiện tại NPP",
+    "file": "101-ho-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 102,
+    "id": "53028712",
+    "title": "[HO] Chương trình trưng bày",
+    "file": "102-ho-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 103,
+    "id": "53028714",
+    "title": "[HO] Khởi tạo CTTB",
+    "file": "103-ho-khoi-tao-cttb.md"
+  },
+  {
+    "index": 104,
+    "id": "53028748",
+    "title": "[HO] Đăng ký trưng bày",
+    "file": "104-ho-ang-ky-trung-bay.md"
+  },
+  {
+    "index": 105,
+    "id": "53028751",
+    "title": "[HO] Tiến trình trưng bày",
+    "file": "105-ho-tien-trinh-trung-bay.md"
+  },
+  {
+    "index": 106,
+    "id": "53028753",
+    "title": "[HO] Trả thưởng trưng bày",
+    "file": "106-ho-tra-thuong-trung-bay.md"
+  },
+  {
+    "index": 107,
+    "id": "53028921",
+    "title": "Báo cáo",
+    "file": "107-bao-cao.md"
+  },
+  {
+    "index": 108,
+    "id": "53028924",
+    "title": "NPP_Báo cáo phân tích",
+    "file": "108-npp-bao-cao-phan-tich.md"
+  },
+  {
+    "index": 109,
+    "id": "53028927",
+    "title": "NPP_Báo cáo doanh thu theo điểm bán",
+    "file": "109-npp-bao-cao-doanh-thu-theo-iem-ban.md"
+  },
+  {
+    "index": 110,
+    "id": "53028984",
+    "title": "Báo cáo doanh thu theo Sản phẩm",
+    "file": "110-bao-cao-doanh-thu-theo-san-pham.md"
+  },
+  {
+    "index": 111,
+    "id": "53029053",
+    "title": "NPP_Báo cáo doanh thu theo Sản phẩm",
+    "file": "111-npp-bao-cao-doanh-thu-theo-san-pham.md"
+  },
+  {
+    "index": 112,
+    "id": "53029086",
+    "title": "Checklist Document",
+    "file": "112-checklist-document.md"
+  },
+  {
+    "index": 113,
+    "id": "53029088",
+    "title": "Checklist App",
+    "file": "113-checklist-app.md"
+  },
+  {
+    "index": 114,
+    "id": "53029104",
+    "title": "Checklist Portal",
+    "file": "114-checklist-portal.md"
+  },
+  {
+    "index": 115,
+    "id": "53029256",
+    "title": "Hành động khuyến mãi",
+    "file": "115-hanh-ong-khuyen-mai.md"
+  },
+  {
+    "index": 116,
+    "id": "53029287",
+    "title": "Báo cáo doanh thu theo Nhân viên bán hàng",
+    "file": "116-bao-cao-doanh-thu-theo-nhan-vien-ban-hang.md"
+  },
+  {
+    "index": 117,
+    "id": "53029344",
+    "title": "NPP_Báo cáo doanh thu theo Nhân viên bán hàng",
+    "file": "117-npp-bao-cao-doanh-thu-theo-nhan-vien-ban-hang.md"
+  },
+  {
+    "index": 118,
+    "id": "53029370",
+    "title": "[HO] Báo cáo Tổng hợp đơn hàng",
+    "file": "118-ho-bao-cao-tong-hop-on-hang.md"
+  },
+  {
+    "index": 119,
+    "id": "53029740",
+    "title": "[SM-APP] Khuyến mãi đặt hàng",
+    "file": "119-sm-app-khuyen-mai-at-hang.md"
+  },
+  {
+    "index": 120,
+    "id": "53030026",
+    "title": "[Sell in] Áp khuyến mãi cho đơn hàng bán NPP",
+    "file": "120-sell-in-ap-khuyen-mai-cho-on-hang-ban-npp.md"
+  },
+  {
+    "index": 121,
+    "id": "53030413",
+    "title": "[KM ontop] Điều kiện mua số lượng sản phẩm",
+    "file": "121-km-ontop-ieu-kien-mua-so-luong-san-pham.md"
+  },
+  {
+    "index": 122,
+    "id": "53030430",
+    "title": "[KM ontop] Điều kiện mua số tiền sản phẩm",
+    "file": "122-km-ontop-ieu-kien-mua-so-tien-san-pham.md"
+  },
+  {
+    "index": 123,
+    "id": "53030435",
+    "title": "[KM ontop] Điều kiện mua số lượng nhóm sản phẩm",
+    "file": "123-km-ontop-ieu-kien-mua-so-luong-nhom-san-pham.md"
+  },
+  {
+    "index": 124,
+    "id": "53030437",
+    "title": "[KM ontop] Điều kiện mua số tiền nhóm sản phẩm",
+    "file": "124-km-ontop-ieu-kien-mua-so-tien-nhom-san-pham.md"
+  },
+  {
+    "index": 125,
+    "id": "53030440",
+    "title": "[KM ontop] Điều kiện mua số tiền đơn hàng",
+    "file": "125-km-ontop-ieu-kien-mua-so-tien-on-hang.md"
+  },
+  {
+    "index": 126,
+    "id": "53031629",
+    "title": "Khuyến mãi Ontop",
+    "file": "126-khuyen-mai-ontop.md"
+  },
+  {
+    "index": 127,
+    "id": "53031631",
+    "title": "Khuyến mãi bình thường",
+    "file": "127-khuyen-mai-binh-thuong.md"
+  },
+  {
+    "index": 128,
+    "id": "53031928",
+    "title": "[DMS x Promotion] Research & Analyze",
+    "file": "128-dms-x-promotion-research-analyze.md"
+  },
+  {
+    "index": 129,
+    "id": "53032196",
+    "title": "[KM giảm trừ] Điều kiện mua số lượng sản phẩm",
+    "file": "129-km-giam-tru-ieu-kien-mua-so-luong-san-pham.md"
+  },
+  {
+    "index": 130,
+    "id": "53032298",
+    "title": "[KM giảm trừ] Điều kiện mua số tiền sản phẩm",
+    "file": "130-km-giam-tru-ieu-kien-mua-so-tien-san-pham.md"
+  },
+  {
+    "index": 131,
+    "id": "53032395",
+    "title": "[KM giảm trừ] Điều kiện mua số lượng nhóm sản phẩm",
+    "file": "131-km-giam-tru-ieu-kien-mua-so-luong-nhom-san-pham.md"
+  },
+  {
+    "index": 132,
+    "id": "53032519",
+    "title": "[KM giảm trừ] Điều kiện mua số tiền nhóm sản phẩm",
+    "file": "132-km-giam-tru-ieu-kien-mua-so-tien-nhom-san-pham.md"
+  },
+  {
+    "index": 133,
+    "id": "53032649",
+    "title": "[KM giảm trừ] Điều kiện mua số tiền đơn hàng",
+    "file": "133-km-giam-tru-ieu-kien-mua-so-tien-on-hang.md"
+  },
+  {
+    "index": 134,
+    "id": "53032910",
+    "title": "[SM-APP] Checkin khảo sát",
+    "file": "134-sm-app-checkin-khao-sat.md"
+  },
+  {
+    "index": 135,
+    "id": "53033386",
+    "title": "[NPP] Form in Đơn hàng bán",
+    "file": "135-npp-form-in-on-hang-ban.md"
+  },
+  {
+    "index": 136,
+    "id": "53033595",
+    "title": "[DMS x Promotion] Mô tả luồng nghiệp vụ",
+    "file": "136-dms-x-promotion-mo-ta-luong-nghiep-vu.md"
+  },
+  {
+    "index": 137,
+    "id": "53034754",
+    "title": "[Purchase Order] Áp dụng khuyến mãi",
+    "file": "137-purchase-order-ap-dung-khuyen-mai.md"
+  },
+  {
+    "index": 138,
+    "id": "53034919",
+    "title": "Form in Chuyển kho NPP",
+    "file": "138-form-in-chuyen-kho-npp.md"
+  },
+  {
+    "index": 139,
+    "id": "53034974",
+    "title": "Form in Purchase Order",
+    "file": "139-form-in-purchase-order.md"
+  },
+  {
+    "index": 140,
+    "id": "53034987",
+    "title": "Form in Phiếu kiểm kho",
+    "file": "140-form-in-phieu-kiem-kho.md"
+  },
+  {
+    "index": 141,
+    "id": "53035078",
+    "title": "Form in HO bán NPP",
+    "file": "141-form-in-ho-ban-npp.md"
+  },
+  {
+    "index": 142,
+    "id": "53035085",
+    "title": "Form in Xuất kho (theo từng đơn)",
+    "file": "142-form-in-xuat-kho-theo-tung-on.md"
+  },
+  {
+    "index": 143,
+    "id": "53035092",
+    "title": "[HO] Báo cáo sell-in",
+    "file": "143-ho-bao-cao-sell-in.md"
+  },
+  {
+    "index": 144,
+    "id": "53035242",
+    "title": "[Manager App] Chọn nhân viên và xem danh sách cây Salesforce nhân viên",
+    "file": "144-manager-app-chon-nhan-vien-va-xem-danh-sach-cay-salesforce-nhan-vien.md"
+  },
+  {
+    "index": 145,
+    "id": "53035385",
+    "title": "[SM-APP] Các màn hình chặn vuốt ngang 2 bên thành thiết bị",
+    "file": "145-sm-app-cac-man-hinh-chan-vuot-ngang-2-ben-thanh-thiet-bi.md"
+  },
+  {
+    "index": 146,
+    "id": "53036542",
+    "title": "[SM-APP] Chương trình trưng bày",
+    "file": "146-sm-app-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 147,
+    "id": "53036629",
+    "title": "Report",
+    "file": "147-report.md"
+  },
+  {
+    "index": 148,
+    "id": "53036726",
+    "title": "[HO] Báo cáo Tổng Hợp Viếng Thăm Điểm Bán",
+    "file": "148-ho-bao-cao-tong-hop-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 149,
+    "id": "53036855",
+    "title": "[NPP] Đơn hàng trả trưng bày, tích luỹ",
+    "file": "149-npp-on-hang-tra-trung-bay-tich-luy.md"
+  },
+  {
+    "index": 150,
+    "id": "53036896",
+    "title": "[HO] Báo cáo Chi Tiết Viếng Thăm Điểm Bán",
+    "file": "150-ho-bao-cao-chi-tiet-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 151,
+    "id": "53036922",
+    "title": "[NPP] Báo cáo Nhập Xuất Tồn",
+    "file": "151-npp-bao-cao-nhap-xuat-ton.md"
+  },
+  {
+    "index": 152,
+    "id": "53037649",
+    "title": "[HO] Báo cáo Phân Tích Hiệu Quả Tuyến",
+    "file": "152-ho-bao-cao-phan-tich-hieu-qua-tuyen.md"
+  },
+  {
+    "index": 153,
+    "id": "53037847",
+    "title": "[HO] Báo cáo Độ Phủ Theo Sản Phẩm",
+    "file": "153-ho-bao-cao-o-phu-theo-san-pham.md"
+  },
+  {
+    "index": 154,
+    "id": "53038593",
+    "title": "[Manager_App] Kế hoạch làm việc",
+    "file": "154-manager-app-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 155,
+    "id": "53038608",
+    "title": "[Manager_App] Thực hiện công việc",
+    "file": "155-manager-app-thuc-hien-cong-viec.md"
+  },
+  {
+    "index": 156,
+    "id": "53039138",
+    "title": "Điểm bán Trả hàng khuyến mãi nguyên đơn",
+    "file": "156-iem-ban-tra-hang-khuyen-mai-nguyen-on.md"
+  },
+  {
+    "index": 157,
+    "id": "53039274",
+    "title": "[HO] Báo cáo Nhập Xuất Tồn",
+    "file": "157-ho-bao-cao-nhap-xuat-ton.md"
+  },
+  {
+    "index": 158,
+    "id": "53039371",
+    "title": "[HO] Chốt sổ/ Mở chốt sổ",
+    "file": "158-ho-chot-so-mo-chot-so.md"
+  },
+  {
+    "index": 159,
+    "id": "53040350",
+    "title": "[NPP] Báo cáo Điểm bán trả hàng",
+    "file": "159-npp-bao-cao-iem-ban-tra-hang.md"
+  },
+  {
+    "index": 160,
+    "id": "53040477",
+    "title": "[HO] Báo cáo đơn hàng hủy NPP",
+    "file": "160-ho-bao-cao-on-hang-huy-npp.md"
+  },
+  {
+    "index": 161,
+    "id": "53040793",
+    "title": "[NPP] Báo cáo Nhập/Xuất Kho",
+    "file": "161-npp-bao-cao-nhap-xuat-kho.md"
+  },
+  {
+    "index": 162,
+    "id": "53040866",
+    "title": "[HO] Báo cáo đơn trả hàng NPP",
+    "file": "162-ho-bao-cao-on-tra-hang-npp.md"
+  },
+  {
+    "index": 163,
+    "id": "53041299",
+    "title": "[Manager_App] Tổng quan kế hoạch làm việc",
+    "file": "163-manager-app-tong-quan-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 164,
+    "id": "53041670",
+    "title": "Quy trình tích hợp",
+    "file": "164-quy-trinh-tich-hop.md"
+  },
+  {
+    "index": 165,
+    "id": "53042582",
+    "title": "[SM-APP] Lịch sử chấm công",
+    "file": "165-sm-app-lich-su-cham-cong.md"
+  },
+  {
+    "index": 166,
+    "id": "53042787",
+    "title": "[HO] Quản lý thông báo",
+    "file": "166-ho-quan-ly-thong-bao.md"
+  },
+  {
+    "index": 167,
+    "id": "53042816",
+    "title": "[HO] Thông Báo",
+    "file": "167-ho-thong-bao.md"
+  },
+  {
+    "index": 168,
+    "id": "53043024",
+    "title": "[Manager_App] Duyệt kế hoạch làm việc",
+    "file": "168-manager-app-duyet-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 169,
+    "id": "53043046",
+    "title": "[Manager_App] Duyệt thực hiện công việc",
+    "file": "169-manager-app-duyet-thuc-hien-cong-viec.md"
+  },
+  {
+    "index": 170,
+    "id": "53043415",
+    "title": "[HO] KPI",
+    "file": "170-ho-kpi.md"
+  },
+  {
+    "index": 171,
+    "id": "53043431",
+    "title": "[HO] Xem chỉ tiêu",
+    "file": "171-ho-xem-chi-tieu.md"
+  },
+  {
+    "index": 172,
+    "id": "53043499",
+    "title": "[HO] Giao KPI",
+    "file": "172-ho-giao-kpi.md"
+  },
+  {
+    "index": 173,
+    "id": "53043526",
+    "title": "[Phase 1] - Báo cáo KPI",
+    "file": "173-phase-1-bao-cao-kpi.md"
+  },
+  {
+    "index": 174,
+    "id": "53043677",
+    "title": "[Manager_App] Tạo kế hoạch làm việc",
+    "file": "174-manager-app-tao-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 175,
+    "id": "53044246",
+    "title": "[SM-APP] Chỉnh sửa/Hủy đơn hàng",
+    "file": "175-sm-app-chinh-sua-huy-on-hang.md"
+  },
+  {
+    "index": 176,
+    "id": "53044299",
+    "title": "[HO] Kế hoạch làm việc",
+    "file": "176-ho-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 177,
+    "id": "53044302",
+    "title": "[HO] Tổng quan kế hoạch làm việc",
+    "file": "177-ho-tong-quan-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 178,
+    "id": "53044392",
+    "title": "[HO] Tạo kế hoạch làm việc",
+    "file": "178-ho-tao-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 179,
+    "id": "53044403",
+    "title": "[HO] Duyệt kế hoạch làm việc",
+    "file": "179-ho-duyet-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 180,
+    "id": "53044575",
+    "title": "[HO] Duyệt chi tiết thực hiện công việc",
+    "file": "180-ho-duyet-chi-tiet-thuc-hien-cong-viec.md"
+  },
+  {
+    "index": 181,
+    "id": "53044653",
+    "title": "[HO] Lịch sử thông báo",
+    "file": "181-ho-lich-su-thong-bao.md"
+  },
+  {
+    "index": 182,
+    "id": "53044663",
+    "title": "[SM-APP] Thông báo",
+    "file": "182-sm-app-thong-bao.md"
+  },
+  {
+    "index": 183,
+    "id": "53044680",
+    "title": "[Manager_App] Thông báo",
+    "file": "183-manager-app-thong-bao.md"
+  },
+  {
+    "index": 184,
+    "id": "53045484",
+    "title": "[Manager_App] Báo cáo doanh số ngày",
+    "file": "184-manager-app-bao-cao-doanh-so-ngay.md"
+  },
+  {
+    "index": 185,
+    "id": "53045633",
+    "title": "[HO] Thiết lập vị trí chấm công",
+    "file": "185-ho-thiet-lap-vi-tri-cham-cong.md"
+  },
+  {
+    "index": 186,
+    "id": "53045930",
+    "title": "[HO][HO] Khởi tạo CTTB",
+    "file": "186-ho-ho-khoi-tao-cttb.md"
+  },
+  {
+    "index": 187,
+    "id": "53046259",
+    "title": "[HO]Chương trình tích lũy",
+    "file": "187-ho-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 188,
+    "id": "53046260",
+    "title": "[HO][HO] Đăng ký trưng bày",
+    "file": "188-ho-ho-ang-ky-trung-bay.md"
+  },
+  {
+    "index": 189,
+    "id": "53046345",
+    "title": "[HO][HO] Tiến trình trưng bày",
+    "file": "189-ho-ho-tien-trinh-trung-bay.md"
+  },
+  {
+    "index": 190,
+    "id": "53046457",
+    "title": "[HO][HO] Trả thưởng trưng bày",
+    "file": "190-ho-ho-tra-thuong-trung-bay.md"
+  },
+  {
+    "index": 191,
+    "id": "53046507",
+    "title": "[HO] Khởi tạo chương trình tích lũy",
+    "file": "191-ho-khoi-tao-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 192,
+    "id": "53046920",
+    "title": "[HO & NPP] Phân quyền dữ liệu",
+    "file": "192-ho-npp-phan-quyen-du-lieu.md"
+  },
+  {
+    "index": 193,
+    "id": "53046942",
+    "title": "[SM-APP] Chấm công cuối ngày",
+    "file": "193-sm-app-cham-cong-cuoi-ngay.md"
+  },
+  {
+    "index": 194,
+    "id": "53047029",
+    "title": "[Manager_App] Báo cáo doanh số tháng",
+    "file": "194-manager-app-bao-cao-doanh-so-thang.md"
+  },
+  {
+    "index": 195,
+    "id": "53047049",
+    "title": "[Manager_App] Báo cáo tồn kho hiện tại NPP",
+    "file": "195-manager-app-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 196,
+    "id": "53047091",
+    "title": "[Manager_App] Báo cáo theo dõi đơn hàng",
+    "file": "196-manager-app-bao-cao-theo-doi-on-hang.md"
+  },
+  {
+    "index": 197,
+    "id": "53047110",
+    "title": "[SM-APP] Báo cáo KPI",
+    "file": "197-sm-app-bao-cao-kpi.md"
+  },
+  {
+    "index": 198,
+    "id": "53047112",
+    "title": "[HO] Bản đồ tuyến bán hàng",
+    "file": "198-ho-ban-o-tuyen-ban-hang.md"
+  },
+  {
+    "index": 199,
+    "id": "53047162",
+    "title": "[Manager_App] Giám sát lộ trình nhân viên",
+    "file": "199-manager-app-giam-sat-lo-trinh-nhan-vien.md"
+  },
+  {
+    "index": 200,
+    "id": "53047466",
+    "title": "[HO] Đăng ký tích lũy",
+    "file": "200-ho-ang-ky-tich-luy.md"
+  },
+  {
+    "index": 201,
+    "id": "53047676",
+    "title": "[HO] Truy vấn tọa độ nhân viên",
+    "file": "201-ho-truy-van-toa-o-nhan-vien.md"
+  },
+  {
+    "index": 202,
+    "id": "53047769",
+    "title": "[SM-APP] Báo cáo doanh số ngày",
+    "file": "202-sm-app-bao-cao-doanh-so-ngay.md"
+  },
+  {
+    "index": 203,
+    "id": "53047791",
+    "title": "[SM-App] Báo cáo tồn kho hiện tại NPP",
+    "file": "203-sm-app-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 204,
+    "id": "53047833",
+    "title": "[SM-App] Báo cáo theo dõi đơn hàng",
+    "file": "204-sm-app-bao-cao-theo-doi-on-hang.md"
+  },
+  {
+    "index": 205,
+    "id": "53048101",
+    "title": "[SM-APP] Báo cáo doanh số tháng",
+    "file": "205-sm-app-bao-cao-doanh-so-thang.md"
+  },
+  {
+    "index": 206,
+    "id": "53048396",
+    "title": "[HO] Tiến trình tích lũy",
+    "file": "206-ho-tien-trinh-tich-luy.md"
+  },
+  {
+    "index": 207,
+    "id": "53050014",
+    "title": "[SM-APP] Bán hàng Vansales",
+    "file": "207-sm-app-ban-hang-vansales.md"
+  },
+  {
+    "index": 208,
+    "id": "53050412",
+    "title": "[SM-APP] Chương trình tích lũy",
+    "file": "208-sm-app-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 209,
+    "id": "53050757",
+    "title": "[Manager_APP] Báo cáo KPI",
+    "file": "209-manager-app-bao-cao-kpi.md"
+  },
+  {
+    "index": 210,
+    "id": "53050880",
+    "title": "[NPP] Bán hàng vansales",
+    "file": "210-npp-ban-hang-vansales.md"
+  },
+  {
+    "index": 211,
+    "id": "61145171",
+    "title": "Phân quyền trên Salesman App",
+    "file": "211-phan-quyen-tren-salesman-app.md"
+  },
+  {
+    "index": 212,
+    "id": "61147226",
+    "title": "[SM-APP] Khác",
+    "file": "212-sm-app-khac.md"
+  },
+  {
+    "index": 213,
+    "id": "61147273",
+    "title": "[Manager_App] Khác",
+    "file": "213-manager-app-khac.md"
+  },
+  {
+    "index": 214,
+    "id": "61150439",
+    "title": "[HO] Chấm trưng bày bằng AI",
+    "file": "214-ho-cham-trung-bay-bang-ai.md"
+  },
+  {
+    "index": 215,
+    "id": "61151651",
+    "title": "[SM APP] Chấm trưng bày AI",
+    "file": "215-sm-app-cham-trung-bay-ai.md"
+  },
+  {
+    "index": 216,
+    "id": "61151727",
+    "title": "[HO] Trả thưởng tích lũy",
+    "file": "216-ho-tra-thuong-tich-luy.md"
+  },
+  {
+    "index": 217,
+    "id": "61151808",
+    "title": "Checklist Runout",
+    "file": "217-checklist-runout.md"
+  },
+  {
+    "index": 218,
+    "id": "61154630",
+    "title": "[SM-APP] Chấm công đầu ngày",
+    "file": "218-sm-app-cham-cong-au-ngay.md"
+  },
+  {
+    "index": 219,
+    "id": "61158843",
+    "title": "Promotion - DMS",
+    "file": "219-promotion-dms.md"
+  },
+  {
+    "index": 220,
+    "id": "61158867",
+    "title": "Áp khuyến mãi Sell in",
+    "file": "220-ap-khuyen-mai-sell-in.md"
+  },
+  {
+    "index": 221,
+    "id": "61160399",
+    "title": "[Phase 2] - Báo cáo KPI",
+    "file": "221-phase-2-bao-cao-kpi.md"
+  },
+  {
+    "index": 222,
+    "id": "61161231",
+    "title": "[HO] Cài đặt sản phẩm gợi ý",
+    "file": "222-ho-cai-at-san-pham-goi-y.md"
+  },
+  {
+    "index": 223,
+    "id": "61163272",
+    "title": "[SM-APP] Đặt lại đơn hàng",
+    "file": "223-sm-app-at-lai-on-hang.md"
+  },
+  {
+    "index": 224,
+    "id": "61163890",
+    "title": "Tổng hợp quy tắc tính doanh số tại các chức năng và báo cáo",
+    "file": "224-tong-hop-quy-tac-tinh-doanh-so-tai-cac-chuc-nang-va-bao-cao.md"
+  },
+  {
+    "index": 225,
+    "id": "61166046",
+    "title": "[SM-APP] Danh sách Sản phẩm gợi ý",
+    "file": "225-sm-app-danh-sach-san-pham-goi-y.md"
+  },
+  {
+    "index": 226,
+    "id": "61166100",
+    "title": "[NPP] Quản lý bảng giá bán",
+    "file": "226-npp-quan-ly-bang-gia-ban.md"
+  },
+  {
+    "index": 227,
+    "id": "61166226",
+    "title": "[HO] Bổ sung chỉ tiêu mới và KPI cho cấp quản lý tại Giao KPI",
+    "file": "227-ho-bo-sung-chi-tieu-moi-va-kpi-cho-cap-quan-ly-tai-giao-kpi.md"
+  },
+  {
+    "index": 228,
+    "id": "66519367",
+    "title": "Tổng quan chương trình tích lũy",
+    "file": "228-tong-quan-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 229,
+    "id": "66519471",
+    "title": "MoM 20250507",
+    "file": "229-mom-20250507.md"
+  },
+  {
+    "index": 230,
+    "id": "66520584",
+    "title": "[HO] Thiết lập NPP chỉnh sửa giá bán",
+    "file": "230-ho-thiet-lap-npp-chinh-sua-gia-ban.md"
+  },
+  {
+    "index": 231,
+    "id": "66520873",
+    "title": "Cập nhật danh sách chỉ tiêu KPI",
+    "file": "231-cap-nhat-danh-sach-chi-tieu-kpi.md"
+  },
+  {
+    "index": 232,
+    "id": "66521000",
+    "title": "[Manager_App] Xét duyệt đăng ký CTTB",
+    "file": "232-manager-app-xet-duyet-ang-ky-cttb.md"
+  },
+  {
+    "index": 233,
+    "id": "66521191",
+    "title": "[Manager_App] Xét duyệt đăng ký CTTL",
+    "file": "233-manager-app-xet-duyet-ang-ky-cttl.md"
+  },
+  {
+    "index": 234,
+    "id": "66522087",
+    "title": "MoM 20250514",
+    "file": "234-mom-20250514.md"
+  },
+  {
+    "index": 235,
+    "id": "66523748",
+    "title": "Hương Thủy Project",
+    "file": "235-huong-thuy-project.md"
+  },
+  {
+    "index": 236,
+    "id": "66523750",
+    "title": "[HT] Tài liệu tích hợp ERP",
+    "file": "236-ht-tai-lieu-tich-hop-erp.md"
+  },
+  {
+    "index": 237,
+    "id": "66524113",
+    "title": "MoM 23052025",
+    "file": "237-mom-23052025.md"
+  },
+  {
+    "index": 238,
+    "id": "66525267",
+    "title": "[HT] Portal HO",
+    "file": "238-ht-portal-ho.md"
+  },
+  {
+    "index": 239,
+    "id": "66525269",
+    "title": "[HT] Salesman App",
+    "file": "239-ht-salesman-app.md"
+  },
+  {
+    "index": 240,
+    "id": "66525271",
+    "title": "[HT] Manager App",
+    "file": "240-ht-manager-app.md"
+  },
+  {
+    "index": 241,
+    "id": "66525276",
+    "title": "Core DMS90",
+    "file": "241-core-dms90.md"
+  },
+  {
+    "index": 242,
+    "id": "66525434",
+    "title": "[SM-APP] [HT] Đơn hàng - Thay đổi màn hình Khuyến mãi",
+    "file": "242-sm-app-ht-on-hang-thay-oi-man-hinh-khuyen-mai.md"
+  },
+  {
+    "index": 243,
+    "id": "66525466",
+    "title": "[HO] [HT] Danh sách cấu hình chung",
+    "file": "243-ho-ht-danh-sach-cau-hinh-chung.md"
+  },
+  {
+    "index": 244,
+    "id": "66525629",
+    "title": "MoM 20250527",
+    "file": "244-mom-20250527.md"
+  },
+  {
+    "index": 245,
+    "id": "66525646",
+    "title": "[HO] [HT] Báo cáo chi tiết viếng thăm điểm bán",
+    "file": "245-ho-ht-bao-cao-chi-tiet-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 246,
+    "id": "66525670",
+    "title": "[HO] [HT] Thuế",
+    "file": "246-ho-ht-thue.md"
+  },
+  {
+    "index": 247,
+    "id": "66525793",
+    "title": "[HO] [HT] Nhóm điểm bán",
+    "file": "247-ho-ht-nhom-iem-ban.md"
+  },
+  {
+    "index": 248,
+    "id": "66525824",
+    "title": "[HO] [HT] Báo cáo",
+    "file": "248-ho-ht-bao-cao.md"
+  },
+  {
+    "index": 249,
+    "id": "66525827",
+    "title": "[HO][HT] Truy vấn tọa độ nhân viên",
+    "file": "249-ho-ht-truy-van-toa-o-nhan-vien.md"
+  },
+  {
+    "index": 250,
+    "id": "66525920",
+    "title": "[SM_APP][HT] Cấu hình viếng thăm điểm bán",
+    "file": "250-sm-app-ht-cau-hinh-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 251,
+    "id": "66526110",
+    "title": "[HO][HT] Tuyến bán hàng",
+    "file": "251-ho-ht-tuyen-ban-hang.md"
+  },
+  {
+    "index": 252,
+    "id": "66526954",
+    "title": "[HT] [SM-APP] [Báo Cáo]",
+    "file": "252-ht-sm-app-bao-cao.md"
+  },
+  {
+    "index": 253,
+    "id": "66527205",
+    "title": "[HT] [Manager_APP] [Báo Cáo]",
+    "file": "253-ht-manager-app-bao-cao.md"
+  },
+  {
+    "index": 254,
+    "id": "66527526",
+    "title": "[SM-APP] [HT] Phân tích điểm bán",
+    "file": "254-sm-app-ht-phan-tich-iem-ban.md"
+  },
+  {
+    "index": 255,
+    "id": "66527763",
+    "title": "[HT] [Manager_APP] Giám sát lộ trình nhân viên",
+    "file": "255-ht-manager-app-giam-sat-lo-trinh-nhan-vien.md"
+  },
+  {
+    "index": 256,
+    "id": "66528104",
+    "title": "[HO] [HT] Báo cáo tổng hợp viếng thăm điểm bán",
+    "file": "256-ho-ht-bao-cao-tong-hop-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 257,
+    "id": "66528117",
+    "title": "[HO] [HT] Báo cáo phân tích hiệu quả tuyến",
+    "file": "257-ho-ht-bao-cao-phan-tich-hieu-qua-tuyen.md"
+  },
+  {
+    "index": 258,
+    "id": "66528194",
+    "title": "[HO] [HT] Báo cáo độ phủ theo sản phẩm",
+    "file": "258-ho-ht-bao-cao-o-phu-theo-san-pham.md"
+  },
+  {
+    "index": 259,
+    "id": "66528235",
+    "title": "[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)",
+    "file": "259-ho-quan-ly-ht-on-ban-hang-on-sell-out.md"
+  },
+  {
+    "index": 260,
+    "id": "66528242",
+    "title": "[HO] Quản lý mẫu hóa đơn điện tử",
+    "file": "260-ho-quan-ly-mau-hoa-on-ien-tu.md"
+  },
+  {
+    "index": 261,
+    "id": "66528244",
+    "title": "[HO] Quản lý hóa đơn điện tử",
+    "file": "261-ho-quan-ly-hoa-on-ien-tu.md"
+  },
+  {
+    "index": 262,
+    "id": "66528247",
+    "title": "[HO] Danh mục điểm bán - Thêm thông tin xuất hóa đơn",
+    "file": "262-ho-danh-muc-iem-ban-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 263,
+    "id": "66528249",
+    "title": "[SM-APP] Tạo mới điểm bán - Thêm thông tin xuất hóa đơn",
+    "file": "263-sm-app-tao-moi-iem-ban-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 264,
+    "id": "66528251",
+    "title": "[SM-APP] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn",
+    "file": "264-sm-app-chi-tiet-iem-ban-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 265,
+    "id": "66528253",
+    "title": "[SM-APP] Đặt hàng - Thêm thông tin xuất hóa đơn",
+    "file": "265-sm-app-at-hang-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 266,
+    "id": "66528259",
+    "title": "[Manager_App] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn",
+    "file": "266-manager-app-chi-tiet-iem-ban-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 267,
+    "id": "66528293",
+    "title": "[Manager_App] Chỉnh sửa điểm bán - Thêm thông tin xuất hóa đơn",
+    "file": "267-manager-app-chinh-sua-iem-ban-them-thong-tin-xuat-hoa-on.md"
+  },
+  {
+    "index": 268,
+    "id": "66528295",
+    "title": "[HO] Đơn bán hàng - Thêm thông tin hóa đơn trên đơn hàng",
+    "file": "268-ho-on-ban-hang-them-thong-tin-hoa-on-tren-on-hang.md"
+  },
+  {
+    "index": 269,
+    "id": "66528361",
+    "title": "[NPP] Đăng ký hóa đơn điện tử và chữ ký số",
+    "file": "269-npp-ang-ky-hoa-on-ien-tu-va-chu-ky-so.md"
+  },
+  {
+    "index": 270,
+    "id": "66528399",
+    "title": "[HT] [SM-APP] Báo cáo doanh số ngày",
+    "file": "270-ht-sm-app-bao-cao-doanh-so-ngay.md"
+  },
+  {
+    "index": 271,
+    "id": "66528420",
+    "title": "[HT] [SM-APP] Báo cáo doanh số tháng",
+    "file": "271-ht-sm-app-bao-cao-doanh-so-thang.md"
+  },
+  {
+    "index": 272,
+    "id": "66528547",
+    "title": "[HT] [SM-APP] Báo cáo KPI",
+    "file": "272-ht-sm-app-bao-cao-kpi.md"
+  },
+  {
+    "index": 273,
+    "id": "66528559",
+    "title": "[HT] [SM-APP] Báo cáo theo dõi đơn hàng",
+    "file": "273-ht-sm-app-bao-cao-theo-doi-on-hang.md"
+  },
+  {
+    "index": 274,
+    "id": "66528648",
+    "title": "[HT] [Manager_App] Homepage",
+    "file": "274-ht-manager-app-homepage.md"
+  },
+  {
+    "index": 275,
+    "id": "66528683",
+    "title": "[HT] [[Manager_App]] Báo cáo doanh số ngày",
+    "file": "275-ht-manager-app-bao-cao-doanh-so-ngay.md"
+  },
+  {
+    "index": 276,
+    "id": "66528697",
+    "title": "[HT] [Manager_App] Báo cáo doanh số tháng",
+    "file": "276-ht-manager-app-bao-cao-doanh-so-thang.md"
+  },
+  {
+    "index": 277,
+    "id": "66528715",
+    "title": "[HT] [Manager_App] Báo cáo theo dõi đơn hàng",
+    "file": "277-ht-manager-app-bao-cao-theo-doi-on-hang.md"
+  },
+  {
+    "index": 278,
+    "id": "66528924",
+    "title": "[HT] [Manager_APP] Báo cáo KPI",
+    "file": "278-ht-manager-app-bao-cao-kpi.md"
+  },
+  {
+    "index": 279,
+    "id": "66528938",
+    "title": "[HT] [HO] Báo cáo KPI",
+    "file": "279-ht-ho-bao-cao-kpi.md"
+  },
+  {
+    "index": 280,
+    "id": "66529441",
+    "title": "[HO][HT] Chuyển tuyến NPP",
+    "file": "280-ho-ht-chuyen-tuyen-npp.md"
+  },
+  {
+    "index": 281,
+    "id": "66529770",
+    "title": "[HO] Enhance CTTB",
+    "file": "281-ho-enhance-cttb.md"
+  },
+  {
+    "index": 282,
+    "id": "66529974",
+    "title": "Màn hình tổng quan chương trình trưng bày",
+    "file": "282-man-hinh-tong-quan-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 283,
+    "id": "66530816",
+    "title": "Khuyến mãi",
+    "file": "283-khuyen-mai.md"
+  },
+  {
+    "index": 284,
+    "id": "66530857",
+    "title": "[SM-APP] [HT] Đơn hàng - Thêm ghi chú trên từng dòng sản phẩm",
+    "file": "284-sm-app-ht-on-hang-them-ghi-chu-tren-tung-dong-san-pham.md"
+  },
+  {
+    "index": 285,
+    "id": "66530906",
+    "title": "[SM-APP] [HT] Đơn hàng - Thêm thông tin lot/date trên đơn hàng",
+    "file": "285-sm-app-ht-on-hang-them-thong-tin-lot-date-tren-on-hang.md"
+  },
+  {
+    "index": 286,
+    "id": "66530945",
+    "title": "[SM-APP] [HT] Đơn hàng",
+    "file": "286-sm-app-ht-on-hang.md"
+  },
+  {
+    "index": 287,
+    "id": "66530954",
+    "title": "[SM-APP] [HT] Đơn hàng - Chọn kho trước khi đặt hàng",
+    "file": "287-sm-app-ht-on-hang-chon-kho-truoc-khi-at-hang.md"
+  },
+  {
+    "index": 288,
+    "id": "66530970",
+    "title": "[NPP][HT] Đơn hàng bán - Thêm ghi chú trên từng dòng sản phẩm",
+    "file": "288-npp-ht-on-hang-ban-them-ghi-chu-tren-tung-dong-san-pham.md"
+  },
+  {
+    "index": 289,
+    "id": "66530990",
+    "title": "[SM-APP] Enhance CTTB",
+    "file": "289-sm-app-enhance-cttb.md"
+  },
+  {
+    "index": 290,
+    "id": "66531547",
+    "title": "[HO][HT] Đơn hàng - Thêm thông tin lot/date trên đơn hàng điểm bán",
+    "file": "290-ho-ht-on-hang-them-thong-tin-lot-date-tren-on-hang-iem-ban.md"
+  },
+  {
+    "index": 291,
+    "id": "66531694",
+    "title": "[HT] Portal NPP",
+    "file": "291-ht-portal-npp.md"
+  },
+  {
+    "index": 292,
+    "id": "66531699",
+    "title": "[NPP][HT] Đơn hàng - Thêm thông tin lot/date trên đơn hàng bán",
+    "file": "292-npp-ht-on-hang-them-thong-tin-lot-date-tren-on-hang-ban.md"
+  },
+  {
+    "index": 293,
+    "id": "66532574",
+    "title": "MoM 17062025",
+    "file": "293-mom-17062025.md"
+  },
+  {
+    "index": 294,
+    "id": "66532594",
+    "title": "[SM-APP] [HT] Đơn hàng - Khuyến mãi bậc thang",
+    "file": "294-sm-app-ht-on-hang-khuyen-mai-bac-thang.md"
+  },
+  {
+    "index": 295,
+    "id": "66533067",
+    "title": "[HO][HT] Đơn hàng",
+    "file": "295-ho-ht-on-hang.md"
+  },
+  {
+    "index": 296,
+    "id": "66534498",
+    "title": "[SM-APP] [HT] Đơn hàng - Thêm chức năng Gửi đơn hàng cho đơn Direct Sales",
+    "file": "296-sm-app-ht-on-hang-them-chuc-nang-gui-on-hang-cho-on-direct-sales.md"
+  },
+  {
+    "index": 297,
+    "id": "66535164",
+    "title": "MoM 20250623",
+    "file": "297-mom-20250623.md"
+  },
+  {
+    "index": 298,
+    "id": "66535560",
+    "title": "[NPP] [HT] Đơn hàng - Áp dụng khuyến mãi bậc thang",
+    "file": "298-npp-ht-on-hang-ap-dung-khuyen-mai-bac-thang.md"
+  },
+  {
+    "index": 299,
+    "id": "66536318",
+    "title": "[HT] [Manager_App] Chi tiết đơn hàng - Khuyến mãi bậc thang",
+    "file": "299-ht-manager-app-chi-tiet-on-hang-khuyen-mai-bac-thang.md"
+  },
+  {
+    "index": 300,
+    "id": "66536330",
+    "title": "[HT] [Manager_App] Chi tiết đơn hàng",
+    "file": "300-ht-manager-app-chi-tiet-on-hang.md"
+  },
+  {
+    "index": 301,
+    "id": "66536332",
+    "title": "[HT] [Manager_App] Chi tiết đơn hàng - Thông tin Lot/Date trên đơn hàng",
+    "file": "301-ht-manager-app-chi-tiet-on-hang-thong-tin-lot-date-tren-on-hang.md"
+  },
+  {
+    "index": 302,
+    "id": "66536349",
+    "title": "[HT] [Manager_App] Chi tiết đơn hàng - Thông tin ghi chú trên từng dòng sản phẩm",
+    "file": "302-ht-manager-app-chi-tiet-on-hang-thong-tin-ghi-chu-tren-tung-dong-san-pham.md"
+  },
+  {
+    "index": 303,
+    "id": "66538349",
+    "title": "[NPP] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho",
+    "file": "303-npp-kiem-kho-ieu-chinh-thong-tin-phieu-kiem-kho.md"
+  },
+  {
+    "index": 304,
+    "id": "66539024",
+    "title": "[NPP][HT] Đơn hàng - Áp dụng CTKM lot date",
+    "file": "304-npp-ht-on-hang-ap-dung-ctkm-lot-date.md"
+  },
+  {
+    "index": 305,
+    "id": "66539493",
+    "title": "[SM-APP] Chỉnh sửa thông tin điểm bán",
+    "file": "305-sm-app-chinh-sua-thong-tin-iem-ban.md"
+  },
+  {
+    "index": 306,
+    "id": "66539525",
+    "title": "[HO][HT] Đơn hàng - Xem đơn hàng có CTKM lot date",
+    "file": "306-ho-ht-on-hang-xem-on-hang-co-ctkm-lot-date.md"
+  },
+  {
+    "index": 307,
+    "id": "66539724",
+    "title": "[SM-APP] [HT] Đơn hàng - Khuyến mãi kết hợp nhiều scheme theo phân cấp",
+    "file": "307-sm-app-ht-on-hang-khuyen-mai-ket-hop-nhieu-scheme-theo-phan-cap.md"
+  },
+  {
+    "index": 308,
+    "id": "66539959",
+    "title": "Đơn đặt hàng (PO) - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết",
+    "file": "308-on-at-hang-po-duyet-huy-on-hang-tai-man-hinh-xem-chi-tiet.md"
+  },
+  {
+    "index": 309,
+    "id": "66540434",
+    "title": "[Manager_App] Duyệt điều chỉnh điểm bán",
+    "file": "309-manager-app-duyet-ieu-chinh-iem-ban.md"
+  },
+  {
+    "index": 310,
+    "id": "66540549",
+    "title": "[Manager_App] Thông tin đơn hàng - Xem thông tin đơn hàng",
+    "file": "310-manager-app-thong-tin-on-hang-xem-thong-tin-on-hang.md"
+  },
+  {
+    "index": 311,
+    "id": "66540575",
+    "title": "Sell-out - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết",
+    "file": "311-sell-out-duyet-huy-on-hang-tai-man-hinh-xem-chi-tiet.md"
+  },
+  {
+    "index": 312,
+    "id": "66541356",
+    "title": "[SM-APP] [HT] Đơn hàng - Khuyến mãi đồng giá",
+    "file": "312-sm-app-ht-on-hang-khuyen-mai-ong-gia.md"
+  },
+  {
+    "index": 313,
+    "id": "66541846",
+    "title": "[HO] Duyệt điều chỉnh điểm bán",
+    "file": "313-ho-duyet-ieu-chinh-iem-ban.md"
+  },
+  {
+    "index": 314,
+    "id": "66541954",
+    "title": "[NPP] Trả hàng nguyên đơn HO",
+    "file": "314-npp-tra-hang-nguyen-on-ho.md"
+  },
+  {
+    "index": 315,
+    "id": "66542750",
+    "title": "NPP trả hàng nguyên đơn",
+    "file": "315-npp-tra-hang-nguyen-on.md"
+  },
+  {
+    "index": 316,
+    "id": "66542831",
+    "title": "[HO] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho",
+    "file": "316-ho-kiem-kho-ieu-chinh-thong-tin-phieu-kiem-kho.md"
+  },
+  {
+    "index": 317,
+    "id": "66542835",
+    "title": "[NPP] Xuất kho - Huỷ phiếu xuất kho đã duyệt",
+    "file": "317-npp-xuat-kho-huy-phieu-xuat-kho-a-duyet.md"
+  },
+  {
+    "index": 318,
+    "id": "66542867",
+    "title": "[HO] Duyệt trả hàng nguyên đơn",
+    "file": "318-ho-duyet-tra-hang-nguyen-on.md"
+  },
+  {
+    "index": 319,
+    "id": "66543075",
+    "title": "Sell-in - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết",
+    "file": "319-sell-in-duyet-huy-on-hang-tai-man-hinh-xem-chi-tiet.md"
+  },
+  {
+    "index": 320,
+    "id": "66543218",
+    "title": "[HO] Chốt sổ/ Mở chốt sổ - Chốt sổ nhiều NPP & nhiều tháng",
+    "file": "320-ho-chot-so-mo-chot-so-chot-so-nhieu-npp-nhieu-thang.md"
+  },
+  {
+    "index": 321,
+    "id": "66543773",
+    "title": "[NPP][HT] Đơn hàng - Áp dụng CTKM đồng giá",
+    "file": "321-npp-ht-on-hang-ap-dung-ctkm-ong-gia.md"
+  },
+  {
+    "index": 322,
+    "id": "66544801",
+    "title": "[SM-APP] Trả hàng",
+    "file": "322-sm-app-tra-hang.md"
+  },
+  {
+    "index": 323,
+    "id": "66544813",
+    "title": "[SM-APP] Trả hàng ở nhiệm vụ viếng thăm",
+    "file": "323-sm-app-tra-hang-o-nhiem-vu-vieng-tham.md"
+  },
+  {
+    "index": 324,
+    "id": "66545645",
+    "title": "[NPP] Kiểm kho - Import phiếu kiểm kho",
+    "file": "324-npp-kiem-kho-import-phieu-kiem-kho.md"
+  },
+  {
+    "index": 325,
+    "id": "66545728",
+    "title": "[NPP] Sell-out - Khởi tạo lại đơn hàng đã duyệt",
+    "file": "325-npp-sell-out-khoi-tao-lai-on-hang-a-duyet.md"
+  },
+  {
+    "index": 326,
+    "id": "73138925",
+    "title": "[HO] Enhance bảng giá bán nhiều cấp",
+    "file": "326-ho-enhance-bang-gia-ban-nhieu-cap.md"
+  },
+  {
+    "index": 327,
+    "id": "73140163",
+    "title": "[SM-APP] Trả hàng ở nhiệm vụ chăm sóc",
+    "file": "327-sm-app-tra-hang-o-nhiem-vu-cham-soc.md"
+  },
+  {
+    "index": 328,
+    "id": "73140167",
+    "title": "[SM-APP] Menu đơn hàng - Thêm nút trả hàng - Chi tiết đơn trả hàng",
+    "file": "328-sm-app-menu-on-hang-them-nut-tra-hang-chi-tiet-on-tra-hang.md"
+  },
+  {
+    "index": 329,
+    "id": "73140169",
+    "title": "[SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng - Chi tiết đơn trả hàng",
+    "file": "329-sm-app-chi-tiet-iem-ban-lich-su-on-hang-chi-tiet-on-tra-hang.md"
+  },
+  {
+    "index": 330,
+    "id": "73140172",
+    "title": "[SM-APP][Manager-APP] Đơn trả hàng - Báo cáo theo dõi đơn hàng",
+    "file": "330-sm-app-manager-app-on-tra-hang-bao-cao-theo-doi-on-hang.md"
+  },
+  {
+    "index": 331,
+    "id": "73140412",
+    "title": "[SM-APP] Trả hàng - Chỉnh sửa đơn trả hàng lẻ",
+    "file": "331-sm-app-tra-hang-chinh-sua-on-tra-hang-le.md"
+  },
+  {
+    "index": 332,
+    "id": "73140421",
+    "title": "[SM-APP] Trả hàng - Hủy đơn trả hàng",
+    "file": "332-sm-app-tra-hang-huy-on-tra-hang.md"
+  },
+  {
+    "index": 333,
+    "id": "73140544",
+    "title": "[HO][HT] Chức năng phân quyền - Nhóm quyền",
+    "file": "333-ho-ht-chuc-nang-phan-quyen-nhom-quyen.md"
+  },
+  {
+    "index": 334,
+    "id": "73143596",
+    "title": "[HO] Quy trình duyệt",
+    "file": "334-ho-quy-trinh-duyet.md"
+  },
+  {
+    "index": 335,
+    "id": "73144940",
+    "title": "[SM-APP] Trả hàng - Trả hàng nguyên đơn",
+    "file": "335-sm-app-tra-hang-tra-hang-nguyen-on.md"
+  },
+  {
+    "index": 336,
+    "id": "73144946",
+    "title": "[SM-APP] Trả hàng - Trả hàng lẻ",
+    "file": "336-sm-app-tra-hang-tra-hang-le.md"
+  },
+  {
+    "index": 337,
+    "id": "73145543",
+    "title": "[HO] Cấu hình thuộc tính động",
+    "file": "337-ho-cau-hinh-thuoc-tinh-ong.md"
+  },
+  {
+    "index": 338,
+    "id": "75533070",
+    "title": "[HO] Quy trình Duyệt - Danh sách điểm bán",
+    "file": "338-ho-quy-trinh-duyet-danh-sach-iem-ban.md"
+  },
+  {
+    "index": 339,
+    "id": "75533072",
+    "title": "[HO] Quy trình duyệt - Đăng ký trưng bày",
+    "file": "339-ho-quy-trinh-duyet-ang-ky-trung-bay.md"
+  },
+  {
+    "index": 340,
+    "id": "75533861",
+    "title": "[HO] Quy trình duyệt - Đơn hàng bán",
+    "file": "340-ho-quy-trinh-duyet-on-hang-ban.md"
+  },
+  {
+    "index": 341,
+    "id": "75533873",
+    "title": "[HO][QTD] Chương trình khuyến mãi (Draft)",
+    "file": "341-ho-qtd-chuong-trinh-khuyen-mai-draft.md"
+  },
+  {
+    "index": 342,
+    "id": "75533897",
+    "title": "[APP QL] [QTD] Duyệt điểm bán",
+    "file": "342-app-ql-qtd-duyet-iem-ban.md"
+  },
+  {
+    "index": 343,
+    "id": "75533909",
+    "title": "[APP QL] [QTD] Duyệt đăng ký trưng bày",
+    "file": "343-app-ql-qtd-duyet-ang-ky-trung-bay.md"
+  },
+  {
+    "index": 344,
+    "id": "75533921",
+    "title": "[APP QL] [QTD] Duyệt đăng ký tích lũy",
+    "file": "344-app-ql-qtd-duyet-ang-ky-tich-luy.md"
+  },
+  {
+    "index": 345,
+    "id": "75533933",
+    "title": "[SM APP] [QTD] Xem danh sách điểm bán",
+    "file": "345-sm-app-qtd-xem-danh-sach-iem-ban.md"
+  },
+  {
+    "index": 346,
+    "id": "75533945",
+    "title": "[SM APP] [QTD] Xem Đơn bán hàng - Hủy đơn bán hàng Khởi tạo",
+    "file": "346-sm-app-qtd-xem-on-ban-hang-huy-on-ban-hang-khoi-tao.md"
+  },
+  {
+    "index": 347,
+    "id": "75533957",
+    "title": "[APP QL] [QTD] Xem danh sách đơn hàng",
+    "file": "347-app-ql-qtd-xem-danh-sach-on-hang.md"
+  },
+  {
+    "index": 348,
+    "id": "75533969",
+    "title": "[SM APP] [QTD] Xem đăng ký Chương trình trưng bày",
+    "file": "348-sm-app-qtd-xem-ang-ky-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 349,
+    "id": "75533981",
+    "title": "[SM APP] [QTD] Xem đăng ký Chương trình tích lũy",
+    "file": "349-sm-app-qtd-xem-ang-ky-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 350,
+    "id": "75534368",
+    "title": "[HO][HT] Nhân viên bán hàng",
+    "file": "350-ho-ht-nhan-vien-ban-hang.md"
+  },
+  {
+    "index": 351,
+    "id": "75536315",
+    "title": "[HO] Quy trình duyệt - Đăng ký tích lũy",
+    "file": "351-ho-quy-trinh-duyet-ang-ky-tich-luy.md"
+  },
+  {
+    "index": 352,
+    "id": "75536317",
+    "title": "[HT] [SM-APP] Báo cáo tồn kho hiện tại NPP",
+    "file": "352-ht-sm-app-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 353,
+    "id": "75536332",
+    "title": "[HT] [[Manager_App] Báo cáo tồn kho hiện tại NPP",
+    "file": "353-ht-manager-app-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 354,
+    "id": "75536956",
+    "title": "[HO] Danh sách sản phẩm",
+    "file": "354-ho-danh-sach-san-pham.md"
+  },
+  {
+    "index": 355,
+    "id": "75537478",
+    "title": "[SM-APP] Chương trình khuyến mãi",
+    "file": "355-sm-app-chuong-trinh-khuyen-mai.md"
+  },
+  {
+    "index": 356,
+    "id": "75538004",
+    "title": "[HO] Dashboard",
+    "file": "356-ho-dashboard.md"
+  },
+  {
+    "index": 357,
+    "id": "75538541",
+    "title": "[NPP] Dashboard",
+    "file": "357-npp-dashboard.md"
+  },
+  {
+    "index": 358,
+    "id": "75538814",
+    "title": "[HT] Portal NPP - Báo Cáo",
+    "file": "358-ht-portal-npp-bao-cao.md"
+  },
+  {
+    "index": 359,
+    "id": "75538816",
+    "title": "[NPP][HT] Báo cáo tổng hợp đơn hàng NPP",
+    "file": "359-npp-ht-bao-cao-tong-hop-on-hang-npp.md"
+  },
+  {
+    "index": 360,
+    "id": "75539550",
+    "title": "[HT] Báo cáo xuất nhập tồn",
+    "file": "360-ht-bao-cao-xuat-nhap-ton.md"
+  },
+  {
+    "index": 361,
+    "id": "75542967",
+    "title": "[HT] Áp dụng KM không đồng thời",
+    "file": "361-ht-ap-dung-km-khong-ong-thoi.md"
+  },
+  {
+    "index": 362,
+    "id": "75544487",
+    "title": "[SM-APP] [HT] Đơn hàng - Khuyến mãi không đồng thời",
+    "file": "362-sm-app-ht-on-hang-khuyen-mai-khong-ong-thoi.md"
+  },
+  {
+    "index": 363,
+    "id": "75549201",
+    "title": "[BACKUP][HO] Nhập kho",
+    "file": "363-backup-ho-nhap-kho.md"
+  },
+  {
+    "index": 364,
+    "id": "75550212",
+    "title": "[HO] Import tồn kho đầu kỳ NPP",
+    "file": "364-ho-import-ton-kho-au-ky-npp.md"
+  },
+  {
+    "index": 365,
+    "id": "75550530",
+    "title": "[HO] Quy trình duyệt - Bảng giá bán",
+    "file": "365-ho-quy-trinh-duyet-bang-gia-ban.md"
+  },
+  {
+    "index": 366,
+    "id": "75550682",
+    "title": "[HO] Quy trình duyệt - Giá bán (NPP)",
+    "file": "366-ho-quy-trinh-duyet-gia-ban-npp.md"
+  },
+  {
+    "index": 367,
+    "id": "75551637",
+    "title": "[HO] Quy trình duyệt - Duyệt kiểm kho nhà phân phối",
+    "file": "367-ho-quy-trinh-duyet-duyet-kiem-kho-nha-phan-phoi.md"
+  },
+  {
+    "index": 368,
+    "id": "75552452",
+    "title": "[NPP][HT] Đơn hàng - Duyệt hàng loạt đơn hàng",
+    "file": "368-npp-ht-on-hang-duyet-hang-loat-on-hang.md"
+  },
+  {
+    "index": 369,
+    "id": "79889140",
+    "title": "[HT] [HO&NPP] Tiến trình import - Export kết quả import thất bại",
+    "file": "369-ht-ho-npp-tien-trinh-import-export-ket-qua-import-that-bai.md"
+  },
+  {
+    "index": 370,
+    "id": "79889727",
+    "title": "[HO] Nhà phân phối",
+    "file": "370-ho-nha-phan-phoi.md"
+  },
+  {
+    "index": 371,
+    "id": "79892347",
+    "title": "[HO] Đổi mật khẩu cho EndUser",
+    "file": "371-ho-oi-mat-khau-cho-enduser.md"
+  },
+  {
+    "index": 372,
+    "id": "79899206",
+    "title": "[Manager_App] Báo Cáo Viếng Thăm Điểm Bán",
+    "file": "372-manager-app-bao-cao-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 373,
+    "id": "79901328",
+    "title": "[HO] Quản lý kho",
+    "file": "373-ho-quan-ly-kho.md"
+  },
+  {
+    "index": 374,
+    "id": "79901330",
+    "title": "[HO][HT] Chuyển kho NPP",
+    "file": "374-ho-ht-chuyen-kho-npp.md"
+  },
+  {
+    "index": 375,
+    "id": "79902262",
+    "title": "[HO] Báo cáo Nhập/Xuất kho",
+    "file": "375-ho-bao-cao-nhap-xuat-kho.md"
+  },
+  {
+    "index": 376,
+    "id": "79903777",
+    "title": "Đối tượng áp dụng = Nhà phân phối",
+    "file": "376-oi-tuong-ap-dung-nha-phan-phoi.md"
+  },
+  {
+    "index": 377,
+    "id": "79904248",
+    "title": "[SM-APP] Đặt hàng - Thêm thông tin vào card đơn hàng và chi tiết đơn hàng",
+    "file": "377-sm-app-at-hang-them-thong-tin-vao-card-on-hang-va-chi-tiet-on-hang.md"
+  },
+  {
+    "index": 378,
+    "id": "79907213",
+    "title": "[HO] Bổ sung điều kiện phụ đạt KPI và cho phép chỉnh sửa khi KPI đã duyệt",
+    "file": "378-ho-bo-sung-ieu-kien-phu-at-kpi-va-cho-phep-chinh-sua-khi-kpi-a-duyet.md"
+  },
+  {
+    "index": 379,
+    "id": "79907951",
+    "title": "[IMPROVEMENT] BỔ SUNG THÔNG TIN KÊNH BÁN HÀNG CHO DMS HƯƠNG THỦY",
+    "file": "379-improvement-bo-sung-thong-tin-kenh-ban-hang-cho-dms-huong-thuy.md"
+  },
+  {
+    "index": 380,
+    "id": "79907953",
+    "title": "[Kênh bán hàng] Các màn hình điều chỉnh team OMS",
+    "file": "380-kenh-ban-hang-cac-man-hinh-ieu-chinh-team-oms.md"
+  },
+  {
+    "index": 381,
+    "id": "79907975",
+    "title": "[SM-APP] Báo cáo chương trình trưng bày",
+    "file": "381-sm-app-bao-cao-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 382,
+    "id": "79908101",
+    "title": "[SM-APP] Báo cáo chương trình tích lũy",
+    "file": "382-sm-app-bao-cao-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 383,
+    "id": "79908234",
+    "title": "[IMPROVEMENT] Enhance chức năng select all cho selectbox chọn NPP trên các màn hình",
+    "file": "383-improvement-enhance-chuc-nang-select-all-cho-selectbox-chon-npp-tren-cac-man-hinh.md"
+  },
+  {
+    "index": 384,
+    "id": "79908547",
+    "title": "Đối tượng áp dụng = Điểm bán",
+    "file": "384-oi-tuong-ap-dung-iem-ban.md"
+  },
+  {
+    "index": 385,
+    "id": "79910213",
+    "title": "[HO][HT] Enhance bảng giá bán nhiều cấp",
+    "file": "385-ho-ht-enhance-bang-gia-ban-nhieu-cap.md"
+  },
+  {
+    "index": 386,
+    "id": "79910656",
+    "title": "[SM-APP][HT] Chương trình khuyến mãi",
+    "file": "386-sm-app-ht-chuong-trinh-khuyen-mai.md"
+  },
+  {
+    "index": 387,
+    "id": "79911035",
+    "title": "[IMPROVEMENT] Enhance chức năng select all cho selectbox chọn Nhãn hàng trên các màn hình",
+    "file": "387-improvement-enhance-chuc-nang-select-all-cho-selectbox-chon-nhan-hang-tren-cac-man-hinh.md"
+  },
+  {
+    "index": 388,
+    "id": "79911270",
+    "title": "[Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTB -> Chương trình trưng bày",
+    "file": "388-manager-app-enhance-chuc-nang-xet-duyet-ang-ky-cttb-chuong-trinh-trung-bay.md"
+  },
+  {
+    "index": 389,
+    "id": "79911313",
+    "title": "[Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTL - Chương trình tích lũy",
+    "file": "389-manager-app-enhance-chuc-nang-xet-duyet-ang-ky-cttl-chuong-trinh-tich-luy.md"
+  },
+  {
+    "index": 390,
+    "id": "79913680",
+    "title": "Auto Select",
+    "file": "390-auto-select.md"
+  },
+  {
+    "index": 391,
+    "id": "79913719",
+    "title": "API Filter Promotions theo tuyến",
+    "file": "391-api-filter-promotions-theo-tuyen.md"
+  },
+  {
+    "index": 392,
+    "id": "79916897",
+    "title": "[HO][HT] Enhance bảng giá mua theo đối tượng áp dụng",
+    "file": "392-ho-ht-enhance-bang-gia-mua-theo-oi-tuong-ap-dung.md"
+  },
+  {
+    "index": 393,
+    "id": "79917564",
+    "title": "Quy trình triển khai",
+    "file": "393-quy-trinh-trien-khai.md"
+  },
+  {
+    "index": 394,
+    "id": "79919663",
+    "title": "[HO] Duyệt chuyển kho nội bộ NPP",
+    "file": "394-ho-duyet-chuyen-kho-noi-bo-npp.md"
+  },
+  {
+    "index": 395,
+    "id": "79920575",
+    "title": "[HO] [HT] KPI",
+    "file": "395-ho-ht-kpi.md"
+  },
+  {
+    "index": 396,
+    "id": "79920674",
+    "title": "[HO][HT] Tổng Hợp Đơn Hàng Bán NPP",
+    "file": "396-ho-ht-tong-hop-on-hang-ban-npp.md"
+  },
+  {
+    "index": 397,
+    "id": "79920709",
+    "title": "[SM-APP] Báo cáo viếng thăm điểm bán",
+    "file": "397-sm-app-bao-cao-vieng-tham-iem-ban.md"
+  },
+  {
+    "index": 398,
+    "id": "87261684",
+    "title": "[HO] [HT] Nhà phân phối",
+    "file": "398-ho-ht-nha-phan-phoi.md"
+  },
+  {
+    "index": 399,
+    "id": "87262130",
+    "title": "MoM 18/12/2025",
+    "file": "399-mom-18-12-2025.md"
+  },
+  {
+    "index": 400,
+    "id": "87262254",
+    "title": "[NPP][HT] Purchase Orders (PO)",
+    "file": "400-npp-ht-purchase-orders-po.md"
+  },
+  {
+    "index": 401,
+    "id": "87262339",
+    "title": "[HO-HT] [ENHANCE] Tiến trình trưng bày",
+    "file": "401-ho-ht-enhance-tien-trinh-trung-bay.md"
+  },
+  {
+    "index": 402,
+    "id": "87263066",
+    "title": "[HO-HT] [ENHANCE] Danh sách trả thưởng trưng bày",
+    "file": "402-ho-ht-enhance-danh-sach-tra-thuong-trung-bay.md"
+  },
+  {
+    "index": 403,
+    "id": "87263150",
+    "title": "[HO-HT] [ENHANCE] Danh sách trả thưởng tích lũy",
+    "file": "403-ho-ht-enhance-danh-sach-tra-thuong-tich-luy.md"
+  },
+  {
+    "index": 404,
+    "id": "87263176",
+    "title": "[HO-HT] [ENHANCE] Tiến trình tích lũy",
+    "file": "404-ho-ht-enhance-tien-trinh-tich-luy.md"
+  },
+  {
+    "index": 405,
+    "id": "87263562",
+    "title": "[HO] [HT] Danh sách điểm bán",
+    "file": "405-ho-ht-danh-sach-iem-ban.md"
+  },
+  {
+    "index": 406,
+    "id": "87264259",
+    "title": "[NPP][HT]  Nhập Hàng",
+    "file": "406-npp-ht-nhap-hang.md"
+  },
+  {
+    "index": 407,
+    "id": "87264327",
+    "title": "[HO] [HT] Báo Cáo Doanh Số Điểm Bán Trên Tuyến",
+    "file": "407-ho-ht-bao-cao-doanh-so-iem-ban-tren-tuyen.md"
+  },
+  {
+    "index": 408,
+    "id": "87270793",
+    "title": "[HT][HO] Chốt sổ/Mở chốt sổ ngày",
+    "file": "408-ht-ho-chot-so-mo-chot-so-ngay.md"
+  },
+  {
+    "index": 409,
+    "id": "87271954",
+    "title": "[HO] [HT] Báo Cáo Tổng Hợp Tuyến Bán Hàng",
+    "file": "409-ho-ht-bao-cao-tong-hop-tuyen-ban-hang.md"
+  },
+  {
+    "index": 410,
+    "id": "87278386",
+    "title": "[HT] Cập nhật đơn vị hành chính",
+    "file": "410-ht-cap-nhat-on-vi-hanh-chinh.md"
+  },
+  {
+    "index": 411,
+    "id": "87279238",
+    "title": "[NPP][HT] Kiểm kho",
+    "file": "411-npp-ht-kiem-kho.md"
+  },
+  {
+    "index": 412,
+    "id": "87279548",
+    "title": "[HT][NPP] Cập nhật thông tin chi tiết của phiếu nhập kho",
+    "file": "412-ht-npp-cap-nhat-thong-tin-chi-tiet-cua-phieu-nhap-kho.md"
+  },
+  {
+    "index": 413,
+    "id": "87280634",
+    "title": "MoM 08/01/26  ",
+    "file": "413-mom-08-01-26.md"
+  },
+  {
+    "index": 414,
+    "id": "87281764",
+    "title": "[NPP][HT] Xuất kho",
+    "file": "414-npp-ht-xuat-kho.md"
+  },
+  {
+    "index": 415,
+    "id": "87281962",
+    "title": "[HO] [HT] Báo Cáo Truy vấn tọa độ NPP",
+    "file": "415-ho-ht-bao-cao-truy-van-toa-o-npp.md"
+  },
+  {
+    "index": 416,
+    "id": "87282427",
+    "title": "[HO] [HT] Báo Cáo Chi Tiết Đăng Nhập Hệ Thống",
+    "file": "416-ho-ht-bao-cao-chi-tiet-ang-nhap-he-thong.md"
+  },
+  {
+    "index": 417,
+    "id": "87282449",
+    "title": "[HO] [HT] Báo Cáo Lịch Sử Đăng Nhập Hệ Thống",
+    "file": "417-ho-ht-bao-cao-lich-su-ang-nhap-he-thong.md"
+  },
+  {
+    "index": 418,
+    "id": "87290086",
+    "title": "MoM 29/01/26",
+    "file": "418-mom-29-01-26.md"
+  },
+  {
+    "index": 419,
+    "id": "87291409",
+    "title": "[IMPROVEMENT] Enhance chức năng select all ngành hàng (tất cả phân cấp) trên các màn hình",
+    "file": "419-improvement-enhance-chuc-nang-select-all-nganh-hang-tat-ca-phan-cap-tren-cac-man-hinh.md"
+  },
+  {
+    "index": 420,
+    "id": "87291551",
+    "title": "[HO][HT] Nhân viên bán hàng-Xem theo dạng cây Saleforce",
+    "file": "420-ho-ht-nhan-vien-ban-hang-xem-theo-dang-cay-saleforce.md"
+  },
+  {
+    "index": 421,
+    "id": "87291749",
+    "title": "MoM 04/02/26",
+    "file": "421-mom-04-02-26.md"
+  },
+  {
+    "index": 422,
+    "id": "87292953",
+    "title": "[HT][HO] Kế hoạch làm việc",
+    "file": "422-ht-ho-ke-hoach-lam-viec.md"
+  },
+  {
+    "index": 423,
+    "id": "92775206",
+    "title": "[SM-APP] [HT] Đơn hàng - Thêm hình thức giao hàng cho đơn hàng",
+    "file": "423-sm-app-ht-on-hang-them-hinh-thuc-giao-hang-cho-on-hang.md"
+  },
+  {
+    "index": 424,
+    "id": "92775832",
+    "title": "[HO][HT] Báo cáo sell-in",
+    "file": "424-ho-ht-bao-cao-sell-in.md"
+  },
+  {
+    "index": 425,
+    "id": "92779282",
+    "title": "[HO][HT] Báo cáo Chấm công",
+    "file": "425-ho-ht-bao-cao-cham-cong.md"
+  },
+  {
+    "index": 426,
+    "id": "92779371",
+    "title": "[HT][NPP] Báo cáo Nhập/Xuất Kho",
+    "file": "426-ht-npp-bao-cao-nhap-xuat-kho.md"
+  },
+  {
+    "index": 427,
+    "id": "92779886",
+    "title": "[HT] Duyệt yêu cầu nghỉ phép",
+    "file": "427-ht-duyet-yeu-cau-nghi-phep.md"
+  },
+  {
+    "index": 428,
+    "id": "92780861",
+    "title": "[HO][HT] Báo cáo Tồn kho hiện tại NPP",
+    "file": "428-ho-ht-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 429,
+    "id": "92780894",
+    "title": "[HO][HT] Báo cáo doanh thu theo Nhân viên bán hàng",
+    "file": "429-ho-ht-bao-cao-doanh-thu-theo-nhan-vien-ban-hang.md"
+  },
+  {
+    "index": 430,
+    "id": "92780922",
+    "title": "[HO][HT] Báo cáo doanh thu theo Sản phẩm",
+    "file": "430-ho-ht-bao-cao-doanh-thu-theo-san-pham.md"
+  },
+  {
+    "index": 431,
+    "id": "92780947",
+    "title": "[HO][HT] Báo cáo doanh thu theo điểm bán",
+    "file": "431-ho-ht-bao-cao-doanh-thu-theo-iem-ban.md"
+  },
+  {
+    "index": 432,
+    "id": "92780971",
+    "title": "[HO][HT] Báo cáo Nhập/Xuất kho",
+    "file": "432-ho-ht-bao-cao-nhap-xuat-kho.md"
+  },
+  {
+    "index": 433,
+    "id": "92780980",
+    "title": "[NPP][HT] Báo cáo doanh thu theo Nhân viên bán hàng",
+    "file": "433-npp-ht-bao-cao-doanh-thu-theo-nhan-vien-ban-hang.md"
+  },
+  {
+    "index": 434,
+    "id": "92780997",
+    "title": "[NPP][HT] Báo cáo doanh thu theo Sản phẩm",
+    "file": "434-npp-ht-bao-cao-doanh-thu-theo-san-pham.md"
+  },
+  {
+    "index": 435,
+    "id": "92781006",
+    "title": "[NPP][HO] Báo cáo doanh thu theo điểm bán",
+    "file": "435-npp-ho-bao-cao-doanh-thu-theo-iem-ban.md"
+  },
+  {
+    "index": 436,
+    "id": "92781059",
+    "title": "[NPP][HO] Báo cáo Nhập/Xuất Kho",
+    "file": "436-npp-ho-bao-cao-nhap-xuat-kho.md"
+  },
+  {
+    "index": 437,
+    "id": "92781166",
+    "title": "[NPP][HO] Báo cáo Tồn kho hiện tại NPP",
+    "file": "437-npp-ho-bao-cao-ton-kho-hien-tai-npp.md"
+  },
+  {
+    "index": 438,
+    "id": "92781299",
+    "title": "[HO][HT] Báo cáo tổng hợp đơn hàng NPP",
+    "file": "438-ho-ht-bao-cao-tong-hop-on-hang-npp.md"
+  },
+  {
+    "index": 439,
+    "id": "92781800",
+    "title": "[IMPROVEMENT] Thay đổi cách tính doanh số trước VAT cho các báo cáo của Hương Thủy",
+    "file": "439-improvement-thay-oi-cach-tinh-doanh-so-truoc-vat-cho-cac-bao-cao-cua-huong-thuy.md"
+  },
+  {
+    "index": 440,
+    "id": "92782540",
+    "title": "[HT] Tích hợp CTTB với Merchant APP",
+    "file": "440-ht-tich-hop-cttb-voi-merchant-app.md"
+  },
+  {
+    "index": 441,
+    "id": "92782793",
+    "title": "[HT] ENHANCE CTTL có hình thức trả thưởng Theo chương trình",
+    "file": "441-ht-enhance-cttl-co-hinh-thuc-tra-thuong-theo-chuong-trinh.md"
+  },
+  {
+    "index": 442,
+    "id": "92783325",
+    "title": "[HT] Tích hợp CTTL _Merchant",
+    "file": "442-ht-tich-hop-cttl-merchant.md"
+  },
+  {
+    "index": 443,
+    "id": "92783993",
+    "title": "[HT] [ENHANCE] Quản lý thông báo",
+    "file": "443-ht-enhance-quan-ly-thong-bao.md"
+  },
+  {
+    "index": 444,
+    "id": "99227220",
+    "title": "[HO] [HT] Chuyển điểm bán trên tuyến bán hàng",
+    "file": "444-ho-ht-chuyen-iem-ban-tren-tuyen-ban-hang.md"
+  },
+  {
+    "index": 445,
+    "id": "99230679",
+    "title": "[HO][HT] Báo cáo KPI 02",
+    "file": "445-ho-ht-bao-cao-kpi-02.md"
+  },
+  {
+    "index": 446,
+    "id": "99230692",
+    "title": "[HO] [HT] Báo cáo KPI 01",
+    "file": "446-ho-ht-bao-cao-kpi-01.md"
+  },
+  {
+    "index": 447,
+    "id": "99233795",
+    "title": "[ENV] UAT HT",
+    "file": "447-env-uat-ht.md"
+  },
+  {
+    "index": 448,
+    "id": "99236285",
+    "title": "VIGO Project",
+    "file": "448-vigo-project.md"
+  },
+  {
+    "index": 449,
+    "id": "99236287",
+    "title": "[VG] Dữ liệu nền",
+    "file": "449-vg-du-lieu-nen.md"
+  },
+  {
+    "index": 450,
+    "id": "99236299",
+    "title": "[VG] Portal HO",
+    "file": "450-vg-portal-ho.md"
+  },
+  {
+    "index": 451,
+    "id": "99236301",
+    "title": "[VG]  Saleman App",
+    "file": "451-vg-saleman-app.md"
+  },
+  {
+    "index": 452,
+    "id": "99236304",
+    "title": "[VG] Danh sách người liên hệ",
+    "file": "452-vg-danh-sach-nguoi-lien-he.md"
+  },
+  {
+    "index": 453,
+    "id": "99236306",
+    "title": "[VG] Danh sách khách hàng",
+    "file": "453-vg-danh-sach-khach-hang.md"
+  },
+  {
+    "index": 454,
+    "id": "99236849",
+    "title": "Danh sách màn hình DMS Vigo",
+    "file": "454-danh-sach-man-hinh-dms-vigo.md"
+  },
+  {
+    "index": 455,
+    "id": "99236902",
+    "title": "[VG] Nhóm quyền HO",
+    "file": "455-vg-nhom-quyen-ho.md"
+  },
+  {
+    "index": 456,
+    "id": "99236904",
+    "title": "[VG] Tài khoản người dùng",
+    "file": "456-vg-tai-khoan-nguoi-dung.md"
+  },
+  {
+    "index": 457,
+    "id": "99236906",
+    "title": "[VG] Nhân viên kinh doanh",
+    "file": "457-vg-nhan-vien-kinh-doanh.md"
+  },
+  {
+    "index": 458,
+    "id": "99236908",
+    "title": "[VG] Danh sách dữ liệu chung",
+    "file": "458-vg-danh-sach-du-lieu-chung.md"
+  },
+  {
+    "index": 459,
+    "id": "99237284",
+    "title": "[VG] Bảng giá bán",
+    "file": "459-vg-bang-gia-ban.md"
+  },
+  {
+    "index": 460,
+    "id": "99238262",
+    "title": "[VG] Quản lí sản phẩm",
+    "file": "460-vg-quan-li-san-pham.md"
+  },
+  {
+    "index": 461,
+    "id": "99238491",
+    "title": "[VG] Danh sách các chức năng sử dụng tọa độ google map",
+    "file": "461-vg-danh-sach-cac-chuc-nang-su-dung-toa-o-google-map.md"
+  },
+  {
+    "index": 462,
+    "id": "99238545",
+    "title": "[VG] Nhiệm vụ",
+    "file": "462-vg-nhiem-vu.md"
+  },
+  {
+    "index": 463,
+    "id": "99238576",
+    "title": "[VG] Tuyến chăm sóc ( Tuyến bán hàng )",
+    "file": "463-vg-tuyen-cham-soc-tuyen-ban-hang.md"
+  },
+  {
+    "index": 464,
+    "id": "99238707",
+    "title": "[SM-APP] Tạo mới khách hàng",
+    "file": "464-sm-app-tao-moi-khach-hang.md"
+  },
+  {
+    "index": 465,
+    "id": "99239290",
+    "title": "[VG] [HO/NPP] Đơn Bán Hàng",
+    "file": "465-vg-ho-npp-on-ban-hang.md"
+  }
+]

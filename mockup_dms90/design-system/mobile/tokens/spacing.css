@@ -1,0 +1,37 @@
+/**
+ * DMS90 App SaleMan — Spacing & Layout Tokens
+ * Nguồn: Hand-off DMS-90 component metrics
+ */
+:root {
+  --sa-phone-w: 390px;
+  --sa-phone-h: 844px;
+  --sa-radius-xs: 4px;
+  --sa-radius-sm: 8px;
+  --sa-radius-md: 12px;
+  --sa-radius-lg: 16px;
+  --sa-radius-xl: 28px;
+  --sa-radius-phone: 44px;
+  --sa-radius-pill: 999px;
+  --sa-radius-qr: 20px;
+  --sa-radius-order-id: 3px;
+
+  --sa-space-1: 4px;
+  --sa-space-2: 8px;
+  --sa-space-3: 12px;
+  --sa-space-4: 16px;
+  --sa-space-5: 20px;
+  --sa-space-6: 24px;
+
+  --sa-status-h: 44px;
+  --sa-header-h: 56px;
+  --sa-nav-h: 64px;
+  --sa-search-h: 44px;
+  --sa-btn-h: 44px;
+  --sa-icon-sm: 20px;
+  --sa-icon-md: 24px;
+  --sa-header-pad-y: 8px;
+  --sa-header-pad-x: 16px;
+  --sa-header-pad: var(--sa-header-pad-y) var(--sa-header-pad-x);
+  --sa-page-pad: 16px;
+  --sa-card-pad: 12px;
+}

@@ -1,0 +1,7 @@
+Hợp đồng mẫu — nội dung xem trước (TXT)
+
+Đây là file ghi chú đính kèm dùng cho Prototype DMS.
+Bạn có thể xem nội dung này ngay trong popup FilePreviewModal.
+
+- Loại: văn bản (.txt)
+- Module: Quản lý hợp đồng

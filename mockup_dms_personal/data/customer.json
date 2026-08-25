@@ -1,0 +1,12 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 40986 },
+  "items": [
+    {
+      "code": "DB00001",
+      "name": "Cửa hàng ABC",
+      "phone": "0901234567",
+      "address": "123 Nguyễn Huệ, Q1, TP.HCM",
+      "status": "Đang hoạt động"
+    }
+  ]
+}

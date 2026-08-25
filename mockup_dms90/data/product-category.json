@@ -1,0 +1,43 @@
+{
+  "items": [
+    {
+      "code": "DIV01",
+      "name": "Thực phẩm bổ sung",
+      "level": 1,
+      "parentCode": null,
+      "status": "ACTIVE",
+      "children": [
+        {
+          "code": "DEPT01",
+          "name": "Sữa bột",
+          "level": 2,
+          "parentCode": "DIV01",
+          "status": "ACTIVE",
+          "children": [
+            { "code": "ANLENE", "name": "Anlene", "level": 3, "parentCode": "DEPT01", "status": "ACTIVE" }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "DIV02",
+      "name": "Thức ăn",
+      "level": 1,
+      "parentCode": null,
+      "status": "ACTIVE",
+      "children": [
+        {
+          "code": "DEPT02",
+          "name": "Đồ ăn nhẹ",
+          "level": 2,
+          "parentCode": "DIV02",
+          "status": "ACTIVE",
+          "children": [
+            { "code": "KEO", "name": "Kẹo", "level": 3, "parentCode": "DEPT02", "status": "ACTIVE" },
+            { "code": "BANHQUY", "name": "Bánh quy", "level": 3, "parentCode": "DEPT02", "status": "ACTIVE" }
+          ]
+        }
+      ]
+    }
+  ]
+}

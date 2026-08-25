@@ -1,0 +1,216 @@
+/* Quản Lý Khảo Sát — setting + report */
+
+.survey-page {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.survey-page .dms-card__extra {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.survey-date-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.survey-date-range .dms-datepicker {
+  min-width: 140px;
+  flex: 1;
+}
+
+.survey-date-range__sep {
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+.survey-title-cell {
+  max-width: 280px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.survey-q-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) 1fr;
+  gap: 16px;
+  min-height: 360px;
+}
+
+.survey-q-list {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  min-height: 320px;
+}
+
+.survey-q-list__head {
+  padding: 12px 12px 8px;
+  font-weight: 600;
+}
+
+.survey-q-list__items {
+  flex: 1;
+  overflow: auto;
+}
+
+.survey-q-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-left: 3px solid transparent;
+}
+
+.survey-q-item:hover {
+  background: #f5f5f5;
+}
+
+.survey-q-item.is-active {
+  background: #fffbe6;
+  border-left-color: #faad14;
+}
+
+.survey-q-item__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.survey-q-list__add {
+  padding: 8px 12px 12px;
+}
+
+.survey-q-settings {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 12px 16px 16px;
+  background: #fff;
+}
+
+.survey-q-settings__head {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.survey-option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.survey-option-row .dms-input {
+  flex: 1;
+}
+
+.survey-apply-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.survey-apply-toolbar .survey-clear-link {
+  margin-left: auto;
+  color: var(--color-primary);
+  cursor: pointer;
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: var(--font-size-base);
+}
+
+.survey-apply-toolbar .survey-clear-link:hover {
+  text-decoration: underline;
+}
+
+.survey-preview-q {
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.survey-preview-q:last-child {
+  border-bottom: 0;
+}
+
+.survey-preview-q__title {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.survey-preview-q__title .is-req {
+  color: #ff4d4f;
+}
+
+.survey-qa {
+  display: grid;
+  grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr);
+  gap: 8px 16px;
+}
+
+.survey-qa__q,
+.survey-qa__a {
+  max-width: 400px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.survey-img-link {
+  color: var(--color-primary);
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.survey-checkin-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background: #f0f0f0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: 11px;
+  overflow: hidden;
+}
+
+.survey-modal-body {
+  max-height: calc(90vh - 140px);
+  overflow: auto;
+}
+
+.survey-is-error .dms-input,
+.survey-is-error .dms-select__control,
+.survey-is-error .dms-datepicker .dms-input {
+  border-color: #ff4d4f;
+}
+
+@media (max-width: 1024px) {
+  .survey-q-layout {
+    grid-template-columns: 1fr;
+  }
+  .survey-qa {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .survey-title-cell {
+    max-width: 160px;
+  }
+}

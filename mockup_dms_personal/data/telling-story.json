@@ -1,0 +1,479 @@
+{
+  "catalogs": [
+    {
+      "id": "cat-product",
+      "name": "Kiến thức sản phẩm",
+      "description": "Thông tin nổi bật, packshot và kiến thức bán hàng theo sản phẩm.",
+      "status": "Hoạt động",
+      "createdAt": "02-07-2026 09:00:00",
+      "createdBy": "THAO999",
+      "icon": "📦"
+    },
+    {
+      "id": "cat-policy",
+      "name": "Chính sách bán hàng",
+      "description": "Chính sách tháng, chính sách đại lý và điều kiện áp dụng.",
+      "status": "Hoạt động",
+      "createdAt": "02-07-2026 09:05:00",
+      "createdBy": "THAO999",
+      "icon": "📜"
+    },
+    {
+      "id": "cat-program",
+      "name": "Chương trình bán hàng",
+      "description": "CTKM, CTTB và các chương trình triển khai trên tuyến.",
+      "status": "Hoạt động",
+      "createdAt": "02-07-2026 09:10:00",
+      "createdBy": "THAO999",
+      "icon": "🎯"
+    },
+    {
+      "id": "cat-guide",
+      "name": "Hướng dẫn bán hàng",
+      "description": "Hướng dẫn trưng bày, tư vấn và kịch bản bán tại điểm bán.",
+      "status": "Hoạt động",
+      "createdAt": "05-07-2026 10:00:00",
+      "createdBy": "Nhi Pham",
+      "icon": "🧭"
+    },
+    {
+      "id": "cat-howto",
+      "name": "Hướng dẫn sử dụng",
+      "description": "Hướng dẫn sử dụng sản phẩm dành cho NVKD và điểm bán.",
+      "status": "Hoạt động",
+      "createdAt": "08-07-2026 11:20:00",
+      "createdBy": "Nhi Pham",
+      "icon": "📘"
+    },
+    {
+      "id": "cat-archive",
+      "name": "Tài liệu lưu trữ",
+      "description": "Danh mục ngưng dùng — prototype.",
+      "status": "Không hoạt động",
+      "createdAt": "01-03-2026 08:00:00",
+      "createdBy": "THAO999",
+      "icon": "🗂"
+    }
+  ],
+  "channels": [
+    {
+      "value": "HA",
+      "label": "H&A"
+    },
+    {
+      "value": "HB",
+      "label": "H&B"
+    }
+  ],
+  "stories": [
+    {
+      "id": "ST001",
+      "title": "5 điểm nổi bật của sản phẩm ABC",
+      "summary": "Tóm tắt 5 lý do nên giới thiệu ABC tại điểm bán.",
+      "catalogId": "cat-product",
+      "cover": {
+        "name": "cover-abc.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 4200
+      },
+      "bodyHtml": "<h2>Vì sao ABC bán chạy?</h2><p>ABC là dòng sản phẩm chủ lực. Khi tư vấn tại điểm bán, NVKD nên nêu rõ 5 điểm dưới đây theo thứ tự lợi ích khách hàng.</p><ol><li>Hương thơm dễ chịu, phù hợp gia đình.</li><li>Dung tích lớn, giá trị sử dụng cao.</li><li>Bao bì dễ nhận diện trên kệ.</li><li>Chính sách chiết khấu rõ ràng theo kênh H&amp;A.</li><li>Tài liệu bán hàng đầy đủ, dễ demo.</li></ol><p>Hãy dùng packshot bên dưới khi nói chuyện với chủ cửa hàng.</p><p><img src=\"assets/telling-story/img-abc.svg\" alt=\"Packshot ABC\"></p>",
+      "channels": [
+        "HA"
+      ],
+      "startDate": "01-08-2026",
+      "endDate": "31-12-2026",
+      "createdAt": "01-08-2026 09:15:00",
+      "createdBy": "THAO999",
+      "updatedAt": "05-08-2026 14:00:00",
+      "updatedBy": "THAO999",
+      "media": [
+        {
+          "name": "packshot-abc.svg",
+          "type": "image/svg+xml",
+          "url": "assets/telling-story/img-abc.svg",
+          "size": 2800
+        },
+        {
+          "name": "tai-lieu-abc.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 18432
+        }
+      ],
+      "links": [
+        {
+          "label": "Xem bảng giá ABC",
+          "url": "https://eco-dms-dev.finviet.com.vn/"
+        }
+      ],
+      "status": "Khởi tạo",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST002",
+      "title": "Hướng dẫn triển khai CTKM tháng 08/2026",
+      "summary": "Kịch bản triển khai, banner và file hướng dẫn CTKM tháng 8.",
+      "catalogId": "cat-program",
+      "cover": {
+        "name": "cover-ctkm.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3900
+      },
+      "bodyHtml": "<h2>Mục tiêu chương trình</h2><p>CTKM tháng 08/2026 tập trung tăng độ phủ tại kênh H&amp;A và H&amp;B. NVKD đọc kỹ điều kiện trước khi giới thiệu với điểm bán.</p><h2>Các bước triển khai</h2><ul><li>Xác nhận điểm bán đủ điều kiện.</li><li>Treo banner đúng vị trí quầy.</li><li>Giải thích cơ chế đổi quà / chiết khấu.</li><li>Chụp ảnh xác nhận trưng bày nếu chương trình yêu cầu.</li></ul><p>Video hướng dẫn và PDF chi tiết nằm ở mục tài liệu đính kèm.</p>",
+      "channels": [
+        "HA",
+        "HB"
+      ],
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "createdAt": "28-07-2026 10:00:00",
+      "createdBy": "Nhi Pham",
+      "updatedAt": "01-08-2026 08:30:00",
+      "updatedBy": "THAO999",
+      "media": [
+        {
+          "name": "banner-ctkm-t8.svg",
+          "type": "image/png",
+          "url": "assets/telling-story/default-cover.png",
+          "size": 3900
+        },
+        {
+          "name": "huong-dan-ctkm.mp4",
+          "type": "video/mp4",
+          "url": "",
+          "size": 5242880,
+          "poster": "assets/telling-story/default-cover.png"
+        },
+        {
+          "name": "huong-dan-ctkm-t8.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 22144
+        }
+      ],
+      "links": [
+        {
+          "label": "Xem chính sách chương trình",
+          "url": "https://eco-dms-dev.finviet.com.vn/promotion/event"
+        }
+      ],
+      "status": "Đã duyệt",
+      "promotionProgramIds": [
+        "p-run-1",
+        "p-run-2"
+      ],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST003",
+      "title": "Hướng dẫn trưng bày sản phẩm tại điểm bán",
+      "summary": "Checklist CTTB: vị trí kệ, ảnh minh họa và file PDF.",
+      "catalogId": "cat-guide",
+      "cover": {
+        "name": "cover-cttb.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3600
+      },
+      "bodyHtml": "<h2>Nguyên tắc trưng bày</h2><p>Sản phẩm phải nhìn thấy từ lối đi chính. Ưu tiên kệ ngang tầm mắt và gần quầy thanh toán khi điểm bán cho phép.</p><p><img src=\"assets/telling-story/img-display.svg\" alt=\"Minh họa trưng bày\"></p><h2>Checklist nhanh</h2><ul><li>Đủ facings theo guideline.</li><li>Tem giá rõ, không che packshot.</li><li>Chụp ảnh trước/sau khi hoàn thành.</li></ul>",
+      "channels": [
+        "HA"
+      ],
+      "startDate": "01-08-2026",
+      "endDate": "30-09-2026",
+      "rejectionReason": "Nội dung cần bổ sung thêm thông tin chương trình.",
+      "rejectedAt": "02-08-2026 09:00:00",
+      "createdAt": "30-07-2026 16:40:00",
+      "createdBy": "Nhi Pham",
+      "updatedAt": "02-08-2026 09:00:00",
+      "updatedBy": "Nhi Pham",
+      "media": [
+        {
+          "name": "minh-hoa-trung-bay.svg",
+          "type": "image/svg+xml",
+          "url": "assets/telling-story/img-display.svg",
+          "size": 2100
+        },
+        {
+          "name": "checklist-cttb.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 15360
+        }
+      ],
+      "links": [],
+      "status": "Đã duyệt",
+      "promotionProgramIds": [],
+      "displayProgramIds": [
+        "cttb-03",
+        "cttb-04"
+      ]
+    },
+    {
+      "id": "ST004",
+      "title": "Chính sách bán hàng tháng 08/2026",
+      "summary": "Tóm tắt chính sách chiết khấu và điều kiện áp dụng tháng 8.",
+      "catalogId": "cat-policy",
+      "cover": {
+        "name": "cover-policy.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3400
+      },
+      "bodyHtml": "<p>Chính sách tháng 08/2026 giữ nguyên khung chiết khấu kênh H&amp;A, điều chỉnh nhẹ H&amp;B theo phụ lục đính kèm.</p><p>NVKD không tự ý cam kết mức chiết khấu ngoài tài liệu này.</p>",
+      "channels": [
+        "HA",
+        "HB"
+      ],
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "createdAt": "25-07-2026 11:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "31-07-2026 17:20:00",
+      "updatedBy": "THAO999",
+      "media": [
+        {
+          "name": "chinh-sach-t8.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 19456
+        }
+      ],
+      "links": [
+        {
+          "label": "Phụ lục chiết khấu",
+          "url": "https://eco-dms-dev.finviet.com.vn/"
+        }
+      ],
+      "status": "Khởi tạo",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST005",
+      "title": "Chính sách dành cho Đại lý",
+      "summary": "Quyền lợi, hạn mức và điều kiện duy trì hạng đại lý.",
+      "catalogId": "cat-policy",
+      "cover": {
+        "name": "cover-dealer.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3500
+      },
+      "bodyHtml": "<h2>Đối tượng</h2><p>Áp dụng cho đại lý đang hoạt động, không bao gồm điểm bán lẻ trực tiếp.</p><h2>Quyền lợi</h2><ul><li>Chiết khấu bậc thang theo doanh số quý.</li><li>Hỗ trợ vật phẩm trưng bày.</li><li>Ưu tiên phân bổ hàng nóng.</li></ul>",
+      "channels": [
+        "HB"
+      ],
+      "startDate": "01-07-2026",
+      "endDate": "31-12-2026",
+      "createdAt": "20-06-2026 09:00:00",
+      "createdBy": "Nhi Pham",
+      "updatedAt": "01-07-2026 08:00:00",
+      "updatedBy": "Nhi Pham",
+      "media": [
+        {
+          "name": "chinh-sach-dai-ly.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 25600
+        }
+      ],
+      "links": [],
+      "status": "Đã duyệt",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST006",
+      "title": "Sản phẩm mới XYZ — điểm chạm tư vấn",
+      "summary": "Ra mắt XYZ: thông điệp chính và câu hỏi thường gặp tại điểm bán.",
+      "catalogId": "cat-product",
+      "cover": {
+        "name": "cover-xyz.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3300
+      },
+      "bodyHtml": "<p>XYZ bổ sung danh mục chăm sóc cá nhân. Thông điệp chính: <strong>dễ dùng — dễ bán — dễ trưng bày</strong>.</p><p>FAQ ngắn: khác ABC ở hương và dung tích. Không so sánh giá tại quầy nếu chủ cửa hàng chưa hỏi.</p>",
+      "channels": [
+        "HA"
+      ],
+      "startDate": "01-09-2026",
+      "endDate": "31-12-2026",
+      "createdAt": "10-08-2026 13:10:00",
+      "createdBy": "THAO999",
+      "updatedAt": "12-08-2026 09:45:00",
+      "updatedBy": "THAO999",
+      "media": [],
+      "links": [],
+      "status": "Khởi tạo",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST007",
+      "title": "Tài liệu bán hàng kênh H&A",
+      "summary": "Bộ tài liệu dùng khi viếng thăm điểm bán H&A.",
+      "catalogId": "cat-product",
+      "cover": {
+        "name": "cover-abc.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 4200
+      },
+      "bodyHtml": "<p>In hoặc mở PDF đính kèm trước khi vào điểm bán. Không chia sẻ file ra ngoài nhóm NVKD.</p>",
+      "channels": [
+        "HA"
+      ],
+      "startDate": "01-06-2026",
+      "endDate": "31-12-2026",
+      "createdAt": "15-05-2026 08:00:00",
+      "createdBy": "Nhi Pham",
+      "updatedAt": "01-06-2026 10:00:00",
+      "updatedBy": "Nhi Pham",
+      "media": [
+        {
+          "name": "sales-kit-ha.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 30720
+        },
+        {
+          "name": "ghi-chu-ha.txt",
+          "type": "text/plain",
+          "url": "assets/files/sample-contract.txt",
+          "size": 420,
+          "textContent": "Ghi chú bán hàng kênh H&A — Prototype Telling Story."
+        }
+      ],
+      "links": [],
+      "status": "Đã duyệt",
+      "promotionProgramIds": [
+        "p-run-1"
+      ],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST008",
+      "title": "CTKM Flash — lưu ý triển khai nhanh",
+      "summary": "Chương trình ngắn ngày, chỉ hiển thị với NVKD được gán.",
+      "catalogId": "cat-program",
+      "cover": {
+        "name": "cover-ctkm.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3900
+      },
+      "bodyHtml": "<p>Chương trình flash không áp dụng đại trà. Chỉ NVKD trong danh sách segment mới nhìn thấy bài này trên App.</p>",
+      "channels": [
+        "HB"
+      ],
+      "startDate": "18-08-2026",
+      "endDate": "25-08-2026",
+      "rejectionReason": "Chương trình flash chưa đủ điều kiện triển khai trên toàn tuyến.",
+      "rejectedAt": "18-08-2026 08:30:00",
+      "createdAt": "17-08-2026 19:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "17-08-2026 19:00:00",
+      "updatedBy": "THAO999",
+      "media": [
+        {
+          "name": "flash-ctkm.pdf",
+          "type": "application/pdf",
+          "url": "assets/files/sample-contract.pdf",
+          "size": 12288
+        }
+      ],
+      "links": [],
+      "status": "Từ chối",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST009",
+      "title": "Hướng dẫn sử dụng sản phẩm ABC",
+      "summary": "Các bước dùng ABC dành cho chủ cửa hàng khi khách hỏi.",
+      "catalogId": "cat-howto",
+      "cover": {
+        "name": "cover-abc.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 4200
+      },
+      "bodyHtml": "<h2>3 bước sử dụng</h2><ol><li>Lắc nhẹ trước khi dùng.</li><li>Dùng đúng liều trên nhãn.</li><li>Bảo quản nơi khô ráo, tránh nắng.</li></ol><p>Video demo đính kèm bên dưới (prototype).</p>",
+      "channels": [
+        "HA",
+        "HB"
+      ],
+      "startDate": "01-01-2026",
+      "endDate": "31-12-2026",
+      "createdAt": "12-01-2026 09:00:00",
+      "createdBy": "Nhi Pham",
+      "updatedAt": "12-01-2026 09:00:00",
+      "updatedBy": "Nhi Pham",
+      "media": [
+        {
+          "name": "demo-abc.mp4",
+          "type": "video/mp4",
+          "url": "",
+          "size": 8388608,
+          "poster": "assets/telling-story/default-cover.png"
+        }
+      ],
+      "links": [],
+      "status": "Khởi tạo",
+      "promotionProgramIds": [],
+      "displayProgramIds": []
+    },
+    {
+      "id": "ST010",
+      "title": "Chương trình trưng bày quý 1/2026 (hết hiệu lực)",
+      "summary": "Bài lưu trữ — quá thời gian hiển thị để demo trạng thái hết hiệu lực.",
+      "catalogId": "cat-program",
+      "cover": {
+        "name": "cover-cttb.svg",
+        "type": "image/png",
+        "url": "assets/telling-story/default-cover.png",
+        "size": 3600
+      },
+      "bodyHtml": "<p>Nội dung chương trình quý 1 đã kết thúc. Giữ lại để lực lượng bán hàng tra cứu lịch sử.</p>",
+      "channels": [
+        "HA"
+      ],
+      "startDate": "01-01-2026",
+      "endDate": "31-03-2026",
+      "createdAt": "15-12-2025 08:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "01-04-2026 00:00:00",
+      "updatedBy": "THAO999",
+      "media": [],
+      "links": [],
+      "status": "Hết hạn",
+      "promotionProgramIds": [],
+      "displayProgramIds": [
+        "cttb-03"
+      ]
+    }
+  ],
+  "storyStatuses": [
+    {
+      "value": "Khởi tạo",
+      "label": "Khởi tạo"
+    },
+    {
+      "value": "Đã duyệt",
+      "label": "Đã duyệt"
+    },
+    {
+      "value": "Từ chối",
+      "label": "Từ chối"
+    },
+    {
+      "value": "Hết hạn",
+      "label": "Hết hạn"
+    }
+  ]
+}

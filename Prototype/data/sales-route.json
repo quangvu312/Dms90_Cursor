@@ -1,0 +1,316 @@
+{
+  "tasks": [
+    { "id": "t-01", "code": "ORDER_RETURN", "name": "Trả hàng", "status": "ACTIVE", "createdAt": "03-10-2025 00:00:00", "createdBy": "", "updatedAt": "03-10-2025 00:00:00", "updatedBy": "" },
+    { "id": "t-02", "code": "ORDER", "name": "Đặt hàng", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "22-07-2025 00:14:09", "updatedBy": "minh.tran" },
+    { "id": "t-03", "code": "IMPORT_ORDER", "name": "Đơn nhập hàng", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-04", "code": "MERCHANDISING", "name": "Bày hàng", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-05", "code": "SURVEY", "name": "Khảo sát", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-06", "code": "CAMPAIGN_ACCUMULATION", "name": "Chương trình tích lũy", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-07", "code": "INVENTORY", "name": "Tồn kho", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-08", "code": "RECALL_PRODUCT", "name": "Thu hồi và trả sản phẩm", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-09", "code": "CHECK_ASSET", "name": "Kiểm tra tài sản", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-10", "code": "CAMPAIGN_SHOW_GOODS", "name": "Chương trình trưng bày", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" },
+    { "id": "t-11", "code": "VISIT", "name": "Viếng thăm", "status": "ACTIVE", "createdAt": "19-11-2024 19:52:29", "createdBy": "minh.tran", "updatedAt": "19-11-2024 19:52:29", "updatedBy": "minh.tran" }
+  ],
+  "taskGroupTypes": [
+    { "value": "ROUTE", "label": "Theo tuyến" },
+    { "value": "OPEN_NEW", "label": "Mở mới" },
+    { "value": "CARE", "label": "Chăm sóc" }
+  ],
+  "regions": [
+    { "id": "MN", "name": "Miền Nam", "areas": ["HCM 1", "HCM 3", "Tân Phước - Tiền Giang"] },
+    { "id": "MB", "name": "Miền Bắc", "areas": ["Hà Nội 1"] }
+  ],
+  "npps": [
+    { "id": "npp-erp", "code": "ERP", "name": "ERP", "region": "Miền Nam", "area": "HCM 1", "status": "ACTIVE" },
+    { "id": "npp-tp", "code": "NPP001", "name": "NPP Tân Phước - Tiền Giang", "region": "Miền Nam", "area": "Tân Phước - Tiền Giang", "status": "ACTIVE" },
+    { "id": "npp-q1", "code": "NPP002", "name": "NPP Quận 1", "region": "Miền Nam", "area": "HCM 1", "status": "INACTIVE" }
+  ],
+  "employees": [
+    { "id": "NV001", "code": "NV001", "name": "Nguyễn Văn A", "status": "ACTIVE", "region": "Miền Nam", "area": "HCM 1" },
+    { "id": "NV005", "code": "NV005", "name": "Hoàng Văn C", "status": "ACTIVE", "region": "Miền Nam", "area": "HCM 1" },
+    { "id": "NV010", "code": "NV010", "name": "Phạm Thị B", "status": "ACTIVE", "region": "Miền Bắc", "area": "Hà Nội 1" },
+    { "id": "SMTP001", "code": "SMTP001", "name": "SM Tân Phước 001", "status": "ACTIVE", "region": "Miền Nam", "area": "Tân Phước - Tiền Giang" }
+  ],
+  "brands": [
+    { "value": "COCA", "label": "Coca" },
+    { "value": "ANLENE", "label": "Anlene" },
+    { "value": "AUTO001", "label": "[AUTO] Nhãn hàng - 001" },
+    { "value": "AUTO002", "label": "[AUTO] Nhãn hàng - 002" },
+    { "value": "AUTO003", "label": "[AUTO] Nhãn hàng - 003" },
+    { "value": "AUTO004", "label": "[AUTO] Nhãn hàng - 004" },
+    { "value": "AUTO005", "label": "[AUTO] Nhãn hàng - 005" },
+    { "value": "AUTO006", "label": "[AUTO] Nhãn hàng - 006" },
+    { "value": "AUTO007", "label": "[AUTO] Nhãn hàng - 007" },
+    { "value": "AUTO008", "label": "[AUTO] Nhãn hàng - 008" },
+    { "value": "AUTO009", "label": "[AUTO] Nhãn hàng - 009" },
+    { "value": "AUTO010", "label": "[AUTO] Nhãn hàng - 010" }
+  ],
+  "productAttrs": [
+    { "value": "ATTR_COLD", "label": "Hàng lạnh" },
+    { "value": "ATTR_DRY", "label": "Hàng khô" },
+    { "value": "ATTR_PROMO", "label": "Hàng khuyến mãi" }
+  ],
+  "frequencies": ["F1-1", "F1-2", "F1-3", "F1-4", "F2-1", "F2-2", "F4", "F8", "F12", "F16", "F24"],
+  "stores": [
+    { "id": "st-001", "code": "DB0001", "name": "Tạp hóa chị Minh", "phone": "0909111222", "address": "123 Nguyễn Huệ, Quận 1, HCM", "nppId": "npp-erp", "status": "ACTIVE" },
+    { "id": "st-002", "code": "DB0002", "name": "Cửa hàng Anlene Q3", "phone": "0909333444", "address": "45 Võ Văn Tần, Quận 3, HCM", "nppId": "npp-erp", "status": "ACTIVE" },
+    { "id": "st-003", "code": "DB0003", "name": "Shop ABC Tân Phước", "phone": "0912555666", "address": "12 QL1A, Tân Phước, Tiền Giang", "nppId": "npp-tp", "status": "ACTIVE" },
+    { "id": "st-004", "code": "DB0004", "name": "Điểm bán inactive", "phone": "0922777888", "address": "88 Lê Lợi, Q1", "nppId": "npp-erp", "status": "INACTIVE" }
+  ],
+  "taskGroups": [
+    {
+      "id": "tg-001",
+      "code": "BU0000001",
+      "name": "Nhóm viếng thăm full",
+      "regions": ["Miền Nam"],
+      "areas": ["HCM 1", "HCM 3"],
+      "type": "ROUTE",
+      "status": "ACTIVE",
+      "assignedToRoute": true,
+      "createdAt": "02-03-2026 10:06:35",
+      "createdBy": "thao999",
+      "updatedAt": "10-08-2026 09:00:00",
+      "updatedBy": "thao999",
+      "tasks": [
+        { "code": "VISIT", "name": "Viếng thăm", "required": true, "order": 1 },
+        { "code": "ORDER", "name": "Đặt hàng", "required": true, "order": 2 },
+        { "code": "SURVEY", "name": "Khảo sát", "required": false, "order": 3 }
+      ]
+    },
+    {
+      "id": "tg-002",
+      "code": "BU0000002",
+      "name": "Nhóm chăm sóc trưng bày",
+      "regions": ["Miền Nam"],
+      "areas": ["HCM 1"],
+      "type": "CARE",
+      "status": "ACTIVE",
+      "assignedToRoute": false,
+      "createdAt": "15-06-2026 08:20:11",
+      "createdBy": "thao999",
+      "updatedAt": "15-06-2026 08:20:11",
+      "updatedBy": "thao999",
+      "tasks": [
+        { "code": "CAMPAIGN_SHOW_GOODS", "name": "Chương trình trưng bày", "required": true, "order": 1 },
+        { "code": "MERCHANDISING", "name": "Bày hàng", "required": false, "order": 2 }
+      ]
+    },
+    {
+      "id": "tg-003",
+      "code": "BU0000003",
+      "name": "Nhóm mở mới",
+      "regions": ["Miền Bắc"],
+      "areas": ["Hà Nội 1"],
+      "type": "OPEN_NEW",
+      "status": "INACTIVE",
+      "assignedToRoute": false,
+      "createdAt": "01-01-2026 09:00:00",
+      "createdBy": "admin",
+      "updatedAt": "20-07-2026 11:11:11",
+      "updatedBy": "admin",
+      "tasks": [
+        { "code": "SURVEY", "name": "Khảo sát", "required": true, "order": 1 }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "id": "rt-001",
+      "code": "ROUTE0000000001",
+      "name": "Tuyến HCM Q1 - Coca",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "nppId": "npp-erp",
+      "nppName": "ERP",
+      "employeeId": "NV001",
+      "employeeName": "NV001 - Nguyễn Văn A",
+      "brands": ["COCA"],
+      "productAttrs": ["ATTR_DRY"],
+      "visitGroupId": "tg-001",
+      "visitGroupName": "Nhóm viếng thăm full",
+      "careGroupId": "tg-002",
+      "careGroupName": "Nhóm chăm sóc trưng bày",
+      "status": "ACTIVE",
+      "createdAt": "01-07-2025 16:41:55",
+      "createdBy": "thao999",
+      "updatedAt": "13-08-2026 01:47:25",
+      "updatedBy": "ALLHO",
+      "stores": [
+        { "storeId": "st-001", "fromDate": "01-07-2025", "toDate": "", "frequency": "F4", "order": 1, "days": ["T2"], "hasVisitToday": true, "hasCttb": false },
+        { "storeId": "st-002", "fromDate": "01-07-2025", "toDate": "31-12-2026", "frequency": "F8", "order": 2, "days": ["T2", "T5"], "hasVisitToday": false, "hasCttb": true }
+      ],
+      "history": [
+        { "updatedAt": "13-08-2026 01:47:25", "updatedBy": "ALLHO", "screen": "Gán tuyến", "field": "Nhân viên", "action": "Cập nhật dữ liệu", "oldValue": "", "newValue": "NV001 - Nguyễn Văn A" }
+      ]
+    },
+    {
+      "id": "rt-002",
+      "code": "ROUTE0000000002",
+      "name": "Tuyến HCM Q1 - Anlene (trùng nhãn+ĐB với tuyến 1 — VG cho phép)",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "nppId": "npp-erp",
+      "nppName": "ERP",
+      "employeeId": "NV005",
+      "employeeName": "NV005 - Hoàng Văn C",
+      "brands": ["COCA", "ANLENE"],
+      "productAttrs": [],
+      "visitGroupId": "tg-001",
+      "visitGroupName": "Nhóm viếng thăm full",
+      "careGroupId": "",
+      "careGroupName": "",
+      "status": "ACTIVE",
+      "createdAt": "10-08-2026 09:00:00",
+      "createdBy": "thao999",
+      "updatedAt": "10-08-2026 09:00:00",
+      "updatedBy": "thao999",
+      "stores": [
+        { "storeId": "st-001", "fromDate": "10-08-2026", "toDate": "", "frequency": "F4", "order": 1, "days": ["T3"], "hasVisitToday": false, "hasCttb": false }
+      ],
+      "history": []
+    },
+    {
+      "id": "rt-003",
+      "code": "ROUTE0000000723",
+      "name": "Tuyến NPP Tân Phước - Không nhãn",
+      "region": "Miền Nam",
+      "area": "Tân Phước - Tiền Giang",
+      "nppId": "npp-tp",
+      "nppName": "NPP Tân Phước - Tiền Giang",
+      "employeeId": "SMTP001",
+      "employeeName": "SMTP001 - SM Tân Phước 001",
+      "brands": ["AUTO001"],
+      "productAttrs": [],
+      "visitGroupId": "tg-001",
+      "visitGroupName": "Nhóm viếng thăm full",
+      "careGroupId": "tg-002",
+      "careGroupName": "Nhóm chăm sóc trưng bày",
+      "status": "ACTIVE",
+      "createdAt": "01-07-2025 16:41:55",
+      "createdBy": "THYVIE",
+      "updatedAt": "13-08-2026 01:47:25",
+      "updatedBy": "ALLHO",
+      "stores": [
+        { "storeId": "st-003", "fromDate": "01-07-2025", "toDate": "", "frequency": "F4", "order": 1, "days": ["T2"], "hasVisitToday": false, "hasCttb": false }
+      ],
+      "history": []
+    },
+    {
+      "id": "rt-004",
+      "code": "ROUTE0000000004",
+      "name": "Tuyến draft chưa gán NV",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "nppId": "npp-erp",
+      "nppName": "ERP",
+      "employeeId": "",
+      "employeeName": "",
+      "brands": [],
+      "productAttrs": [],
+      "visitGroupId": "tg-001",
+      "visitGroupName": "Nhóm viếng thăm full",
+      "careGroupId": "",
+      "careGroupName": "",
+      "status": "INACTIVE",
+      "createdAt": "05-08-2026 08:00:00",
+      "createdBy": "thao999",
+      "updatedAt": "05-08-2026 08:00:00",
+      "updatedBy": "",
+      "stores": [],
+      "history": []
+    },
+    {
+      "id": "rt-005",
+      "code": "ROUTE0000000005",
+      "name": "Tuyến nhiều điểm bán",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "nppId": "npp-erp",
+      "nppName": "ERP",
+      "employeeId": "NV001",
+      "employeeName": "NV001 - Nguyễn Văn A",
+      "brands": ["ANLENE"],
+      "productAttrs": ["ATTR_COLD"],
+      "visitGroupId": "tg-001",
+      "visitGroupName": "Nhóm viếng thăm full",
+      "careGroupId": "",
+      "careGroupName": "",
+      "status": "ACTIVE",
+      "inTransferQueue": true,
+      "createdAt": "12-08-2026 10:00:00",
+      "createdBy": "thao999",
+      "updatedAt": "12-08-2026 10:00:00",
+      "updatedBy": "thao999",
+      "stores": [
+        { "storeId": "st-001", "fromDate": "12-08-2026", "toDate": "31-12-2026", "frequency": "F12", "order": 1, "days": ["T2", "T4", "T6"], "hasVisitToday": false, "hasCttb": false },
+        { "storeId": "st-002", "fromDate": "12-08-2026", "toDate": "", "frequency": "F4", "order": 2, "days": ["T5"], "hasVisitToday": false, "hasCttb": false }
+      ],
+      "history": []
+    }
+  ],
+  "realRoutes": [
+    {
+      "id": "rr-001",
+      "employeeId": "NV001",
+      "employeeName": "Nguyễn Văn A",
+      "routeId": "rt-001",
+      "routeCode": "ROUTE0000000001",
+      "routeName": "Tuyến HCM Q1 - Coca",
+      "brands": ["COCA"],
+      "createdAt": "13-08-2026 00:05:00",
+      "updatedAt": "13-08-2026 08:20:00",
+      "days": [
+        {
+          "date": "13-08-2026",
+          "visitedInRoute": 1,
+          "totalInRoute": 2,
+          "stores": [
+            { "storeId": "st-001", "type": "Trong tuyến", "checkin": "08:00:12", "checkout": "08:18:40" },
+            { "storeId": "st-002", "type": "Trong tuyến", "checkin": "", "checkout": "" },
+            { "storeId": "st-003", "type": "Ngoại tuyến", "checkin": "09:30:00", "checkout": "09:45:00" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rr-002",
+      "employeeId": "SMTP001",
+      "employeeName": "SM Tân Phước 001",
+      "routeId": "rt-003",
+      "routeCode": "ROUTE0000000723",
+      "routeName": "Tuyến NPP Tân Phước - Không nhãn",
+      "brands": ["AUTO001"],
+      "createdAt": "13-08-2026 00:05:00",
+      "updatedAt": "13-08-2026 00:05:00",
+      "days": [
+        {
+          "date": "13-08-2026",
+          "visitedInRoute": 0,
+          "totalInRoute": 1,
+          "stores": [
+            { "storeId": "st-003", "type": "Trong tuyến", "checkin": "", "checkout": "" }
+          ]
+        }
+      ]
+    }
+  ],
+  "transfers": [
+    {
+      "id": "tf-001",
+      "createdAt": "10-08-2026 14:22:01",
+      "sourceNppId": "npp-tp",
+      "targetNppId": "npp-erp",
+      "total": 2,
+      "success": 1,
+      "fail": 1,
+      "createdBy": "thao999",
+      "updatedAt": "10-08-2026 14:30:12",
+      "updatedBy": "thao999",
+      "routes": [
+        { "routeId": "rt-003", "status": "SUCCESS", "error": "" },
+        { "routeId": "rt-001", "status": "FAILED", "error": "Không thể thay đổi NPP vì đã có sale viếng thăm điểm bán DB0001 - Tạp hóa chị Minh" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "kpiSets": [
+    { "value": "KPI000166", "label": "KPI000166 - KPI - 08/2026 - Doanh thu" },
+    { "value": "KPI000004", "label": "KPI000004 - KPI - 08/2026 - Viếng thăm" }
+  ],
+  "items": [
+    {
+      "stt": 1,
+      "company": "Công ty CP Dược phẩm HT",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "province": "TP. Hồ Chí Minh",
+      "nppCode": "NPP001",
+      "nppName": "NPP Miền Nam 1",
+      "ssCode": "NV005",
+      "ssName": "Hoàng Văn C",
+      "empCode": "NV001",
+      "empName": "Nguyễn Văn A",
+      "visitPlan": 20,
+      "visitActual": 18,
+      "visitPct": 90,
+      "orderPlan": 40,
+      "orderActual": 36,
+      "orderPct": 90,
+      "dailyPlan": 5000000,
+      "dailyActual": 4800000,
+      "dailyPct": 96,
+      "monthPlan": 100000000,
+      "monthActual": 92000000,
+      "monthPct": 92
+    },
+    {
+      "stt": 2,
+      "company": "Công ty CP Dược phẩm HT",
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "province": "TP. Hồ Chí Minh",
+      "nppCode": "NPP001",
+      "nppName": "NPP Miền Nam 1",
+      "ssCode": "NV005",
+      "ssName": "Hoàng Văn C",
+      "empCode": "NV002",
+      "empName": "Trần Thị B",
+      "visitPlan": 20,
+      "visitActual": 12,
+      "visitPct": 60,
+      "orderPlan": 30,
+      "orderActual": 22,
+      "orderPct": 73,
+      "dailyPlan": 4000000,
+      "dailyActual": 3100000,
+      "dailyPct": 78,
+      "monthPlan": 80000000,
+      "monthActual": 54000000,
+      "monthPct": 68
+    }
+  ]
+}

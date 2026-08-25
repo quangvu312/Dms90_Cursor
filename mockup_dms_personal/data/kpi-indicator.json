@@ -1,0 +1,14 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 9 },
+  "items": [
+    { "id": "1", "code": "ACTIVE_OUTLET_PERCENTAGE", "name": "Tỷ lệ điểm bán đang hoạt động", "description": "Tỷ lệ điểm bán có phát sinh đơn hàng trên tổng điểm bán có tuyến", "object": "Nhân viên bán hàng", "measure": "Phần trăm", "dailyPlan": true },
+    { "id": "2", "code": "ACTIVE_OUTLET", "name": "Điểm bán đang hoạt động", "description": "Số điểm bán có phát sinh đơn hàng trong kỳ", "object": "Nhân viên bán hàng", "measure": "Đếm", "dailyPlan": true },
+    { "id": "3", "code": "NEW_ORDER", "name": "Số đơn hàng", "description": "Tổng số lượng đơn hàng trong tháng không tính đơn trả", "object": "Nhân viên bán hàng", "measure": "Đếm", "dailyPlan": true },
+    { "id": "4", "code": "SUCCESSFUL_CALL", "name": "Tỷ lệ viếng thăm thành công", "description": "% viếng thăm thành công trên MCP", "object": "Nhân viên bán hàng", "measure": "Đếm", "dailyPlan": true },
+    { "id": "5", "code": "NEW_STORE", "name": "Điểm bán mở mới", "description": "Tổng số điểm bán mới phát sinh ít nhất 1 đơn hàng", "object": "Nhân viên bán hàng", "measure": "Đếm", "dailyPlan": false },
+    { "id": "6", "code": "PENETRATION", "name": "% Penetration", "description": "Tổng số điểm bán có mua hàng trong tháng / Tổng số điểm bán có tuyến", "object": "Nhân viên bán hàng", "measure": "Phần trăm", "dailyPlan": false },
+    { "id": "7", "code": "SKU_ORDER", "name": "SKUs/Đơn hàng", "description": "Trung bình số lượng SKUs/đơn hàng", "object": "Nhân viên bán hàng", "measure": "Phần trăm", "dailyPlan": true },
+    { "id": "8", "code": "DAILY_SELL_OUT", "name": "Doanh thu trung bình theo ngày", "description": "Chỉ tiêu doanh số bình quân hằng ngày", "object": "Nhân viên bán hàng", "measure": "Giá trị", "dailyPlan": true },
+    { "id": "9", "code": "MONTHLY_SELL_OUT", "name": "Doanh thu tháng", "description": "Tổng doanh số bán hàng trong kỳ NVBH cần đạt", "object": "Nhân viên bán hàng", "measure": "Giá trị", "dailyPlan": false }
+  ]
+}

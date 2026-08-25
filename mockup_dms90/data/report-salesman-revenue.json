@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "stt": 1,
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "province": "TP. Hồ Chí Minh",
+      "ward": "Phường Bến Nghé",
+      "distributorCode": "DL001",
+      "distributorName": "Đại lý Miền Nam 1",
+      "salesmanCode": "NVKD001",
+      "salesmanName": "Trần Văn Kinh doanh",
+      "orderCount": 28,
+      "customerCount": 22,
+      "volume": 350,
+      "skuCount": 45,
+      "revenueBeforeVat": 87500000,
+      "revenueAfterVat": 94500000
+    },
+    {
+      "stt": 2,
+      "region": "Miền Bắc",
+      "area": "HN 1",
+      "province": "Hà Nội",
+      "ward": "Phường Dịch Vọng",
+      "distributorCode": "DL002",
+      "distributorName": "Đại lý Miền Bắc 1",
+      "salesmanCode": "NVKD002",
+      "salesmanName": "Phạm Thị Kinh doanh",
+      "orderCount": 19,
+      "customerCount": 15,
+      "volume": 210,
+      "skuCount": 32,
+      "revenueBeforeVat": 52300000,
+      "revenueAfterVat": 56484000
+    }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 2 }
+}

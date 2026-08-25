@@ -1,0 +1,50 @@
+{
+  "items": [
+    {
+      "stt": 1,
+      "region": "Miền Nam",
+      "area": "HCM 1",
+      "province": "TP. Hồ Chí Minh",
+      "ward": "Phường Bến Nghé",
+      "distributorCode": "DL001",
+      "distributorName": "Đại lý Miền Nam 1",
+      "productCode": "102290",
+      "productName": "TPBS Anlene Total 10 Hương Vani 800G",
+      "orderCount": 15,
+      "customerCount": 12,
+      "volume": 120,
+      "revenueBeforeVat": 54000000
+    },
+    {
+      "stt": 2,
+      "region": "Miền Bắc",
+      "area": "HN 1",
+      "province": "Hà Nội",
+      "ward": "Phường Dịch Vọng",
+      "distributorCode": "DL002",
+      "distributorName": "Đại lý Miền Bắc 1",
+      "productCode": "264213",
+      "productName": "DUREX GEL BÔI TRƠN MASSAGE ALOE 200ML",
+      "orderCount": 8,
+      "customerCount": 6,
+      "volume": 96,
+      "revenueBeforeVat": 17760000
+    },
+    {
+      "stt": 3,
+      "region": "Miền Nam",
+      "area": "HCM 2",
+      "province": "TP. Hồ Chí Minh",
+      "ward": "Phường Tân Bình",
+      "distributorCode": "DL001",
+      "distributorName": "Đại lý Miền Nam 1",
+      "productCode": "182050",
+      "productName": "Bánh Sô cô la Kinder Bueno 43g",
+      "orderCount": 22,
+      "customerCount": 18,
+      "volume": 440,
+      "revenueBeforeVat": 8800000
+    }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 3 }
+}

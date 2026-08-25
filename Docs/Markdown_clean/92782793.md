@@ -1,0 +1,39 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story | Finviet - Management System70327f0f-d77b-320c-9607-8ab3659b722fECD-6279 |
+| Epic |  |
+| Feature |  |
+| Description | Trên bộ lọc: Ẩn Hình thức trả thưởng = Theo chương trình  Trên form input: Ẩn Hình thức trả thưởng = Theo chương trình. Mặc định option = Theo giai đoạn |
+| Document version | RedV1.0.0 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+# Chương trình tích lũy
+
+1/ Vùng tìm kiếm:
+
+* Hình thức trả thưởng: Ẩn option "Theo chương trình". Mặc định option = Theo giai đoạn
+
+2/ Tạo mới/ Sao chép:
+
+* Hình thức trả thưởng: Ẩn Hình thức trả thưởng = Theo chương trình. Mặc định option = Theo giai đoạn
+
+Link doc: [HO] Khởi tạo chương trình tích lũy
+
+# Tiến trình tích lũy
+
+1/ Vùng tìm kiếm:
+
+* Hình thức trả thưởng: Ẩn option "Theo chương trình"; Mặc định option = Theo giai đoạn
+
+Link doc: [HO] Tiến trình tích lũy
+
+# Danh sách trả thưởng tích lũy
+
+1/ Vùng tìm kiếm:
+
+* Hình thức trả thưởng: Ẩn option "Theo chương trình"; Mặc định option = Theo giai đoạn
+
+Link doc: [HO] Trả thưởng tích lũy

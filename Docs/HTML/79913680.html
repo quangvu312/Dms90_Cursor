@@ -1,0 +1,53 @@
+<ol><li>Th&ocirc;ng tin t&iacute;ch hợp API<ul><li>API List Promotion: <a href="https://eco-dms-promotion-api-dev.finviet.com.vn/#/operations/IntegrationController_ListPromotions_v1">https://eco-dms-promotion-api-dev.finviet.com.vn/#/operations/IntegrationController_ListPromotions_v1</a></li></ul></li><li>Th&ocirc;ng tin request<ul><li><span style="color: rgb(38,38,38);"><strong>platform</strong> =&gt; Bổ sung:</span><ul><li><span style="color: rgb(38,38,38);">Th&ocirc;ng tin platform thực hiện request</span></li><li><span style="color: rgb(38,38,38);">C&aacute;c gi&aacute; trị cho ph&eacute;p: PORTAL, APP_SALESMAN, APP_MERCHANT</span></li><li><span style="color: rgb(38,38,38);"><span style="color: rgb(38,38,38);">Được sử dụng để lấy th&ocirc;ng tin cấu h&igrave;nh từ cấu h&igrave;nh chung tương ứng</span></span><ul><li><span style="color: rgb(38,38,38);"><span style="color: rgb(38,38,38);">PORTAL =&gt; <span>AUTO_SELECT_PROMOTION_PORTAL_SALESMAN</span></span></span></li><li><span style="color: rgb(38,38,38);"><span style="color: rgb(38,38,38);"><span>APP_SALESMAN =&gt; AUTO_SELECT_PROMOTION_PORTAL_SALESMAN</span></span></span></li><li><span style="color: rgb(38,38,38);"><span style="color: rgb(38,38,38);"><span>APP_MERCHANT =&gt; AUTO_SELECT_PROMOTION_MERCHANT</span></span></span></li></ul></li></ul></li><li><strong><span style="color: rgb(38,38,38);">order</span></strong><span style="color: rgb(38,38,38);"> =&gt; Giữ nguy&ecirc;n</span></li><li><p><strong>buyer </strong>=&gt;&nbsp;<span style="color: rgb(38,38,38);"> Giữ nguy&ecirc;n</span></p></li><li><p><strong>applied_transaction</strong> =&gt;&nbsp;<span style="color: rgb(38,38,38);"> Giữ nguy&ecirc;n<br /></span></p></li><li><p class="auto-cursor-target"><span style="color: rgb(38,38,38);">V&iacute; dụ:<br /></span></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="b65c0b44-5bb9-4ec9-8d21-ee10716ee30a"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "order": {
+    "products": [
+      {
+        "id": 851,
+        "sku": "188243",
+        "quantity": 360,
+        "price": 10000,
+        "package_unit_id": "16",
+        "batches": [
+          {
+            "batch_no": "188243_LO03",
+            "expired_at": "2025-12-31",
+            "quantity": 228
+          },
+          {
+            "batch_no": "188243_LO04",
+            "expired_at": "2026-04-01",
+            "quantity": 132
+          }
+        ],
+        "group_ids": [
+          33,
+          30,
+          16,
+          112
+        ]
+      }
+    ],
+    "total_amount": 3600000,
+    "seller": {
+      "id": "260",
+      "area_id": 48
+    },
+    "sale_type": "SELL_OUT",
+    "sale_channel_id": 55,
+    "order_date": "2025-11-21",
+    "warehouse_id": 1026
+  },
+  "buyer": {
+    "id": 4520,
+    "type": "MERCHANT",
+    "store_location_ids": [],
+    "store_type_ids": [],
+    "store_rank_ids": [
+      63
+    ],
+    "sale_channel_ids": []
+  },
+  "sale_channel_id": "4",
+  "created_by": "chienphamnpp",
+  "platform": "PORTAL"
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li></ul></li><li>Th&ocirc;ng tin response<ul><li><strong style="">order.<span style="color: rgb(38,38,38);">promotions.auto_selected: </span></strong><span style="color: rgb(38,38,38);">=&gt; Bổ sung</span><span style="color: rgb(23,43,77);"><br /></span><ul><li><span style="color: rgb(38,38,38);">Cờ đ&aacute;nh dấu promotion c&oacute; được auto select kh&ocirc;ng<br /></span></li><li><span style="color: rgb(38,38,38);">Gi&aacute; trị: true/false</span></li></ul></li><li><strong style="">order.<span style="color: rgb(38,38,38);">auto_selected_promotions</span></strong><span style="color: rgb(23,43,77);">: =&gt; Bổ sung<br /></span><ul><li><span style="color: rgb(23,43,77);">Th&ocirc;ng tin auto select của promotion</span></li><li><span style="color: rgb(23,43,77);"><strong style=""><span style="color: rgb(38,38,38);">promotion_id:</span></strong></span></li><li><span style="color: rgb(23,43,77);"><strong style=""><span style="color: rgb(38,38,38);">kind:</span></strong></span></li><li><span style="color: rgb(23,43,77);"><strong style=""><span style="color: rgb(38,38,38);">slots:</span></strong></span></li><li><span style="color: rgb(23,43,77);"><strong style=""><span style="color: rgb(38,38,38);">actions:</span></strong></span></li></ul></li></ul></li></ol>

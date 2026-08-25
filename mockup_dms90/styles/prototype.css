@@ -1,0 +1,83 @@
+/* Prototype design system — single import for React host */
+@import './fonts-helvetica-neue.css';
+@import './theme.css';
+@import './status-tag.css';
+@import './filter-panel.css';
+@import './action-icon-button.css';
+@import './layout.css';
+@import './button.css';
+@import './form.css';
+@import './table.css';
+@import './modal.css';
+@import './sidebar.css';
+@import './header.css';
+@import './utility.css';
+@import './report-filter.css';
+@import './promotion.css';
+@import './display.css';
+@import './accumulate.css';
+@import './survey.css';
+@import './support.css';
+@import './notification.css';
+@import './system.css';
+@import './contract.css';
+@import './telling-story.css';
+@import './sales-app.css';
+
+/* React host adapters — do not change Prototype component CSS */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, Arial, ui-sans-serif, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.dms-app {
+  height: 100%;
+  min-height: 100%;
+  overflow: hidden;
+}
+
+.dms-main {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.dms-content {
+  overflow: auto;
+  min-height: 0;
+}
+
+.dms-sidebar.is-collapsed .dms-menu__label,
+.dms-sidebar.is-collapsed .dms-menu__arrow,
+.dms-sidebar.is-collapsed .dms-menu__submenu {
+  display: none;
+}
+
+.dms-pagination.is-compact {
+  font-size: var(--font-size-sm);
+  padding: var(--spacing-sm) 0;
+}
+
+.dms-pagination.is-compact .dms-pagination__btn {
+  min-width: 24px;
+  height: 24px;
+}
+
+.hide-scrollbar,
+.hide-scrollbar * {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar,
+.hide-scrollbar *::-webkit-scrollbar {
+  display: none;
+}

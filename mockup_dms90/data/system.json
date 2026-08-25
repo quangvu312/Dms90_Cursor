@@ -1,0 +1,223 @@
+{
+  "hoRoles": [
+    { "value": "Admin", "label": "Admin" },
+    { "value": "admin_Thao", "label": "admin_Thao" },
+    { "value": "[TRM] Admin HO", "label": "[TRM] Admin HO" }
+  ],
+  "nppRoles": [
+    { "value": "Distributor Admin", "label": "Distributor Admin" },
+    { "value": "[QC][Vị] Admin NPP", "label": "[QC][Vị] Admin NPP" }
+  ],
+  "statuses": [
+    { "value": "Hoạt động", "label": "Hoạt động" },
+    { "value": "Không hoạt động", "label": "Không hoạt động" }
+  ],
+  "regions": [
+    { "value": "V_002", "label": "V_002 - [H] Miền Nam" },
+    { "value": "V_001", "label": "V_001 - [H] Miền Nam" },
+    { "value": "MV_02", "label": "MV_02 - Lâm Đồng" }
+  ],
+  "areas": [
+    { "value": "KV_001", "label": "KV_001 - Hồ Chí Minh 2" },
+    { "value": "TRM_HCM_1", "label": "TRM_HCM_1 - [TRM] HCM_1" }
+  ],
+  "distributors": [
+    { "value": "NPP001", "label": "NPP001 - NPP Demo HCM" },
+    { "value": "NPP002", "label": "NPP002 - NPP Demo Đồng Nai" },
+    { "value": "NPP003", "label": "NPP003 - NPP Demo Cần Thơ" }
+  ],
+  "genders": [
+    { "value": "Nam", "label": "Nam" },
+    { "value": "Nữ", "label": "Nữ" },
+    { "value": "Khác", "label": "Khác" }
+  ],
+  "marketRoles": [
+    { "value": "SD", "label": "SD - Giám đốc toàn quốc" },
+    { "value": "RSM", "label": "RSM - Quản lý vùng" },
+    { "value": "ASM", "label": "ASM - Quản lý khu vực" },
+    { "value": "SS", "label": "SS - Giám sát bán hàng" }
+  ],
+  "marketAccounts": [
+    { "value": "NV001", "label": "NV001 - Nguyễn Văn A" },
+    { "value": "NV002", "label": "NV002 - Trần Thị B" }
+  ],
+  "masterTypes": [
+    { "value": "Lý do hủy phiếu xuất kho", "label": "Lý do hủy phiếu xuất kho" },
+    { "value": "Lý do trả đơn bán hàng", "label": "Lý do trả đơn bán hàng" },
+    { "value": "Lý do từ chối duyệt điều chỉnh điểm bán", "label": "Lý do từ chối duyệt điều chỉnh điểm bán" },
+    { "value": "Lý do vượt khoảng cách", "label": "Lý do vượt khoảng cách" }
+  ],
+  "weekdays": [
+    { "value": "Thứ 2", "label": "Thứ 2" },
+    { "value": "Thứ 3", "label": "Thứ 3" },
+    { "value": "Thứ 4", "label": "Thứ 4" },
+    { "value": "Thứ 5", "label": "Thứ 5" },
+    { "value": "Thứ 6", "label": "Thứ 6" },
+    { "value": "Thứ 7", "label": "Thứ 7" },
+    { "value": "Chủ nhật", "label": "Chủ nhật" }
+  ],
+  "years": [
+    { "value": "2024", "label": "2024" },
+    { "value": "2025", "label": "2025" },
+    { "value": "2026", "label": "2026" },
+    { "value": "2027", "label": "2027" },
+    { "value": "2029", "label": "2029" },
+    { "value": "2030", "label": "2030" }
+  ],
+  "applyObjects": [
+    { "value": "Toàn quốc", "label": "Toàn quốc" },
+    { "value": "Vùng", "label": "Vùng" },
+    { "value": "Nhân viên", "label": "Nhân viên" }
+  ],
+  "configTypes": [
+    { "value": "BOOLEAN", "label": "BOOLEAN" },
+    { "value": "TEXT", "label": "TEXT" },
+    { "value": "NUMBER", "label": "NUMBER" },
+    { "value": "TABLE", "label": "TABLE" },
+    { "value": "OBJECT", "label": "OBJECT" }
+  ],
+  "configTargets": [
+    { "value": "APIWEBAPP", "label": "APIWEBAPP" },
+    { "value": "WEBAPP", "label": "WEBAPP" },
+    { "value": "APP", "label": "APP" },
+    { "value": "APIAPPWEB", "label": "APIAPPWEB" }
+  ],
+  "configGroups": [
+    { "value": "Đơn hàng", "label": "Đơn hàng" },
+    { "value": "Tuyến", "label": "Tuyến" },
+    { "value": "Khác", "label": "Khác" }
+  ],
+  "roleKinds": [
+    { "value": "HO", "label": "HO" },
+    { "value": "Nhà phân phối", "label": "Nhà phân phối" }
+  ],
+  "attrTypes": [
+    { "value": "Văn bản", "label": "Văn bản" },
+    { "value": "Chọn một", "label": "Chọn một" },
+    { "value": "Chọn nhiều", "label": "Chọn nhiều" }
+  ],
+  "permissionMenus": [
+    "Tài Khoản Người Dùng",
+    "Chốt Sổ Kỳ",
+    "Mở Chốt Sổ",
+    "Dữ Liệu Chung",
+    "Cấu Hình Chấm Công",
+    "Thiết Lập Vị Trí Chấm Công",
+    "Cấu Hình Chung",
+    "Nhóm Quyền",
+    "Thuộc Tính"
+  ],
+  "permissionActions": ["Tất cả", "Xem", "Thêm", "Sửa", "Xóa", "Import", "Export"],
+  "users": [
+    {
+      "id": "u1", "code": "ADMINNPP", "refCode": "", "name": "adminnpp",
+      "regions": ["V_002", "V_001", "MV_02"], "areas": ["KV_001", "TRM_HCM_1"],
+      "distributors": [], "phone": "", "email": "", "hoRole": "", "nppRole": "Distributor Admin",
+      "marketAccount": "", "lastLogin": "14-08-2026 09:56:31",
+      "createdAt": "14-08-2026 09:10:12", "createdBy": "ALLHO",
+      "updatedAt": "14-08-2026 09:10:12", "updatedBy": "ALLHO",
+      "status": "Hoạt động", "permType": "NPP", "password": "", "gender": "Nam",
+      "province": "Hồ Chí Minh", "district": "Quận 1", "ward": "Phường Bến Nghé",
+      "address": "260 Trần Quang Khải", "marketRole": ""
+    },
+    {
+      "id": "u2", "code": "THAO999", "refCode": "THAO-BA", "name": "Thảo BA",
+      "regions": ["V_002"], "areas": ["KV_001"], "distributors": ["NPP001"],
+      "phone": "0901234567", "email": "thao.ba@example.com", "hoRole": "admin_Thao", "nppRole": "",
+      "marketAccount": "", "lastLogin": "14-08-2026 14:20:11",
+      "createdAt": "23-01-2026 13:24:04", "createdBy": "thao999",
+      "updatedAt": "13-08-2026 14:33:21", "updatedBy": "ALLHO",
+      "status": "Hoạt động", "permType": "HO", "password": "", "gender": "Nữ",
+      "province": "Hồ Chí Minh", "district": "Quận 1", "ward": "Phường Bến Nghé",
+      "address": "226 Trần Quang Khải", "marketRole": "RSM"
+    },
+    {
+      "id": "u3", "code": "ALLHO", "refCode": "", "name": "Admin HO",
+      "regions": ["V_002"], "areas": ["KV_001"], "distributors": [],
+      "phone": "0965701231", "email": "allho@example.com", "hoRole": "Admin", "nppRole": "",
+      "marketAccount": "", "lastLogin": "13-08-2026 16:01:07",
+      "createdAt": "04-11-2024 14:27:05", "createdBy": "0965701231",
+      "updatedAt": "13-08-2026 14:33:21", "updatedBy": "allho",
+      "status": "Hoạt động", "permType": "HO", "password": "", "gender": "Nam",
+      "province": "", "district": "", "ward": "", "address": "", "marketRole": ""
+    },
+    {
+      "id": "u4", "code": "HODMS90", "refCode": "HO90", "name": "HO DMS 90",
+      "regions": ["V_001"], "areas": ["TRM_HCM_1"], "distributors": ["NPP002"],
+      "phone": "0911111111", "email": "hodms90@example.com", "hoRole": "Admin", "nppRole": "",
+      "marketAccount": "NV001", "lastLogin": "12-08-2026 08:11:00",
+      "createdAt": "03-01-2025 10:41:56", "createdBy": "OANHVU1",
+      "updatedAt": "15-05-2025 14:54:36", "updatedBy": "HODMS90",
+      "status": "Hoạt động", "permType": "HO", "password": "", "gender": "Nam",
+      "province": "", "district": "", "ward": "", "address": "", "marketRole": "ASM"
+    },
+    {
+      "id": "u5", "code": "QC0015", "refCode": "", "name": "QC Vi Admin",
+      "regions": ["V_002"], "areas": ["KV_001"], "distributors": [],
+      "phone": "0922222222", "email": "", "hoRole": "[TRM] Admin HO", "nppRole": "",
+      "marketAccount": "", "lastLogin": "",
+      "createdAt": "13-08-2025 15:48:21", "createdBy": "qc0015",
+      "updatedAt": "28-11-2025 14:59:46", "updatedBy": "qcviadmin",
+      "status": "Không hoạt động", "permType": "HO", "password": "", "gender": "Nữ",
+      "province": "", "district": "", "ward": "", "address": "", "marketRole": ""
+    }
+  ],
+  "periods": [
+    {
+      "id": "p1", "code": "NPP001", "name": "NPP Demo HCM",
+      "closedAt": "31-07-2026 23:11:05", "closedBy": "THAO999", "month": "07/2026"
+    },
+    {
+      "id": "p2", "code": "NPP002", "name": "NPP Demo Đồng Nai",
+      "closedAt": "30-06-2026 18:02:44", "closedBy": "ALLHO", "month": "06/2026"
+    }
+  ],
+  "masterData": [
+    { "id": "m1", "code": "GOODS_DELIVERY_NOTE_CANCEL_REASON", "refCode": "", "refSystem": "SFA", "name": "test", "type": "Lý do hủy phiếu xuất kho", "createdAt": "15-10-2025 14:36:58", "createdBy": "FV_160921", "updatedAt": "27-11-2025 13:20:48", "updatedBy": "VANNGUYEN" },
+    { "id": "m2", "code": "OTHER_REASON_RETURN_ORDER", "refCode": "", "refSystem": "SFA", "name": "Khác", "type": "Lý do trả đơn bán hàng", "createdAt": "21-10-2025 10:34:33", "createdBy": "HODMS90", "updatedAt": "27-11-2025 13:11:07", "updatedBy": "VANNGUYEN" },
+    { "id": "m3", "code": "RETURN_ORDER_REASON_01", "refCode": "", "refSystem": "SFA", "name": "Hàng lỗi", "type": "Lý do trả đơn bán hàng", "createdAt": "21-10-2025 10:35:28", "createdBy": "HODMS90", "updatedAt": "27-10-2025 17:06:34", "updatedBy": "DMSDEVHO" },
+    { "id": "m4", "code": "RETURN_ORDER_REASON_02", "refCode": "", "refSystem": "SFA", "name": "Hàng không đúng yêu cầu", "type": "Lý do trả đơn bán hàng", "createdAt": "27-10-2025 17:05:34", "createdBy": "DMSDEVHO", "updatedAt": "27-10-2025 17:05:34", "updatedBy": "DMSDEVHO" },
+    { "id": "m5", "code": "REJECT_ADJUSTMENT_REASON_1", "refCode": "", "refSystem": "SFA", "name": "Sai thông tin người đại diện", "type": "Lý do từ chối duyệt điều chỉnh điểm bán", "createdAt": "27-10-2025 16:56:40", "createdBy": "HODMS90", "updatedAt": "27-10-2025 16:56:40", "updatedBy": "HODMS90" },
+    { "id": "m6", "code": "TEST2110", "refCode": "", "refSystem": "SFA", "name": "TEST2110", "type": "Lý do vượt khoảng cách", "createdAt": "21-10-2025 08:21:40", "createdBy": "LONGFE", "updatedAt": "21-10-2025 08:21:40", "updatedBy": "LONGFE" }
+  ],
+  "attendanceConfigs": [
+    { "id": "a1", "hours": "8.00", "workTime": "08:00 - 17:00", "lunch": "12:00 - 13:00", "days": ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"], "year": "2026", "specials": [], "createdAt": "01-01-2026 23:02:50", "createdBy": "TRAMNGUYEN", "updatedAt": "01-01-2026 23:02:50", "updatedBy": "TRAMNGUYEN", "status": "Hoạt động" },
+    { "id": "a2", "hours": "8.50", "workTime": "08:00 - 17:00", "lunch": "12:00 - 12:30", "days": ["Thứ 2","Thứ 3","Thứ 4"], "year": "2030", "specials": [], "createdAt": "29-05-2025 14:00:25", "createdBy": "HONG.AN", "updatedAt": "05-06-2025 11:11:39", "updatedBy": "QC0015", "status": "Hoạt động" },
+    { "id": "a3", "hours": "10.00", "workTime": "06:00 - 17:00", "lunch": "12:00 - 13:00", "days": ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6"], "year": "2025", "specials": [{ "date": "01-01-2025", "name": "Tết Dương lịch" }], "createdAt": "03-01-2025 10:41:56", "createdBy": "OANHVU1", "updatedAt": "15-05-2025 14:54:36", "updatedBy": "HODMS90", "status": "Hoạt động" },
+    { "id": "a4", "hours": "7.00", "workTime": "08:00 - 17:00", "lunch": "12:00 - 14:00", "days": ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7"], "year": "2024", "specials": [], "createdAt": "20-12-2024 09:27:53", "createdBy": "OANHVU1", "updatedAt": "29-05-2025 13:34:56", "updatedBy": "OANHVU1", "status": "Không hoạt động" },
+    { "id": "a5", "hours": "9.00", "workTime": "09:00 - 19:00", "lunch": "12:00 - 13:00", "days": ["Thứ 2","Thứ 3","Thứ 4","Thứ 5","Thứ 6","Thứ 7","Chủ nhật"], "year": "2029", "specials": [], "createdAt": "20-12-2024 09:22:16", "createdBy": "MINH.TOAN", "updatedAt": "20-01-2025 13:06:45", "updatedBy": "HONG.AN", "status": "Hoạt động" },
+    { "id": "a6", "hours": "1.00", "workTime": "02:00 - 06:00", "lunch": "04:00 - 05:00", "days": ["Thứ 2","Thứ 3","Thứ 4","Thứ 7"], "year": "2027", "specials": [], "createdAt": "20-12-2024 09:21:04", "createdBy": "MINH.TOAN", "updatedAt": "20-12-2024 09:21:04", "updatedBy": "MINH.TOAN", "status": "Hoạt động" }
+  ],
+  "locations": [
+    { "id": "l1", "code": "OVU_TQ_3", "startAddr": "260 Trần Quang Khải, Quận 1, Thành phố Hồ Chí Minh", "startRadius": "", "endAddr": "260 Trần Quang Khải, Quận 1, Thành phố Hồ Chí Minh", "endRadius": "", "applyTo": "Toàn quốc", "regions": [], "employees": [], "lat": "10.7915", "lng": "106.6943", "status": "Hoạt động", "createdAt": "23/04/2025 18:14:41", "createdBy": "Admin Oanh Vũ", "updatedAt": "19/06/2026 14:25:01", "updatedBy": "HO-DMS-902", "endDisabled": false },
+    { "id": "l2", "code": "OVU_TQ_2", "startAddr": "226 Trần Quang Khải, Phường Tân Định, Quận 1, Thành phố Hồ Chí Minh", "startRadius": "400", "endAddr": "226 Trần Quang Khải, Phường Tân Định, Quận 1, Thành phố Hồ Chí Minh", "endRadius": "400", "applyTo": "Toàn quốc", "regions": [], "employees": [], "lat": "10.7899", "lng": "106.6931", "status": "Hoạt động", "createdAt": "23/04/2025 18:11:34", "createdBy": "Admin Oanh Vũ", "updatedAt": "23/04/2025 18:11:34", "updatedBy": "", "endDisabled": false },
+    { "id": "l3", "code": "TRMLOCATIONSETTING007", "startAddr": "98 Lý Tự Trọng, Quận 1, Thành phố Hồ Chí Minh", "startRadius": "700", "endAddr": "98 Lý Tự Trọng, Quận 1, Thành phố Hồ Chí Minh", "endRadius": "700", "applyTo": "Vùng", "regions": ["V_002"], "employees": [], "lat": "10.7720", "lng": "106.6983", "status": "Hoạt động", "createdAt": "21/04/2025 16:16:39", "createdBy": "Admin Tram", "updatedAt": "21/04/2025 16:26:32", "updatedBy": "Admin Tram", "endDisabled": false },
+    { "id": "l4", "code": "NV_LOC_001", "startAddr": "500 Nguyễn Kiệm, Quận Phú Nhuận, Thành phố Hồ Chí Minh", "startRadius": "350", "endAddr": "500 Nguyễn Kiệm, Quận Phú Nhuận, Thành phố Hồ Chí Minh", "endRadius": "350", "applyTo": "Nhân viên", "regions": [], "employees": ["NV001"], "lat": "10.8001", "lng": "106.6772", "status": "Không hoạt động", "createdAt": "21/04/2025 16:15:37", "createdBy": "Admin Tram", "updatedAt": "21/04/2025 16:26:30", "updatedBy": "Admin Tram", "endDisabled": false }
+  ],
+  "employees": [
+    { "code": "NV001", "name": "Nguyễn Văn A", "manager": "THAO999", "phone": "0901111111", "title": "Nhân viên bán hàng", "status": "Hoạt động" },
+    { "code": "NV002", "name": "Trần Thị B", "manager": "ALLHO", "phone": "0902222222", "title": "Giám sát bán hàng", "status": "Hoạt động" }
+  ],
+  "generalConfigs": [
+    { "id": "c1", "name": "Cấu hình độ ưu tiên đối tượng áp dụng trong bản giá ban", "key": "SALES_PRICE_PRIORITY_RULE", "type": "TABLE", "desc": "Cấu hình độ ưu tiên đối tượng áp dụng trong bản giá ban", "value": "Chi tiết", "target": "APIWEBAPP", "group": "Đơn hàng", "editable": true, "boolValue": false, "textValue": "", "createdAt": "23-12-2025 11:40:37", "createdBy": "HODMS902", "updatedAt": "14-08-2026 10:15:44", "updatedBy": "HODMS90" },
+    { "id": "c2", "name": "Hiển thị Lot/Date trên đơn bán hàng", "key": "DISPLAY_LOT_DATE_IN_SALES_ORDER", "type": "BOOLEAN", "desc": "Hiển thị Lot/Date trên đơn bán hàng", "value": "Bật", "target": "APIWEBAPP", "group": "Đơn hàng", "editable": true, "boolValue": true, "textValue": "", "createdAt": "26-06-2025 13:42:14", "createdBy": "QIN999", "updatedAt": "13-08-2026 16:01:07", "updatedBy": "HODMS902" },
+    { "id": "c3", "name": "Cấu hình hiển thị nhập hạn sử dụng sản phẩm trên app saleman", "key": "LOT_DATE_CHECKING_INVENTORY_APP", "type": "BOOLEAN", "desc": "Cấu hình hiển thị nhập hạn sử dụng sản phẩm trên app saleman", "value": "Bật", "target": "APIWEBAPP", "group": "Tuyến", "editable": true, "boolValue": true, "textValue": "", "createdAt": "03-04-2025 15:04:16", "createdBy": "HODMS90", "updatedAt": "13-08-2026 15:33:09", "updatedBy": "HODMS902" },
+    { "id": "c4", "name": "Cấu hình version cho app Salesman ios", "key": "MOBILE_VERSION_IOS_SALESMAN", "type": "OBJECT", "desc": "Cấu hình version cho app Salesman ios", "value": "Chi tiết", "target": "APP", "group": "Khác", "editable": true, "boolValue": false, "textValue": "{\"min\":\"1.0.0\"}", "createdAt": "17-09-2025 15:36:24", "createdBy": "FV_160921", "updatedAt": "09-12-2025 15:59:56", "updatedBy": "TRAMNGUYEN" },
+    { "id": "c5", "name": "Cấu hình bắt buộc chấm công đầu ngày, cuối ngày trên App quản lý", "key": "MANAGER_REQUIRED_CHECKIN_WORKING_TIME", "type": "BOOLEAN", "desc": "Cấu hình bắt buộc chấm công đầu ngày, cuối ngày trên App quản lý", "value": "Bật", "target": "APIAPPWEB", "group": "Khác", "editable": true, "boolValue": true, "textValue": "", "createdAt": "12-12-2024 13:37:51", "createdBy": "DUY.ANH", "updatedAt": "27-10-2025 09:53:23", "updatedBy": "FV_160921" },
+    { "id": "c6", "name": "Cấu hình thời gian tối thiểu viếng thăm điểm bán", "key": "STORE_VISIT_DURATION_CONFIGURATION", "type": "NUMBER", "desc": "Số phút tối thiểu viếng thăm", "value": "5", "target": "APIWEBAPP", "group": "Tuyến", "editable": true, "boolValue": false, "textValue": "5", "createdAt": "20-01-2025 09:00:00", "createdBy": "ALLHO", "updatedAt": "20-01-2025 09:00:00", "updatedBy": "ALLHO" }
+  ],
+  "roles": [
+    { "id": "r1", "name": "Admin", "kind": "HO", "desc": "Admin hệ thống", "createdBy": "0965701231", "createdAt": "04-11-2024 14:27:05", "updatedBy": "allho", "updatedAt": "13-08-2026 14:33:21", "status": "Hoạt động", "perms": { "Tài Khoản Người Dùng": ["Tất cả","Xem","Thêm","Sửa","Xóa","Import","Export"], "Nhóm Quyền": ["Tất cả","Xem","Thêm","Sửa","Xóa"] } },
+    { "id": "r2", "name": "[TRM] Admin HO", "kind": "HO", "desc": "", "createdBy": "023923203131", "createdAt": "26-08-2025 11:01:58", "updatedBy": "023923203131", "updatedAt": "02-02-2026 09:07:26", "status": "Hoạt động", "perms": { "Dữ Liệu Chung": ["Xem","Thêm","Sửa"] } },
+    { "id": "r3", "name": "admin_Thao", "kind": "HO", "desc": "", "createdBy": "thao999", "createdAt": "23-01-2026 13:24:04", "updatedBy": "thao999", "updatedAt": "23-01-2026 13:24:04", "status": "Hoạt động", "perms": { "Tài Khoản Người Dùng": ["Xem","Thêm","Sửa"] } },
+    { "id": "r4", "name": "[QC][Vị] Admin NPP", "kind": "Nhà phân phối", "desc": "", "createdBy": "qcviadmin", "createdAt": "04-11-2025 09:35:31", "updatedBy": "qcviadmin", "updatedAt": "28-11-2025 14:58:54", "status": "Hoạt động", "perms": { "Chốt Sổ Kỳ": ["Xem"] } },
+    { "id": "r5", "name": "[VANN1] DATA NPP", "kind": "Nhà phân phối", "desc": "", "createdBy": "vannguyen", "createdAt": "08-09-2025 13:07:44", "updatedBy": "vannguyen", "updatedAt": "13-11-2025 10:19:20", "status": "Không hoạt động", "perms": { "Dữ Liệu Chung": ["Xem"] } }
+  ],
+  "attributes": [
+    { "id": "t1", "code": "QUANGTEST", "name": "Màu sắc hoa lá hẹ", "dataType": "Chọn một", "required": false, "status": "Hoạt động", "applyTo": "PRODUCT", "extra": [], "values": [{ "code": "RED", "name": "Đỏ", "status": "Hoạt động" }, { "code": "GREEN", "name": "Xanh", "status": "Hoạt động" }], "createdAt": "26-01-2026 15:43:39", "createdBy": "NKNK97", "updatedAt": "26-01-2026 15:43:39", "updatedBy": "NKNK97" },
+    { "id": "t2", "code": "THUOCTINHSANPHAM", "name": "Trọng lượng", "dataType": "Chọn một", "required": true, "status": "Hoạt động", "applyTo": "PRODUCT", "extra": [], "values": [{ "code": "KG", "name": "Kg", "status": "Hoạt động" }], "createdAt": "11-11-2025 16:45:52", "createdBy": "LNHI001HO", "updatedAt": "11-11-2025 16:45:52", "updatedBy": "LNHI001HO" },
+    { "id": "t3", "code": "TTVI_009", "name": "[QC][Vị][CTTL] Chọn nhiều", "dataType": "Chọn nhiều", "required": false, "status": "Hoạt động", "applyTo": "STORE", "extra": ["CTTL"], "values": [{ "code": "A", "name": "Giá trị A", "status": "Hoạt động" }], "createdAt": "03-11-2025 13:59:51", "createdBy": "QCVIADMIN", "updatedAt": "03-11-2025 14:03:08", "updatedBy": "QCVIADMIN" },
+    { "id": "t4", "code": "TTVI_006", "name": "[QC][Vị] Văn bản - Sản phẩm", "dataType": "Văn bản", "required": false, "status": "Hoạt động", "applyTo": "PRODUCT", "extra": [], "values": [], "createdAt": "03-11-2025 09:54:23", "createdBy": "QCVIADMIN", "updatedAt": "03-11-2025 09:54:23", "updatedBy": "QCVIADMIN" },
+    { "id": "t5", "code": "TTVI_005", "name": "[QC][Vị] Văn bản - Điểm bán", "dataType": "Văn bản", "required": false, "status": "Không hoạt động", "applyTo": "STORE", "extra": [], "values": [], "createdAt": "03-11-2025 09:48:44", "createdBy": "QCVIADMIN", "updatedAt": "03-11-2025 09:48:44", "updatedBy": "QCVIADMIN" }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "items": [
+    { "code": "Product", "name": "Product", "description": "Nhóm sản phẩm mặc định", "status": "ACTIVE" },
+    { "code": "PG001", "name": "Nhóm sản phẩm A", "description": "Nhóm áp dụng CTKM", "status": "ACTIVE" },
+    { "code": "PG002", "name": "Nhóm sản phẩm B", "description": "Nhóm áp dụng tích lũy", "status": "ACTIVE" }
+  ]
+}

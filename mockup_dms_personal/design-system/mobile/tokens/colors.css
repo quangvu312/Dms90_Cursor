@@ -1,0 +1,164 @@
+/**
+ * DMS90 App SaleMan — Color Tokens
+ * Nguồn màu: Figma DMS90 x Vigo (mode Vigo) — giữ nguyên brand
+ * Nguồn layout/UI: Hand-off DMS-90 — https://www.figma.com/design/JLQNtUG3rqvGnh1h6quGJP/Hand-off_DMS-90
+ * Salesman-Ver2 (layout): có thể export #0d88cb — KHÔNG dùng làm brand; map → --vigo-primary-boldblue #1437d6
+ * Quy ước: design-system/mobile/guidelines/mockup-conventions.md
+ * Cập nhật: 2026-08-21
+ */
+:root {
+  /* ===== Primitive — Brand ===== */
+  --vigo-primary-boldblue: #1437d6;
+  --vigo-secondary-cobaltblue: #2146c7;
+  --vigo-secondary-softdigital: #4f6dff;
+  --vigo-secondary-alucardnight: #0b1028;
+  --vigo-secondary-softwhite: #fafafa;
+  --vigo-base-white: #ffffff;
+  --vigo-base-black: #000000;
+
+  /* ===== Semantic — Text ===== */
+  --vigo-text-primary: #1f2937;
+  --vigo-text-secondary: #4b5563; /* WCAG AA trên trắng (~7:1); Figma #6b7280 vẫn PASS nhưng #4b5563 chắc hơn cho field */
+  --vigo-text-invert: #f9fafb;
+  --vigo-text-brand: #1437d6;
+  --vigo-text-disable: #6b7280;
+  --vigo-text-progressing: #1d4ed8; /* AA trên #eff6ff — Figma raw #3b82f6 chỉ đạt large/UI */
+  --vigo-text-success: #15803d;
+  --vigo-text-error: #b91c1c;
+  --vigo-text-warning: #c2410c; /* AA trên #fff7ed — Figma raw #f97316 FAIL body */
+  --vigo-text-placeholder: #4b5563; /* ❌ không dùng #9ca3af cho chữ mang nghĩa (2.54:1) */
+
+  /* ===== Semantic — Surface ===== */
+  --vigo-surface-primary: #fafafa;
+  --vigo-surface-primary-light: #f9fafb;
+  --vigo-surface-secondary-brand: #4f6dff;
+  --vigo-surface-white: #ffffff;
+  --vigo-surface-brand: #1437d6;
+  --vigo-surface-brand-light: #eff6ff;
+  --vigo-surface-dark: #0b1028;
+  --vigo-surface-disable: #f1f5f9;
+  --vigo-surface-warning: #ffedd5;
+
+  /* ===== Semantic — Border / Divider ===== */
+  --vigo-border-light: #e5e7eb;
+  --vigo-border-brand: #1437d6;
+  --vigo-border-dark: #1f2937;
+  --vigo-border-success: #16a34a;
+  --vigo-border-error: #ef4444;
+  --vigo-border-warning: #f97316;
+  --vigo-border-disable: #9ca3af;
+  --vigo-divider-thin: #e5e7eb;
+  --vigo-divider-brand: #1437d6;
+  --vigo-divider-thick: #f3f4f6;
+
+  /* ===== Semantic — Icon ===== */
+  --vigo-icon-primary: #1f2937;
+  --vigo-icon-secondary: #6b7280;
+  --vigo-icon-disable: #d1d5db;
+  --vigo-icon-primary-brand: #1437d6;
+  --vigo-icon-secondary-brand: #4f6dff;
+  --vigo-icon-invert: #f9fafb;
+
+  /* ===== Semantic — Alert ===== */
+  --vigo-alert-success: #15803d;
+  --vigo-alert-success-light: #f0fdf4;
+  --vigo-alert-progressing: #1d4ed8;
+  --vigo-alert-progressing-light: #eff6ff;
+  --vigo-alert-error: #b91c1c;
+  --vigo-alert-error-light: #fef2f2;
+  --vigo-alert-warning: #c2410c;
+  --vigo-alert-warning-light: #fff7ed;
+  --vigo-alert-disable: #e5e7eb;
+  --vigo-alert-disable-dark: #374151;
+
+  /* ===== Semantic — Button / Card ===== */
+  --vigo-button-text-brand: #1437d6;
+  --vigo-button-text-dark: #1f2937;
+  --vigo-button-text-invert: #f9fafb;
+  --vigo-button-text-disable: #9ca3af;
+  --vigo-button-surface-brand: #1437d6;
+  --vigo-button-surface-light: #f9fafb;
+  --vigo-button-surface-dark: #1f2937;
+  --vigo-button-border-brand: #1437d6;
+  --vigo-button-border-dark: #1f2937;
+  --vigo-card-border-active: #1437d6;
+  --vigo-card-surface-active: #eff6ff;
+  --vigo-card-border-unactive: #e5e7eb;
+  --vigo-card-surface-unactive: #ffffff;
+
+  /* ===== Alias runtime --sa-* (giữ tương thích mockup) ===== */
+  --sa-blue: var(--vigo-primary-boldblue);
+  --sa-blue-dark: var(--vigo-secondary-cobaltblue);
+  --sa-cobalt: var(--vigo-secondary-cobaltblue);
+  --sa-soft: var(--vigo-secondary-softdigital);
+  --sa-night: var(--vigo-secondary-alucardnight);
+  --sa-header: var(--vigo-surface-brand);
+  /* Đồng bộ header tab Khác (React headerGradient) */
+  --sa-header-gradient: linear-gradient(135deg, var(--vigo-secondary-alucardnight) 0%, var(--vigo-secondary-cobaltblue) 100%);
+  --sa-login-btn: var(--vigo-button-surface-brand);
+  --sa-route-bg: #faf2d1;
+  --sa-route-bar: #fec020;
+  --sa-route-container: #f2f2f2;
+  --sa-surface-shell: #f3f4f6;
+  --sa-label-muted: #7587a6;
+
+  --sa-bg-page: #e2e8f0;
+  --sa-bg-screen: #fafafa;
+  --sa-bg-card: var(--vigo-surface-white);
+  --sa-bg-route: var(--sa-route-bg);
+  --sa-bg-store: var(--vigo-surface-brand-light);
+  --sa-bg-muted: var(--vigo-surface-disable);
+  --sa-bg-search: #f1f5f9;
+
+  --sa-text-primary: var(--vigo-text-primary);
+  --sa-text-secondary: var(--vigo-text-secondary);
+  --sa-text-muted: var(--vigo-text-secondary);
+  --sa-text-placeholder: var(--vigo-text-placeholder);
+  --sa-text-on-brand: var(--vigo-text-invert);
+  --sa-text-link: var(--vigo-text-brand);
+  --sa-text-accent: var(--vigo-text-brand);
+  --sa-text-brand: var(--vigo-text-brand);
+
+  --sa-border: var(--vigo-border-light);
+  --sa-border-light: var(--vigo-divider-thick);
+
+  --sa-order-id-bg: #64748b;
+
+  --sa-success: var(--vigo-alert-success);
+  --sa-success-bg: var(--vigo-alert-success-light);
+  --sa-warning: var(--vigo-alert-warning);
+  --sa-warning-bg: var(--vigo-surface-warning);
+  --sa-error: var(--vigo-alert-error);
+  --sa-error-bg: var(--vigo-alert-error-light);
+  --sa-info: var(--vigo-alert-progressing);
+  --sa-badge: var(--vigo-alert-error);
+
+  --sa-pill-on-bg: var(--vigo-alert-success-light);
+  --sa-pill-on-text: var(--vigo-alert-success);
+  --sa-pill-off-bg: var(--vigo-surface-disable);
+  --sa-pill-off-text: var(--vigo-text-secondary);
+  --sa-pill-wait-bg: var(--vigo-alert-warning-light);
+  --sa-pill-wait-text: var(--vigo-alert-warning);
+  --sa-pill-reject-bg: var(--vigo-alert-error-light);
+  --sa-pill-reject-text: var(--vigo-alert-error);
+
+  /* ===== Order status badges — Figma «trạng thái đơn» + WCAG AA text =====
+     Tabs list: Thành công | Đang xử lý | Thất bại
+     Badge labels thấy trên Hand-off: Khởi tạo, Đã duyệt, Đã trả đơn, Thất bại
+     Bổ sung semantic cho tab mock: Đã xuất kho, Đã hủy, Thành công
+  */
+  --sa-order-status-init-bg: var(--vigo-alert-warning-light);
+  --sa-order-status-init-fg: var(--vigo-alert-warning);       /* Khởi tạo */
+  --sa-order-status-approved-bg: var(--vigo-alert-progressing-light);
+  --sa-order-status-approved-fg: var(--vigo-alert-progressing); /* Đã duyệt */
+  --sa-order-status-shipped-bg: var(--vigo-alert-success-light);
+  --sa-order-status-shipped-fg: var(--vigo-alert-success);     /* Đã xuất kho */
+  --sa-order-status-success-bg: var(--vigo-alert-success-light);
+  --sa-order-status-success-fg: var(--vigo-alert-success);     /* Thành công */
+  --sa-order-status-return-bg: var(--vigo-alert-error-light);
+  --sa-order-status-return-fg: var(--vigo-alert-error);        /* Đã trả đơn */
+  --sa-order-status-cancel-bg: var(--vigo-alert-error-light);
+  --sa-order-status-cancel-fg: var(--vigo-alert-error);        /* Đã hủy */
+  --sa-order-status-fail-bg: var(--vigo-alert-disable);
+  --sa-order-status-fail-fg: var(--vigo-alert-disable-dark);   /* Thất bại */
+}

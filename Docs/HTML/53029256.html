@@ -1,0 +1,607 @@
+<ol><li>Cấu tr&uacute;c h&agrave;nh động khuyến m&atilde;i<h3 style="text-align: left;">&nbsp; &nbsp; &nbsp; &nbsp;<strong>Khuyến m&atilde;i b&igrave;nh thường (NORMAL)</strong></h3><ul><li><strong>discount.action</strong>: Th&ocirc;ng tin h&agrave;nh động khuyến m&atilde;i<ul><li>C&aacute;c <strong>h&agrave;nh động</strong> được nh&oacute;m với nhau bởi <code><strong>all</strong></code> hoặc <strong><code>any</code></strong></li><li><strong>all</strong>: Được nhận tất cả h&agrave;nh động trong danh s&aacute;ch</li><li><strong>any</strong>: Được nhận một h&agrave;nh động trong danh s&aacute;ch</li></ul></li><li><strong>discount.maximum_slots</strong>: Số suất tối đa của khuyến m&atilde;i n&agrave;y</li><li><strong>discount.applied_slots</strong>: Số suất &aacute;p dụng cho khuyến m&atilde;i n&agrave;y ,d&ugrave;ng chung cho tất cả c&aacute;c h&igrave;nh thức trong 1 khuyến m&atilde;i<ul><li>Đối với loại h&igrave;nh thức MixAnd,, c&oacute; 1 số case đặc biệt, d&ugrave;ng slot mặc định = 1:<ul><li><code>&quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;totalAmountOfOrder&quot;</code></li><li><code>&quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;totalAmountOfSkus&quot;</code></li><li><code>&quot;operator&quot;: &quot;<strong>flatPrice</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;<strong>allProductsInCondition</strong>&quot;</code></li></ul></li></ul></li><li><strong>discount.discounted_products</strong>: Danh s&aacute;ch sản phẩm d&ugrave;ng để t&iacute;nh khuyến m&atilde;i</li><li><p class="auto-cursor-target">V&iacute; dụ:</p><ul><li><p class="auto-cursor-target"><strong>Trả thưởng một h&igrave;nh thức:</strong> Giảm 5000 tr&ecirc;n đơn h&agrave;ng (h&igrave;nh thức giảm tiền tr&ecirc;n đơn)</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="736f32cb-85bb-4fcc-9b9c-a096e22d12da"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "discount": {
+    "maximum_slots": 2, // Số suất tối đa của khuyến mãi này
+    "applied_slots": 2, // Số suất áp dụng cho khuyến mãi này
+    "discounted_products": [ // Danh sách sản phẩm thõa điều kiện khuyến mãi
+      {
+        "id": "1",
+        "sku": "SKU1",
+        "quantity": 2
+      }
+    ],
+    "action": {
+      "all": [
+         {
+          "id": "14497124-3047-423c-893d-bd694fab36d2",
+          "operator": "discountFixedAmount",
+          "discount_value": 10000,
+          "discount_value_per_slot": 5000
+        }
+      ]
+    }
+  }
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li><li><p class="auto-cursor-target"><strong>Trả thưởng nhiều h&igrave;nh thức: </strong>Giảm 5000 tr&ecirc;n đơn h&agrave;ng v&agrave; tặng sản phẩm trong danh s&aacute;ch</p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="50672ab1-1240-4dde-a759-d879ea2521cd"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "discount": {
+    "maximum_slots": 2, // Số suất tối đa của khuyến mãi này
+    "applied_slots": 2, // Số suất áp dụng cho khuyến mãi này
+    "discounted_products": [ // Danh sách sản phẩm thõa điều kiện khuyến mãi
+      {
+        "id": "1",
+        "sku": "SKU1",
+        "quantity": 2
+      }
+    ],
+    "action": {
+      "all": [     // Nếu trả thưởng nhiều hình thức cho scheme VÀ(AND) thì mảng all sẽ chứa nhiều phần tử (ví dụ dưới là giảm tiền và tặng kèm sản phẩm)
+         {
+          "id": "14497124-3047-423c-893d-bd694fab36d2", 
+          "operator": "discountFixedAmount",
+          "discount_value": 10000,
+          "discount_value_per_slot": 5000
+        },
+        {
+          "id": "0cef757f-3fce-42c6-8d59-e46b8c3b0b01",
+          "operator": "attachProducts",
+          "total_quantity": 4,
+          "total_quantity_per_slot": 2,
+          "skus": [
+            {
+              "id": "1",
+              "sku": "SKU3",
+              "status": "ACTIVE",
+			  "available_quantity": 999999999
+            },
+            {
+              "id": "2",
+              "sku": "SKU4",
+			  "status": "ACTIVE",
+              "available_quantity": 999999999
+            }
+          ],
+        }
+      ]
+    }
+  }
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li></ul></li></ul></li></ol><h3><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Khuyến m&atilde;i Bậc thang (SIDE STEP) (Dựa v&agrave;o method_apply để x&aacute;c định)</strong></h3><ul><li style="list-style-type: none;"><ul><li><strong>discount.action</strong>: Th&ocirc;ng tin h&agrave;nh động khuyến m&atilde;i&nbsp;<br /><ul><li>C&aacute;c g&oacute;i h&agrave;nh động được nh&oacute;m với nhau bởi <code><strong>all</strong></code> hoặc <strong><code>any</code></strong><ul><li><strong>all</strong>: Được nhận tất cả g&oacute;i h&agrave;nh động trong danh s&aacute;ch được liệt k&ecirc;</li><li><strong>any</strong>: Được nhận một g&oacute;i h&agrave;nh động trong danh s&aacute;ch được liệt k&ecirc;</li><li>Trong c&aacute;c g&oacute;i sẽ được định danh bằng <strong>id_package</strong></li><li><strong>maximum_slots</strong>: Số suất tối đa cho từng g&oacute;i</li><li><strong>applied_slots</strong>: Số suất &aacute;p dụng cho từng g&oacute;i, d&ugrave;ng chung cho tất cả c&aacute;c h&igrave;nh thức trong 1 khuyến goi<ul><li>Đối với loại h&igrave;nh thức MixAnd,, c&oacute; 1 số case đặc biệt, d&ugrave;ng slot mặc định = 1:<ul><li><code>&quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;totalAmountOfOrder&quot;</code></li><li><code>&quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;totalAmountOfSkus&quot;</code></li><li><code>&quot;operator&quot;: &quot;<strong>flatPrice</strong>&quot;</code> va <code>&quot;calculate_on&quot;: &quot;<strong>allProductsInCondition</strong>&quot;</code></li></ul></li></ul></li><li><strong>discounted_products</strong>: Danh s&aacute;ch sản phẩm d&ugrave;ng để t&iacute;nh khuyến m&atilde;i cho từng g&oacute;i</li></ul></li></ul></li><li><strong>discount.discounted_products</strong>: Danh s&aacute;ch sản phẩm d&ugrave;ng để t&iacute;nh khuyến m&atilde;i cho cả chương tr&igrave;nh khuyến m&atilde;i</li><li><strong>discount.applied_slots</strong>: Tổng slot cho tất cả c&aacute;c g&oacute;i, m&agrave; nguời d&ugrave;ng lựa chọn</li><li><strong>discount.maximum_slots: </strong>Tổng max slot cho tất cả c&aacute;c g&oacute;i&nbsp;</li><li><p class="auto-cursor-target">V&iacute; dụ: <strong style="text-align: left;">G&oacute;i 1:<span>&nbsp;</span></strong><span style="color: rgb(23,43,77);">Giảm 10% tổng số tiền nh&oacute;m sản phẩm (tối đa 200k),<span>&nbsp;</span></span><strong style="text-align: left;">G&oacute;i 2:<span>&nbsp;</span></strong><span style="color: rgb(23,43,77);">Tặng sản phẩm trong danh s&aacute;ch,<span>&nbsp;</span></span><strong style="text-align: left;">G&oacute;i 3:<span>&nbsp;</span></strong><span style="color: rgb(23,43,77);">Tặng sản phẩm trong danh s&aacute;ch</span></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="8bdd8b27-6096-452c-ae74-74d053a8ce4d"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "id": "0e62a3c9-5309-4c1f-bb12-dc5a13b79ee5",
+  "name": "[Phuong-Test][Sellout]Mua nhóm (A,B,C) đạt 200K  giảm 10% nhóm sản phẩm - TH1 - full đối tượng - ĐK hoặc",
+  "description": "<p>[Phuong-Test][Sellout]Mua nhóm (A,B,C) đạt 200K  giảm 10% nhóm sản phẩm - TH1 - full đối tượng - ĐK hoặc</p>",
+  "kind": "ON_TOP",
+  "method_apply": "SIDE_STEP",        //=================================> Dựa vào field "method_apply" để xác định khuyến mãi có phải bậc thang hay không
+  "action_operators": [                                                  //Khuyến mãi bậc thang:"SIDE_STEP", Khuyến mãi bình thường: "NORMAL"
+    "discountPercent",
+    "attachProducts"
+  ],
+  "code": "SIDESTEP",
+  "sale_type": "SELL_OUT",
+  "warehouse_type_id": "1",
+  "start_time": "2025-05-27T04:10:06.700Z",
+  "expire_time": "2025-08-31T06:48:06.700Z",
+  "discount": {
+    "action": {
+      "all": [                     //=================================> Nếu là all thì phải lấy hết các gói, nếu là any thì được chọn giữa các gói
+        {
+          "id_package": "d4e24548-e583-42b2-864c-2aa97e80dcc2",           //========================> Gói thứ nhất  
+          "all": [
+            {
+              "id": "14497124-3047-423c-893d-bd694fab36d2",
+              "operator": "discountPercent",
+              "calculate_on": "totalAmountOfSkus",
+              "discount_percent": 10,
+              "discount_value": 20000,
+              "discount_value_per_slot": 42000
+            }
+          ],
+          "package_no": 1                 //=================> Gói bậc 01
+          "maximum_slots": 1,             //=================> Số suất tối đa cho gói thứ nhất
+		  "applied_slots": 1,             //=================> Số suất áp dụng cho gói thứ nhất
+		  "discounted_products": [        //=================> Số lượng sản phẩm giảm trừ cho gói thứ nhất
+              {
+                  "id": "556",
+                  "sku": "DMSP004",
+                  "quantity": 40
+              },
+              {
+                  "id": "553",
+                  "sku": "DMSP001",
+                  "quantity": 2
+              }
+          ]
+        },
+        {
+           "id_package": "375ff798-9578-48af-b562-9ae58dd1ac99",        //==========================> Gói thứ hai
+           "all": [
+            {
+              "id": "0cef757f-3fce-42c6-8d59-e46b8c3b0b01",
+              "operator": "attachProducts",
+              "total_quantity": 30,
+              "total_quantity_per_slot": 2,
+              "skus": [
+                {
+                  "id": "554",
+                  "sku": "DMSP002",
+                  "status": "ACTIVE",
+                  "available_quantity": 366
+                }
+              ]
+            }
+          ],
+          "package_no": 2                 //=================> Gói bậc 02          
+          "maximum_slots": 1,        //======================> Số suất tối đa cho gói thứ hai
+          "applied_slots": 1,        //======================> Số suất áp dụng cho gói thứ hai 
+          "discounted_products": [   //======================> Số lượng sản phẩm giảm trừ cho gói thứ hai
+              {
+                  "id": "554",
+                  "sku": "DMSP002",
+                  "quantity": 2
+              }
+            ]         
+        },
+        {
+          "id_package": "aba292c8-4243-406b-8f72-bf9c908481c0",   //=================================> Gói thứ ba
+          "all": [
+            {
+              "id": "8916b26c-91c2-4423-ae15-5034f883c128",
+              "operator": "attachProducts",
+              "total_quantity": 30,
+              "total_quantity_per_slot": 2,
+              "skus": [
+                {
+                  "id": "554",
+                  "sku": "DMSP002",
+                  "status": "ACTIVE",
+                  "available_quantity": 366
+                }
+              ]
+            }
+          ],
+          "package_no": 3                //=================> Gói bậc 03           
+          "maximum_slots": 1,        //=========================> Số suất tối đa cho gói thứ ba
+          "applied_slots": 1,        //=========================> Số suất áp dụng cho gói thứ ba  
+          "discounted_products": [   //=========================> Số lượng sản phẩm giảm trừ cho gói thứ ba
+              {
+                  "id": "554",
+                  "sku": "DMSP002",
+                  "quantity": 1
+              }
+           ]         
+         }
+      ]
+    },
+    "maximum_slots": 3,           //===========================> Số suất tối đa cho cả chương trình khuyến mãi
+    "applied_slots": 3,           //===========================> Số suất áp dụng cho cả chương trình khuyến mãi
+    "discounted_products": [      //===========================> Số lượng sản phẩm giảm trừ cho cả chương trình khuyến mãi
+        {
+            "id": "556",
+            "sku": "DMSP004",
+            "quantity": 40
+        },
+        {
+            "id": "553",
+            "sku": "DMSP001",
+            "quantity": 2
+        },
+        {
+            "id": "554",
+            "sku": "DMSP002",
+            "quantity": 3
+        }
+    ]
+  }
+}]]></ac:plain-text-body></ac:structured-macro><h3 class="auto-cursor-target"><strong>PAYLOAD INTEGRATE FOR API COMBINE</strong></h3><ul><li><h3 class="auto-cursor-target"><strong>Đối với Khuyến m&atilde;i B&igrave;nh thường (method_apply = NORMAL)<br /></strong></h3><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="06b147a9-9e53-4904-99f6-1b8e79ea04c0"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "order": {
+    "products": [
+      {
+        "id": 702,
+        "sku": "PHUONGOW004",
+        "quantity": 50,
+        "price": 22500,
+        "package_unit_id": "15",
+        "group_ids": []
+      }
+    ],
+    "total_amount": 1125000,
+    "seller": {
+      "id": "274",
+      "area_id" : "347"  // ====> ID khu vực => Đối với đơn SELL_OUT cần truyên thông tin area của DISTRIBUTOR, đối với đơn SELL_IN không cần truyền thông tin area
+    },
+    "sale_type": "SELL_OUT",
+    "sale_channel_id": 55,
+    "order_date": "2025-06-16",
+    "promotions_to_apply": [
+      {
+        "promotion_id": "a8595eb6-0379-49ed-a78f-525100a94dd5",  // Trả thưởng 1 hình thức
+        "slots": 3,
+        "actions": [
+          {
+            "id": "a20e037b-c569-4eaa-bfd7-7acd1882412a"
+          }
+        ]
+      },
+      {
+        "promotion_id": "10375cd5-e450-438b-af99-a91cc456c290",  // Trả thưởng nhiều hình thức, ví dụ giảm tiền và tặng kèm sản phẩm với số suất bằng 2 (mảng action sẽ chứa nhiều phần tử)
+        "slots": 2,
+        "actions": [
+          {
+            "id": "07bf4b12-1ea7-4948-8d71-135d7b23dcd1"
+          },
+          {
+            "id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629",
+            "attached_products": [
+                {
+                    "id": "333",
+                    "sku": "SPA",
+                    "quantity": 3
+                },
+                {
+                    "id": "500",
+                    "sku": "SPB",
+                    "quantity": 2
+                }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "buyer": {
+    "id": 4636,
+    "type": "MERCHANT",
+    "store_location_ids": [100],
+    "store_type_ids": [43],
+    "store_rank_ids": [20],
+    "sale_channel_ids": [10],
+	"area_id": "347" // ====> ID khu vực => Đối với đơn SELL_IN cần truyên thông tin area của DISTRIBUTOR, đối với đơn SELL_OUT không cần truyền thông tin area
+  },
+  "sale_channel_id": "4",
+  "created_by": "duc011dis"
+}
+
+]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li><li><h3 class="auto-cursor-target"><strong>Đối với Khuyến m&atilde;i Bậc Thang (method_apply = SIDE_STEP)<br /></strong></h3><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="c558d6db-f46a-4240-8fb3-0de60f0423c5"><ac:parameter ac:name="language">js</ac:parameter><ac:parameter ac:name="theme">Confluence</ac:parameter><ac:parameter ac:name="linenumbers">true</ac:parameter><ac:plain-text-body><![CDATA[{
+  "order": {
+    "products": [
+      {
+        "id": 702,
+        "sku": "PHUONGOW004",
+        "quantity": 50,
+        "price": 22500,
+        "package_unit_id": "15",
+        "group_ids": []
+      }
+    ],
+    "total_amount": 1125000,
+    "seller": {
+      "id": "274",
+      "area_id" : "347"  // ====> ID khu vực => Đối với đơn SELL_OUT cần truyên thông tin area của DISTRIBUTOR, đối với đơn SELL_IN không cần truyền thông tin area
+    },
+    "sale_type": "SELL_OUT",
+    "sale_channel_id": 55,
+    "order_date": "2025-06-16",
+    "promotions_to_apply": [                           //===============================> Thay đổi cấu trúc payload đối với khuyến mãi bậc thang cho "promotion_to_apply"
+      {
+        "promotion_id": "918ed000-b95d-4f59-8159-9ffeeb2556b1",                    //======================> Khuyến mãi bậc thang, cấu trúc mới
+        "actions": [                                                               // "slots" nằm trong từng gói, mỗi gói cần truyên thêm "id_package"
+          {
+            "id_package": "d4e24548-e583-42b2-864c-2aa97e80dcc2",        //========> Gói 1
+            "id": "14497124-3047-423c-893d-bd694fab36d2",                // Hiện tại đối với chương trình bậc thang, 1 gói chỉ có 1 hình thức trả
+            "attached_products": [],                                     // Nếu mở rộng nhiều hình thức trả cho 1 gói thì truyền thêm phần tử với hình thức trả khác nhưng chung id_package
+            "slots": 1
+          },
+          {
+            "id_package": "375ff798-9578-48af-b562-9ae58dd1ac99",        //=========> Gói 2
+            "id": "0cef757f-3fce-42c6-8d59-e46b8c3b0b01",
+            "attached_products": [
+              {
+                "id": "553",
+                "sku": "DMSP001",
+                "quantity": 1
+              },
+              {
+                "sku": "DMSP002",
+                "id": "554",
+                "quantity": 1
+              }
+            ],
+            "slots": 1
+          },
+          {
+            "id_package": "aba292c8-4243-406b-8f72-bf9c908481c0", //==============> Gói 3
+            "id": "8916b26c-91c2-4423-ae15-5034f883c128",
+            "attached_products": [
+              {
+                "id": "554",
+                "sku": "DMSP002",
+                "quantity": 2
+              }
+            ],
+            "slots": 1
+          }
+        ]
+      }
+    ]
+  },
+  "buyer": {
+    "id": 4636,
+    "type": "MERCHANT",
+    "store_location_ids": [],
+    "store_type_ids": [],
+    "store_rank_ids": [],
+    "sale_channel_ids": [],
+	"area_id": "347" // ====> ID khu vực => Đối với đơn SELL_IN cần truyên thông tin area của DISTRIBUTOR, đối với đơn SELL_OUT không cần truyền thông tin area   
+  },
+  "sale_channel_id": "4",
+  "created_by": "duc011dis"
+}
+]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target"><br /></p></li></ul></li><li><p class="auto-cursor-target">Danh s&aacute;ch h&agrave;nh động khuyến m&atilde;i</p><table class="fixed-table wrapped"><colgroup><col style="width: 310.0px;" /><col style="width: 188.0px;" /><col style="width: 520.0px;" /><col style="width: 529.0px;" /></colgroup><tbody><tr><th>H&agrave;nh động khuyến m&atilde;i</th><th>Định danh</th><th>Dữ liệu mẫu</th><th colspan="1">M&ocirc; tả</th></tr><tr><td>Giảm gi&aacute; số tiền cố định</td><td><strong><code>discountFixedAmount</code></strong></td><td><code>{</code><br /><code>&nbsp; &nbsp; &quot;operator&quot;: &quot;<strong>discountFixedAmount</strong>&quot;,</code><br /><code>&nbsp; &nbsp; &quot;discount_value&quot;: 20000,</code><br /><code>&nbsp; &nbsp; &quot;discount_value_per_slot&quot;: 10000</code><br /><code>}</code></td><td colspan="1"><ul><li><code>discount_value</code>: Số tiền giảm gi&aacute;</li><li><code>discount_value_per_slot</code>: Số tiền giảm gi&aacute; tr&ecirc;n mỗi suất</li></ul></td></tr><tr><td>Giảm gi&aacute; phần trăm</td><td><strong><code>discountPercent</code></strong></td><td><p><code>{</code><br /><code>&nbsp; &nbsp; &quot;operator&quot;: &quot;<strong>discountPercent</strong>&quot;,</code><br /><code>&nbsp; &nbsp; &quot;discount_percent&quot;: 10,</code><br /><code>&nbsp; &nbsp; &quot;discount_value&quot;: 20000</code><br /><code>}</code></p></td><td colspan="1"><ul><li><code>discount_percent</code>: Số phần trăm giảm gi&aacute;</li><li><code>discount_value</code>: Số tiền giảm gi&aacute;</li></ul></td></tr><tr><td><p>Tặng sản phẩm c&ugrave;ng loại</p></td><td><strong><code>attachSameProduct</code></strong></td><td><p><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>attachSameProduct</strong>&quot;,</code><br /><code>&nbsp; &quot;skus&quot;: [</code><br /><code>&nbsp; &nbsp; {</code><br /><code>&nbsp; &nbsp; &nbsp; &quot;id&quot;: &quot;1&quot;,</code><br /><code>&nbsp; &nbsp; &nbsp; &quot;sku&quot;: &quot;SKU1&quot;,</code><br /><code>&nbsp; &nbsp; &nbsp; &quot;quantity&quot;: 5,</code><br /><code>&nbsp; &nbsp; &nbsp; &quot;quantity_per_slot&quot;: 1,</code></p><p style="margin-left: 40.0px;">&nbsp; &quot;<strong>lo_date_criteria</strong>&quot; : {</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; &quot;field&quot; : &quot;info_lo_date&quot;,&nbsp;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; &quot;operator&quot; : &quot;range&quot;,&nbsp;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; &quot;value&quot; : {</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; &nbsp; &quot;start&quot; : &quot;2025-09-01T00:00:00.000Z&quot;, &quot;end&quot; : &quot;2025-10-30T23:59:59.000Z&quot;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; }</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 40.0px;">}</p><p><code><br /></code><code>&nbsp; &nbsp; }</code><br /><code>&nbsp; ]</code><br /><code>}</code></p></td><td colspan="1"><ul><li style="list-style-type: none;"><ul><li><code>skus</code>: Danh s&aacute;ch sản phẩm tặng</li><li><code>sku</code>: SKU sản phẩm</li><li><code>quantity</code>: Số lượng sản phẩm tặng</li><li><code>quantity_per_slot</code>: Số lượng sản phẩm tặng tr&ecirc;n mỗi suất</li><li><strong>lo_date_criteria</strong>: Chỉ xuất hiện khi nguời d&ugrave;ng cấu h&igrave;nh th&ocirc;ng tin LoDate</li><li><strong>Note</strong>: Th&ocirc;ng tin n&agrave;y chỉ trả về cho H&agrave;m Combine Promotion</li></ul></li></ul></td></tr><tr><td colspan="1">Tặng sản phẩm trong danh s&aacute;ch</td><td colspan="1"><strong><code>attachProducts</code></strong></td><td colspan="1"><p style="margin-left: 40.0px;"><code>{</code><br /><code>&nbsp; &quot;operator&quot;: &quot;<strong>attachProducts</strong>&quot;,</code><br /><code>&nbsp; &quot;total_quantity&quot;: 2,</code><br /><code>&nbsp; &quot;total_quantity_per_slot&quot;: 1,</code></p><p style="margin-left: 40.0px;">&nbsp; &nbsp; &nbsp;&quot;skus&quot; : [</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; {</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;id&quot; : &quot;209&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;sku&quot; : &quot;OVU_BANHBAO_CHIEN&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;<strong>lo_date_criteria</strong>&quot; : {</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;field&quot; : &quot;info_batch_no&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;operator&quot; : &quot;bach_no&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;value&quot; : [&quot;LO_001&quot;,&quot;LO_002&quot;]</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; },</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;available_quantity&quot; : 999999999,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;status&quot; : &quot;ACTIVE&quot;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; },</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; {</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;id&quot; : &quot;595&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;sku&quot; : &quot;CHIEN100&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;<strong>lo_date_criteria</strong>&quot; : {</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;field&quot; : &quot;info_lo_date&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;operator&quot; : &quot;range&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;value&quot; : {</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &quot;start&quot; : &quot;2025-05-01T00:00:00.000Z&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &quot;end&quot; : &quot;2025-05-30T23:59:59.000Z&quot;</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; }</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; },</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;available_quantity&quot; : 999999999,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;status&quot; : &quot;ACTIVE&quot;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; },</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; {</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;id&quot; : &quot;779&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;sku&quot; : &quot;CISP027&quot;,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;<strong>lo_date_criteria</strong>&quot; : {</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;field&quot; : &quot;info_lo_date&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;operator&quot; : &quot;range&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &quot;value&quot; : {</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &quot;start&quot; : &quot;2025-06-01T00:00:00.000Z&quot;,</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; &nbsp; &quot;end&quot; : &quot;2025-06-30T23:59:59.000Z&quot;</p><p style="margin-left: 160.0px;"><br /></p><p style="margin-left: 160.0px;">&nbsp; &nbsp; &nbsp; }</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; },</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;available_quantity&quot; : 999999999,</p><p style="margin-left: 120.0px;"><br /></p><p style="margin-left: 120.0px;">&nbsp; &nbsp; &quot;status&quot; : &quot;ACTIVE&quot;</p><p style="margin-left: 80.0px;"><br /></p><p style="margin-left: 80.0px;">&nbsp; }</p><p style="margin-left: 40.0px;"><br /></p><p style="margin-left: 40.0px;">]</p><p style="margin-left: 40.0px;"><br /><code>}</code></p></td><td style="margin-left: 40.0px;" colspan="1"><ul><li>C&oacute; thể chọn bất k&igrave; sản phẩm n&agrave;o trong danh s&aacute;ch, tổng số lượng sản phẩm chọn phải bằng <code>total_quantity</code></li><li><code>total_quantity</code>: Tổng số sản phẩm tặng</li><li><code>total_quantity_per_slot</code>: Tổng số sản phẩm tặng tr&ecirc;n mỗi suất</li><li><code>skus</code>: Danh s&aacute;ch sản phẩm tặng<ul><li><code>sku</code>: SKU sản phẩm</li></ul></li><li><strong>lo_date_criteria</strong>: Chỉ xuất hiện khi nguời d&ugrave;ng cấu h&igrave;nh th&ocirc;ng tin LoDate</li><li><strong>Note</strong>: Th&ocirc;ng tin n&agrave;y chỉ trả về cho H&agrave;m Combine Promotion</li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1">Đồng gi&aacute; sản phẩm</td><td style="margin-left: 40.0px;" colspan="1"><strong>flatPrice</strong></td><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;">{<br />&nbsp; &quot;operator&quot;: &quot;<strong>flatPrice</strong>&quot;,<br />&nbsp; &quot;calculate_on&quot;: &quot;allProductsInCondition&quot;,<br />&nbsp; &quot;skus&quot;: [<br />&nbsp; &nbsp; {<br />&nbsp; &nbsp; &nbsp; &quot;id&quot;: &quot;1&quot;,<br />&nbsp; &nbsp; &nbsp; &quot;sku&quot;: &quot;SKU1&quot;,<br />&nbsp; &nbsp; &nbsp; &quot;quantity&quot;: 10,<br />&nbsp; &nbsp; &nbsp; &quot;price&quot;: 15000,<br />&nbsp; &nbsp; &nbsp; &quot;flat_price&quot;: 10000<br />&nbsp; &nbsp; }<br />&nbsp; ],<br />&nbsp; &quot;total_flat_amount_discount&quot;: 50000<br />}</p></div></td><td style="margin-left: 40.0px;" colspan="1"><br /></td></tr></tbody></table><p>&lrm;</p></li><li><p class="auto-cursor-target">Th&ocirc;ng tin m&atilde; lỗi khuyến m&atilde;i</p><p class="auto-cursor-target">&nbsp;● Cấu tr&uacute;c m&atilde; lỗi hiển thị:</p><p class="auto-cursor-target"><ac:image><ri:attachment ri:filename="Screenshot from 2025-03-10 14-12-18.png" /></ac:image><br />● Danh s&aacute;ch m&atilde; lỗi khuyến m&atilde;i</p><table class="fixed-table wrapped"><colgroup><col style="width: 205.0px;" /><col style="width: 216.0px;" /><col style="width: 530.0px;" /><col style="width: 414.0px;" /></colgroup><tbody style="margin-left: 40.0px;"><tr style="margin-left: 40.0px;"><th style="margin-left: 40.0px;">Lỗi khuyến m&atilde;i</th><th style="margin-left: 40.0px;">Định danh</th><th style="margin-left: 40.0px;">Dữ liệu mẫu</th><th style="margin-left: 40.0px;" colspan="1">M&ocirc; tả</th></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;">Chương tr&igrave;nh khuyến m&atilde;i kh&ocirc;ng khả dụng</td><td style="margin-left: 40.0px;"><strong>promotion_unavailable</strong></td><td style="margin-left: 40.0px;"><pre style="margin-left: 40.0px;"><span style="color: rgb(248,248,242);"> </span>{<br />    &quot;promotion_id&quot;: &quot;770421b6-46a5-42e7-9276-f515a245fd3a&quot;,<br />    &quot;kind&quot;: &quot;ON_TOP&quot;,<br />    &quot;slots&quot;: 1,<br />    &quot;actions&quot;: [<br />       {<br />         &quot;attached_products&quot;: [],<br />         &quot;id&quot;: &quot;1ab5efee-e60f-42cb-ac86-cc1d76cdb55d&quot;<br />       }<br />     ],<br />     &quot;errors&quot;: [<br />        {<br />          &quot;code&quot;:&quot;<strong>promotion_unavailable</strong>&quot;<br />        }<br />     ]<br /> },</pre></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng kh&ocirc;ng thỏa điều kiện khuyến m&atilde;i</code></li><li><code>Ng&acirc;n s&aacute;ch cho khuyến m&atilde;i đ&atilde; được sử dụng hết</code></li><li><span style="font-family: SFMono-Medium , SF Mono , Segoe UI Mono , Roboto Mono , Ubuntu Mono , Menlo , Courier , monospace;">Kh&ocirc;ng đủ sản phẩm tặng trong kho</span></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1">Sản phẩm hết tồn kho</td><td style="margin-left: 40.0px;" colspan="1"><strong>product_out_of_stock</strong></td><td style="margin-left: 40.0px;" colspan="1"><pre style="margin-left: 40.0px;"> {<br />     &quot;promotion_id&quot;: &quot;bf1abbd3-3355-485c-8ac6-f2caae2d2700&quot;,<br />     &quot;kind&quot;: &quot;NORMAL&quot;,<br />     &quot;slots&quot;: 2,<br />     &quot;actions&quot;: [<br />        {<br />          &quot;attached_products&quot;: [<br />             {<br />               &quot;sku&quot;: &quot;PHUONG7&quot;,<br />               &quot;id&quot;: &quot;364&quot;,<br />               &quot;quantity&quot;: 4,<br />               &quot;errors&quot;: [<br />                  {<br />                    &quot;code&quot;:&quot;<strong>product_out_of_stock</strong>&quot;<br />                  }<br />               ]<br />             }<br />          ],<br />          &quot;id&quot;: &quot;2d26688d-5792-4d41-936b-b95d82d51697&quot;<br />        }<br />     ],<br /> },</pre></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Sản phẩm tặng trong chương tr&igrave;nh khuyến m&atilde;i kh&ocirc;ng c&ograve;n h&agrave;ng trong kho</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;">Sản phẩm ngưng hoạt động</td><td style="margin-left: 40.0px;"><strong>product_inactive</strong></td><td style="margin-left: 40.0px;"><pre style="margin-left: 40.0px;"> {<br />     &quot;promotion_id&quot;: &quot;bf1abbd3-3355-485c-8ac6-f2caae2d2700&quot;,<br />     &quot;kind&quot;: &quot;ON_TOP&quot;,<br />     &quot;slots&quot;: 2,<br />     &quot;actions&quot;: [<br />        {<br />          &quot;attached_products&quot;: [<br />             {<br />               &quot;sku&quot;: &quot;PHUONG7&quot;,<br />               &quot;id&quot;: &quot;364&quot;,<br />               &quot;quantity&quot;: 4,<br />               &quot;errors&quot;: [<br />                  {<br />                    &quot;code&quot;:&quot;<strong>product_inactive</strong>&quot;<br />                  }<br />               ]<br />             }<br />          ],<br />          &quot;id&quot;: &quot;2d26688d-5792-4d41-936b-b95d82d51697&quot;<br />        }<br />     ],<br /> },</pre></td><td style="margin-left: 40.0px;"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Sản phẩm tặng trong chương tr&igrave;nh khuyến m&atilde;i bị ngưng hoạt động</code></li></ul></li></ul></td></tr></tbody></table><p class="auto-cursor-target"><br /></p></li><li>Th&ocirc;ng tin cảnh b&aacute;o v&agrave; lỗi của h&agrave;nh động khuyến m&atilde;i li&ecirc;n quan đến cấu h&igrave;nh ng&acirc;n s&aacute;ch khi combine promotions<ul><li><p class="auto-cursor-target">Danh s&aacute;ch m&atilde; cảnh b&aacute;o</p><table class="relative-table wrapped" style="width: 76.7908%;"><colgroup><col style="width: 12.696%;" /><col style="width: 15.6833%;" /><col style="width: 44.0627%;" /><col style="width: 27.5579%;" /></colgroup><tbody style="margin-left: 40.0px;"><tr style="margin-left: 40.0px;"><th style="margin-left: 40.0px;"><strong>Cảnh b&aacute;o</strong></th><th style="margin-left: 40.0px;">Đinh danh</th><th style="margin-left: 40.0px;">Dữ liệu mẫu</th><th style="margin-left: 40.0px;">M&ocirc; tả</th></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" rowspan="4">Ng&acirc;n s&aacute;ch</td><td style="margin-left: 40.0px;" rowspan="4"><strong>budget_insufficient</strong></td><td style="margin-left: 40.0px;"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="f35478ff-20f1-443f-8c68-cb6f3b4d605b"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "warns": [
+    {
+      "code": "budget_insufficient",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "TOTAL",
+		  "type": "AMOUNT",
+          "value": "250"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch tổng tiền của chương tr&igrave;nh kh&ocirc;ng đủ theo h&agrave;nh động khuyến m&atilde;i người d&ugrave;ng chọn</code></li></ul></li></ul><p style="margin-left: 40.0px;"><br /></p><strong><code>Giải th&iacute;ch c&aacute;c key:</code></strong><p style="margin-left: 40.0px;">D&ugrave;ng field kind l&agrave;m key ph&acirc;n loại ng&acirc;n s&aacute;ch&nbsp;</p><ul><li>&quot;TOTAL&quot;: CTKM</li><li>&quot;AREA&quot;: Khu vực</li><li>&quot;DISTRIBUTOR&quot;: NPP</li><li>&quot;PER_MERCHANT&quot;: Mỗi điểm b&aacute;n</li><li>&quot;PRODUCT_PER_MERCHANT&quot;: sp mỗi điểm b&aacute;n, trả chi tiết mỗi sp&nbsp;</li></ul><p style="margin-left: 40.0px;">Suất hay tiền hay SL th&igrave; field &quot;type&quot;: &nbsp;&quot;QUANTITY&quot;, &quot;SLOT&quot;, &nbsp;&quot;AMOUNT&quot;<br />Gi&aacute; trị NS c&ograve;n lại th&igrave; field: &quot;value&quot;</p></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="9b6ad03f-0be9-4741-baf6-634790188933"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "warns": [
+    {
+      "code": "budget_insufficient",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "AREA",
+		  "type": "SLOT",
+          "value": "1"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch suất khu vực của chương tr&igrave;nh kh&ocirc;ng đủ theo h&agrave;nh động khuyến m&atilde;i người d&ugrave;ng chọn</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="681611ca-78e6-4dfb-a82b-4932f6c4d381"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "warns": [
+    {
+      "code": "budget_insufficient",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "DISTRIBUTOR",
+		  "type": "SLOT",
+          "value": "1"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch suất nh&agrave; ph&acirc;n phối của tr&igrave;nh chương kh&ocirc;ng đủ theo h&agrave;nh động khuyến m&atilde;i người d&ugrave;ng chọn</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="4274beb7-2dcd-4887-b580-0ad54dafb935"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "warns": [
+    {
+      "code": "budget_insufficient",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "PER_MERCHANT",
+		  "type": "AMOUNT",
+          "value": "250"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch hạn mức tiền điểm b&aacute;n của chương tr&igrave;nh kh&ocirc;ng đủ theo h&agrave;nh động khuyến m&atilde;i người d&ugrave;ng chọn</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1">Ng&acirc;n s&aacute;ch sản phẩm</td><td style="margin-left: 40.0px;" colspan="1"><strong>product_budget_insufficient</strong></td><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="f7865e82-e1a7-474d-8ce1-26c81c810f19"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+	{
+      "attached_products": [
+	   	{
+            "id": "554",
+            "sku": "DMSP002",
+         	"quantity": 2
+         },
+   		{
+            "id": "555",
+            "sku": "DMSP003",
+         	"quantity": 2
+         }
+	  ],
+	  "id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629"
+	}
+  ],
+  "warns": [
+ 	{
+      "code": "product_budget_insufficient",
+      "details": [
+        {
+          "action_id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629",
+          "kind": "PRODUCT_PER_MERCHANT",
+		  "type": "QUANTITY",
+          "package_id": "", // id gói của khuyến mãi bậc thang 
+          "sku": "DMSP002",
+          "value": "2"
+        },
+	 	{
+          "action_id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629",
+          "kind": "PRODUCT_PER_MERCHANT",
+		  "type": "QUANTITY",
+          "package_id": "", // id gói của khuyến mãi bậc thang
+          "sku": "DMSP003",
+          "value": "2"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch hạn mức sản phẩm điểm b&aacute;n của chương tr&igrave;nh kh&ocirc;ng đủ theo h&agrave;nh động khuyến m&atilde;i người d&ugrave;ng chọn</code></li></ul></li></ul></td></tr></tbody></table><p class="auto-cursor-target"><br /></p></li><li><p class="auto-cursor-target">Danh s&aacute;ch m&atilde; lỗi</p><table class="relative-table wrapped" style="width: 76.9628%;"><colgroup><col style="width: 12.8167%;" /><col style="width: 16.1699%;" /><col style="width: 43.4426%;" /><col style="width: 27.5708%;" /></colgroup><tbody style="margin-left: 40.0px;"><tr style="margin-left: 40.0px;"><th style="margin-left: 40.0px;"><strong>Cảnh b&aacute;o</strong></th><th style="margin-left: 40.0px;">Đinh danh</th><th style="margin-left: 40.0px;">Dữ liệu mẫu</th><th style="margin-left: 40.0px;">M&ocirc; tả</th></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" rowspan="4">Ng&acirc;n s&aacute;ch</td><td style="margin-left: 40.0px;" rowspan="4"><strong>out_of_budget</strong></td><td style="margin-left: 40.0px;"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="0f1880c6-8a54-496a-9bc5-1b2e10df2849"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "errors": [
+    {
+      "code": "out_of_budget",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "TOTAL",
+		  "type": "AMOUNT",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch tổng tiền của chương tr&igrave;nh hết</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="4839aea2-b015-431f-9a01-2e4c55ed96bc"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "errors": [
+    {
+      "code": "out_of_budget",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "AREA",
+		  "type": "SLOT",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch suất khu vực của chương tr&igrave;nh hết</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="a65a94f1-c66c-490d-b7de-66d9ce07862d"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "errors": [
+    {
+      "code": "out_of_budget",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "DISTRIBUTOR",
+		  "type": "SLOT",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch suất nh&agrave; ph&acirc;n phối của chương tr&igrave;nh hết</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="351d2bf2-2897-4a98-9f0c-5c9912555570"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+    {
+      "attached_products": [],
+      "id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d"
+    }
+  ],
+  "errors": [
+    {
+      "code": "out_of_budget",
+      "details": [
+        {
+          "action_id": "1ab5efee-e60f-42cb-ac86-cc1d76cdb55d",
+          "kind": "PER_MERCHANT",
+		  "type": "AMOUNT",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch hạn mức tiền điểm b&aacute;n của chương tr&igrave;nh hết</code></li></ul></li></ul></td></tr><tr style="margin-left: 40.0px;"><td style="margin-left: 40.0px;" colspan="1">Ng&acirc;n s&aacute;ch sản phẩm</td><td style="margin-left: 40.0px;" colspan="1"><strong>out_of_product_budget</strong></td><td style="margin-left: 40.0px;" colspan="1"><div class="content-wrapper" style="margin-left: 40.0px;"><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p><ac:structured-macro ac:name="code" ac:schema-version="1" ac:macro-id="421a7643-726c-46f3-b6ea-0433f4dd02fe"><ac:parameter ac:name="language">js</ac:parameter><ac:plain-text-body><![CDATA[{
+  "promotion_id": "770421b6-46a5-42e7-9276-f515a245fd3a",
+  "kind": "ON_TOP",
+  "slots": 1,
+  "actions": [
+	{
+      "attached_products": [
+	   	{
+            "id": "554",
+            "sku": "DMSP002",
+         	"quantity": 2
+         },
+   		{
+            "id": "555",
+            "sku": "DMSP003",
+         	"quantity": 2
+         }
+	  ],
+	  "id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629"
+	}
+  ],
+  "errors": [
+ 	{
+      "code": "out_of_product_budget",
+      "details": [
+        {
+          "action_id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629",
+          "kind": "PRODUCT_PER_MERCHANT",
+		  "type": "QUANTITY",
+          "package_id": "", // id gói của khuyến mãi bậc thang 
+          "sku": "DMSP002",
+          "value": "0"
+        },
+	 	{
+          "action_id": "a8a4232e-5d79-4b1e-9dd6-81cf4df43629",
+          "kind": "PRODUCT_PER_MERCHANT",
+		  "type": "QUANTITY",
+          "package_id": "", // id gói của khuyến mãi bậc thang
+          "sku": "DMSP003",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}]]></ac:plain-text-body></ac:structured-macro><p class="auto-cursor-target" style="margin-left: 40.0px;"><br /></p></div></td><td style="margin-left: 40.0px;" colspan="1"><ul><li><code>Nguy&ecirc;n nh&acirc;n:</code><ul><li><code>Đơn h&agrave;ng thoả điều kiện khuyến m&atilde;i tuy nhi&ecirc;n ng&acirc;n s&aacute;ch hạn mức sản phẩm điểm b&aacute;n của chương tr&igrave;nh hết</code><p class="auto-cursor-target"><br /></p></li></ul></li></ul></td></tr></tbody></table><p class="auto-cursor-target"><br /></p></li></ul></li></ul></li></ul>

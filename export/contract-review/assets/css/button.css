@@ -1,0 +1,128 @@
+/* DMS Buttons */
+
+.dms-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-xs);
+  height: var(--btn-height);
+  padding: 0 15px;
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+  border-radius: var(--radius-md);
+  border: 0.8px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-base);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.dms-btn:disabled,
+.dms-btn.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Primary */
+.dms-btn--primary {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-btn-primary);
+}
+
+.dms-btn--primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+}
+
+.dms-btn--primary:active:not(:disabled) {
+  background: var(--color-primary-active);
+}
+
+/* Default */
+.dms-btn--default {
+  background: var(--color-bg-container);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.dms-btn--default:hover:not(:disabled) {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* Ghost / Text */
+.dms-btn--ghost {
+  background: transparent;
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+.dms-btn--ghost:hover:not(:disabled) {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.dms-btn--text {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-text);
+}
+
+.dms-btn--text:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+/* Link */
+.dms-btn--link {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-link);
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+
+.dms-btn--link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* Danger */
+.dms-btn--danger {
+  background: #ff4d4f;
+  color: var(--color-text-inverse);
+}
+
+/* Sizes */
+.dms-btn--sm {
+  height: 24px;
+  padding: 0 7px;
+  font-size: var(--font-size-sm);
+}
+
+.dms-btn--lg {
+  height: var(--btn-height-lg);
+  padding: 0 20px;
+}
+
+/* Icon only */
+.dms-btn--icon {
+  width: 32px;
+  padding: 0;
+}
+
+.dms-btn__icon {
+  display: inline-flex;
+  font-size: 14px;
+}
+
+.dms-btn.is-loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.dms-btn.is-loading .dms-btn__text {
+  visibility: hidden;
+}

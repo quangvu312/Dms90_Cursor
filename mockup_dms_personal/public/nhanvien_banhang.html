@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Nhân Viên Kinh Doanh — EcoDMS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body { margin: 0; font-family: 'Segoe UI', system-ui, sans-serif; background: #f3f4f8; }
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: #c5c5c5; border-radius: 3px; }
+
+  .th-sticky-left  { position: sticky; left: 0; z-index: 31; background: #f8fafc; }
+  .th-sticky-right { position: sticky; right: 0; z-index: 31; background: #f8fafc; }
+  .td-sticky-left  { position: sticky; left: 0; z-index: 10; background: #fff; }
+  .td-sticky-right { position: sticky; right: 0; z-index: 10; background: #fff; }
+  tr:hover .td-sticky-left,
+  tr:hover .td-sticky-right { background: #eff6ff; }
+  tr:hover td { background: #eff6ff; }
+
+  thead th { position: sticky; top: 0; z-index: 20; }
+
+  .badge { display: inline-flex; align-items: center; padding: 2px 9px; border-radius: 5px; font-size: 11.5px; font-weight: 500; white-space: nowrap; line-height: 1.6; }
+  .tag   { display: inline-flex; align-items: center; gap: 3px; padding: 1px 6px; border-radius: 4px; font-size: 11px; white-space: nowrap; margin: 1px 1px; line-height: 1.6; }
+
+  .toggle { position: relative; display: inline-block; width: 38px; height: 21px; }
+  .toggle input { opacity: 0; width: 0; height: 0; }
+  .toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #cbd5e1; border-radius: 21px; transition: .25s; }
+  .toggle-slider:before { position: absolute; content: ""; height: 15px; width: 15px; left: 3px; bottom: 3px; background: white; border-radius: 50%; transition: .25s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  input:checked + .toggle-slider { background: #2563eb; }
+  input:checked + .toggle-slider:before { transform: translateX(17px); }
+
+  .tbl-wrap { overflow-x: auto; overflow-y: auto; max-height: 58vh; }
+
+  input[type=date] { color-scheme: light; }
+  input:focus, select:focus { outline: 2px solid #3b82f6; outline-offset: -1px; border-radius: 6px; }
+  select { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239ca3af'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 10px center; padding-right: 28px !important; }
+  #pgSize { padding-right: 8px !important; }
+
+  /* ── Tree Dropdown ── */
+  .tree-dd { position: relative; }
+  .tree-panel { display:none; position:absolute; top:calc(100% + 4px); left:0; min-width:100%; width:310px; background:#fff; border:1px solid #e5e7eb; border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,.13); z-index:300; }
+  .tree-panel.open { display:block; }
+  .tree-search-box { display:flex; align-items:center; gap:6px; padding:7px 10px; border-bottom:1px solid #f3f4f6; }
+  .tree-search-box input { flex:1; border:none; outline:none; font-size:12px; color:#374151; background:transparent; }
+  .tree-scroll { max-height:230px; overflow-y:auto; padding:3px 0; }
+  .trow { display:flex; align-items:center; gap:5px; padding:3px 8px 3px 10px; font-size:12px; color:#374151; border-radius:4px; margin:1px 4px; }
+  .trow:hover { background:#eff6ff; cursor:pointer; }
+  .trow input[type=checkbox] { width:14px; height:14px; flex-shrink:0; accent-color:#2563eb; cursor:pointer; }
+  .tarrow { width:14px; height:14px; display:flex; align-items:center; justify-content:center; color:#9ca3af; flex-shrink:0; transition:transform .18s; font-size:9px; cursor:pointer; }
+  .tarrow.open { transform:rotate(90deg); }
+  .tarrow.leaf { opacity:0; pointer-events:none; }
+  .trow label { cursor:pointer; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  .tree-children { margin-left:18px; }
+</style>
+</head>
+<body>
+<div class="min-h-screen p-6">
+
+  <!-- Breadcrumb -->
+  <nav class="text-xs text-gray-400 mb-1 flex items-center gap-1.5">
+    <span class="hover:text-blue-600 cursor-pointer">Dữ Liệu Nền</span>
+    <span>/</span>
+    <span class="hover:text-blue-600 cursor-pointer">Kinh Doanh</span>
+    <span>/</span>
+    <span class="text-gray-600 font-medium">Nhân Viên Kinh Doanh</span>
+  </nav>
+
+  <!-- Page Title -->
+  <h1 class="text-xl font-bold text-gray-800 mb-4">Nhân Viên Kinh Doanh</h1>
+
+  <!-- ── FILTER CARD ── -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100 px-5 pt-4 pb-5 mb-4">
+    <p class="text-xs font-semibold text-gray-500 mb-3">Tìm kiếm theo</p>
+
+    <!-- Row 1 -->
+    <div class="grid grid-cols-4 gap-3 mb-3">
+      <!-- Search text -->
+      <div class="relative">
+        <input id="fSearch" type="text" placeholder="Nhập Mã NV | Tên NV | Mã tham chiếu | SĐT"
+          class="w-full border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-700 placeholder-gray-400" />
+        <svg class="absolute right-2.5 top-2 w-3.5 h-3.5 text-gray-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- Ngày vào làm -->
+      <div class="flex items-center gap-1 border border-gray-200 rounded-lg px-2 py-[7px]">
+        <span class="text-xs text-gray-400 whitespace-nowrap">Ngày vào làm</span>
+        <input id="fVaoLamFrom" type="date" value="2026-06-01" class="border-none text-xs text-gray-600 flex-1 min-w-0" />
+        <span class="text-gray-300 text-sm">→</span>
+        <input id="fVaoLamTo" type="date" value="2026-06-27" class="border-none text-xs text-gray-600 flex-1 min-w-0" />
+        <svg class="w-3.5 h-3.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+
+      <!-- Chức vụ -->
+      <select id="fChucVu" class="border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-500 bg-white">
+        <option value="">Chức vụ</option>
+        <option>Giám đốc điều hành- CEO</option>
+        <option>Giám đốc kinh doanh - Sale Director</option>
+        <option>Trưởng phòng kinh doanh -Sale Head</option>
+        <option>Quản lý kinh doanh - Sale Manager</option>
+        <option>Nhân viên kinh doanh - Sales Rep</option>
+      </select>
+
+      <!-- Tình trạng gán tuyến -->
+      <select id="fGanTuyen" class="border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-500 bg-white">
+        <option value="">Tình trạng gán tuyến</option>
+        <option value="Chưa gán tuyến">Chưa gán tuyến</option>
+        <option value="Đã gán tuyến">Đã gán tuyến</option>
+      </select>
+    </div>
+
+    <!-- Row 2 -->
+    <div class="grid grid-cols-4 gap-3 mb-4">
+      <!-- Phân loại nhân viên -->
+      <select id="fPhanLoai" class="border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-500 bg-white">
+        <option value="">Phân loại nhân viên</option>
+        <option value="DIRECT">DIRECT</option>
+        <option value="INDIRECT">INDIRECT</option>
+      </select>
+
+      <!-- Ngày tạo nhân viên -->
+      <div class="flex items-center gap-1 border border-gray-200 rounded-lg px-2 py-[7px]">
+        <span class="text-xs text-gray-400 whitespace-nowrap">Ngày tạo NV</span>
+        <input id="fTaoFrom" type="date" class="border-none text-xs text-gray-500 flex-1 min-w-0" />
+        <span class="text-gray-300 text-sm">→</span>
+        <input id="fTaoTo" type="date" class="border-none text-xs text-gray-500 flex-1 min-w-0" />
+        <svg class="w-3.5 h-3.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+      </div>
+
+      <!-- Trạng thái -->
+      <select id="fTrangThai" class="border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-500 bg-white">
+        <option value="">Trạng thái</option>
+        <option value="active">Đang hoạt động</option>
+        <option value="inactive">Không hoạt động</option>
+      </select>
+
+      <!-- Vùng — Tree Dropdown -->
+      <div class="tree-dd" id="vungDD">
+        <button type="button" onclick="toggleVungPanel(event)"
+          class="w-full flex items-center justify-between border border-gray-200 rounded-lg px-3 py-[7px] text-xs text-gray-500 bg-white hover:border-gray-300 transition-colors">
+          <span id="vungTrigger" class="truncate">Vùng</span>
+          <svg class="w-2.5 h-2.5 text-gray-400 flex-shrink-0 ml-1" fill="currentColor" viewBox="0 0 10 6"><path d="M0 0l5 6 5-6z"/></svg>
+        </button>
+        <div class="tree-panel" id="vungPanel">
+          <div class="tree-search-box">
+            <svg class="w-3.5 h-3.5 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35" stroke-linecap="round"/></svg>
+            <input id="vungSearchInput" type="text" placeholder="Chọn vùng/khu vực" oninput="renderVungTree()" autocomplete="off" />
+          </div>
+          <div class="tree-scroll" id="vungTreeBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="flex justify-end gap-2">
+      <button onclick="resetFilters()"
+        class="px-4 py-[7px] border border-gray-300 rounded-lg text-xs font-medium text-gray-600 bg-white hover:bg-gray-50 transition-colors">
+        Làm mới
+      </button>
+      <button onclick="applyFilters()"
+        class="px-5 py-[7px] bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-semibold transition-colors">
+        Tìm kiếm
+      </button>
+    </div>
+  </div>
+
+  <!-- ── TABLE CARD ── -->
+  <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+
+    <!-- Table toolbar -->
+    <div class="flex items-center justify-between px-5 py-3.5 border-b border-gray-100">
+      <h2 class="text-sm font-semibold text-gray-800">Danh sách nhân viên</h2>
+      <div class="flex items-center gap-2">
+        <button class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50 transition-colors font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8-4-4-4 4m4-4v12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Import Excel
+        </button>
+        <button class="flex items-center gap-1.5 px-3 py-1.5 border border-gray-200 rounded-lg text-xs text-gray-600 hover:bg-gray-50 transition-colors font-medium">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4-4 4-4-4m4 4V4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Export
+        </button>
+        <button class="flex items-center gap-1.5 px-3.5 py-1.5 bg-blue-700 hover:bg-blue-800 text-white rounded-lg text-xs font-semibold transition-colors">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          Tạo mới
+        </button>
+        <button class="p-1.5 text-gray-400 hover:text-gray-600 rounded" title="Tùy chỉnh cột">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6" stroke-linecap="round"/></svg>
+        </button>
+        <button class="p-1.5 text-gray-400 hover:text-gray-600 rounded" title="Toàn màn hình">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Scrollable table -->
+    <div class="tbl-wrap">
+      <table class="w-full text-xs border-collapse" style="min-width:3000px">
+        <thead>
+          <tr class="border-b border-gray-200 bg-gray-50 text-gray-600">
+            <th class="th-sticky-left px-3 py-2.5 text-left font-semibold whitespace-nowrap border-r border-gray-200" style="min-width:170px">Mã nhân viên</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:175px">Họ và tên</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:80px">QR Code</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:75px">Giới tính</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:100px">Ngày sinh</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:115px">Số điện thoại</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:160px">Chức vụ</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:230px">Khu vực</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:190px">Vùng</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:145px">Tình trạng gán tuyến</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:160px">Tuyến bán hàng</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:170px">Nhà phân phối</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:140px">Kênh bán hàng</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:165px">Mã QL trực tiếp</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:210px">Tên QL trực tiếp</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:130px">Phân loại nhân viên</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:130px">Khu vực ERP</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:105px">Ngày vào làm</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:90px">Trạng thái</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:148px">Ngày tạo</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:115px">Người tạo</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:148px">Ngày cập nhật</th>
+            <th class="px-3 py-2.5 text-left font-semibold whitespace-nowrap" style="min-width:115px">Người cập nhật</th>
+            <th class="th-sticky-right px-3 py-2.5 text-center font-semibold whitespace-nowrap border-l border-gray-200" style="min-width:88px">Tùy chỉnh</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Pagination bar -->
+    <div class="flex items-center justify-between px-5 py-3 border-t border-gray-100">
+      <div class="flex items-center gap-2 text-xs text-gray-500">
+        <span>Hiển thị</span>
+        <select id="pgSize" onchange="onPageSize()" class="border border-gray-200 rounded-md px-2 py-1 text-xs bg-white appearance-auto" style="padding-right:8px;background-image:none">
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        <span>/ <span id="totalCount" class="font-semibold text-gray-700">0</span> bản ghi</span>
+      </div>
+      <div id="pgControls" class="flex items-center gap-1"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── MOCK DATA ───────────────────────────────────────────────
+const RAW = [
+  { id:1, ma:'AUTO_SM_LIMIT_1782537426',   ten:'[Auto] SM Vượt Cấp',    ref:'auto_sm_limit_1782537426',   gt:'', ns:'', sdt:'', cv:'Nhân viên kinh doanh - Sales Rep', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:17:07', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:17:07', nguoiCapNhat:'ERP Admin' },
+  { id:2, ma:'AUTO_SYNC_STATE_1782537424', ten:'[Auto] Inactive',        ref:'auto_sync_state_1782537424', gt:'', ns:'', sdt:'', cv:'Giám đốc điều hành- CEO', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:false, ngayTao:'27-06-2026 12:17:05', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:17:05', nguoiCapNhat:'ERP Admin' },
+  { id:3, ma:'AUTO_LOCK_1782537422',       ten:'[Auto] Active',          ref:'auto_lock_1782537422',       gt:'', ns:'', sdt:'', cv:'Giám đốc điều hành- CEO', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:17:03', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:17:03', nguoiCapNhat:'ERP Admin' },
+  { id:4, ma:'AUTO_UP_1782537420',         ten:'[Auto] Original',        ref:'auto_up_1782537420',         gt:'', ns:'', sdt:'', cv:'Giám đốc điều hành- CEO', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:17:00', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:17:00', nguoiCapNhat:'ERP Admin' },
+  { id:5, ma:'AUTO_DIFF_P_1782537418',     ten:'[Auto] Partner 1',       ref:'auto_diff_p_1782537418',     gt:'', ns:'', sdt:'', cv:'Giám đốc kinh doanh - Sale Director', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:16:59', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:16:59', nguoiCapNhat:'ERP Admin' },
+  { id:6, ma:'AUTO_DUP_1782537416',        ten:'[Auto] Original',        ref:'auto_dup_1782537416',        gt:'', ns:'', sdt:'', cv:'Giám đốc kinh doanh - Sale Director', kv:[],                                                                                       vung:[],                                                                                                                    ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'',                     tenQL:'',                                      pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:16:57', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:16:57', nguoiCapNhat:'ERP Admin' },
+  { id:7, ma:'AUTO_SS_1782537415',         ten:'[Auto] SS',              ref:'auto_ss_1782537415',         gt:'', ns:'', sdt:'', cv:'Trưởng phòng kinh doanh -Sale Head',  kv:['VANN1HCM1 - [VANN1] QUANG TRI 1','HANOI - HANOI','SOUTHEAST - SOUTHEAST'],             vung:['PTKV001 - Cực Tây Chí Địa','KV00004 - Th.Vi KV Vĩnh Long','QCMTKVBENCAT - [QC][MT] KV BÌNH THUẬN','CENTRAL1 - Central 1'], ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'AUTO_ASM_1782537413', tenQL:'[Auto] ASM auto_asm_1782537413', pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:16:55', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:16:55', nguoiCapNhat:'ERP Admin' },
+  { id:8, ma:'AUTO_ASM_1782537413',        ten:'[Auto] ASM',             ref:'auto_asm_1782537413',        gt:'', ns:'', sdt:'', cv:'Quản lý kinh doanh - Sale Manager',    kv:['VUNG001 - [Th.V] Vùng Tiền Giang','THV1001 - [Th.V] Vùng Trà Vinh','HCM - HCMC','SOUTHEAST - SOUTHEAST'], vung:['NHABE - Nhà Bè','MEKONG1 - Mekong1','QCMT_PXNEW_Q2 - QCMT Phường/xã mới AN K...','HCM - HCMc'], ganTuyen:'Chưa gán tuyến', tuyen:'', npp:'', kenh:'', maQL:'AUTO_RSM_1782537412', tenQL:'[Auto] RSM auto_rsm_1782537412', pl:'DIRECT', kvErp:'', ngayVL:'27-06-2026', active:true,  ngayTao:'27-06-2026 12:16:54', nguoiTao:'ERP Admin', ngayCapNhat:'27-06-2026 12:16:54', nguoiCapNhat:'ERP Admin' },
+  { id:9, ma:'AUTO_RSM_1782537412',        ten:'[Auto] RSM',             ref:'auto_rsm_1782537412',        gt:'Nam', ns:'15-03-1985', sdt:'0901234567', cv:'Quản lý kinh doanh - Sale Manager', kv:['HCM - HCMC','HANOI - HANOI'],                                                  vung:['MEKONG1 - Mekong1','CENTRAL1 - Central 1'],                                                                          ganTuyen:'Đã gán tuyến',   tuyen:'TBH001 - Tuyến HCM 1', npp:'NPP001 - Nhà Phân Phối ABC', kenh:'GT - General Trade', maQL:'', tenQL:'', pl:'INDIRECT', kvErp:'KV_HCM', ngayVL:'01-01-2026', active:true, ngayTao:'01-01-2026 08:00:00', nguoiTao:'Admin',     ngayCapNhat:'27-06-2026 10:00:00', nguoiCapNhat:'ERP Admin' },
+  { id:10,ma:'NV_HANOI_001',               ten:'Nguyễn Văn An',          ref:'nv_hanoi_001',               gt:'Nam', ns:'20-07-1990', sdt:'0912345678', cv:'Nhân viên kinh doanh - Sales Rep', kv:['HANOI - HANOI'],                                                  vung:['KV00004 - Th.Vi KV Vĩnh Long'],                                                                                      ganTuyen:'Đã gán tuyến',   tuyen:'TBH_HN001 - Tuyến Hà Nội 1', npp:'NPP002 - Nhà Phân Phối XYZ', kenh:'MT - Modern Trade', maQL:'AUTO_SS_1782537415', tenQL:'[Auto] SS auto_ss_1782537415', pl:'DIRECT', kvErp:'KV_HN', ngayVL:'15-03-2026', active:true, ngayTao:'15-03-2026 09:30:00', nguoiTao:'HR Admin', ngayCapNhat:'20-06-2026 14:00:00', nguoiCapNhat:'ERP Admin' },
+];
+
+// ─── STATE ───────────────────────────────────────────────────
+let S = { all: [...RAW], filtered: [...RAW], page: 1, size: 10 };
+
+// ─── BADGE / TAG HELPERS ─────────────────────────────────────
+const CV_CLS = {
+  'Giám đốc điều hành- CEO': 'bg-emerald-100 text-emerald-700',
+  'Giám đốc kinh doanh - Sale Director': 'bg-teal-100 text-teal-700',
+  'Trưởng phòng kinh doanh -Sale Head': 'bg-violet-100 text-violet-700',
+  'Quản lý kinh doanh - Sale Manager': 'bg-orange-100 text-orange-700',
+  'Nhân viên kinh doanh - Sales Rep': 'bg-blue-100 text-blue-700',
+};
+const KV_TAG = ['bg-purple-100 text-purple-700','bg-indigo-100 text-indigo-700','bg-cyan-100 text-cyan-600','bg-sky-100 text-sky-700'];
+const VU_TAG = ['bg-amber-100 text-amber-700','bg-lime-100 text-lime-700','bg-rose-100 text-rose-600','bg-fuchsia-100 text-fuchsia-700'];
+
+function cvBadge(cv) {
+  if (!cv) return '';
+  const c = CV_CLS[cv] || 'bg-gray-100 text-gray-600';
+  return `<span class="badge ${c}">${cv}</span>`;
+}
+
+function tagsHtml(arr, palette, max = 2) {
+  if (!arr || !arr.length) return '';
+  const vis = arr.slice(0, max).map((v, i) =>
+    `<span class="tag ${palette[i % palette.length]}">${v}<button class="ml-0.5 opacity-50 hover:opacity-100 leading-none text-xs" onclick="event.stopPropagation()">×</button></span>`
+  ).join('');
+  const extra = arr.length > max ? `<button class="tag bg-gray-100 text-gray-500 cursor-default">+${arr.length - max}</button>` : '';
+  return `<div class="flex flex-wrap">${vis}${extra}</div>`;
+}
+
+function ganTuyenHtml(v) {
+  if (v === 'Đã gán tuyến')
+    return `<span class="badge bg-green-100 text-green-700">${v}</span>`;
+  return `<span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded border border-red-300 text-red-500 whitespace-nowrap">${v}</span>`;
+}
+
+function plBadge(v) {
+  if (!v) return '';
+  return `<span class="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded border border-gray-300 text-gray-600 whitespace-nowrap">${v}</span>`;
+}
+
+function truncate(s, n = 16) { return s && s.length > n ? s.slice(0, n) + '…' : (s || ''); }
+
+function copyBtn(code) {
+  return `<button onclick="doCopy('${code}',this)" class="text-gray-400 hover:text-blue-600 transition-colors flex-shrink-0" title="Sao chép mã">
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" stroke-linecap="round"/></svg>
+  </button>`;
+}
+
+function toggleHtml(id, checked) {
+  return `<label class="toggle"><input type="checkbox" ${checked ? 'checked' : ''} onchange="onToggle(${id},this.checked)"><span class="toggle-slider"></span></label>`;
+}
+
+// ─── RENDER ──────────────────────────────────────────────────
+function render() {
+  const start = (S.page - 1) * S.size;
+  const rows  = S.filtered.slice(start, start + S.size);
+  const tbody = document.getElementById('tableBody');
+
+  if (!rows.length) {
+    tbody.innerHTML = `<tr><td colspan="24" class="text-center py-14 text-gray-400">Không có dữ liệu phù hợp</td></tr>`;
+  } else {
+    tbody.innerHTML = rows.map(r => `
+<tr class="border-b border-gray-100 transition-colors">
+  <td class="td-sticky-left px-3 py-2 border-r border-gray-100">
+    <div class="flex items-center gap-1.5">
+      <span class="font-mono text-gray-800 font-medium" title="${r.ma}">${truncate(r.ma)}</span>
+      ${copyBtn(r.ma)}
+    </div>
+    <div class="text-gray-400 mt-0.5 text-[11px]">${truncate(r.ref, 26)}</div>
+  </td>
+  <td class="px-3 py-2"><span class="text-blue-600 font-medium hover:underline cursor-pointer">${r.ten}</span></td>
+  <td class="px-3 py-2 text-gray-400">—</td>
+  <td class="px-3 py-2 text-gray-700">${r.gt || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.ns || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.sdt || ''}</td>
+  <td class="px-3 py-2">${cvBadge(r.cv)}</td>
+  <td class="px-3 py-2">${tagsHtml(r.kv, KV_TAG)}</td>
+  <td class="px-3 py-2">${tagsHtml(r.vung, VU_TAG)}</td>
+  <td class="px-3 py-2">${ganTuyenHtml(r.ganTuyen)}</td>
+  <td class="px-3 py-2 text-gray-700">${r.tuyen || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.npp || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.kenh || ''}</td>
+  <td class="px-3 py-2">
+    ${r.maQL ? `<div class="flex items-center gap-1"><span class="font-mono text-gray-700" title="${r.maQL}">${truncate(r.maQL)}</span>${copyBtn(r.maQL)}</div>` : ''}
+  </td>
+  <td class="px-3 py-2 text-gray-700">${r.tenQL || ''}</td>
+  <td class="px-3 py-2">${plBadge(r.pl)}</td>
+  <td class="px-3 py-2 text-gray-700">${r.kvErp || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.ngayVL || ''}</td>
+  <td class="px-3 py-2">${toggleHtml(r.id, r.active)}</td>
+  <td class="px-3 py-2 text-gray-500">${r.ngayTao || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.nguoiTao || ''}</td>
+  <td class="px-3 py-2 text-gray-500">${r.ngayCapNhat || ''}</td>
+  <td class="px-3 py-2 text-gray-700">${r.nguoiCapNhat || ''}</td>
+  <td class="td-sticky-right px-3 py-2 border-l border-gray-100">
+    <div class="flex items-center justify-center gap-1.5">
+      <button title="Sửa"
+        class="w-7 h-7 flex items-center justify-center rounded border border-blue-200 text-blue-500 hover:bg-blue-50 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button title="Khóa / Mở khóa"
+        class="w-7 h-7 flex items-center justify-center rounded border border-red-200 text-red-400 hover:bg-red-50 transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+  </td>
+</tr>`).join('');
+  }
+
+  document.getElementById('totalCount').textContent = S.filtered.length;
+  renderPagination();
+}
+
+function renderPagination() {
+  const total = Math.ceil(S.filtered.length / S.size);
+  const cur   = S.page;
+  const el    = document.getElementById('pgControls');
+  if (total <= 1) { el.innerHTML = ''; return; }
+
+  const btn = (label, page, active = false, disabled = false) =>
+    `<button onclick="goPage(${page})" ${disabled ? 'disabled' : ''}
+      class="min-w-[28px] h-7 px-2 rounded border text-xs transition-colors
+        ${active   ? 'bg-blue-700 text-white border-blue-700' :
+          disabled ? 'text-gray-300 border-gray-200 cursor-not-allowed' :
+                     'text-gray-600 border-gray-200 hover:bg-gray-50'}">${label}</button>`;
+
+  let pages = [];
+  if (total <= 7) { for (let i=1;i<=total;i++) pages.push(i); }
+  else {
+    pages.push(1);
+    if (cur > 3)         pages.push('…');
+    for (let i=Math.max(2,cur-1); i<=Math.min(total-1,cur+1); i++) pages.push(i);
+    if (cur < total - 2) pages.push('…');
+    pages.push(total);
+  }
+
+  el.innerHTML = btn('‹', cur-1, false, cur===1)
+    + pages.map(p => p==='…' ? `<span class="px-1 text-gray-400 text-xs">…</span>` : btn(p, p, p===cur)).join('')
+    + btn('›', cur+1, false, cur===total);
+}
+
+// ─── ACTIONS ─────────────────────────────────────────────────
+function doCopy(code, btn) {
+  navigator.clipboard.writeText(code).then(() => {
+    const orig = btn.innerHTML;
+    btn.innerHTML = `<svg class="w-3.5 h-3.5 text-green-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+    setTimeout(() => { btn.innerHTML = orig; }, 1400);
+  });
+}
+
+function onToggle(id, val) {
+  const r = S.all.find(x => x.id === id);
+  if (r) r.active = val;
+}
+
+function goPage(p) {
+  const max = Math.ceil(S.filtered.length / S.size);
+  if (p < 1 || p > max) return;
+  S.page = p;
+  render();
+}
+
+function onPageSize() {
+  S.size = parseInt(document.getElementById('pgSize').value);
+  S.page = 1;
+  render();
+}
+
+function applyFilters() {
+  const q   = document.getElementById('fSearch').value.trim().toLowerCase();
+  const cv  = document.getElementById('fChucVu').value;
+  const gt  = document.getElementById('fGanTuyen').value;
+  const pl  = document.getElementById('fPhanLoai').value;
+  const tt  = document.getElementById('fTrangThai').value;
+  const selVung = getSelectedVungLabels();
+
+  S.filtered = S.all.filter(r => {
+    if (q && ![r.ma, r.ten, r.ref, r.sdt].some(f => f.toLowerCase().includes(q))) return false;
+    if (cv && r.cv !== cv) return false;
+    if (gt && r.ganTuyen !== gt) return false;
+    if (pl && r.pl !== pl) return false;
+    if (tt === 'active'   && !r.active) return false;
+    if (tt === 'inactive' &&  r.active) return false;
+    if (selVung.size && !r.vung.some(v => selVung.has(v))) return false;
+    return true;
+  });
+
+  S.page = 1;
+  render();
+}
+
+function resetFilters() {
+  ['fSearch'].forEach(id => document.getElementById(id).value = '');
+  ['fChucVu','fGanTuyen','fPhanLoai','fTrangThai','fTaoFrom','fTaoTo'].forEach(id => document.getElementById(id).value = '');
+  vungChecked.clear(); updateVungTrigger(); document.getElementById('vungPanel')?.classList.remove('open');
+  document.getElementById('fVaoLamFrom').value = '2026-06-01';
+  document.getElementById('fVaoLamTo').value   = '2026-06-27';
+  S.filtered = [...S.all];
+  S.page = 1;
+  render();
+}
+
+// ─── INIT ─────────────────────────────────────────────────────
+render();
+
+// ─── TREE CHECKBOX (reusable) ─────────────────────────────────
+const VUNG_TREE = [
+  { id:'TRM_DTB',    label:'[TRM] Đông Tây Bắc',          children:[
+    { id:'TRM_YB',   label:'[TRM] Yên Bái',               children:[] },
+    { id:'TRM_HG',   label:'[TRM] Hà Giang',              children:[] },
+  ]},
+  { id:'QC_BDBPBT',  label:'[QC][MT] Vùng BD-BP-BT',      children:[
+    { id:'QCMT_BT',  label:'[QC][MT] Khu vực BÌNH THUẬN', children:[] },
+    { id:'QCMT_KT',  label:'[QC][MT]KV-KONTUM',           children:[] },
+    { id:'QCMT_AG',  label:'[QC][MT]KV_AN GIANG',         children:[] },
+    { id:'QCMT_BP',  label:'[QC][MT]Khu vực BÌNH PHƯỚC',  children:[] },
+    { id:'QCMT_PX',  label:'QCMT-KHU VỰC PHƯỜNG/XÃ MỚI - Phú nhuận, Tân Phú', children:[] },
+  ]},
+  { id:'PTKV001',    label:'PTKV001 - Cực Tây Chí Địa',   children:[] },
+  { id:'KV00004',    label:'KV00004 - Th.Vi KV Vĩnh Long', children:[] },
+  { id:'NHABE',      label:'NHABE - Nhà Bè',               children:[] },
+  { id:'MEKONG1',    label:'MEKONG1 - Mekong1',            children:[] },
+  { id:'CENTRAL1',   label:'CENTRAL1 - Central 1',         children:[] },
+];
+
+const vungChecked  = new Set();   // checked leaf ids
+const vungExpanded = {};          // parent id → bool (default true)
+
+/* ── helpers ── */
+function getLeaves(node) {
+  return node.children.length ? node.children.flatMap(getLeaves) : [node.id];
+}
+function nodeMatchesQ(node, q) {
+  return node.label.toLowerCase().includes(q) || node.children.some(c => nodeMatchesQ(c, q));
+}
+function getNodeState(node) {
+  const leaves = getLeaves(node);
+  const n = leaves.filter(id => vungChecked.has(id)).length;
+  return n === 0 ? 'none' : n === leaves.length ? 'all' : 'some';
+}
+function findNode(id, nodes = VUNG_TREE) {
+  for (const n of nodes) {
+    if (n.id === id) return n;
+    if (n.children.length) { const f = findNode(id, n.children); if (f) return f; }
+  }
+  return null;
+}
+function getSelectedVungLabels() {
+  const set = new Set();
+  function walk(node) {
+    if (!node.children.length && vungChecked.has(node.id)) set.add(node.label);
+    node.children.forEach(walk);
+  }
+  VUNG_TREE.forEach(walk);
+  return set;
+}
+
+/* ── actions ── */
+function vungNodeClick(id) {
+  const node = findNode(id);
+  if (!node) return;
+  const leaves = getLeaves(node);
+  if (getNodeState(node) === 'all') leaves.forEach(l => vungChecked.delete(l));
+  else                               leaves.forEach(l => vungChecked.add(l));
+  renderVungTree();
+  updateVungTrigger();
+}
+function toggleVungExpand(id) {
+  vungExpanded[id] = !(vungExpanded[id] !== false); // default true
+  renderVungTree();
+}
+function updateVungTrigger() {
+  const el = document.getElementById('vungTrigger');
+  if (el) el.textContent = vungChecked.size ? `${vungChecked.size} vùng đã chọn` : 'Vùng';
+}
+function toggleVungPanel(e) {
+  e.stopPropagation();
+  const panel = document.getElementById('vungPanel');
+  const opened = panel.classList.toggle('open');
+  if (opened) { renderVungTree(); setTimeout(() => document.getElementById('vungSearchInput')?.focus(), 40); }
+}
+document.addEventListener('click', e => {
+  if (!document.getElementById('vungDD')?.contains(e.target))
+    document.getElementById('vungPanel')?.classList.remove('open');
+});
+
+/* ── render one node ── */
+function renderVungNode(node) {
+  const q      = (document.getElementById('vungSearchInput')?.value || '').toLowerCase();
+  const isLeaf = !node.children.length;
+  const isOpen = vungExpanded[node.id] !== false;
+  const state  = getNodeState(node);
+
+  if (q && !nodeMatchesQ(node, q)) return '';
+
+  const arrow = isLeaf
+    ? `<span class="tarrow leaf">▶</span>`
+    : `<span class="tarrow${isOpen ? ' open' : ''}" onclick="event.stopPropagation();toggleVungExpand('${node.id}')">▶</span>`;
+
+  const checked = state === 'all' ? 'checked' : '';
+  const indAttr = state === 'some' ? 'data-ind="true"' : '';
+
+  let html = `<div class="trow">
+    ${arrow}
+    <input type="checkbox" ${checked} ${indAttr} onclick="event.stopPropagation();vungNodeClick('${node.id}')" />
+    <label onclick="event.stopPropagation();vungNodeClick('${node.id}')" title="${node.label}">${node.label}</label>
+  </div>`;
+
+  if (!isLeaf) {
+    const showChildren = isOpen || (q && node.children.some(c => nodeMatchesQ(c, q)));
+    html += `<div class="tree-children" ${!showChildren ? 'style="display:none"' : ''}>
+      ${node.children.map(c => renderVungNode(c)).join('')}
+    </div>`;
+  }
+  return html;
+}
+
+/* ── render full tree ── */
+function renderVungTree() {
+  const body = document.getElementById('vungTreeBody');
+  if (!body) return;
+  body.innerHTML = VUNG_TREE.map(n => renderVungNode(n)).join('') || '<p class="text-xs text-gray-400 px-4 py-3">Không tìm thấy</p>';
+  body.querySelectorAll('[data-ind="true"]').forEach(cb => { cb.indeterminate = true; });
+}
+
+/* ── init expand state ── */
+VUNG_TREE.forEach(n => { if (n.children.length) vungExpanded[n.id] = true; });
+</script>
+</body>
+</html>

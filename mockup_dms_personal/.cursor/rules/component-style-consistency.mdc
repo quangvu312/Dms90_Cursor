@@ -1,0 +1,14 @@
+---
+description: Không tự ý đổi style shared component; prototype là source of truth về UI khi module đã có reference.
+globs: **/*.{tsx,ts,css,js}
+alwaysApply: true
+---
+
+# COMPONENT STYLE CONSISTENCY RULE
+
+- Không được tự ý thay đổi style của shared component.
+- Khi module đã có reference chuẩn trong `prototype`, **prototype là source of truth về component style**.
+- Feature mới phải reuse component/style hiện tại.
+- Chỉ thay đổi behavior/data khi requirement yêu cầu.
+- Nếu bắt buộc cần style khác, phải tạo scoped variant, không sửa default/global style.
+- Không thay icon/component bằng icon khác nếu chưa có requirement.

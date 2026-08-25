@@ -1,0 +1,127 @@
+/* Report query filter — clone Ant Design Pro Query Filter (HT Portal) */
+
+.dms-report-query-filter.dms-card {
+  margin-bottom: var(--spacing-md);
+}
+
+.dms-report-query-filter .dms-card__header {
+  display: none;
+}
+
+.dms-report-query-filter .dms-card__body {
+  padding: var(--spacing-md) var(--spacing-lg) var(--spacing-sm);
+}
+
+.dms-report-query-filter__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--spacing-md) var(--spacing-lg);
+  align-items: center;
+}
+
+.dms-report-filter-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  min-width: 0;
+  margin-bottom: 0;
+}
+
+.dms-report-filter-item__label {
+  flex: 0 0 38%;
+  max-width: 38%;
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dms-report-filter-item__control {
+  flex: 1;
+  min-width: 0;
+}
+
+.dms-report-filter-item__control .dms-input,
+.dms-report-filter-item__control .dms-select,
+.dms-report-filter-item__control .dms-datepicker {
+  width: 100%;
+}
+
+.dms-report-filter-item__control .dms-field-picker {
+  display: flex;
+  gap: var(--spacing-xs);
+  align-items: center;
+  min-width: 0;
+}
+
+.dms-report-filter-item__control .dms-field-picker__input {
+  flex: 1;
+  min-width: 0;
+}
+
+.dms-report-filter-item__control .dms-field-picker .dms-btn {
+  flex-shrink: 0;
+}
+
+/* Action row — căn phải giống ant-col-offset-6 */
+.dms-report-query-filter__actions-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding-top: var(--spacing-xs);
+}
+
+.dms-report-query-filter__actions-row .dms-btn--link {
+  color: var(--color-primary);
+  border: none;
+  background: transparent;
+  padding: 4px 8px;
+}
+
+.dms-report-query-filter__actions-row .dms-btn--link:hover {
+  color: var(--color-primary-hover, #1a3d6e);
+  background: rgba(43, 87, 154, 0.06);
+}
+
+/* Collapsed: ẩn field từ hàng 3 trở đi (field index >= 8) */
+.dms-report-query-filter.is-collapsed .dms-report-filter-item[data-filter-row="3"],
+.dms-report-query-filter.is-collapsed .dms-report-filter-item[data-filter-row="4"] {
+  display: none;
+}
+
+/* Toolbar Export — card list header */
+.dms-report-list-toolbar .dms-card__extra .dms-btn {
+  min-width: auto;
+}
+
+@media (max-width: 1600px) {
+  .dms-report-query-filter__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1280px) {
+  .dms-report-query-filter__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .dms-report-filter-item__label {
+    flex-basis: 42%;
+    max-width: 42%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .dms-report-query-filter__grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dms-report-filter-item__label {
+    flex-basis: 36%;
+    max-width: 36%;
+  }
+}

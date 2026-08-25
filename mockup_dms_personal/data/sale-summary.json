@@ -1,0 +1,71 @@
+{
+  "summary": { "totalAmount": 0 },
+  "pagination": { "page": 1, "pageSize": 10, "total": 3 },
+  "items": [
+    {
+      "id": "SOO001",
+      "orderCode": "SO0002101",
+      "erpCode": "DHB2608-000011",
+      "orderDate": "10-08-2026",
+      "distributor": "NPP001 - NPP Miền Nam 1",
+      "totalAmount": 2450000,
+      "orderType": "Đơn bán hàng",
+      "status": "Đã duyệt",
+      "employee": "NV001 - Nguyễn Văn A",
+      "createdAt": "10-08-2026 09:12:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "10-08-2026 10:00:00",
+      "updatedBy": "npp.admin",
+      "store": "DB001 - Tạp hóa Minh Anh",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "note": "",
+      "lines": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "unit": "Hộp", "qty": 10, "price": 245000, "vat": 8, "amount": 2450000 }
+      ]
+    },
+    {
+      "id": "SOO002",
+      "orderCode": "SO0002102",
+      "erpCode": "DHB2608-000012",
+      "orderDate": "11-08-2026",
+      "distributor": "NPP002 - NPP Miền Bắc 1",
+      "totalAmount": 0,
+      "orderType": "Đơn vansales",
+      "status": "Khởi tạo",
+      "employee": "NV002 - Trần Thị B",
+      "createdAt": "11-08-2026 08:00:00",
+      "createdBy": "npp.hn",
+      "updatedAt": "11-08-2026 08:00:00",
+      "updatedBy": "npp.hn",
+      "store": "DB010 - Cửa hàng Lan Anh",
+      "warehouse": "Kho vansales",
+      "channel": "GENERAL TRADE",
+      "note": "",
+      "lines": []
+    },
+    {
+      "id": "SOO003",
+      "orderCode": "SO0002103",
+      "erpCode": "",
+      "orderDate": "01-08-2026",
+      "distributor": "NPP001 - NPP Miền Nam 1",
+      "totalAmount": 980000,
+      "orderType": "Đơn bán hàng",
+      "status": "Đã hủy",
+      "employee": "NV001 - Nguyễn Văn A",
+      "createdAt": "01-08-2026 14:00:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "02-08-2026 09:00:00",
+      "updatedBy": "VUBA",
+      "store": "DB002 - Nhà thuốc Bình An",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "note": "",
+      "cancelReason": "Khách hủy đơn",
+      "lines": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "unit": "Hộp", "qty": 4, "price": 245000, "vat": 8, "amount": 980000 }
+      ]
+    }
+  ]
+}

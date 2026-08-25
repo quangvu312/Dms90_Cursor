@@ -1,0 +1,65 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 3 },
+  "items": [
+    {
+      "id": "FR001",
+      "code": "THN000011",
+      "returnDate": "11-08-2026",
+      "inboundCode": "RC0000299",
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "status": "PENDING",
+      "statusLabel": "Chờ duyệt",
+      "createdAt": "11-08-2026 10:00:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "11-08-2026 10:00:00",
+      "updatedBy": "npp.admin",
+      "rejectReason": "",
+      "products": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "qty": 24, "unit": "Hộp", "lots": [{ "qty": 24, "lot": "LO2408", "exp": "01-01-2027" }] }
+      ],
+      "promotions": [
+        { "name": "KM tặng hàng Anlene T8", "rule": "Mua 10 tặng 1", "sku": "102296", "skuName": "Anlene Total 10 Vani 800G", "qty": 2, "unit": "Hộp" }
+      ]
+    },
+    {
+      "id": "FR002",
+      "code": "THN000012",
+      "returnDate": "04-08-2026",
+      "inboundCode": "RC0000280",
+      "npp": "NPP002 - NPP Miền Bắc 1",
+      "warehouse": "Kho HN 1",
+      "channel": "GENERAL TRADE",
+      "status": "APPROVED",
+      "statusLabel": "Đã duyệt",
+      "createdAt": "04-08-2026 09:00:00",
+      "createdBy": "npp.hn",
+      "updatedAt": "05-08-2026 08:10:00",
+      "updatedBy": "VUBA",
+      "rejectReason": "",
+      "products": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "qty": 12, "unit": "Hộp", "lots": [{ "qty": 12, "lot": "LO2407", "exp": "01-12-2026" }] }
+      ],
+      "promotions": []
+    },
+    {
+      "id": "FR003",
+      "code": "THN000013",
+      "returnDate": "01-08-2026",
+      "inboundCode": "RC0000271",
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "status": "REJECTED",
+      "statusLabel": "Đã từ chối",
+      "createdAt": "01-08-2026 16:00:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "02-08-2026 09:00:00",
+      "updatedBy": "VUBA",
+      "rejectReason": "Phiếu nhập kho không khớp nguyên đơn",
+      "products": [],
+      "promotions": []
+    }
+  ]
+}

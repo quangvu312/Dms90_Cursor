@@ -1,0 +1,446 @@
+ chăm sóc
+ khác tuyến
+ không còn nằm trong tuyến ngày hôm nay, vui lòng kiểm tra lại hoặc viếng thăm ngoại tuyến.
+ không hoạt động, không đủ tồn kho, không có giá bán hoặc không thuộc nhãn hàng trong tuyến nên không thể thêm vào đơn hàng!
+ ngoại tuyến đã viếng thăm
+ thuộc tuyến!
+ trong tuyến
+ trong tuyến chưa viếng thăm
+ trong tuyến đã viếng thăm
+ trong tuyến đang viếng thăm
+_checkInternetReachability
+_checkIntersectionAndReport
+/checkin
+/checkin-status
+/v1/checkinventorywarehouse
+/v1/groups/checkin-location/
+/v1/mobile/kpis/store-visit
+/v1/report/visit-store
+/v1/sfa/checkin/{routeId}/checkin
+/v1/sfa/checkin/{routeId}/validate-checkin
+/v1/sfa/working-time-data/check-in
+/v1/sfa/working-time-data/check-in/
+/v1/sfa/working-time-data/check-in/{user_id}
+/v1/stores/visit-schedulers/
+/v1/visit-store/add-store-route
+/v1/visit-store/check-in
+/v1/visit-store/check-out
+/v1/visit-store/distance
+/v1/visit-store/filters/
+/v1/visit-store/filters/all
+/v1/visit-store/finish-task
+/v1/visit-store/history
+/v1/visit-store/routes
+/v1/visit-store/stores/
+/v1/visit-store/tasks
+/v1/visit-store/validate-check-in
+/v1/visit-store/validate-check-out
+/validate-checkin
+3. Ý kiến của khách hàng
+allowCheckInventoryWarehouse
+arrayVisitStatus
+Bạn cần thực hiện chấm công đầu ngày
+ để tiếp tục
+Bạn cần thực hiện chấm công đầu ngày để
+ tiếp tục
+Bạn đã kết thúc ngày công, không
+ thể thực hiện chức năng này!
+Bạn đã kết thúc ngày làm việc, không thể tiếp tục viếng thăm 
+Bạn đang viếng thăm một 
+Bản đồ tuyến
+Bạn không có tuyến.
+Báo cáo chương trình tích lũy
+Báo cáo chương trình trưng bày
+Báo cáo tồn kho hiện tại 
+Bày hàng
+Bày hàng thành công
+Bắt buộc checkin
+Bắt đầu
+Bắt đầu lúc 
+Bắt đầu ngày công
+Bắt đầu ngày làm việc thành công
+Bắt đầu viếng thăm
+btnCheckInOut
+btnVisitAgain
+business_task_visit_store
+businessVisitStores
+buttonVisiting
+Các chương trình khuyến mãi được sắp xếp theo thứ tự bạn đã chọn
+Cách địa điểm chấm công
+Cannot capture check-in. Client does not support sending check-ins.
+Cannot capture check-in. No client defined.
+captureCheckIn
+Cần mua đạt số lượng sản phẩm yêu cầu trong thời gian trưng bày để hoàn thành nhiệm vụ.
+Cần mua đơn hàng đạt doanh số trong thời gian trưng bày để hoàn thành nhiệm vụ.
+Cần mua sản phẩm thuộc danh sách nhóm sản phẩm chỉ định và đạt % doanh số yêu cầu để hoàn thành nhiệm vụ.
+Cần mua sản phẩm thuộc danh sách nhóm sản phẩm chỉ định và đạt doanh số để hoàn thành nhiệm vụ.
+Cần mua sản phẩm thuộc danh sách nhóm sản phẩm chỉ định và đạt doanh số yêu cầu để hoàn thành nhiệm vụ
+Cần mua sản phẩm thuộc danh sách nhóm sản phẩm chỉ định và đạt số lượng yêu cầu để hoàn thành nhiệm vụ.
+Cần mua sản phẩm thuộc danh sách sản phẩm chỉ định và đạt doanh số yêu cầu để hoàn thành nhiệm vụ.
+Cập nhật chương trình trưng bày thành công
+Cập nhật chương trình trưng bày thất bại
+Cập nhật tồn kho
+Chăm sóc
+Chăm sóc 
+Chăm sóc khách hàng
+Chấm công
+Chấm công cuối ngày
+Chấm công đầu ngày
+Chấm công để tiếp tục
+check_in
+check_in_id
+CHECK_INVENTORY_ERR_CODE
+CHECK_INVENTORY_WAREHOUSE
+CHECK_VISIT_DATE
+checkin
+checkIn
+CHECKIN
+Checkin khảo sát
+checkin_address
+checkin_count
+checkin_distance
+CHECKIN_DISTANCE_EXCEEDED_REASON
+checkin_exceed_distance_other_reason
+checkin_exceed_distance_reason_id
+checkin_geometry
+checkin_image
+checkin_images
+checkin_lat
+checkin_long
+checkin_margin
+CHECKIN_REQUIRED_KEY
+checkin_status
+checkin_store
+CHECKIN_TAKECARE
+checkin_time
+checkInContainer
+checkInData
+checkinDetails
+CHECKING_IN
+checkinHeader
+checkinHistory
+CheckInHistory
+checkinHistoryDetail
+CheckInHistoryDetail
+CheckinHistoryItemList
+checkInId
+checkInImages
+checkinInfoContainer
+checkinMargin
+CheckInOutInfoOtherTab
+checkInOutReducer
+checkInOutType
+CheckinScreen
+checkInStore
+checkInt
+checkInTakecare
+checkIntBI
+checkInText
+checkInTime
+checkInvalidReadDuringRender
+checkInvalidWriteDuringRender
+checkInventory
+checkInventoryWarehouse
+checkInWorkingTime
+checkMinus
+checkUserHasCheckin
+Chi tiết chấm công
+Chi tiết lịch viếng thăm
+Chọn danh sách tuyến
+Chọn để sắp xếp thứ tự áp dụng cho các chương trình khuyến mãi
+Chọn hình thức đặt hàng
+Chọn hình thức đặt hàng để tạo đơn hàng
+Chọn ngày đi tuyến
+Chọn tuyến
+Chọn tuyến bán hàng
+Chủ cửa hàng
+Chụp hình trưng bày theo hướng dẫn của hình mẫu dưới đây sẽ giúp bạn đạt điều kiện trưng bày sản phẩm dễ dàng hơn.
+Chưa chọn tuyến
+Chưa có tuyến bán hàng nên chưa có thông tin chương trình tích lũy!
+Chưa có tuyến bán hàng nên chưa có thông tin chương trình trưng bày!
+Chưa có tuyến bán hàng nên không có thông tin 
+Chưa viếng thăm
+Chương trình tích lũy
+Chương trình trưng bày
+click_check_in
+Còn tồn kho
+containerCheckInOut
+createCheckInEnvelope
+createCheckInEnvelopeItem
+CT trưng bày
+Cửa hàng chưa cập nhật vị trí. Vui lòng liên hệ Admin để cập nhật!
+Cửa hàng không nằm trong danh sách chăm sóc
+daily_checkin
+dailyCheckInOut
+Danh sách tuyến
+defaultVisitor
+distanceCheckin
+domVisitors
+DURATION_SECONDS_CHECK_INVENTORY
+DuringTimeCheckIn
+đã viếng thăm
+Đã viếng thăm
+Đang viếng thăm
+Đang viếng thăm - 
+Đăng ký chương trình trưng bày thành công
+Đăng ký trưng bày
+Đặt hàng
+Đặt hàng thành công
+Địa điểm chấm công
+Điều kiện tích lũy
+Điều kiện trưng bày
+Đổi mốc tích lũy
+ECOM_KPI_STORE_VISITED
+END_VISIT
+endVisit
+EndVisit
+finishCheckIn
+first_visit
+getCheckInStatus
+getCheckinUserById
+getListCheckIn
+getListStatusVisit
+getListStoreTakeCare
+getListStoreVisit
+getListTypeStatusVisit
+getListVisitReport
+getStatusCheckInOutFromInfo
+getUserCheckinStatus
+getVisitType
+Giá trị bắt đầu lớn hơn giá trị cuối
+goToVisit
+goToVisitViewResult
+Gửi hình trưng bày
+handleNavigateToCheckIn
+hasCheckin
+Hết hạn duyệt trưng bày
+Hết tồn kho
+Hình ảnh bày hàng
+Hình ảnh chấm công
+Hình ảnh trưng bày
+Hình thức đặt hàng
+historyCheckIn
+historyVisit
+historyVisitStore
+Hoàn thành viếng thăm 
+Huỷ chấm công
+ic_blue_visit
+ic_rp_checkin
+IC_RP_CHECKIN
+IconBlueVisit
+IconVisit
+IconVisitActive
+img_checkin
+ImgCheckin
+IN_ROUTE_DONE_VISITED
+IN_ROUTE_NOT_VISITED
+IN_ROUTE_VISITING
+infoCheckInOut
+is_checkin_another_store
+is_checkin_required
+isCheckingTaxId
+isCheckInventory
+isLoadingVisit
+isTakeCare
+isVisitable
+Kết thúc ngày công
+Kết thúc ngày làm việc thành công
+Kết thúc viếng thăm
+Khách hàng
+Khách hàng hoạt động
+Khách hàng mở mới
+Khoảng cách chấm công
+Khoảng cách nằm ngoài giới hạn cho phép chấm công. Vui lòng điều chỉnh vị trí hoặc bổ sung lý do vượt khoảng cách.
+Không chấm công
+Không có tuyến bán hàng
+Không tìm thấy ghi nhận chấm công
+Kiểm tra tồn kho
+Kiểm tra tồn kho thành công
+lastTimeCheckInventoryWarehouse
+Lịch sử chấm công
+ListCheckInventoryScreen
+listStatusVisit
+listStoreTakeCare
+ListStoreTakeCare
+ListStoreTakeCareScreen
+ListStoreTakeCareStyles
+listTypeStatusVisit
+ListVisitStoreScreen
+ListVisitStoreStyles
+Loại điểm bán A
+Loại điểm bán B
+logClickCheckIn
+LOT_DATE_CHECKING_INVENTORY
+Lỗi không lấy được thông tin tuyến
+Lý do không thực hiện nhiệm vụ bắt buộc
+Mã cửa hàng, tên cửa hàng, số điện thoại cửa hàng
+Mã đơn hàng, mã khách hàng, tên khách hàng, số điện thoại khách hàng, mã tham chiếu đơn hàng
+MAX_CHECK_IN_VISIT_STORE_IMAGES
+maxCheckInVisitStoreImages
+MIN_CHECK_IN_VISIT_STORE_IMAGES
+minCheckInVisitStoreImages
+ModalCheckin
+Mô tả vấn đề khách hàng cần hỗ trợ, đính kèm hình ảnh minh họa chi tiết.
+Mốc tích lũy đăng ký
+Một vài chức năng sẽ không thể thực hiện khi
+chưa chấm công đầu ngày
+Ngày đặt hàng
+Ngày đi tuyến
+Ngày trưng bày
+Ngoại tuyến
+Nhập lý do không thực hiện nhiệm vụ bắt buộc
+Nhập mã đơn hàng, số dt cửa hàng, ...
+Nhiệm vụ cần đạt
+NO_CHECKIN
+noCheckInContainer
+noCheckInText
+NOT_VISIT
+NOT_YET_CHECKIN
+NOTE_VISIT_TYPE
+OFF_ROUTE_DONE_VISITED
+onPressCheckIn
+onVisitDayPress
+onVisitStorePress
+openModalCancelCheckin
+openModalCheckin
+order-button-check-inventory-warehouse
+reason_checkin
+reasonCheckIn
+renderBtnCheckIn
+requireCheckin
+REQUIRED_LOT_DATE_CHECKING_INVENTORY
+RESET_CHECKIN
+RESET_STORE_CHECKING
+RouteMapVisitInfoModal
+Rời 
+SALESMAN_REQUIRED_CHECKIN_WORKING_TIME
+Sản phẩm không được phép bán trên tuyến bán hàng này, vui lòng liên hệ admin để hỗ trợ hoặc xóa sản phẩm khỏi danh sách đã chọn
+Sắp xếp
+Sắp xếp sản phẩm lên kệ/tủ và
+chụp hình để hoàn tất nghiệp vụ
+Sắp xếp theo
+SDK not enabled, will not capture checkin.
+Sending checkin:
+SET_CHECKIN
+SET_INFO_CHECK_IN_OUT
+SET_LIST_VISIT_STATUS
+SET_STORE_CHECKING
+SET_VISIT_DATE
+SET_VISIT_ROUTE
+SET_VISIT_STATUS
+setLocationCheckin
+setup_location_checkin
+showListVisit
+showVisit
+SL tồn kho
+Số điện thoại phải chứa số, bắt đầu bằng 0 và có độ dài 10-12 ký tự
+Số lượng trưng bày phải lớn hơn 0!
+Số mặt trưng bày
+Số mặt trưng bày:
+Số mặt trưng bày: 
+START_VISIT
+startVisit
+StartVisit
+StatusCheckInOut
+submitCheckIn
+submitVisit
+support_checkin_id
+supportCheckinId
+tab.showVisit
+Tạo trưng bày thành công
+Thao tác chấm công cuối ngày đã xảy ra lỗi do
+ 
+Thao tác chấm công đầu ngày đã xảy ra lỗi do
+ 
+Thông tin chấm công cuối ngày đã được ghi nhận
+Thông tin chấm công đầu ngày đã được ghi nhận
+Thông tin tuyến
+Thời gian tích lũy
+Thứ tự viếng thăm (mặc định)
+Thực hiện chấm công
+Tiến độ tích lũy
+total_no_checkin
+Tồn kho
+Tồn kho: 
+trái tuyến
+trong tuyến
+Trong tuyến
+trước khi rời khỏi 
+Tuyến bán hàng
+Tuyến Bán Hàng
+Tuyến bán hàng không có dữ liệu không thể chỉnh sửa thông tin.
+Tuyến đã chọn
+Tuyến mẫu 1
+Tuyến mẫu 2
+txtCheckInOut
+txtTimeCheckIn
+Tỷ lệ khách hàng hoạt động
+Tỷ lệ viếng thăm thành công
+UPDATE_LAST_TIME_CHECK_INVENTORY_WAREHOUSE
+updateLastTimeCheckInventoryWarehouse
+useCheckInHistoryDetail
+useCheckInScreen
+useEndVisit
+useGetCheckinHistory
+useListCheckInventory
+useListStoreTakeCare
+useListVisitStore
+USER_CHECK_IN_STORE
+useStartVisit
+useTabHistoryCheckin
+useVisitMission
+v1/sfa/working-time-data/check-in/validate
+v1/tickets/validate-required-checkin
+VALIDATE_CHECKIN_TAKECARE
+validateCheckin
+validateCheckIn
+validateCheckinAndGetLastImage
+validateCheckinDaily
+validateCheckinData
+validateCheckinTakeCare
+Viếng thăm
+Viếng thăm 
+Viếng thăm lại
+Viếng thăm ngoại tuyến
+visit
+VISIT
+visit_date
+VISIT_DAYS
+VISIT_MISSION
+visit_number
+visit_status
+VISIT_STATUS
+VISIT_STORE
+visit_type
+visit.showIcon
+visitDays
+visited
+VISITED
+VISITED_ROUTE_KEYS
+visitInfo
+visiting
+VISITING
+visitMission
+VisitMission
+visitNumber
+visitor
+visitor must be a function
+visitors
+visitReport
+visitReportSupervisor
+VisitScreen
+VisitScreen@ListOfStore
+visitStatus
+visitStore
+visitStoreSupervisor
+visitStoreTakeCare
+VisitStoreTakeCare
+visitTakeCare
+visitType
+Vui lòng chấm công hàng ngày trước khi viếng thăm 
+Vui lòng chọn ngày đi tuyến nếu đã chọn tuyến
+Vui lòng chọn tần suất nếu đã chọn tuyến
+Vui lòng viếng thăm 
+WORKING_PLAN_DETAIL_CHECKIN
+WT_CHECKIN
+WT_CHECKIN_VALIDATE

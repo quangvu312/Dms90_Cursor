@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "code": "HOP", "name": "Hộp", "type": "base", "status": "ACTIVE" },
+    { "code": "GOI", "name": "Gói", "type": "base", "status": "ACTIVE" },
+    { "code": "THUNG", "name": "Thùng", "type": "conversion", "status": "ACTIVE" },
+    { "code": "CHAI", "name": "Chai", "type": "base", "status": "ACTIVE" },
+    { "code": "KG", "name": "Kg", "type": "base", "status": "ACTIVE" }
+  ]
+}

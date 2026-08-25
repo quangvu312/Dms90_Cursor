@@ -1,0 +1,30 @@
+{
+  "source": "Dữ liệu chung",
+  "catalog": "CONTRACT_TYPE",
+  "contractTypes": [
+    {
+      "code": "BUSINESS_COOPERATION",
+      "name": "Hợp đồng hợp tác kinh doanh",
+      "shortName": "HTKD",
+      "status": "Hoạt động"
+    },
+    {
+      "code": "PRINCIPLE",
+      "name": "Hợp đồng nguyên tắc",
+      "shortName": "Nguyên tắc",
+      "status": "Hoạt động"
+    },
+    {
+      "code": "SERVICE",
+      "name": "Hợp đồng dịch vụ",
+      "shortName": "Dịch vụ",
+      "status": "Hoạt động"
+    },
+    {
+      "code": "FRANCHISE",
+      "name": "Hợp đồng nhượng quyền thương mại",
+      "shortName": "Nhượng quyền",
+      "status": "Hoạt động"
+    }
+  ]
+}

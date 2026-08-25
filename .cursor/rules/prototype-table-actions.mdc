@@ -1,0 +1,53 @@
+---
+description: Quy tắc action trên table Prototype — hyperlink xem chi tiết, nhóm Duyệt/Từ chối bằng icon cờ lê
+globs: Prototype/**/*.{js,css,html},Docs/design-system/**
+alwaysApply: true
+---
+
+# ACTION TRÊN TABLE (Prototype)
+
+Áp dụng khi sửa/thêm cột Thao tác, Tùy chỉnh, hoặc icon action trên lưới danh sách.
+
+## Rule 1 – Xem chi tiết bằng hyperlink
+
+Nếu entity đã có **Tên / Mã / Tiêu đề** dạng hyperlink (`dms-table__link`) và click mở Detail View thì **KHÔNG** thêm icon "Xem" (👁) trong cột Thao tác.
+
+Ví dụ: Tên hợp đồng, Tiêu đề bài viết, Mã đơn hàng.
+
+## Rule 2 – Duyệt/Từ chối dùng một action group
+
+Không tạo 2 icon riêng (Duyệt + Từ chối) trên table.
+
+Phải dùng pattern chuẩn:
+
+```text
+Icon cờ lê (ActionIconButton type: approve)
+   ↓
+ActionDropdown
+├── Duyệt
+└── Từ chối
+```
+
+Hiện icon cờ lê **chỉ khi** bản ghi còn chờ duyệt. Module Hợp đồng / Telling Story là reference.
+
+Reuse `DMS.render('TableActions', { actions: [{ type: 'approve', title: 'Duyệt', menu: [...] }] })`.
+Không tự vẽ UI dropdown khác.
+
+## Rule 3 – Không tự tạo icon khi đã có pattern
+
+1. Search module hiện có.
+2. Kiểm tra `ActionIconButton` types đã có chưa.
+3. Reuse component/CSS hiện tại.
+4. Chỉ tạo mới khi chưa có component phù hợp.
+
+## Rule 4 – Tránh duplicate action
+
+Một nghiệp vụ chỉ một entry point.
+
+Sai: hyperlink Tên bài + icon Xem.  
+Đúng: chỉ hyperlink Tên bài.
+
+Sai: 🔧 + ✅ Duyệt + ❌ Từ chối.  
+Đúng: 🔧 → Duyệt / Từ chối.
+
+Tài liệu đầy đủ: `Docs/design-system/component-guideline.md` (mục ACTION TRÊN TABLE).

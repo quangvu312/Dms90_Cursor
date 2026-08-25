@@ -1,0 +1,519 @@
+{
+  "statuses": [
+    { "value": "Khởi tạo", "label": "Khởi tạo" },
+    { "value": "Đã duyệt", "label": "Đã duyệt" },
+    { "value": "Từ chối", "label": "Từ chối" },
+    { "value": "Hết hạn", "label": "Hết hạn" }
+  ],
+  "customerStatuses": [
+    { "value": "Hoạt động", "label": "Hoạt động" },
+    { "value": "Ngưng hoạt động", "label": "Ngưng hoạt động" }
+  ],
+  "customers": [
+    { "id": "KH001", "code": "KH001", "name": "Khách hàng A", "phone": "0901234567", "address": "123 Nguyễn Trãi, Phường Bến Thành, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH002", "code": "KH002", "name": "Khách hàng B", "phone": "0912345678", "address": "45 Lê Lợi, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH003", "code": "KH003", "name": "Khách hàng C", "phone": "0987654321", "address": "88 Hai Bà Trưng, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH004", "code": "KH004", "name": "Điểm bán Tân Bình", "phone": "0908111222", "address": "12 Cộng Hòa, Phường 13, Quận Tân Bình, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH005", "code": "KH005", "name": "Điểm bán Quận 1", "phone": "0908222333", "address": "27 Đông Du, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH006", "code": "KH006", "name": "Điểm bán Hà Nội", "phone": "02438567890", "address": "56 Tràng Tiền, Phường Tràng Tiền, Quận Hoàn Kiếm, Hà Nội", "status": "Hoạt động" },
+    { "id": "KH007", "code": "KH007", "name": "Siêu thị Mini Mart", "phone": "0909333444", "address": "102 Võ Văn Tần, Phường 6, Quận 3, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH008", "code": "KH008", "name": "Cửa hàng Tiện Lợi 24h", "phone": "0909444555", "address": "9 Nguyễn Thị Minh Khai, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH009", "code": "KH009", "name": "Đại lý miền Tây", "phone": "02923888888", "address": "15 Trần Hưng Đạo, Phường 1, TP. Cần Thơ", "status": "Hoạt động" },
+    { "id": "KH010", "code": "KH010", "name": "Đại lý miền Bắc", "phone": "02437654321", "address": "210 Cầu Giấy, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội", "status": "Hoạt động" },
+    { "id": "KH011", "code": "KH011", "name": "Khách hàng D", "phone": "0935123456", "address": "67 Pasteur, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH012", "code": "KH012", "name": "Khách hàng E", "phone": "0935987654", "address": "3 Nguyễn Huệ, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Ngưng hoạt động" },
+    { "id": "KH013", "code": "KH013", "name": "Cửa hàng An Phú", "phone": "0909555666", "address": "21 Đường 17, Phường An Phú, TP. Thủ Đức, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH014", "code": "KH014", "name": "Đại lý miền Trung", "phone": "02363888888", "address": "48 Bạch Đằng, Phường Hải Châu 1, Quận Hải Châu, Đà Nẵng", "status": "Hoạt động" },
+    { "id": "KH015", "code": "KH015", "name": "Siêu thị Co.op Food", "phone": "02838223344", "address": "168 Nguyễn Đình Chiểu, Phường 6, Quận 3, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH016", "code": "KH016", "name": "Điểm bán Bình Thạnh", "phone": "0909666777", "address": "190 Điện Biên Phủ, Phường 15, Quận Bình Thạnh, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH017", "code": "KH017", "name": "Cửa hàng Thanh Xuân", "phone": "02435551234", "address": "72 Nguyễn Trãi, Phường Thượng Đình, Quận Thanh Xuân, Hà Nội", "status": "Hoạt động" },
+    { "id": "KH018", "code": "KH018", "name": "Đại lý Cần Thơ", "phone": "02923777777", "address": "99 Nguyễn Văn Cừ, Phường An Hòa, Quận Ninh Kiều, TP. Cần Thơ", "status": "Ngưng hoạt động" },
+    { "id": "KH019", "code": "KH019", "name": "Khách hàng F", "phone": "0901777888", "address": "14 Lý Tự Trọng, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH020", "code": "KH020", "name": "Khách hàng G", "phone": "0901888999", "address": "5 Phó Đức Chính, Phường Nguyễn Thái Bình, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH021", "code": "KH021", "name": "Điểm bán Thủ Đức", "phone": "0901999000", "address": "36 Võ Văn Ngân, Phường Linh Chiểu, TP. Thủ Đức, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH022", "code": "KH022", "name": "Cửa hàng Gò Vấp", "phone": "0902111222", "address": "418 Quang Trung, Phường 10, Quận Gò Vấp, TP. Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "KH023", "code": "KH023", "name": "Đại lý Đà Nẵng", "phone": "02363999999", "address": "112 Nguyễn Văn Linh, Phường Nam Dương, Quận Hải Châu, Đà Nẵng", "status": "Hoạt động" },
+    { "id": "KH024", "code": "KH024", "name": "Siêu thị Mini Mart 2", "phone": "02839998877", "address": "220 Cách Mạng Tháng 8, Phường 10, Quận 3, TP. Hồ Chí Minh", "status": "Ngưng hoạt động" },
+    { "id": "KH025", "code": "KH025", "name": "Khách hàng H", "phone": "0902333444", "address": "8 Nam Kỳ Khởi Nghĩa, Phường Bến Nghé, Quận 1, TP. Hồ Chí Minh", "status": "Hoạt động" }
+  ],
+  "contracts": [
+    {
+      "id": "CT-T01",
+      "module": "template",
+      "contractCode": "TMP20082601",
+      "name": "Hợp đồng mẫu hợp tác kinh doanh 2026",
+      "type": "BUSINESS_COOPERATION",
+      "status": "Khởi tạo",
+      "startDate": "02-01-2026",
+      "endDate": "02-01-2028",
+      "description": "Mẫu hợp đồng hợp tác kinh doanh toàn quốc.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "20-12-2025 09:12:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "20-12-2025 09:12:00",
+      "files": [
+        {
+          "name": "hop_dong_hop_tac_kd_2026.pdf",
+          "type": "application/pdf",
+          "size": 18432,
+          "uploadedAt": "20-12-2025 09:12:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "ghi-chu-mau.txt",
+          "type": "text/plain",
+          "size": 420,
+          "uploadedAt": "20-12-2025 09:12:10",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.txt",
+          "textContent": "Ghi chú mẫu hợp tác kinh doanh 2026.\nÁp dụng cho Prototype DMS."
+        }
+      ]
+    },
+    {
+      "id": "CT-T02",
+      "module": "template",
+      "contractCode": "TMP20082602",
+      "name": "Hợp đồng mẫu nguyên tắc miền Nam",
+      "type": "PRINCIPLE",
+      "status": "Đã duyệt",
+      "startDate": "01-02-2026",
+      "endDate": "31-12-2027",
+      "description": "Mẫu hợp đồng nguyên tắc khu vực miền Nam.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "10-01-2026 08:00:00",
+      "updatedBy": "THAO999",
+      "updatedAt": "16-01-2026 11:20:00",
+      "files": [
+        {
+          "name": "hop_dong_nguyen_tac_2026.pdf",
+          "type": "application/pdf",
+          "size": 22144,
+          "uploadedAt": "10-01-2026 08:00:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        }
+      ]
+    },
+    {
+      "id": "CT-T03",
+      "module": "template",
+      "contractCode": "TMP20082603",
+      "name": "Hợp đồng mẫu dịch vụ trưng bày",
+      "type": "SERVICE",
+      "status": "Khởi tạo",
+      "startDate": "05-03-2026",
+      "endDate": "05-03-2027",
+      "description": "Mẫu hợp đồng dịch vụ trưng bày điểm bán.",
+      "createdBy": "THAO999",
+      "createdAt": "01-03-2026 14:22:00",
+      "updatedBy": "THAO999",
+      "updatedAt": "01-03-2026 14:22:00",
+      "files": [
+        {
+          "name": "mau-dich-vu-trung-bay.doc",
+          "type": "application/msword",
+          "size": 36864,
+          "uploadedAt": "01-03-2026 14:22:00",
+          "uploadedBy": "THAO999"
+        },
+        {
+          "name": "phu-luc-dich-vu.pdf",
+          "type": "application/pdf",
+          "size": 15360,
+          "uploadedAt": "01-03-2026 14:23:00",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        }
+      ]
+    },
+    {
+      "id": "CT-T04",
+      "module": "template",
+      "contractCode": "TMP20082604",
+      "name": "Hợp đồng mẫu nhượng quyền 2023",
+      "type": "FRANCHISE",
+      "status": "Hết hạn",
+      "startDate": "01-01-2023",
+      "endDate": "31-12-2023",
+      "description": "Mẫu nhượng quyền thương mại đã hết hạn.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "12-12-2022 08:00:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "12-12-2022 08:00:00",
+      "files": [
+        {
+          "name": "mau-nhuong-quyen-2023.pdf",
+          "type": "application/pdf",
+          "size": 19456,
+          "uploadedAt": "12-12-2022 08:00:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        }
+      ]
+    },
+    {
+      "id": "CT-T05",
+      "module": "template",
+      "contractCode": "TMP20082605",
+      "name": "Hợp đồng mẫu nguyên tắc bị từ chối",
+      "type": "PRINCIPLE",
+      "status": "Từ chối",
+      "startDate": "12-11-2025",
+      "endDate": "12-11-2026",
+      "description": "Bản nháp mẫu nguyên tắc bị từ chối.",
+      "createdBy": "THAO999",
+      "createdAt": "01-11-2025 07:15:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "02-11-2025 10:00:00",
+      "files": [
+        {
+          "name": "mau-nguyen-tac-tu-choi.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 45120,
+          "uploadedAt": "01-11-2025 07:15:00",
+          "uploadedBy": "THAO999"
+        }
+      ]
+    },
+    {
+      "id": "CT-T06",
+      "module": "template",
+      "contractCode": "TMP20082606",
+      "name": "Hợp đồng mẫu dịch vụ đa tệp",
+      "type": "SERVICE",
+      "status": "Đã duyệt",
+      "startDate": "08-08-2025",
+      "endDate": "08-08-2028",
+      "description": "Mẫu dịch vụ kèm PDF, DOCX, TXT và ảnh hợp đồng đã ký.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "01-08-2025 12:00:00",
+      "updatedBy": "THAO999",
+      "updatedAt": "09-08-2025 09:30:00",
+      "files": [
+        {
+          "name": "A.pdf",
+          "type": "application/pdf",
+          "size": 12288,
+          "uploadedAt": "01-08-2025 12:00:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "B.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 28672,
+          "uploadedAt": "01-08-2025 12:01:00",
+          "uploadedBy": "Nhi Pham"
+        },
+        {
+          "name": "C.txt",
+          "type": "text/plain",
+          "size": 180,
+          "uploadedAt": "01-08-2025 12:02:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.txt",
+          "textContent": "Phụ lục text C.txt của hợp đồng mẫu dịch vụ đa tệp."
+        },
+        {
+          "name": "HopDongDaKy.jpg",
+          "extension": "jpg",
+          "type": "image/jpeg",
+          "category": "image",
+          "size": 48200,
+          "uploadedAt": "01-08-2025 12:03:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.jpg",
+          "previewUrl": "assets/files/sample-contract.jpg"
+        },
+        {
+          "name": "ChuKy.png",
+          "extension": "png",
+          "type": "image/png",
+          "category": "image",
+          "size": 31600,
+          "uploadedAt": "01-08-2025 12:04:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.png",
+          "previewUrl": "assets/files/sample-contract.png"
+        }
+      ]
+    },
+    {
+      "id": "CT-T07",
+      "module": "template",
+      "contractCode": "TMP20082607",
+      "name": "Hợp đồng mẫu nhượng quyền 2026",
+      "type": "FRANCHISE",
+      "status": "Khởi tạo",
+      "startDate": "01-01-2026",
+      "endDate": "31-12-2028",
+      "description": "Nháp mẫu nhượng quyền thương mại 2026.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "10-12-2025 18:30:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "10-12-2025 18:30:00",
+      "files": [
+        {
+          "name": "mau-franchise-2026.pdf",
+          "type": "application/pdf",
+          "size": 20480,
+          "uploadedAt": "10-12-2025 18:30:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "dieu-khoan-franchise.doc",
+          "type": "application/msword",
+          "size": 33792,
+          "uploadedAt": "10-12-2025 18:31:00",
+          "uploadedBy": "Nhi Pham"
+        }
+      ]
+    },
+    {
+      "id": "CT-C01",
+      "module": "customer",
+      "contractCode": "CUS20082601",
+      "name": "HĐ hợp tác kinh doanh — Khách hàng A",
+      "type": "BUSINESS_COOPERATION",
+      "status": "Khởi tạo",
+      "customerId": "KH001",
+      "startDate": "10-03-2026",
+      "endDate": "10-03-2027",
+      "description": "Hợp đồng khách hàng A.",
+      "createdBy": "THAO999",
+      "createdAt": "02-03-2026 14:20:01",
+      "updatedBy": "THAO999",
+      "updatedAt": "02-03-2026 14:20:01",
+      "files": [
+        {
+          "name": "hd-khach-hang-a.pdf",
+          "type": "application/pdf",
+          "size": 17408,
+          "uploadedAt": "02-03-2026 14:20:01",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "phu-luc-kh-a.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 24576,
+          "uploadedAt": "02-03-2026 14:21:00",
+          "uploadedBy": "THAO999"
+        },
+        {
+          "name": "ChuKyKhachHang.jpg",
+          "extension": "jpg",
+          "type": "image/jpeg",
+          "category": "image",
+          "size": 48200,
+          "uploadedAt": "02-03-2026 14:22:00",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.jpg",
+          "previewUrl": "assets/files/sample-contract.jpg"
+        }
+      ]
+    },
+    {
+      "id": "CT-C02",
+      "module": "customer",
+      "contractCode": "CUS20082602",
+      "name": "HĐ nguyên tắc — Điểm bán Hà Nội",
+      "type": "PRINCIPLE",
+      "status": "Đã duyệt",
+      "customerId": "KH006",
+      "startDate": "15-06-2025",
+      "endDate": "15-06-2027",
+      "description": "Hợp đồng khách hàng miền Bắc.",
+      "createdBy": "THAO999",
+      "createdAt": "20-05-2025 11:33:18",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "16-06-2025 09:00:00",
+      "files": [
+        {
+          "name": "hd-ha-noi.pdf",
+          "type": "application/pdf",
+          "size": 19840,
+          "uploadedAt": "20-05-2025 11:33:18",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "TrangChuKy.png",
+          "extension": "png",
+          "type": "image/png",
+          "category": "image",
+          "size": 31600,
+          "uploadedAt": "16-06-2025 09:01:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.png",
+          "previewUrl": "assets/files/sample-contract.png"
+        }
+      ]
+    },
+    {
+      "id": "CT-C03",
+      "module": "customer",
+      "contractCode": "CUS20082603",
+      "name": "HĐ dịch vụ — Điểm bán Tân Bình",
+      "type": "SERVICE",
+      "status": "Khởi tạo",
+      "customerId": "KH004",
+      "startDate": "20-02-2026",
+      "endDate": "20-02-2028",
+      "description": "Hợp đồng dịch vụ điểm bán Tân Bình.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "10-02-2026 10:10:10",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "10-02-2026 10:10:10",
+      "files": [
+        {
+          "name": "hd-tan-binh.pdf",
+          "type": "application/pdf",
+          "size": 16384,
+          "uploadedAt": "10-02-2026 10:10:10",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "ghi-chu-tan-binh.txt",
+          "type": "text/plain",
+          "size": 210,
+          "uploadedAt": "10-02-2026 10:11:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.txt",
+          "textContent": "Ghi chú hợp đồng dịch vụ điểm bán Tân Bình."
+        }
+      ]
+    },
+    {
+      "id": "CT-C04",
+      "module": "customer",
+      "contractCode": "CUS20082604",
+      "name": "HĐ nhượng quyền — Đại lý miền Tây",
+      "type": "FRANCHISE",
+      "status": "Đã duyệt",
+      "customerId": "KH009",
+      "startDate": "03-03-2025",
+      "endDate": "03-03-2028",
+      "description": "Hợp đồng nhượng quyền đại lý miền Tây.",
+      "createdBy": "THAO999",
+      "createdAt": "01-03-2025 09:09:09",
+      "updatedBy": "THAO999",
+      "updatedAt": "04-03-2025 08:00:00",
+      "files": [
+        {
+          "name": "hd-mien-tay-franchise.pdf",
+          "type": "application/pdf",
+          "size": 21504,
+          "uploadedAt": "01-03-2025 09:09:09",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "dieu-khoan-mien-tay.doc",
+          "type": "application/msword",
+          "size": 38912,
+          "uploadedAt": "01-03-2025 09:10:00",
+          "uploadedBy": "THAO999"
+        }
+      ]
+    },
+    {
+      "id": "CT-C05",
+      "module": "customer",
+      "contractCode": "CUS20082605",
+      "name": "HĐ nguyên tắc — Mini Mart (từ chối)",
+      "type": "PRINCIPLE",
+      "status": "Từ chối",
+      "customerId": "KH007",
+      "startDate": "12-11-2025",
+      "endDate": "12-11-2026",
+      "description": "Hợp đồng khách hàng Mini Mart bị từ chối.",
+      "createdBy": "THAO999",
+      "createdAt": "01-11-2025 07:15:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "02-11-2025 16:40:00",
+      "files": [
+        {
+          "name": "hd-mini-mart-tu-choi.pdf",
+          "type": "application/pdf",
+          "size": 14720,
+          "uploadedAt": "01-11-2025 07:15:00",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        }
+      ]
+    },
+    {
+      "id": "CT-C06",
+      "module": "customer",
+      "contractCode": "CUS20082606",
+      "name": "HĐ dịch vụ — Khách hàng C (hết hạn)",
+      "type": "SERVICE",
+      "status": "Hết hạn",
+      "customerId": "KH003",
+      "startDate": "01-06-2022",
+      "endDate": "01-06-2023",
+      "description": "Hợp đồng khách hàng C đã hết hạn.",
+      "createdBy": "Nhi Pham",
+      "createdAt": "20-05-2022 13:00:00",
+      "updatedBy": "Nhi Pham",
+      "updatedAt": "20-05-2022 13:00:00",
+      "files": [
+        {
+          "name": "hd-khach-hang-c-cu.pdf",
+          "type": "application/pdf",
+          "size": 13312,
+          "uploadedAt": "20-05-2022 13:00:00",
+          "uploadedBy": "Nhi Pham",
+          "url": "assets/files/sample-contract.pdf"
+        }
+      ]
+    },
+    {
+      "id": "CT-C07",
+      "module": "customer",
+      "contractCode": "CUS20082607",
+      "name": "HĐ hợp tác — Siêu thị Co.op Food",
+      "type": "BUSINESS_COOPERATION",
+      "status": "Đã duyệt",
+      "customerId": "KH015",
+      "startDate": "01-07-2025",
+      "endDate": "01-07-2027",
+      "description": "Hợp đồng chuỗi bán lẻ Co.op Food.",
+      "createdBy": "THAO999",
+      "createdAt": "20-06-2025 15:44:22",
+      "updatedBy": "THAO999",
+      "updatedAt": "02-07-2025 10:12:00",
+      "files": [
+        {
+          "name": "hd-coop-food.pdf",
+          "type": "application/pdf",
+          "size": 25600,
+          "uploadedAt": "20-06-2025 15:44:22",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.pdf"
+        },
+        {
+          "name": "phu-luc-coop.docx",
+          "type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size": 30720,
+          "uploadedAt": "20-06-2025 15:45:00",
+          "uploadedBy": "THAO999"
+        },
+        {
+          "name": "ghi-chu-coop.txt",
+          "type": "text/plain",
+          "size": 160,
+          "uploadedAt": "20-06-2025 15:46:00",
+          "uploadedBy": "THAO999",
+          "url": "assets/files/sample-contract.txt",
+          "textContent": "Ghi chú hợp đồng Co.op Food — Prototype DMS."
+        }
+      ]
+    }
+  ]
+}

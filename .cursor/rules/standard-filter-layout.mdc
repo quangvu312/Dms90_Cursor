@@ -1,0 +1,30 @@
+---
+description: STANDARD FILTER LAYOUT — fields trên 1 hàng, Làm mới/Tìm kiếm hàng dưới căn phải. Áp dụng khi tạo/sửa Filter List trong mockup_dms90.
+globs: mockup_dms90/**/*.{tsx,ts,js,css}
+alwaysApply: false
+---
+
+# STANDARD FILTER LAYOUT
+
+Khi tạo hoặc sửa Filter trên màn hình List trong `mockup_dms90`:
+
+1. Filter nằm trong Card riêng (`dms-filter-card` / `DMS.render('FilterPanel')`).
+2. Có title "Tìm kiếm theo" nếu màn hình dùng pattern này.
+3. Các điều kiện Filter nằm trên cùng một row/grid responsive (`.dms-filter-grid`).
+4. Action button nằm row dưới, căn phải (`.dms-filter-panel__actions` ngoài grid fields).
+5. Thứ tự button: **Làm mới** → **Tìm kiếm**.
+6. Không tự đổi height/style Input, Select, DatePicker, Button.
+7. Khi thêm field mới, ưu tiên reflow grid — không ép field quá nhỏ.
+8. Không tự redesign Filter nếu chưa có requirement.
+9. Module đã có Filter chuẩn thì phải reuse layout/component chuẩn.
+
+```text
+[Field…] [Field…] [Field…] [Field…]
+
+                     [Làm mới] [Tìm kiếm]
+```
+
+Không nhét button cùng hàng với filter fields khi follow pattern này.
+
+Tài liệu: `Docs/design-system/component-guideline.md` (mục STANDARD FILTER LAYOUT).
+Reference: `mockup_dms90/styles/filter-panel.css`, `components/FilterPanel`, module Hợp đồng.

@@ -1,0 +1,10 @@
+{
+  "items": [
+    { "id": "1", "code": "SG_PRIORITY", "name": "Priority", "status": "ACTIVE", "createdAt": "01-01-2024 08:00:00", "updatedAt": "15-06-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "2", "code": "SG_PLATINUM", "name": "Platinum", "status": "ACTIVE", "createdAt": "01-01-2024 08:00:00", "updatedAt": "15-06-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "3", "code": "SG_DIAMOND", "name": "Diamond", "status": "ACTIVE", "createdAt": "01-01-2024 08:00:00", "updatedAt": "15-06-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "4", "code": "SG_PRIME", "name": "Prime", "status": "ACTIVE", "createdAt": "01-01-2024 08:00:00", "updatedAt": "15-06-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "5", "code": "SG_VIP", "name": "Nhóm VIP", "status": "INACTIVE", "createdAt": "10-03-2024 09:00:00", "updatedAt": "01-05-2025 14:00:00", "createdBy": "admin", "updatedBy": "VUBA" }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 5 }
+}

@@ -1,0 +1,11 @@
+{
+  "items": [
+    { "id": "1", "code": "NC", "name": "Ngoài chợ", "status": "INACTIVE", "createdAt": "15-07-2026 14:44:18", "updatedAt": "15-07-2026 14:44:18", "createdBy": "vuba", "updatedBy": "" },
+    { "id": "2", "code": "HN", "name": "Hẻm, Ngõ, Ngách", "status": "ACTIVE", "createdAt": "25-10-2025 10:18:42", "updatedAt": "20-11-2025 16:56:10", "createdBy": "admin", "updatedBy": "vann1ho" },
+    { "id": "3", "code": "TT", "name": "Trung tâm thương mại", "status": "ACTIVE", "createdAt": "25-10-2025 10:18:32", "updatedAt": "25-10-2025 10:18:32", "createdBy": "admin", "updatedBy": "" },
+    { "id": "4", "code": "TC", "name": "Trong chợ", "status": "ACTIVE", "createdAt": "25-10-2025 10:18:20", "updatedAt": "25-10-2025 10:18:20", "createdBy": "admin", "updatedBy": "" },
+    { "id": "5", "code": "MT", "name": "Mặt tiền", "status": "ACTIVE", "createdAt": "25-10-2025 10:18:09", "updatedAt": "25-10-2025 10:18:09", "createdBy": "admin", "updatedBy": "" },
+    { "id": "6", "code": "KTM", "name": "Khu thương mại", "status": "ACTIVE", "createdAt": "25-10-2025 10:17:55", "updatedAt": "25-10-2025 10:17:55", "createdBy": "admin", "updatedBy": "" }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 6 }
+}

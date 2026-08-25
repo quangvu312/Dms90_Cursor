@@ -1,0 +1,172 @@
+{
+  "customerGroups": [
+    { "id": "SG_PRIORITY", "code": "SG_PRIORITY", "name": "Priority" },
+    { "id": "SG_DIAMOND", "code": "SG_DIAMOND", "name": "Diamond" },
+    { "id": "SG_PRIME", "code": "SG_PRIME", "name": "Prime" },
+    { "id": "SG_PLATINUM", "code": "SG_PLATINUM", "name": "Platinum" },
+    { "id": "SG_GOLD", "code": "SG_GOLD", "name": "Gold" },
+    { "id": "SG_SILVER", "code": "SG_SILVER", "name": "Silver" },
+    { "id": "SG_BRONZE", "code": "SG_BRONZE", "name": "Bronze" },
+    { "id": "SG_STANDARD", "code": "SG_STANDARD", "name": "Standard" },
+    { "id": "SG_VIP", "code": "SG_VIP", "name": "VIP" },
+    { "id": "SG_NEW", "code": "SG_NEW", "name": "New Outlet" },
+    { "id": "SG_KEY", "code": "SG_KEY", "name": "Key Account" },
+    { "id": "SG_WHOLESALE", "code": "SG_WHOLESALE", "name": "Wholesale" }
+  ],
+  "catalog": [
+    {
+      "sku": "102296",
+      "name": "F25-Bộ 2 Anlene Total 10 Vani 800G ＆ 400G_HKM",
+      "unit": "Hộp",
+      "priceAfterVat": 485000,
+      "status": "ACTIVE",
+      "categoryPath": "Thực phẩm bổ sung > Sữa bột > Anlene",
+      "businessUnit": "FMCG"
+    },
+    {
+      "sku": "224035",
+      "name": "Kẹo Gừng Gingerbon _ Gingerbon Ginger Candy 20 Gói X 144 G",
+      "unit": "Gói",
+      "priceAfterVat": 125000,
+      "status": "ACTIVE",
+      "categoryPath": "Thức ăn > Đồ ăn nhẹ > Kẹo",
+      "businessUnit": "FMCG"
+    },
+    {
+      "sku": "188332",
+      "name": "Bánh que Pocky Kem Matcha Trà Xanh 35g x 5 Hộp",
+      "unit": "Hộp",
+      "priceAfterVat": 89000,
+      "status": "INACTIVE",
+      "categoryPath": "Thức ăn > Đồ ăn nhẹ > Bánh quy",
+      "businessUnit": "FMCG"
+    },
+    {
+      "sku": "SP0103827398",
+      "name": "sản phẩm A1",
+      "unit": "Hộp",
+      "priceAfterVat": 150000,
+      "status": "ACTIVE",
+      "categoryPath": "Thực phẩm bổ sung > Sữa bột",
+      "businessUnit": "FMCG"
+    },
+    {
+      "sku": "SP0103827399",
+      "name": "sản phẩm A2",
+      "unit": "Hộp",
+      "priceAfterVat": 210000,
+      "status": "ACTIVE",
+      "categoryPath": "Thực phẩm bổ sung > Sữa bột",
+      "businessUnit": "FMCG"
+    },
+    {
+      "sku": "SP0103827400",
+      "name": "sản phẩm A3",
+      "unit": "Hộp",
+      "priceAfterVat": 99000,
+      "status": "ACTIVE",
+      "categoryPath": "Thức ăn > Đồ ăn nhẹ",
+      "businessUnit": "FMCG"
+    }
+  ],
+  "items": [
+    {
+      "id": "sp-001",
+      "code": "BG-DEFAULT",
+      "name": "Bảng giá mặc định toàn quốc",
+      "fromDate": "01-01-2026",
+      "toDate": "31-12-2026",
+      "applyObject": "Tất cả",
+      "customerGroups": [],
+      "status": "APPROVED",
+      "createdAt": "02-01-2026 09:15:00",
+      "createdBy": "thao999",
+      "updatedAt": "02-01-2026 09:16:12",
+      "updatedBy": "thao999",
+      "products": [
+        { "sku": "102296", "name": "F25-Bộ 2 Anlene Total 10 Vani 800G ＆ 400G_HKM", "unit": "Hộp", "priceAfterVat": 485000, "discount": 0, "status": "ACTIVE" },
+        { "sku": "224035", "name": "Kẹo Gừng Gingerbon _ Gingerbon Ginger Candy 20 Gói X 144 G", "unit": "Gói", "priceAfterVat": 125000, "discount": 5, "status": "ACTIVE" }
+      ],
+      "history": [
+        { "updatedAt": "02-01-2026 09:16:12", "updatedBy": "thao999", "field": "Trạng thái", "oldValue": "Khởi tạo", "newValue": "Đã duyệt" }
+      ]
+    },
+    {
+      "id": "sp-002",
+      "code": "BG-PRIORITY",
+      "name": "Bảng giá Priority Q3",
+      "fromDate": "01-07-2026",
+      "toDate": "30-09-2026",
+      "applyObject": "Nhóm khách hàng",
+      "customerGroups": ["Priority"],
+      "status": "APPROVED",
+      "createdAt": "15-06-2026 10:22:00",
+      "createdBy": "thao999",
+      "updatedAt": "16-06-2026 08:40:11",
+      "updatedBy": "thao999",
+      "products": [
+        { "sku": "102296", "name": "F25-Bộ 2 Anlene Total 10 Vani 800G ＆ 400G_HKM", "unit": "Hộp", "priceAfterVat": 485000, "discount": 12.5, "status": "ACTIVE" },
+        { "sku": "SP0103827398", "name": "sản phẩm A1", "unit": "Hộp", "priceAfterVat": 150000, "discount": 35, "status": "ACTIVE" }
+      ],
+      "history": [
+        { "updatedAt": "16-06-2026 08:40:11", "updatedBy": "thao999", "field": "Trạng thái", "oldValue": "Khởi tạo", "newValue": "Đã duyệt" }
+      ]
+    },
+    {
+      "id": "sp-003",
+      "code": "BG-DIAMOND",
+      "name": "Bảng giá Diamond",
+      "fromDate": "13-08-2026",
+      "toDate": "31-12-2026",
+      "applyObject": "Nhóm khách hàng",
+      "customerGroups": ["Diamond", "Prime"],
+      "status": "DRAFT",
+      "createdAt": "10-08-2026 14:05:33",
+      "createdBy": "thao999",
+      "updatedAt": "10-08-2026 14:05:33",
+      "updatedBy": "",
+      "products": [
+        { "sku": "224035", "name": "Kẹo Gừng Gingerbon _ Gingerbon Ginger Candy 20 Gói X 144 G", "unit": "Gói", "priceAfterVat": 125000, "discount": 8, "status": "ACTIVE" },
+        { "sku": "SP0103827399", "name": "sản phẩm A2", "unit": "Hộp", "priceAfterVat": 210000, "discount": 40, "status": "ACTIVE" }
+      ],
+      "history": []
+    },
+    {
+      "id": "sp-004",
+      "code": "BG-PLATINUM",
+      "name": "Bảng giá Platinum Tết",
+      "fromDate": "01-01-2026",
+      "toDate": "28-02-2026",
+      "applyObject": "Nhóm khách hàng",
+      "customerGroups": ["Platinum"],
+      "status": "CANCELLED",
+      "createdAt": "20-12-2025 11:00:00",
+      "createdBy": "dmsdevho",
+      "updatedAt": "05-01-2026 09:12:44",
+      "updatedBy": "thao999",
+      "products": [
+        { "sku": "SP0103827400", "name": "sản phẩm A3", "unit": "Hộp", "priceAfterVat": 99000, "discount": 50, "status": "ACTIVE" }
+      ],
+      "history": [
+        { "updatedAt": "05-01-2026 09:12:44", "updatedBy": "thao999", "field": "Trạng thái", "oldValue": "Đã duyệt", "newValue": "Đã hủy" }
+      ]
+    },
+    {
+      "id": "sp-005",
+      "code": "vutest4",
+      "name": "vutest4",
+      "fromDate": "05-08-2026",
+      "toDate": "31-08-2026",
+      "applyObject": "Nhóm khách hàng",
+      "customerGroups": ["Priority"],
+      "status": "DRAFT",
+      "createdAt": "03-08-2026 08:50:51",
+      "createdBy": "thao999",
+      "updatedAt": "03-08-2026 08:50:51",
+      "updatedBy": "",
+      "products": [],
+      "history": []
+    }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 5 }
+}

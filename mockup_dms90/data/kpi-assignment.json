@@ -1,0 +1,93 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 4 },
+  "items": [
+    {
+      "id": "KPI000166",
+      "code": "KPI000166",
+      "name": "KPI - 08/2026 - Doanh thu",
+      "periodType": "MONTH",
+      "periodLabel": "08/2026",
+      "fromDate": "01-08-2026",
+      "toDate": "31-08-2026",
+      "objectType": "SM",
+      "objectLabel": "Nhân viên bán hàng",
+      "indicatorCodes": ["MONTHLY_SELL_OUT", "DAILY_SELL_OUT", "NEW_ORDER"],
+      "status": "APPROVED",
+      "createdAt": "01-08-2026 09:12:00",
+      "createdBy": "VUBA",
+      "updatedAt": "02-08-2026 10:00:00",
+      "updatedBy": "VUBA",
+      "assignments": [
+        { "empId": "NV001", "empCode": "NV001", "empName": "Nguyễn Văn A", "targets": { "MONTHLY_SELL_OUT": 100000000, "DAILY_SELL_OUT": 5000000, "NEW_ORDER": 40 } },
+        { "empId": "NV002", "empCode": "NV002", "empName": "Trần Thị B", "targets": { "MONTHLY_SELL_OUT": 80000000, "DAILY_SELL_OUT": 4000000, "NEW_ORDER": 30 } }
+      ],
+      "managers": [
+        { "empCode": "NV005", "empName": "Hoàng Văn C", "position": "Quản lý khu vực", "targets": { "MONTHLY_SELL_OUT": 180000000, "DAILY_SELL_OUT": 9000000, "NEW_ORDER": 70 } }
+      ]
+    },
+    {
+      "id": "KPI000004",
+      "code": "KPI000004",
+      "name": "KPI - 08/2026 - Viếng thăm",
+      "periodType": "MONTH",
+      "periodLabel": "08/2026",
+      "fromDate": "01-08-2026",
+      "toDate": "31-08-2026",
+      "objectType": "SM",
+      "objectLabel": "Nhân viên bán hàng",
+      "indicatorCodes": ["SUCCESSFUL_CALL", "PENETRATION"],
+      "status": "INIT",
+      "createdAt": "05-08-2026 08:00:00",
+      "createdBy": "VUBA",
+      "updatedAt": "05-08-2026 08:00:00",
+      "updatedBy": "VUBA",
+      "assignments": [
+        { "empId": "NV001", "empCode": "NV001", "empName": "Nguyễn Văn A", "targets": { "SUCCESSFUL_CALL": 85, "PENETRATION": 70 } }
+      ],
+      "managers": [
+        { "empCode": "NV005", "empName": "Hoàng Văn C", "position": "Quản lý khu vực", "targets": { "SUCCESSFUL_CALL": 85, "PENETRATION": 70 } }
+      ]
+    },
+    {
+      "id": "KPI000003",
+      "code": "KPI000003",
+      "name": "KPI - 07/2026 - SKU/Đơn hàng",
+      "periodType": "MONTH",
+      "periodLabel": "07/2026",
+      "fromDate": "01-07-2026",
+      "toDate": "31-07-2026",
+      "objectType": "SM",
+      "objectLabel": "Nhân viên bán hàng",
+      "indicatorCodes": ["SKU_ORDER"],
+      "status": "CANCELLED",
+      "cancelReason": "Điều chỉnh bộ chỉ tiêu",
+      "createdAt": "01-07-2026 09:00:00",
+      "createdBy": "admin",
+      "updatedAt": "10-07-2026 14:00:00",
+      "updatedBy": "VUBA",
+      "assignments": [
+        { "empId": "NV002", "empCode": "NV002", "empName": "Trần Thị B", "targets": { "SKU_ORDER": 3 }, "skus": [{ "sku": "102296", "name": "Anlene Total 10 Vani 800G", "unit": "Hộp" }] }
+      ],
+      "managers": []
+    },
+    {
+      "id": "KPI000002",
+      "code": "KPI000002",
+      "name": "KPI dài tên để test overflow — Bộ chỉ tiêu doanh thu miền Nam quý 3 năm 2026",
+      "periodType": "MONTH",
+      "periodLabel": "09/2026",
+      "fromDate": "01-09-2026",
+      "toDate": "30-09-2026",
+      "objectType": "SM",
+      "objectLabel": "Nhân viên bán hàng",
+      "indicatorCodes": ["MONTHLY_SELL_OUT"],
+      "status": "INIT",
+      "createdAt": "12-08-2026 11:20:00",
+      "createdBy": "VUBA",
+      "updatedAt": "12-08-2026 11:20:00",
+      "updatedBy": "VUBA",
+      "assignments": [],
+      "managers": []
+    }
+  ]
+}

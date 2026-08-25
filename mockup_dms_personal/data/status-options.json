@@ -1,0 +1,12 @@
+{
+  "orderStatus": [
+    { "value": "INIT", "label": "Khởi tạo" },
+    { "value": "APPROVED", "label": "Đã duyệt" },
+    { "value": "CANCELLED", "label": "Đã hủy" }
+  ],
+  "importStatus": [
+    { "value": "NOT_IMPORTED", "label": "Chưa nhập hàng" },
+    { "value": "IMPORTING", "label": "Đang nhập hàng" },
+    { "value": "IMPORTED", "label": "Nhập hàng hoàn tất" }
+  ]
+}

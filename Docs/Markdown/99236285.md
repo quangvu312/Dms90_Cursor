@@ -1,0 +1,7 @@
+| # | NỘI DUNG | MÔ TẢ | GHI CHÚ |
+| --- | --- | --- | --- |
+| 1 | Vigo sử dụng những thuật ngữ chung cho cả hệ thống | 1/ Không dùng Nhân viên bán hàng mà dùng **"Nhân viên kinh doanh"**  2/ Không dùng Điểm bán mà dùng **"Khách hàng"**  3/ Không dùng NPP mà dùng từ **"Đại lý"** |  |
+| 2 | Màu chủ đạo của App bán hàng |  |  |
+| 3 | **Template export** | **Rule chung trên hệ thống Hương Thủy**  1.1 Template Export Excel   * Template export excel sẽ có format như sau:  * + Font size toàn bộ file: 12   + Font chữ toàn bộ file: Aptos Narrow   + Font size tiêu đề báo cáo: 20   + Màu tiêu đề bảng dữ liệu: #32CD32   + Màu tiêu đề chữ: #000000 * Nội dung chung temple   + Tên công ty     - **CÔNG TY TNHH TM DV XNK THE VIGO**   + Số điện thoại công ty     - 028 6272 9839 - 0902 805 286   + Địa chỉ công ty     - Đ/c HCM: Số 3 Đường số 33, Phường An Khánh, Thành phố Hồ Chí Minh.     - Đ/c HN: Tầng 4, Tòa nhà Green Diamond, Số 93 Láng Hạ, Phường Đống Đa, TP Hà Nội.   + Người lập báo cáo: Thông tin tên tài khoản người dùng xuất báo cáo   + Thời gian xuất báo cáo: Thời gian xuất file báo cáo thành công, format: DD-MM-YYYY HH:MM:SS   + Tên báo cáo: Tùy từng template   + Thời gian để xuất dữ liệu báo cáo: Từ ngày - Đến ngày: DD/MM/YYYY - DD/MM/YYYY |  |
+
+**DANH MỤC TÀI LIỆU**

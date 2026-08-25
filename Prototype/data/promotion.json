@@ -1,0 +1,437 @@
+{
+  "products": [
+    { "code": "102296", "name": "F25-Bộ 2 Anlene Total 10 Vani 800G" },
+    { "code": "102290", "name": "TPBS Anlene Total 10 Hương Vani 800G" },
+    { "code": "224035", "name": "Kẹo Gừng Gingerbon" },
+    { "code": "KJ001", "name": "Kinder Joy 20G" },
+    { "code": "KC001", "name": "Kinder Creamy 2x31G" }
+  ],
+  "groups": [
+    { "code": "PG001", "name": "Nhóm sản phẩm A" },
+    { "code": "PG002", "name": "Nhóm sản phẩm B" }
+  ],
+  "distributors": [
+    { "code": "NPP001", "name": "NPP Miền Nam 1" },
+    { "code": "NPP002", "name": "NPP Miền Bắc 1" },
+    { "code": "ERPHCM", "name": "ERP_HCM" }
+  ],
+  "stores": [
+    { "code": "DB000001", "name": "Tạp hóa Minh Anh" },
+    { "code": "DB000002", "name": "Siêu thị mini Hồng Hà" }
+  ],
+  "channels": [
+    { "code": "GT", "name": "GENERAL TRADE" },
+    { "code": "MT", "name": "MODERN TRADE" }
+  ],
+  "areas": [
+    { "code": "HCM1", "name": "HCM 1" },
+    { "code": "HN1", "name": "Hà Nội 1" }
+  ],
+  "storeTypes": [
+    { "code": "ST_TAPHOA", "name": "Tạp hóa" },
+    { "code": "ST_SIEUTHI", "name": "Siêu thị mini" }
+  ],
+  "storeRanks": [
+    { "code": "RANK1", "name": "Hạng Vàng (Class A / Gold)" },
+    { "code": "RANK2", "name": "Hạng Bạc (Class B / Silver)" }
+  ],
+  "storeLocations": [
+    { "code": "MT", "name": "Mặt tiền" },
+    { "code": "TC", "name": "Trong chợ" }
+  ],
+  "warehouses": [
+    { "code": "WH_PROMO", "name": "Kho khuyến mãi" }
+  ],
+  "items": [
+    {
+      "id": "p-init-1",
+      "code": "KM26081301",
+      "name": "CTKM draft chiết khấu đơn hàng",
+      "kind": "ON_TOP",
+      "status": "INIT",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 1,
+      "startAt": "20-08-2026 00:00:00",
+      "endAt": "31-08-2026 23:59:00",
+      "terms": "Chiết khấu 5% trên tổng đơn khi giá trị đơn >= 500.000.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "AMT_ORDER", "operator": "GTE", "amount": 500000, "products": [], "groups": [], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "PERCENT", "percent": 5, "maxAmount": 50000, "calcOn": "totalAmountOfOrder", "amount": null, "qty": null, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "" }
+      ],
+      "targets": [],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "Thảo BA",
+      "createdAt": "13-08-2026 09:10:00",
+      "updatedAt": "13-08-2026 09:10:00",
+      "statusHistory": [
+        { "at": "13-08-2026 09:10:00", "status": "INIT", "by": "Thảo BA" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-pending-1",
+      "code": "KM26081302",
+      "name": "CTKM chờ duyệt tặng hàng danh sách",
+      "kind": "NORMAL",
+      "status": "PENDING",
+      "salesType": "SELL_IN",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 2,
+      "startAt": "15-08-2026 00:00:00",
+      "endAt": "15-09-2026 23:59:00",
+      "terms": "Mua danh sách SKU Anlene, tặng Kinder Joy.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "IN_SKUS", "operator": "GTE", "amount": null, "products": ["102296", "102290"], "groups": [], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "GIFT_LIST", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 1, "maxSlot": 1, "products": ["KJ001"], "flatPrice": null, "deductRule": "CONDITION" }
+      ],
+      "targets": [
+        { "id": "t1", "type": "DISTRIBUTOR", "codes": ["NPP001"] }
+      ],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "SLOT",
+      "budget": { "program": true, "area": false, "distributor": false, "perStore": false, "programAmount": 1000 },
+      "createdBy": "Thảo BA",
+      "createdAt": "12-08-2026 14:00:00",
+      "updatedAt": "12-08-2026 16:20:00",
+      "statusHistory": [
+        { "at": "12-08-2026 14:00:00", "status": "INIT", "by": "Thảo BA" },
+        { "at": "12-08-2026 16:20:00", "status": "PENDING", "by": "Thảo BA" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-up-1",
+      "code": "KM26082001",
+      "name": "CTKM sắp diễn ra giảm tiền",
+      "kind": "NORMAL",
+      "status": "UPCOMING",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 3,
+      "startAt": "20-08-2026 00:00:00",
+      "endAt": "31-08-2026 23:59:00",
+      "terms": "Giảm 20.000 trên đơn khi tổng đơn >= 300.000.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "AMT_ORDER", "operator": "GTE", "amount": 300000, "products": [], "groups": [], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "FIXED", "percent": null, "maxAmount": null, "calcOn": "totalAmountOfOrder", "amount": 20000, "qty": null, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "" }
+      ],
+      "targets": [],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "AMOUNT",
+      "budget": { "program": true, "area": false, "distributor": true, "perStore": false, "programAmount": 50000000 },
+      "createdBy": "AdminHO",
+      "createdAt": "10-08-2026 08:00:00",
+      "updatedAt": "11-08-2026 10:00:00",
+      "statusHistory": [
+        { "at": "10-08-2026 08:00:00", "status": "INIT", "by": "AdminHO" },
+        { "at": "11-08-2026 10:00:00", "status": "UPCOMING", "by": "AdminHO" }
+      ],
+      "versions": [{ "at": "11-08-2026 10:00:00", "by": "AdminHO", "note": "Phê duyệt" }]
+    },
+    {
+      "id": "p-run-1",
+      "code": "MIX26T07KM018",
+      "name": "Fer-Mua 24 tặng 3 Kinder Joy và 6 Kinder Creamy(T12.26)",
+      "kind": "NORMAL",
+      "status": "RUNNING",
+      "storyId": "ST002",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": true,
+      "priority": 1,
+      "startAt": "22-07-2026 11:30:00",
+      "endAt": "31-07-2027 23:59:01",
+      "terms": "Mua 24 sản phẩm bất kỳ trong danh sách, tặng 3 Kinder Joy.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "QTY_GROUP", "operator": "GTE", "amount": null, "products": ["102296", "102290", "224035"], "groups": [], "qty": 24 }
+      ],
+      "actions": [
+        { "id": "a1", "type": "GIFT_LIST", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 3, "maxSlot": 1, "products": ["KJ001"], "flatPrice": null, "deductRule": "CONDITION" }
+      ],
+      "targets": [],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "AdminHO",
+      "createdAt": "22-07-2026 11:23:11",
+      "updatedAt": "22-07-2026 11:30:00",
+      "statusHistory": [
+        { "at": "22-07-2026 11:23:11", "status": "INIT", "by": "AdminHO" },
+        { "at": "22-07-2026 11:30:00", "status": "RUNNING", "by": "AdminHO" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-run-2",
+      "code": "K20260813140701",
+      "name": "[SELL_IN] Mua 1 tặng cùng loại và chiết khấu",
+      "kind": "ON_TOP",
+      "status": "RUNNING",
+      "salesType": "SELL_IN",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 2,
+      "startAt": "13-08-2026 14:07:00",
+      "endAt": "31-12-2026 23:59:00",
+      "terms": "Ontop: tặng cùng loại + chiết khấu.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "QTY_EACH", "operator": "GTE", "amount": null, "products": ["102296"], "groups": [], "qty": 1 }
+      ],
+      "actions": [
+        { "id": "a1", "type": "GIFT_SAME", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 1, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "CONDITION" },
+        { "id": "a2", "type": "PERCENT", "percent": 3, "maxAmount": 30000, "calcOn": "totalAmountOfSkus", "amount": null, "qty": null, "maxSlot": 1, "products": ["102296"], "flatPrice": null, "deductRule": "" }
+      ],
+      "targets": [
+        { "id": "t1", "type": "CHANNEL", "codes": ["GT"] }
+      ],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "Thảo BA",
+      "createdAt": "13-08-2026 14:05:00",
+      "updatedAt": "13-08-2026 14:07:00",
+      "statusHistory": [
+        { "at": "13-08-2026 14:05:00", "status": "INIT", "by": "Thảo BA" },
+        { "at": "13-08-2026 14:07:00", "status": "RUNNING", "by": "Thảo BA" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-pause-1",
+      "code": "KM2607PAUSE",
+      "name": "CTKM tạm ngưng đồng giá",
+      "kind": "ON_TOP",
+      "status": "PAUSED",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 5,
+      "startAt": "01-07-2026 00:00:00",
+      "endAt": "31-07-2026 23:59:00",
+      "terms": "Đồng giá sản phẩm Anlene.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "IN_SKUS", "operator": "GTE", "amount": null, "products": ["102290"], "groups": [], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "FLAT", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 1, "maxSlot": 1, "products": ["102290"], "flatPrice": 189000, "deductRule": "CONDITION" }
+      ],
+      "targets": [
+        { "id": "t1", "type": "STORE_TYPE", "codes": ["ST_TAPHOA"] }
+      ],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "AdminHO",
+      "createdAt": "01-07-2026 08:00:00",
+      "updatedAt": "15-07-2026 09:00:00",
+      "statusHistory": [
+        { "at": "01-07-2026 08:00:00", "status": "INIT", "by": "AdminHO" },
+        { "at": "02-07-2026 08:00:00", "status": "RUNNING", "by": "AdminHO" },
+        { "at": "15-07-2026 09:00:00", "status": "PAUSED", "by": "AdminHO" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-reject-1",
+      "code": "KM2608REJ",
+      "name": "CTKM từ chối nhóm sản phẩm",
+      "kind": "NORMAL",
+      "status": "REJECTED",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 9,
+      "startAt": "01-08-2026 00:00:00",
+      "endAt": "10-08-2026 23:59:00",
+      "terms": "Áp dụng nhóm sản phẩm A.",
+      "logicCondition": "OR",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "IN_GROUPS", "operator": "GTE", "amount": null, "products": [], "groups": ["PG001"], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "PERCENT", "percent": 10, "maxAmount": 100000, "calcOn": "totalAmountOfOrder", "amount": null, "qty": null, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "" }
+      ],
+      "targets": [],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "Thảo BA",
+      "createdAt": "01-08-2026 08:00:00",
+      "updatedAt": "02-08-2026 11:00:00",
+      "statusHistory": [
+        { "at": "01-08-2026 08:00:00", "status": "INIT", "by": "Thảo BA" },
+        { "at": "02-08-2026 11:00:00", "status": "REJECTED", "by": "AdminHO" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-end-1",
+      "code": "VCSA123",
+      "name": "Khuyến mãi tháng 7",
+      "kind": "ON_TOP",
+      "status": "ENDED",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": 4,
+      "startAt": "23-07-2026 13:37:45",
+      "endAt": "31-07-2026 13:37:45",
+      "terms": "Chương trình tháng 7 đã kết thúc.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [
+        { "id": "c1", "type": "AMT_GROUP", "operator": "GTE", "amount": 1000000, "products": ["102296"], "groups": [], "qty": null }
+      ],
+      "actions": [
+        { "id": "a1", "type": "PERCENT", "percent": 8, "maxAmount": 80000, "calcOn": "totalAmountOfSkusByMultiple", "amount": null, "qty": null, "maxSlot": 1, "products": ["102296"], "flatPrice": null, "deductRule": "" }
+      ],
+      "targets": [
+        { "id": "t1", "type": "AREA", "codes": ["HCM1"] }
+      ],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "AMOUNT",
+      "budget": { "program": true, "area": true, "distributor": false, "perStore": true, "programAmount": 20000000 },
+      "createdBy": "Vũ BA",
+      "createdAt": "16-07-2026 13:40:33",
+      "updatedAt": "31-07-2026 13:38:00",
+      "statusHistory": [
+        { "at": "16-07-2026 13:40:33", "status": "INIT", "by": "Vũ BA" },
+        { "at": "23-07-2026 13:37:45", "status": "RUNNING", "by": "Vũ BA" },
+        { "at": "31-07-2026 13:38:00", "status": "ENDED", "by": "system" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-step-1",
+      "code": "KM2608STEP",
+      "name": "CTKM bậc thang mua càng nhiều tặng càng nhiều",
+      "kind": "NORMAL",
+      "status": "INIT",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "SIDE_STEP",
+      "lotDate": false,
+      "priority": 2,
+      "startAt": "01-09-2026 00:00:00",
+      "endAt": "30-09-2026 23:59:00",
+      "terms": "Bậc thang: gói 1 mua 6 tặng 1; gói 2 mua 12 tặng 3.",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [],
+      "actions": [],
+      "targets": [],
+      "buyProducts": ["102296", "102290"],
+      "packages": [
+        {
+          "id": "pkg1",
+          "conditions": [
+            { "id": "pc1", "type": "QTY_GROUP", "operator": "GTE", "amount": null, "products": ["102296", "102290"], "groups": [], "qty": 6 }
+          ],
+          "actions": [
+            { "id": "pa1", "type": "GIFT_SAME", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 1, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "CONDITION" }
+          ]
+        },
+        {
+          "id": "pkg2",
+          "conditions": [
+            { "id": "pc2", "type": "QTY_GROUP", "operator": "GTE", "amount": null, "products": ["102296", "102290"], "groups": [], "qty": 12 }
+          ],
+          "actions": [
+            { "id": "pa2", "type": "GIFT_SAME", "percent": null, "maxAmount": null, "calcOn": "", "amount": null, "qty": 3, "maxSlot": 1, "products": [], "flatPrice": null, "deductRule": "CONDITION" }
+          ]
+        }
+      ],
+      "budgetType": "SLOT",
+      "budget": { "program": true, "area": false, "distributor": false, "perStore": false, "programAmount": 500 },
+      "createdBy": "Thảo BA",
+      "createdAt": "13-08-2026 10:00:00",
+      "updatedAt": "13-08-2026 10:00:00",
+      "statusHistory": [
+        { "at": "13-08-2026 10:00:00", "status": "INIT", "by": "Thảo BA" }
+      ],
+      "versions": []
+    },
+    {
+      "id": "p-long-1",
+      "code": "KM-LONG-TEXT-2026-PROMO-NAME",
+      "name": "Chương trình khuyến mãi siêu dài để kiểm tra overflow bảng và tooltip tên CTKM khi người dùng đặt tên rất dài trên màn danh sách",
+      "kind": "ON_TOP",
+      "status": "INIT",
+      "salesType": "SELL_OUT",
+      "warehouse": "WH_PROMO",
+      "calcMethod": "NORMAL",
+      "lotDate": false,
+      "priority": "",
+      "startAt": "01-10-2026 00:00:00",
+      "endAt": "31-10-2026 23:59:00",
+      "terms": "",
+      "logicCondition": "AND",
+      "logicAction": "AND",
+      "logicTarget": "AND",
+      "conditions": [],
+      "actions": [],
+      "targets": [],
+      "packages": [],
+      "buyProducts": [],
+      "budgetType": "UNLIMITED",
+      "budget": { "program": false, "area": false, "distributor": false, "perStore": false, "programAmount": 0 },
+      "createdBy": "Thảo BA",
+      "createdAt": "13-08-2026 11:00:00",
+      "updatedAt": "13-08-2026 11:00:00",
+      "statusHistory": [
+        { "at": "13-08-2026 11:00:00", "status": "INIT", "by": "Thảo BA" }
+      ],
+      "versions": []
+    }
+  ]
+}

@@ -1,0 +1,111 @@
+/* ActionIconButton — table/list icon actions (Ant Design Outlined) */
+
+.dms-action-buttons,
+.display-actions,
+.promo-actions,
+.ct-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.dms-action-icon-btn {
+  box-sizing: border-box;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  margin: 0;
+  border: 0.8px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-container);
+  color: var(--color-text-secondary);
+  box-shadow: none;
+  cursor: pointer;
+  line-height: 0;
+  vertical-align: middle;
+  transition: var(--transition-base);
+}
+
+.dms-action-icon-btn svg {
+  display: block;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.dms-action-icon-btn:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(43, 87, 154, 0.06);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.dms-action-icon-btn:active:not(:disabled):not(.is-disabled) {
+  background: rgba(43, 87, 154, 0.12);
+}
+
+.dms-action-icon-btn--edit {
+  color: var(--color-primary);
+}
+.dms-action-icon-btn--edit:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(43, 87, 154, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.dms-action-icon-btn--approve,
+.dms-action-icon-btn--tool {
+  color: var(--color-success);
+}
+.dms-action-icon-btn--approve:hover:not(:disabled):not(.is-disabled),
+.dms-action-icon-btn--tool:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(82, 196, 26, 0.08);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.dms-action-icon-btn--delete {
+  color: var(--color-error);
+  border-color: var(--color-error-border);
+}
+.dms-action-icon-btn--delete:hover:not(:disabled):not(.is-disabled) {
+  background: var(--color-error-bg);
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.dms-action-icon-btn--view,
+.dms-action-icon-btn--preview,
+.dms-action-icon-btn--image {
+  color: var(--color-primary);
+}
+
+.dms-action-icon-btn--cancel {
+  color: var(--color-warning, #d48806);
+}
+.dms-action-icon-btn--cancel:hover:not(:disabled):not(.is-disabled) {
+  background: rgba(250, 173, 20, 0.08);
+  border-color: var(--color-warning, #d48806);
+  color: var(--color-warning, #d48806);
+}
+
+.dms-action-icon-btn:disabled,
+.dms-action-icon-btn.is-disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.dms-table td .dms-action-buttons,
+.dms-table td .display-actions,
+.dms-table td .promo-actions,
+.dms-table td .ct-actions {
+  height: 32px;
+}

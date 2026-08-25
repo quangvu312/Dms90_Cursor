@@ -1,0 +1,701 @@
+{
+  "employees": [
+    { "id": "e1", "code": "NV0001", "name": "Nguyễn An", "phone": "0901111001", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "region": "Miền Bắc", "area": "Hà Nội", "status": "Hoạt động" },
+    { "id": "e2", "code": "NV0002", "name": "Trần Bình", "phone": "0901111002", "manager": "ASM002 - Phạm Hà", "role": "Nhân viên bán hàng", "region": "Miền Nam", "area": "Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "e3", "code": "NV0003", "name": "Lê Chi", "phone": "0901111003", "manager": "ASM003 - Võ Đức", "role": "Giám sát bán hàng", "region": "Miền Trung", "area": "Đà Nẵng", "status": "Hoạt động" },
+    { "id": "e4", "code": "NV0103827398", "name": "Nguyễn Văn A1", "phone": "0912345678", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "region": "Miền Bắc", "area": "Hà Nội", "status": "Hoạt động" },
+    { "id": "e5", "code": "NV0103827399", "name": "Nguyễn Văn A2", "phone": "0912345679", "manager": "ASM002 - Phạm Hà", "role": "Nhân viên bán hàng", "region": "Miền Nam", "area": "Hồ Chí Minh", "status": "Hoạt động" },
+    { "id": "e6", "code": "NV0006", "name": "Phạm Dũng", "phone": "0901111006", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "region": "Miền Bắc", "area": "Hải Phòng", "status": "Hoạt động" }
+  ],
+  "stores": [
+    { "id": "st1", "code": "STR000001", "name": "Tạp hóa Minh", "phone": "0281111001", "address": "12 Nguyễn Trãi, Q.1, TP.HCM", "status": "Hoạt động", "required": false },
+    { "id": "st2", "code": "STR000002", "name": "Siêu thị An Khang", "phone": "0241111002", "address": "88 Láng Hạ, Đống Đa, Hà Nội", "status": "Hoạt động", "required": true },
+    { "id": "st3", "code": "STR000003", "name": "Cửa hàng Thanh Hà", "phone": "0236111003", "address": "15 Lê Duẩn, Hải Châu, Đà Nẵng", "status": "Hoạt động", "required": false },
+    { "id": "st4", "code": "STR000004", "name": "Điểm bán Phú Mỹ", "phone": "0281111004", "address": "3 Hoàng Văn Thụ, Tân Bình, TP.HCM", "status": "Hoạt động", "required": true }
+  ],
+  "routes": [
+    { "id": "rt1", "code": "DT000001", "name": "Tuyến 001", "employeeCode": "NV0001", "employeeName": "Nguyễn An", "phone": "0901111001", "role": "Nhân viên bán hàng", "region": "Miền Bắc", "area": "Hà Nội" },
+    { "id": "rt2", "code": "DT000002", "name": "Tuyến 002", "employeeCode": "NV0002", "employeeName": "Trần Bình", "phone": "0901111002", "role": "Nhân viên bán hàng", "region": "Miền Nam", "area": "Hồ Chí Minh" },
+    { "id": "rt3", "code": "DT000003", "name": "Tuyến Đà Nẵng 03", "employeeCode": "NV0003", "employeeName": "Lê Chi", "phone": "0901111003", "role": "Giám sát bán hàng", "region": "Miền Trung", "area": "Đà Nẵng" }
+  ],
+  "regions": [
+    { "id": "rg1", "code": "RSM_MB", "name": "Miền Bắc", "kind": "region" },
+    { "id": "rg2", "code": "ASM_HN", "name": "Hà Nội", "kind": "area" },
+    { "id": "rg3", "code": "ASM_HP", "name": "Hải Phòng", "kind": "area" },
+    { "id": "rg4", "code": "RSM_MN", "name": "Miền Nam", "kind": "region" },
+    { "id": "rg5", "code": "ASM_HCM", "name": "Hồ Chí Minh", "kind": "area" },
+    { "id": "rg6", "code": "RSM_MT", "name": "Miền Trung", "kind": "region" },
+    { "id": "rg7", "code": "ASM_DN", "name": "Đà Nẵng", "kind": "area" }
+  ],
+  "surveys": [
+    {
+      "id": "s1",
+      "code": "SV7347587101",
+      "title": "Khao sat full",
+      "audience": "EMPLOYEE",
+      "applyType": "EMPLOYEE",
+      "startDate": "06-01-2025",
+      "endDate": "28-02-2027",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": true,
+      "createdAt": "06-01-2025 09:12:01",
+      "createdBy": "THAO999",
+      "updatedAt": "14-08-2026 08:40:11",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e1", "code": "NV0001", "name": "Nguyễn An", "phone": "0901111001", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "status": "Hoạt động" },
+        { "id": "e4", "code": "NV0103827398", "name": "Nguyễn Văn A1", "phone": "0912345678", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q1", "type": "TEXT", "title": "Ghi nhận tình trạng kệ hàng", "desc": "Mô tả ngắn gọn", "required": true, "min": 1, "max": 300 },
+        { "id": "q2", "type": "NUMBER", "title": "Số mặt hàng thiếu trên kệ", "desc": "", "required": true, "min": 1, "max": 999 },
+        { "id": "q3", "type": "YESNO", "title": "Bạn có hài lòng với sản phẩm X không?", "desc": "", "required": true, "trueLabel": "Có", "falseLabel": "Không", "allowOther": true },
+        { "id": "q4", "type": "SINGLE", "title": "Mức độ trưng bày", "desc": "", "required": true, "allowOther": false, "options": [{ "id": "o1", "label": "Tốt" }, { "id": "o2", "label": "Trung bình" }, { "id": "o3", "label": "Kém" }] },
+        { "id": "q5", "type": "MULTI", "title": "Sản phẩm nào đang thiếu?", "desc": "", "required": false, "allowOther": true, "options": [{ "id": "o4", "label": "Bánh" }, { "id": "o5", "label": "Kẹo" }, { "id": "o6", "label": "Nước ngọt" }] },
+        { "id": "q6", "type": "IMAGE", "title": "Chụp ảnh kệ hàng", "desc": "Tối đa 10Mb/ảnh", "required": true, "uploadMode": "many" }
+      ]
+    },
+    {
+      "id": "s2",
+      "code": "SV1000000001",
+      "title": "Khảo sát điểm bán Q3",
+      "audience": "STORE",
+      "applyType": "STORE",
+      "startDate": "01-08-2026",
+      "endDate": "30-09-2026",
+      "times": 3,
+      "status": "ACTIVE",
+      "requireCheckin": true,
+      "hasResponses": true,
+      "createdAt": "14-08-2026 09:30:00",
+      "createdBy": "THAO999",
+      "updatedAt": "10-08-2026 11:05:22",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "st1", "code": "STR000001", "name": "Tạp hóa Minh", "phone": "0281111001", "address": "12 Nguyễn Trãi, Q.1, TP.HCM", "status": "Hoạt động", "required": false },
+        { "id": "st2", "code": "STR000002", "name": "Siêu thị An Khang", "phone": "0241111002", "address": "88 Láng Hạ, Đống Đa, Hà Nội", "status": "Hoạt động", "required": true }
+      ],
+      "questions": [
+        { "id": "q7", "type": "YESNO", "title": "Điểm bán còn hoạt động?", "required": true, "trueLabel": "Đúng", "falseLabel": "Sai", "allowOther": false },
+        { "id": "q8", "type": "IMAGE", "title": "Ảnh mặt tiền điểm bán", "required": true, "uploadMode": "one" },
+        { "id": "q9", "type": "TEXT", "title": "Ghi chú viếng thăm", "required": false, "min": 1, "max": 500 }
+      ]
+    },
+    {
+      "id": "s3",
+      "code": "SV1000000002",
+      "title": "Khảo sát nhân viên tháng 8",
+      "audience": "EMPLOYEE",
+      "applyType": "REGION",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "times": 2,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "01-08-2026 08:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "01-08-2026 08:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "rg1", "code": "RSM_MB", "name": "Miền Bắc" },
+        { "id": "rg2", "code": "ASM_HN", "name": "Hà Nội" }
+      ],
+      "questions": [
+        { "id": "q10", "type": "SINGLE", "title": "Mức độ hài lòng công việc", "required": true, "allowOther": false, "options": [{ "id": "o7", "label": "Hài lòng" }, { "id": "o8", "label": "Bình thường" }, { "id": "o9", "label": "Không hài lòng" }] }
+      ]
+    },
+    {
+      "id": "s4",
+      "code": "SV1000000003",
+      "title": "KS kệ hàng siêu thị",
+      "audience": "STORE",
+      "applyType": "ROUTE",
+      "startDate": "01-07-2026",
+      "endDate": "31-12-2026",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "20-06-2026 10:11:00",
+      "createdBy": "NV0001",
+      "updatedAt": "20-06-2026 10:11:00",
+      "updatedBy": "NV0001",
+      "applyItems": [
+        { "id": "rt1", "code": "DT000001", "name": "Tuyến 001", "employeeCode": "NV0001", "employeeName": "Nguyễn An", "region": "Miền Bắc", "area": "Hà Nội" }
+      ],
+      "questions": [
+        { "id": "q11", "type": "NUMBER", "title": "Số SKU trên kệ", "required": true, "min": 1, "max": 1000 }
+      ]
+    },
+    {
+      "id": "s5",
+      "code": "SV1000000004",
+      "title": "Kiểm tra tồn POS",
+      "audience": "STORE",
+      "applyType": "EMPLOYEE",
+      "startDate": "01-06-2026",
+      "endDate": "31-12-2026",
+      "times": 5,
+      "status": "INACTIVE",
+      "requireCheckin": true,
+      "hasResponses": false,
+      "createdAt": "15-05-2026 16:40:00",
+      "createdBy": "THAO999",
+      "updatedAt": "02-08-2026 09:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e2", "code": "NV0002", "name": "Trần Bình", "phone": "0901111002", "manager": "ASM002 - Phạm Hà", "role": "Nhân viên bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q12", "type": "TEXT", "title": "Ghi chú tồn POS", "required": true, "min": 1, "max": 200 }
+      ]
+    },
+    {
+      "id": "s6",
+      "code": "SV1000000005",
+      "title": "Feedback tuyến mới",
+      "audience": "EMPLOYEE",
+      "applyType": "EMPLOYEE",
+      "startDate": "10-08-2026",
+      "endDate": "10-09-2026",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "09-08-2026 07:30:00",
+      "createdBy": "THAO999",
+      "updatedAt": "09-08-2026 07:30:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e3", "code": "NV0003", "name": "Lê Chi", "phone": "0901111003", "manager": "ASM003 - Võ Đức", "role": "Giám sát bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q13", "type": "MULTI", "title": "Vấn đề tuyến mới", "required": false, "allowOther": true, "options": [{ "id": "o10", "label": "Quãng đường xa" }, { "id": "o11", "label": "Điểm bán ít" }] }
+      ]
+    },
+    {
+      "id": "s7",
+      "code": "SV1000000006",
+      "title": "Đánh giá NPP",
+      "audience": "STORE",
+      "applyType": "REGION",
+      "startDate": "01-01-2026",
+      "endDate": "31-12-2026",
+      "times": 10,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "02-01-2026 09:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "02-01-2026 09:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "rg4", "code": "RSM_MN", "name": "Miền Nam" },
+        { "id": "rg5", "code": "ASM_HCM", "name": "Hồ Chí Minh" }
+      ],
+      "questions": [
+        { "id": "q14", "type": "YESNO", "title": "NPP giao hàng đúng hẹn?", "required": true, "trueLabel": "Đúng", "falseLabel": "Sai", "allowOther": false }
+      ]
+    },
+    {
+      "id": "s8",
+      "code": "SV1000000007",
+      "title": "KS ngắn",
+      "audience": "EMPLOYEE",
+      "applyType": "EMPLOYEE",
+      "startDate": "14-08-2026",
+      "endDate": "14-08-2026",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "13-08-2026 18:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "13-08-2026 18:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e6", "code": "NV0006", "name": "Phạm Dũng", "phone": "0901111006", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q15", "type": "TEXT", "title": "Ghi chú nhanh", "required": true, "min": 1, "max": 50 }
+      ]
+    },
+    {
+      "id": "s9",
+      "code": "SV1000000008",
+      "title": "Khảo sát trải nghiệm khách hàng tại điểm bán khu vực miền Nam quý 3 năm 2026",
+      "audience": "STORE",
+      "applyType": "STORE",
+      "startDate": "01-08-2026",
+      "endDate": "30-11-2026",
+      "times": 2,
+      "status": "ACTIVE",
+      "requireCheckin": true,
+      "hasResponses": false,
+      "createdAt": "25-07-2026 11:22:33",
+      "createdBy": "THAO999",
+      "updatedAt": "25-07-2026 11:22:33",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "st4", "code": "STR000004", "name": "Điểm bán Phú Mỹ", "phone": "0281111004", "address": "3 Hoàng Văn Thụ, Tân Bình, TP.HCM", "status": "Hoạt động", "required": true }
+      ],
+      "questions": [
+        { "id": "q16", "type": "TEXT", "title": "Khách hàng phản hồi gì?", "required": true, "min": 1, "max": 1000 }
+      ]
+    },
+    {
+      "id": "s10",
+      "code": "SV1000000009",
+      "title": "KS hết hạn 2025",
+      "audience": "EMPLOYEE",
+      "applyType": "EMPLOYEE",
+      "startDate": "01-01-2025",
+      "endDate": "31-12-2025",
+      "times": 1,
+      "status": "INACTIVE",
+      "requireCheckin": false,
+      "hasResponses": true,
+      "createdAt": "01-01-2025 08:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "31-12-2025 23:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e1", "code": "NV0001", "name": "Nguyễn An", "phone": "0901111001", "manager": "RSM001 - Lê Khoa", "role": "Nhân viên bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q17", "type": "TEXT", "title": "Tổng kết năm", "required": false, "min": 1, "max": 200 }
+      ]
+    },
+    {
+      "id": "s11",
+      "code": "SV1000000010",
+      "title": "KS tương lai 2027",
+      "audience": "STORE",
+      "applyType": "REGION",
+      "startDate": "01-01-2027",
+      "endDate": "28-02-2027",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "01-07-2026 10:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "01-07-2026 10:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "rg6", "code": "RSM_MT", "name": "Miền Trung" }
+      ],
+      "questions": [
+        { "id": "q18", "type": "NUMBER", "title": "Dự kiến số lần viếng", "required": true, "min": 1, "max": 30 }
+      ]
+    },
+    {
+      "id": "s12",
+      "code": "SV1000000011",
+      "title": "KS copy mẫu",
+      "audience": "EMPLOYEE",
+      "applyType": "EMPLOYEE",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "times": 1,
+      "status": "INACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "01-08-2026 12:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "01-08-2026 12:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [],
+      "questions": [
+        { "id": "q19", "type": "TEXT", "title": "Câu hỏi mẫu", "required": true, "min": 1, "max": 100 }
+      ]
+    },
+    {
+      "id": "s13",
+      "code": "SV1000000012",
+      "title": "Viếng thăm sáng",
+      "audience": "STORE",
+      "applyType": "STORE",
+      "startDate": "01-08-2026",
+      "endDate": "31-08-2026",
+      "times": 1,
+      "status": "ACTIVE",
+      "requireCheckin": true,
+      "hasResponses": true,
+      "createdAt": "31-07-2026 06:15:00",
+      "createdBy": "NV0002",
+      "updatedAt": "05-08-2026 07:01:00",
+      "updatedBy": "NV0002",
+      "applyItems": [
+        { "id": "st3", "code": "STR000003", "name": "Cửa hàng Thanh Hà", "phone": "0236111003", "address": "15 Lê Duẩn, Hải Châu, Đà Nẵng", "status": "Hoạt động", "required": false }
+      ],
+      "questions": [
+        { "id": "q20", "type": "IMAGE", "title": "Ảnh checkin buổi sáng", "required": true, "uploadMode": "one" }
+      ]
+    },
+    {
+      "id": "s14",
+      "code": "SV1000000013",
+      "title": "Chăm sóc ĐB",
+      "audience": "STORE",
+      "applyType": "EMPLOYEE",
+      "startDate": "01-07-2026",
+      "endDate": "31-08-2026",
+      "times": 4,
+      "status": "ACTIVE",
+      "requireCheckin": true,
+      "hasResponses": false,
+      "createdAt": "30-06-2026 15:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "30-06-2026 15:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "e5", "code": "NV0103827399", "name": "Nguyễn Văn A2", "phone": "0912345679", "manager": "ASM002 - Phạm Hà", "role": "Nhân viên bán hàng", "status": "Hoạt động" }
+      ],
+      "questions": [
+        { "id": "q21", "type": "SINGLE", "title": "Kết quả chăm sóc", "required": true, "allowOther": false, "options": [{ "id": "o12", "label": "Đạt" }, { "id": "o13", "label": "Cần theo dõi" }] }
+      ]
+    },
+    {
+      "id": "s15",
+      "code": "SV1000000014",
+      "title": "KS nội bộ Q2",
+      "audience": "EMPLOYEE",
+      "applyType": "REGION",
+      "startDate": "01-04-2026",
+      "endDate": "30-06-2026",
+      "times": 1,
+      "status": "INACTIVE",
+      "requireCheckin": false,
+      "hasResponses": false,
+      "createdAt": "01-04-2026 09:00:00",
+      "createdBy": "THAO999",
+      "updatedAt": "30-06-2026 18:00:00",
+      "updatedBy": "THAO999",
+      "applyItems": [
+        { "id": "rg1", "code": "RSM_MB", "name": "Miền Bắc" }
+      ],
+      "questions": [
+        { "id": "q22", "type": "TEXT", "title": "Góp ý nội bộ", "required": false, "min": 1, "max": 300 }
+      ]
+    }
+  ],
+  "reportRows": [
+    {
+      "id": "r1",
+      "surveyId": "s1",
+      "employeeCode": "NV0001",
+      "employeeName": "Nguyễn An",
+      "region": "Miền Bắc",
+      "area": "Hà Nội",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["05-08-2026"],
+      "kind": "EMPLOYEE",
+      "details": [
+        {
+          "performedAt": "05-08-2026 09:12:33",
+          "times": 1,
+          "answers": [
+            { "index": 1, "qType": "Kiểu chữ", "question": "Ghi nhận tình trạng kệ hàng", "required": true, "answer": "Kệ sạch, thiếu 2 mặt hàng snack." },
+            { "index": 2, "qType": "Kiểu số", "question": "Số mặt hàng thiếu trên kệ", "required": true, "answer": "2" },
+            { "index": 3, "qType": "Đúng/Sai", "question": "Bạn có hài lòng với sản phẩm X không?", "required": true, "answer": "Khác, cũng tạm thôi" },
+            { "index": 4, "qType": "Chọn một", "question": "Mức độ trưng bày", "required": true, "answer": "Trung bình" },
+            { "index": 5, "qType": "Chọn nhiều", "question": "Sản phẩm nào đang thiếu?", "required": false, "answer": "Bánh; Kẹo" },
+            { "index": 6, "qType": "Ảnh", "question": "Chụp ảnh kệ hàng", "required": true, "answer": "ke-hang-01.jpg; ke-hang-02.jpg", "images": ["ke-hang-01.jpg", "ke-hang-02.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "surveyId": "s1",
+      "employeeCode": "NV0103827398",
+      "employeeName": "Nguyễn Văn A1",
+      "region": "Miền Bắc",
+      "area": "Hà Nội",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["08-08-2026"],
+      "kind": "EMPLOYEE",
+      "details": [
+        {
+          "performedAt": "08-08-2026 14:03:11",
+          "times": 1,
+          "answers": [
+            { "index": 1, "qType": "Kiểu chữ", "question": "Ghi nhận tình trạng kệ hàng", "required": true, "answer": "Trưng bày đạt." },
+            { "index": 2, "qType": "Kiểu số", "question": "Số mặt hàng thiếu trên kệ", "required": true, "answer": "0" },
+            { "index": 3, "qType": "Đúng/Sai", "question": "Bạn có hài lòng với sản phẩm X không?", "required": true, "answer": "Có" },
+            { "index": 4, "qType": "Chọn một", "question": "Mức độ trưng bày", "required": true, "answer": "Tốt" },
+            { "index": 5, "qType": "Chọn nhiều", "question": "Sản phẩm nào đang thiếu?", "required": false, "answer": "" },
+            { "index": 6, "qType": "Ảnh", "question": "Chụp ảnh kệ hàng", "required": true, "answer": "ke-hang-a1.jpg", "images": ["ke-hang-a1.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "surveyId": "s2",
+      "employeeCode": "NV0002",
+      "employeeName": "Trần Bình",
+      "region": "Miền Nam",
+      "area": "Hồ Chí Minh",
+      "resultCount": 2,
+      "times": 3,
+      "performedDates": ["03-08-2026", "12-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000001",
+          "storeName": "Tạp hóa Minh",
+          "times": 1,
+          "performedAt": "03-08-2026 08:21:05",
+          "checkinImage": "checkin-minh.jpg",
+          "answers": [
+            { "index": 1, "qType": "Đúng/Sai", "question": "Điểm bán còn hoạt động?", "required": true, "answer": "Đúng" },
+            { "index": 2, "qType": "Ảnh", "question": "Ảnh mặt tiền điểm bán", "required": true, "answer": "mat-tien-minh.jpg", "images": ["mat-tien-minh.jpg"] },
+            { "index": 3, "qType": "Kiểu chữ", "question": "Ghi chú viếng thăm", "required": false, "answer": "Chủ cửa hàng vắng, nhân viên tiếp." }
+          ]
+        },
+        {
+          "storeCode": "STR000002",
+          "storeName": "Siêu thị An Khang",
+          "times": 1,
+          "performedAt": "12-08-2026 16:44:09",
+          "checkinImage": "checkin-ankhang.jpg",
+          "answers": [
+            { "index": 1, "qType": "Đúng/Sai", "question": "Điểm bán còn hoạt động?", "required": true, "answer": "Đúng" },
+            { "index": 2, "qType": "Ảnh", "question": "Ảnh mặt tiền điểm bán", "required": true, "answer": "mat-tien-ak.jpg", "images": ["mat-tien-ak.jpg"] },
+            { "index": 3, "qType": "Kiểu chữ", "question": "Ghi chú viếng thăm", "required": false, "answer": "" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r4",
+      "surveyId": "s2",
+      "employeeCode": "NV0001",
+      "employeeName": "Nguyễn An",
+      "region": "Miền Bắc",
+      "area": "Hà Nội",
+      "resultCount": 1,
+      "times": 3,
+      "performedDates": ["06-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000002",
+          "storeName": "Siêu thị An Khang",
+          "times": 1,
+          "performedAt": "06-08-2026 10:02:44",
+          "checkinImage": "checkin-ak-nv0001.jpg",
+          "answers": [
+            { "index": 1, "qType": "Đúng/Sai", "question": "Điểm bán còn hoạt động?", "required": true, "answer": "Đúng" },
+            { "index": 2, "qType": "Ảnh", "question": "Ảnh mặt tiền điểm bán", "required": true, "answer": "mat-tien-ak-2.jpg", "images": ["mat-tien-ak-2.jpg"] },
+            { "index": 3, "qType": "Kiểu chữ", "question": "Ghi chú viếng thăm", "required": false, "answer": "Kệ nước ngọt đầy." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r5",
+      "surveyId": "s13",
+      "employeeCode": "NV0003",
+      "employeeName": "Lê Chi",
+      "region": "Miền Trung",
+      "area": "Đà Nẵng",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["04-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000003",
+          "storeName": "Cửa hàng Thanh Hà",
+          "times": 1,
+          "performedAt": "04-08-2026 07:18:00",
+          "checkinImage": "checkin-thanhha.jpg",
+          "answers": [
+            { "index": 1, "qType": "Ảnh", "question": "Ảnh checkin buổi sáng", "required": true, "answer": "sang-thanhha.jpg", "images": ["sang-thanhha.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r6",
+      "surveyId": "s1",
+      "employeeCode": "NV0006",
+      "employeeName": "Phạm Dũng",
+      "region": "Miền Bắc",
+      "area": "Hải Phòng",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["11-08-2026"],
+      "kind": "EMPLOYEE",
+      "details": [
+        {
+          "performedAt": "11-08-2026 11:30:00",
+          "times": 1,
+          "answers": [
+            { "index": 1, "qType": "Kiểu chữ", "question": "Ghi nhận tình trạng kệ hàng", "required": true, "answer": "Kệ hơi bụi." },
+            { "index": 2, "qType": "Kiểu số", "question": "Số mặt hàng thiếu trên kệ", "required": true, "answer": "4" },
+            { "index": 3, "qType": "Đúng/Sai", "question": "Bạn có hài lòng với sản phẩm X không?", "required": true, "answer": "Không" },
+            { "index": 4, "qType": "Chọn một", "question": "Mức độ trưng bày", "required": true, "answer": "Kém" },
+            { "index": 5, "qType": "Chọn nhiều", "question": "Sản phẩm nào đang thiếu?", "required": false, "answer": "Nước ngọt" },
+            { "index": 6, "qType": "Ảnh", "question": "Chụp ảnh kệ hàng", "required": true, "answer": "ke-hp.jpg", "images": ["ke-hp.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r7",
+      "surveyId": "s2",
+      "employeeCode": "NV0103827399",
+      "employeeName": "Nguyễn Văn A2",
+      "region": "Miền Nam",
+      "area": "Hồ Chí Minh",
+      "resultCount": 1,
+      "times": 3,
+      "performedDates": ["09-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000001",
+          "storeName": "Tạp hóa Minh",
+          "times": 1,
+          "performedAt": "09-08-2026 13:10:20",
+          "checkinImage": "checkin-minh-a2.jpg",
+          "answers": [
+            { "index": 1, "qType": "Đúng/Sai", "question": "Điểm bán còn hoạt động?", "required": true, "answer": "Đúng" },
+            { "index": 2, "qType": "Ảnh", "question": "Ảnh mặt tiền điểm bán", "required": true, "answer": "mat-tien-minh-2.jpg", "images": ["mat-tien-minh-2.jpg"] },
+            { "index": 3, "qType": "Kiểu chữ", "question": "Ghi chú viếng thăm", "required": false, "answer": "Cần bổ sung POSM." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r8",
+      "surveyId": "s13",
+      "employeeCode": "NV0002",
+      "employeeName": "Trần Bình",
+      "region": "Miền Nam",
+      "area": "Hồ Chí Minh",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["02-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000003",
+          "storeName": "Cửa hàng Thanh Hà",
+          "times": 1,
+          "performedAt": "02-08-2026 06:55:12",
+          "checkinImage": "checkin-th-tb.jpg",
+          "answers": [
+            { "index": 1, "qType": "Ảnh", "question": "Ảnh checkin buổi sáng", "required": true, "answer": "sang-tb.jpg", "images": ["sang-tb.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r9",
+      "surveyId": "s1",
+      "employeeCode": "NV0003",
+      "employeeName": "Lê Chi",
+      "region": "Miền Trung",
+      "area": "Đà Nẵng",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["13-08-2026"],
+      "kind": "EMPLOYEE",
+      "details": [
+        {
+          "performedAt": "13-08-2026 17:40:08",
+          "times": 1,
+          "answers": [
+            { "index": 1, "qType": "Kiểu chữ", "question": "Ghi nhận tình trạng kệ hàng", "required": true, "answer": "Ổn." },
+            { "index": 2, "qType": "Kiểu số", "question": "Số mặt hàng thiếu trên kệ", "required": true, "answer": "1" },
+            { "index": 3, "qType": "Đúng/Sai", "question": "Bạn có hài lòng với sản phẩm X không?", "required": true, "answer": "Có" },
+            { "index": 4, "qType": "Chọn một", "question": "Mức độ trưng bày", "required": true, "answer": "Tốt" },
+            { "index": 5, "qType": "Chọn nhiều", "question": "Sản phẩm nào đang thiếu?", "required": false, "answer": "Bánh" },
+            { "index": 6, "qType": "Ảnh", "question": "Chụp ảnh kệ hàng", "required": true, "answer": "ke-dn.jpg", "images": ["ke-dn.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r10",
+      "surveyId": "s2",
+      "employeeCode": "NV0006",
+      "employeeName": "Phạm Dũng",
+      "region": "Miền Bắc",
+      "area": "Hải Phòng",
+      "resultCount": 1,
+      "times": 3,
+      "performedDates": ["07-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000002",
+          "storeName": "Siêu thị An Khang",
+          "times": 1,
+          "performedAt": "07-08-2026 15:22:00",
+          "checkinImage": "checkin-ak-hp.jpg",
+          "answers": [
+            { "index": 1, "qType": "Đúng/Sai", "question": "Điểm bán còn hoạt động?", "required": true, "answer": "Đúng" },
+            { "index": 2, "qType": "Ảnh", "question": "Ảnh mặt tiền điểm bán", "required": true, "answer": "mat-tien-ak-hp.jpg", "images": ["mat-tien-ak-hp.jpg"] },
+            { "index": 3, "qType": "Kiểu chữ", "question": "Ghi chú viếng thăm", "required": false, "answer": "Đông khách cuối tuần." }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r11",
+      "surveyId": "s13",
+      "employeeCode": "NV0001",
+      "employeeName": "Nguyễn An",
+      "region": "Miền Bắc",
+      "area": "Hà Nội",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["01-08-2026"],
+      "kind": "STORE",
+      "details": [
+        {
+          "storeCode": "STR000003",
+          "storeName": "Cửa hàng Thanh Hà",
+          "times": 1,
+          "performedAt": "01-08-2026 07:05:00",
+          "checkinImage": "checkin-th-na.jpg",
+          "answers": [
+            { "index": 1, "qType": "Ảnh", "question": "Ảnh checkin buổi sáng", "required": true, "answer": "sang-na.jpg", "images": ["sang-na.jpg"] }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r12",
+      "surveyId": "s10",
+      "employeeCode": "NV0001",
+      "employeeName": "Nguyễn An",
+      "region": "Miền Bắc",
+      "area": "Hà Nội",
+      "resultCount": 1,
+      "times": 1,
+      "performedDates": ["15-12-2025"],
+      "kind": "EMPLOYEE",
+      "details": [
+        {
+          "performedAt": "15-12-2025 10:00:00",
+          "times": 1,
+          "answers": [
+            { "index": 1, "qType": "Kiểu chữ", "question": "Tổng kết năm", "required": false, "answer": "Hoàn thành chỉ tiêu." }
+          ]
+        }
+      ]
+    }
+  ]
+}

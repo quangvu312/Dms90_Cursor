@@ -1,0 +1,13 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+Kế thừa từ: [HO][HT] Chức năng phân quyền - Nhóm quyền

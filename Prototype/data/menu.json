@@ -1,0 +1,191 @@
+{
+  "items": [
+    { "label": "Dashboard", "icon": "dashboard", "route": "/dashboard", "active": true },
+    {
+      "label": "Dữ Liệu Nền",
+      "icon": "cluster",
+      "children": [
+        { "label": "Địa Lý", "route": "/master/geography" },
+        {
+          "label": "Kinh Doanh",
+          "children": [
+            { "label": "Công ty", "route": "/master/business/company" },
+            { "label": "Kênh bán hàng", "route": "/master/business/channel" },
+            { "label": "Đơn vị kinh doanh", "route": "/master/business/business-unit" },
+            { "label": "Loại điểm bán", "route": "/master/business/store-type" },
+            { "label": "Hạng điểm bán", "route": "/master/business/store-rank" },
+            { "label": "Nhóm điểm bán", "route": "/master/business/store-group" },
+            { "label": "Vị trí điểm bán", "route": "/master/business/store-location" },
+            { "label": "Danh sách điểm bán", "route": "/master/business/store" },
+            { "label": "Nhân viên bán hàng", "route": "/master/business/employee" },
+            { "label": "Nhà phân phối", "route": "/master/business/distributor" }
+          ]
+        },
+        {
+          "label": "Sản Phẩm",
+          "children": [
+            { "label": "Cây phân cấp sản phẩm", "route": "/master/product/category" },
+            { "label": "Đơn vị đo lường", "route": "/master/product/uom" },
+            { "label": "Nhóm sản phẩm", "route": "/master/product/group" },
+            { "label": "Danh sách sản phẩm", "route": "/master/product/list" },
+            { "label": "Bảng giá bán", "route": "/master/product/selling-price" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Quản Lý Chi Tiêu",
+      "icon": "fund",
+      "children": [
+        { "label": "Chỉ Tiêu KPI", "route": "/kpi/indicator" },
+        { "label": "Giao KPI", "route": "/kpi/target" },
+        { "label": "Báo Cáo KPI", "route": "/kpi/report" }
+      ]
+    },
+    {
+      "label": "Quản Lý Kho",
+      "icon": "shop",
+      "children": [
+        { "label": "Duyệt Kiểm Kho NPP", "route": "/inventories/distributor" },
+        { "label": "Duyệt NPP Trả Hàng", "route": "/inventories/retored-distributor" },
+        { "label": "Duyệt Trả Hàng Nguyên Đơn", "route": "/inventories/restored-full-order" },
+        {
+          "label": "Báo Cáo",
+          "children": [
+            { "label": "Tồn Kho Hiện Tại NPP", "route": "/inventories/report/distributor" },
+            { "label": "Nhập Xuất Tồn NPP", "route": "/inventories/report/existence" },
+            { "label": "Nhập Kho", "route": "/inventories/report/import" },
+            { "label": "Xuất Kho", "route": "/inventories/report/export" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Quản Lý Bán Hàng",
+      "icon": "idcard",
+      "children": [
+        { "label": "Đặt Hàng NPP", "route": "/sale/order" },
+        { "label": "Tổng Hợp Đơn Hàng Điểm Bán", "route": "/sale/order-summary" }
+      ]
+    },
+    { "label": "App SaleMan", "icon": "mobile", "route": "/sales-app" },
+    {
+      "label": "Telling Story",
+      "icon": "read",
+      "children": [
+        { "label": "Quản lý danh mục", "route": "/telling-story/catalog" },
+        { "label": "Quản lý nội dung", "route": "/telling-story/content" }
+      ]
+    },
+    {
+      "label": "Quản Lý Hợp Đồng",
+      "icon": "file-text",
+      "children": [
+        { "label": "Hợp đồng mẫu", "route": "/contract/templates" },
+        { "label": "Hợp đồng khách hàng", "route": "/contract/customers" }
+      ]
+    },
+    {
+      "label": "Quản Lý Tuyến Bán Hàng",
+      "icon": "ordered-list",
+      "children": [
+        { "label": "Nhiệm Vụ", "route": "/route/task" },
+        { "label": "Nhóm Nhiệm Vụ", "route": "/route/task-group" },
+        { "label": "Tuyến Bán Hàng", "route": "/route" },
+        { "label": "Tuyến Thực Tế", "route": "/route/real-route" },
+        { "label": "Chuyển Tuyến Nhà Phân Phối", "route": "/route/distributor-transfer" }
+      ]
+    },
+    {
+      "label": "Chương Trình Khuyến Mãi",
+      "icon": "gift",
+      "children": [
+        { "label": "Quản Lý Khuyến Mãi", "route": "/promotion/event" },
+        {
+          "label": "Báo Cáo",
+          "children": [
+            { "label": "Báo Cáo Tổng Hợp CTKM", "route": "/promotion/report/budget" },
+            { "label": "Báo Cáo Chi Tiết CTKM", "route": "/promotion/report/used" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Quản Lý Trưng Bày",
+      "icon": "database",
+      "children": [
+        { "label": "Tổng Quan Chương Trình Trưng Bày", "route": "/display/overview" },
+        { "label": "Chương Trình Trưng Bày", "route": "/display/event" },
+        { "label": "Danh Sách Đăng Ký Trưng Bày", "route": "/display/participant" },
+        { "label": "Tiến Trình Trưng Bày", "route": "/display/process" },
+        { "label": "Danh Sách Trả Thưởng Trưng Bày", "route": "/display/reward" }
+      ]
+    },
+    {
+      "label": "Quản Lý Tích Lũy",
+      "icon": "tags",
+      "children": [
+        { "label": "Tổng Quan Chương Trình Tích Lũy", "route": "/accumulate/overview" },
+        { "label": "Chương Trình Tích Lũy", "route": "/accumulate/event" },
+        { "label": "Danh Sách Đăng Ký Tích Lũy", "route": "/accumulate/participant" },
+        { "label": "Tiến Trình Tích Lũy", "route": "/accumulate/process" },
+        { "label": "Danh Sách Trả Thưởng Tích Lũy", "route": "/accumulate/reward" }
+      ]
+    },
+    {
+      "label": "Quản Lý Khảo Sát",
+      "icon": "file-search",
+      "children": [
+        { "label": "Bộ Khảo Sát", "route": "/survey/setting" },
+        { "label": "Thống Kê Khảo Sát", "route": "/survey/report" }
+      ]
+    },
+    { "label": "Quản Lý Làm Việc", "icon": "profile", "route": "/work" },
+    {
+      "label": "Hỗ Trợ",
+      "icon": "profile",
+      "children": [
+        { "label": "Hỗ Trợ - Xử Lý Yêu Cầu", "route": "/support/ticket" }
+      ]
+    },
+    {
+      "label": "Quản Lý Thông Báo",
+      "icon": "bell",
+      "children": [
+        { "label": "Cài Đặt Thông Báo", "route": "/notify/setting" },
+        { "label": "Lịch Sử Thông Báo", "route": "/notify/history" }
+      ]
+    },
+    {
+      "label": "Báo cáo",
+      "icon": "bar-chart",
+      "children": [
+        {
+          "label": "Bán Hàng",
+          "children": [
+            { "label": "Tổng hợp đơn hàng bán Đại lý", "route": "/report/sale/selling-order" },
+            { "label": "Doanh thu theo sản phẩm", "route": "/report/sale/product-revenue" },
+            { "label": "Doanh thu theo khách hàng", "route": "/report/sale/customer-revenue" },
+            { "label": "Doanh thu theo nhân viên kinh doanh", "route": "/report/sale/salesman-revenue" },
+            { "label": "Đơn trả hàng", "route": "/report/sale/return-order" }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Quản Trị Hệ Thống",
+      "icon": "cluster",
+      "children": [
+        { "label": "Tài Khoản Người Dùng", "route": "/system/account" },
+        { "label": "Chốt Sổ Kỳ", "route": "/system/closing" },
+        { "label": "Mở Chốt Sổ", "route": "/system/unlock" },
+        { "label": "Dữ Liệu Chung", "route": "/system/master-data" },
+        { "label": "Cấu Hình Chấm Công", "route": "/system/working-time-setting" },
+        { "label": "Thiết Lập Vị Trí Chấm Công", "route": "/system/time-keeping-position" },
+        { "label": "Cấu Hình Chung", "route": "/system/setting" },
+        { "label": "Nhóm Quyền", "route": "/system/role" },
+        { "label": "Thuộc Tính", "route": "/system/attribute" }
+      ]
+    }
+  ]
+}

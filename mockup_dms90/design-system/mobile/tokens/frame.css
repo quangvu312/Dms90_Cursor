@@ -1,0 +1,15 @@
+/**
+ * DMS90 App SaleMan — Device Frame Tokens
+ * Nguồn: Hand-off DMS-90 (iPhone 14 class — 390×844 logical)
+ */
+:root {
+  --sa-bezel: 10px;
+  --sa-bezel-color: var(--vigo-secondary-alucardnight, #0b1028);
+  --sa-notch-w: 120px;
+  --sa-notch-h: 28px;
+  --sa-notch-top: 10px;
+  --sa-home-h: 34px;
+  --sa-home-pill-w: 134px;
+  --sa-home-pill-h: 5px;
+  --sa-safe-bottom: env(safe-area-inset-bottom, 0px);
+}

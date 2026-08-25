@@ -1,0 +1,9 @@
+{
+  "items": [
+    { "id": "1", "code": "ST_TAPHOA", "name": "Tạp hóa", "status": "ACTIVE", "createdAt": "01-02-2024 08:00:00", "updatedAt": "10-05-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "2", "code": "ST_SIEUTHI", "name": "Siêu thị mini", "status": "ACTIVE", "createdAt": "01-02-2024 08:00:00", "updatedAt": "10-05-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "3", "code": "ST_NHATHUOC", "name": "Nhà thuốc", "status": "ACTIVE", "createdAt": "01-02-2024 08:00:00", "updatedAt": "10-05-2025 10:00:00", "createdBy": "admin", "updatedBy": "VUBA" },
+    { "id": "4", "code": "ST_CAFEDIEM", "name": "Cafe/Điểm ăn", "status": "INACTIVE", "createdAt": "15-03-2024 09:00:00", "updatedAt": "20-04-2025 11:00:00", "createdBy": "admin", "updatedBy": "VUBA" }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 4 }
+}

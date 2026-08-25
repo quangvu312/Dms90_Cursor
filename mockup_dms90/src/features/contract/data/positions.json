@@ -1,0 +1,8 @@
+{
+  "source": "Master Chức vụ — derive từ employee.json",
+  "items": [
+    { "code": "SM", "name": "Nhân viên bán hàng (SM)" },
+    { "code": "SS", "name": "Giám sát bán hàng (SS)" },
+    { "code": "ASM", "name": "Quản lý khu vực (ASM)" }
+  ]
+}

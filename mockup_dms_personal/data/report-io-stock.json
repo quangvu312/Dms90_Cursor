@@ -1,0 +1,27 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 2 },
+  "items": [
+    {
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "sku": "102296",
+      "name": "Anlene Total 10 Vani 800G",
+      "unit": "Hộp",
+      "opening": 100,
+      "inbound": 50,
+      "outbound": 32,
+      "closing": 118,
+      "channel": "GENERAL TRADE"
+    },
+    {
+      "npp": "NPP002 - NPP Miền Bắc 1",
+      "sku": "102296",
+      "name": "Anlene Total 10 Vani 800G",
+      "unit": "Hộp",
+      "opening": 60,
+      "inbound": 40,
+      "outbound": 20,
+      "closing": 80,
+      "channel": "GENERAL TRADE"
+    }
+  ]
+}

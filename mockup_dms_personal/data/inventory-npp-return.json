@@ -1,0 +1,75 @@
+{
+  "pagination": { "page": 1, "pageSize": 10, "total": 4 },
+  "items": [
+    {
+      "id": "RT001",
+      "code": "TH000088",
+      "returnDate": "10-08-2026",
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "status": "PENDING",
+      "statusLabel": "Chờ duyệt",
+      "createdAt": "10-08-2026 09:40:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "10-08-2026 09:40:00",
+      "updatedBy": "npp.admin",
+      "rejectReason": "",
+      "products": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "qty": 12, "unit": "Hộp", "lots": [{ "qty": 12, "lot": "LO2408", "exp": "01-01-2027" }] }
+      ]
+    },
+    {
+      "id": "RT002",
+      "code": "TH000089",
+      "returnDate": "08-08-2026",
+      "npp": "NPP002 - NPP Miền Bắc 1",
+      "warehouse": "Kho HN 1",
+      "channel": "GENERAL TRADE",
+      "status": "APPROVED",
+      "statusLabel": "Đã duyệt",
+      "createdAt": "08-08-2026 11:00:00",
+      "createdBy": "npp.hn",
+      "updatedAt": "09-08-2026 08:00:00",
+      "updatedBy": "VUBA",
+      "rejectReason": "",
+      "products": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "qty": 6, "unit": "Hộp", "lots": [{ "qty": 6, "lot": "LO2407", "exp": "01-12-2026" }] }
+      ]
+    },
+    {
+      "id": "RT003",
+      "code": "TH000090",
+      "returnDate": "05-08-2026",
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "warehouse": "Kho HCM 1",
+      "channel": "GENERAL TRADE",
+      "status": "REJECTED",
+      "statusLabel": "Đã từ chối",
+      "createdAt": "05-08-2026 15:20:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "06-08-2026 09:00:00",
+      "updatedBy": "VUBA",
+      "rejectReason": "Sản phẩm không thuộc danh mục được trả",
+      "products": [
+        { "sku": "102296", "name": "Anlene Total 10 Vani 800G", "qty": 2, "unit": "Hộp", "lots": [{ "qty": 2, "lot": "LO2406", "exp": "01-06-2026" }] }
+      ]
+    },
+    {
+      "id": "RT004",
+      "code": "TH000091",
+      "returnDate": "12-08-2026",
+      "npp": "NPP001 - NPP Miền Nam 1",
+      "warehouse": "Kho HCM 2",
+      "channel": "MODERN TRADE",
+      "status": "PENDING",
+      "statusLabel": "Chờ duyệt",
+      "createdAt": "12-08-2026 07:50:00",
+      "createdBy": "npp.admin",
+      "updatedAt": "12-08-2026 07:50:00",
+      "updatedBy": "npp.admin",
+      "rejectReason": "",
+      "products": []
+    }
+  ]
+}

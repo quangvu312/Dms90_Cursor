@@ -1,0 +1,212 @@
+|  |  |
+| --- | --- |
+| Issue Link |  |
+| Story |  |
+| Epic |  |
+| Feature |  |
+| Description |  |
+| Document version | RedV1.0.0 |
+| Document status | GreenDONE |
+| Document owner |  |
+| Chage History | 2 |
+
+# Nội dung chính
+
+## Mục đích
+
+* Tài liệu này đặc tả đầy đủ nghiệp vụ, hệ thống và User Stories cho Tính năng Đặt hàng bán (Sales Order - SO) triển khai trên 3 kênh vận hành của hệ thống DMS:
+
+  + HO (Head Office/Backoffice): Tạo đơn; phê duyệt đơn theo phân quyền
+  + NPP (Nhà phân phối) trên Web Admin/Distributor Portal: Quản lý bán hàng (NPP) trực tiếp tạo đơn hộ khách hàng, duyệt đơn
+  + APP SM (Mobile App Salesman): Nhân viên bán hàng (Sales rep) tạo đơn hàng ngay tại điểm bán/ tại chức năng đặt hàng trên app saleman
+
+## Phạm vi tính năng & Mã FR
+
+Màn hình Đặt hàng bán (SO): Tạo mới, chỉnh sửa, duyệt/từ chối duyệt, xem chi tiết, xuất báo giá, tra cứu lịch sử, export và đồng bộ ERP hai chiều, áp dụng thống nhất công thức tính giá 5 bước và mô hình khuyến mãi tách bạch.
+
+| **Mã** | **Loại** | **Mô tả** |
+| --- | --- | --- |
+| SO\_US\_01 | List SO | Màn hình Danh sách Đơn hàng |
+| SO\_US\_02 | Create Form | Tạo mới đơn hàng SO trên Web Admin/Distributor Portal (HO/NPP): thiết lập Header, thêm dòng sản phẩm, tính giá, khối Khuyến mãi, khối tổng cộng. |
+| SO\_US\_03 | Edit Form | Chỉnh sửa đơn hàng khi còn ở trạng thái Khởi tạo; khóa hoàn toàn khi Đã duyệt hoặc Đã hủy; kế thừa cấu trúc Tạo mới. |
+| SO\_US\_04 | Special Feature | Tạo báo giá (PDF, không sync ERP); Duyệt đơn hàng (re-validate 5 điều kiện + sync ERP); Từ chối duyệt (chuyển Đã hủy, không sync ERP). |
+| SO\_US\_05 | Special Feature | Xem chi tiết đơn hàng & trạng thái ERP tham chiếu (chỉ khi Đã duyệt). |
+| SO\_US\_06 | Audit Trail/History | Lịch sử tác động (log Thêm mới/Cập nhật/Duyệt/Từ chối/Hủy/Sync ERP) của đơn hàng, xuất báo cáo lịch sử Excel. |
+| SO\_US\_11 | Special Feature (mới) | In Phiếu bán hàng: xuất PDF có khối chữ ký 4 bên (Khách hàng/NV giao hàng/Nhân viên kinh doanh/Kế toán), dùng làm chứng từ giao hàng;  Phiếu báo giá (SO\_US\_04) không có chữ ký. Xem chi tiết layout tại Mục 2.13. |
+
+## Người dùng liên quan (Actors)
+
+| **Actor** | **Kênh** | **Nhu cầu / Vai trò** |
+| --- | --- | --- |
+| Backoffice/Admin HO | Web (HO) | Giám sát toàn bộ đơn hàng, cấu hình Bảng giá/CTKM/config Kênh mặc định, đối soát ERP, không trực tiếp tạo đơn thường xuyên; có quyền Sửa/Hủy/Duyệt/Từ chối không giới hạn phạm vi. |
+| Admin(NPP) - portal NPP/  Quản lý cấp cao theo cây SFA - Portal HO | Web (NPP/HO) | Tạo đơn hộ khách hàng (không bắt buộc gắn Nhân viên kinh doanh), duyệt/từ chối đơn hàng, tạo báo giá, xử lý đơn |
+| Nhân viên kinh doanh (Salesman) | Web + APP SM | Tự lên đơn cho khách hàng thuộc tuyến mình phụ trách; trên App thao tác trực tuyến  theo luồng tạo đơn |
+| Hệ thống ERP (NetSuite) | Tích hợp | Nhận đơn hàng đã duyệt qua queue đồng bộ, trả về trạng thái ERP dạng text cho DMS lắng nghe và hiển thị trên đơn hàng đã duyệt. |
+
+Tổng quan phân quyền theo Role × Action. Nguyên tắc chung:
+
+* Xem/Tạo/Sửa: theo data scope — Nhân viên kinh doanh chỉ thấy đơn do mình tạo hoặc thuộc Tuyến mình quản lý; Quản lý xem theo cây SFA cấp dưới; HO xem toàn bộ theo Vùng/Khu vực
+* Duyệt/Từ chối duyệt đơn hàng: chỉ tài khoản được phân quyền mới thấy/bấm được nút/icon tương ứng.
+* Quản lý cấp cao theo cây SFA, Admin HO và Admin NPP được quyền Sửa/Hủy/Duyệt/Từ chối thay cho đơn của Nhân viên kinh doanh khác (kể cả khi Nhân viên kinh doanh đã ngừng hoạt động)
+* Kiểm tra 2 lớp: ẩn UI + chặn backend — người dùng không có quyền sẽ không thấy nút và không gọi được API tương ứng.
+
+## Các đối tượng nghiệp vụ liên quan
+
+| **Đối tượng** | **Vai trò trên màn hình SO** |
+| --- | --- |
+| NPP (Nhà phân phối) | Mặc định = NPP ERP theo tài khoản đăng nhập, áp dụng thống nhất cho MỌI actor kể cả HO (ẩn field NPP). |
+| Khách hàng | Thuộc đúng 1 NPP; xác định Nhóm khách hàng → Bảng giá + %CK.  Thuộc Kênh bán hàng của khách hàng |
+| Nhân viên kinh doanh (Sales rep) | Xác định Tuyến bán hàng; là actor chính trên APP SM. |
+| Nhân viên Quản lý cấp cao SFA/ Admi HO | Người duyệt/từ chối đơn; cũng có thể tự lên đơn hộ (không bắt buộc chọn Nhân viên kinh doanh); được quyền xử lý thay cho đơn của Nhân viên kinh doanh khác. |
+| Nhóm khách hàng | Gán tại hồ sơ KH, quan hệ 1-1, optional, ẩn hoàn toàn trên UI đơn hàng (logic ngầm backend). |
+| Bảng giá (Price Group) | Lấy bảng giá mới nhất đang active, tra cứu theo Ngày đặt hàng. |
+| CTKM (Chương trình khuyến mãi) | CTKM không thay đổi trong scope này. |
+
+Rule Sales
+
+## Quy tắc xác định Kênh bán hàng, Tuyến, Nhân viên kinh doanh (theo TKTT đăng nhập)
+
+Áp dụng đồng nhất cho cả Web (HO/NPP) và APP SM.
+
+| **TKTT đăng nhập** | **Chọn Nhân viên kinh doanh?** | **Chọn Tuyến?** | **Kênh bán hàng** |
+| --- | --- | --- | --- |
+| Nhân viên kinh doanh tự lên đơn (Web- TKTT= Sales rep hoặc APP SM) | Mặc định là chính nhân viên đăng nhập  Trên app theo logic chọn tuyến của sale không đổi. | Tự động theo Tuyến của Nhân viên kinh doanh  được chọn lại nếu có nhiều Tuyến của nhân viên | Theo kênh gán riêng cho Khách hàng; nếu không có → config mặc định (theo cấu hình của VG) |
+| Admin HO/Quản lý có TKTT # Sales rep | Không bắt buộc | Không cần (nếu không chọn Nhân viên kinh doanh) | Theo kênh gán riêng cho Khách hàng; nếu không có → config mặc định (theo cấu hình của VG) |
+| Admin NPP | Không bắt buộc | Không cần (nếu không chọn Nhân viên kinh doanh) | Theo kênh gán riêng cho Khách hàng; nếu không có → config mặc định (theo cấu hình của VG) |
+
+## Nghiệp vụ Nhóm khách hàng & Bảng giá
+
+* Nhóm khách hàng: thuộc tính cố định gán lúc tạo hồ sơ KH, optional, 1 KH chỉ thuộc đúng 1 nhóm hoặc không thuộc nhóm nào, không hiển thị trên UI đơn hàng ở bất kỳ kênh nào (logic ngầm backend).
+* Khách hàng không thuộc nhóm nào → hưởng giá gốc sau VAT, %CK bảng giá = 0.
+* Bảng giá được versioned: không sửa trực tiếp bảng giá đang active → set ngày hết hiệu lực (end-date) và tạo bản ghi mới thay thế.
+* Ngày đặt hàng là trường để tra cứu Bảng giá + CTKM áp dụng (cho phép chọn ngày quá khứ, kể cả trên APP SM khi tạo đơn hồi tố tại điểm bán). Đổi Ngày đặt hàng sau khi đã nhập sản phẩm → hệ thống tự động tính lại toàn bộ giá/%CK/CTKM trên các dòng đã nhập.
+
+Price\_Rule
+
+## Logic tính giá 5 bước trên dòng hàng
+
+Biến đầu vào trên đơn hàng
+
+* SoLuong (Q, luôn là số nguyên dương) — Số lượng;
+* Gia\_SauVAT\_SauCK — Đơn giá Sau VAT & Sau CK (Master Data Bảng giá);
+* PtramCK (k%) — % chiết khấu;
+* PtramVAT (v%) — Thuế suất VAT.
+
+| Trường hiển thị trên Đơn hàng | **Bước** | **Công thức** | **Ví dụ (Q=2, Giá=99.000, k=10%, v=10%)** |
+| --- | --- | --- | --- |
+| Thành tiền sau VAT (VND) | 1. Thành tiền sau VAT | = SoLuong × Gia\_SauVAT\_SauCK | 99.000 × 2 = 198.000 VNĐ |
+| Đơn giá (VND) | 2. Đơn giá (sau VAT, chưa CK) | = IF(k>0, Gia\_SauVAT\_SauCK / (1−k), Gia\_SauVAT\_SauCK) | 99.000 / (1−0,1) = 110.000 VNĐ |
+| Tiền chiết khấu | 3. Tiền chiết khấu (số âm) | = −1 × (DonGia\_SauVAT × SoLuong × k) | −1 × (110.000×2×10%) = −22.000 VNĐ |
+| Tiền VAT (VND) | 4. Tiền VAT (VND) | = ThanhTien\_SauVAT × (v / (1+v)) | 198.000 × (0,1/1,1) = 18.000 VNĐ |
+| Thành tiền trước VAT (VND) | 5. Thành tiền (chưa VAT) | = ThanhTien\_SauVAT − TienVAT | 198.000 − 18.000 = 180.000 VNĐ |
+
+**Nếu khách hàng không thuộc nhóm áp dụng chiết khấu (k%=0), cột Chiết khấu % và Tiền chiết khấu để trống hoặc hiển thị 0 .**
+
+**Nguyên tắc phân bổ làm tròn cho khối tổng cộng được quy định riêng tại Mục 1.7 (áp dụng khác nhau giữa hiển thị DMS và dữ liệu đồng bộ ERP).**
+
+## Luồng trạng thái & Đồng bộ ERP
+
+ Bảng trạng thái ERP tham chiếu (SO\_US\_05, chỉ khi Đã duyệt)
+
+| **Status ERP** | **Status DMS** | Mô tả |
+| --- | --- | --- |
+|  | Khởi tạo | Khi tạo báo giá, quản lý trên DMS |
+| Pending Fulfillment | Đã duyệt | (mới sync) không sửa. |
+| Partially Fulfilled |  | Giao 1 phần - Hiển thị dạng text trên đơn hàng Đã duyệt |
+| Pending Billing/Partially Fulfilled |  | Giao 1 phần, chưa tạo HD - Hiển thị dạng text trên đơn hàng Đã duyệt |
+| Pending Billing |  | Giao đủ, chưa xuất hóa đơn  - Hiển thị dạng text trên đơn hàng Đã duyệt |
+| Billed | Đã xuất hóa đơn | Đã xuất hóa đơn  Hoặc Đã xuất kho. |
+| Closed | Đã hủy | Hủy (phía ERP, sau khi đã Đã duyệt)  Hủy đơn khởi tạo của DMS - không sync ngược lại ERP |
+
+Trạng thái ERP hiển thị dưới dạng field text riêng biệt đã mô tả, không ghi đè field Status DMS chính. DMS không tự suy luận trạng thái, chỉ hiển thị nguyên trạng dữ liệu ERP trả về.
+
+# **Danh sách màn hình và mô tả**
+
+## **Màn hình Danh sách Đơn hàng (SO\_US\_01)**
+
+**Mô tả:**Cho phép tìm kiếm, lọc, hiển thị toàn bộ đơn hàng (theo data scope người dùng); theo dõi trạng thái đồng bộ ERP; thao tác nhanh (toggle trạng thái, điều chỉnh) và điều hướng tới các luồng tạo mới/import/export/duyệt.
+
+| Tên Trường | Loại dữ liệu/Loại field | Thao tác? | Bắt buộc? | **Mô tả nghiệp vụ** |
+| --- | --- | --- | --- | --- |
+| Vùng tìm kiếm | | | | |
+| Ô tìm kiếm ("Tìm kiếm theo") | Search Box | Có | Không | Placeholder: "Tìm kiếm theo Mã đơn hàng, Mã đơn hàng ERP". Search theo Mã đơn hàng (SO-xxx) hoặc Mã đơn hàng ERP (SO-VG-xxx); kích hoạt khi gõ và bấm "Tìm kiếm". |
+| Trạng thái | Selectbox multichoice (tag) | Có | Không | Multi-choice, hiển thị dạng tag có thể xóa từng tag ("Đã duyệt ×", "Khởi tạo ×", "Đã xuất hóa đơn×", "Đã hủy ×"). Mặc định chọn cả 2 trạng thái "Đã duyệt ×", "Khởi tạo ×"  *Lưu ý Đã xuất kho wording thành Đã xuất hóa đơn.* |
+| Từ ngày / Đến ngày | Date range | Có | Không | Lọc theo Ngày đặt hàng. Đến ngày ≥ Từ ngày |
+| Loại đơn hàng | Selectbox onechoice | Không | Không | Bộ lọc "Loại đơn" — hiện chỉ có giá trị "Đơn bán hàng"    * Không chọn là tất cả * Chọn cũng chỉ có 1 loại là Đơn bán hàng. |
+| Nhân viên bán hàng | Selectbox onechoice/ search | Không | Không | Lọc theo Nhân viên kinh doanh tạo/phụ trách đơn; Mở danh sách: lấy theo data scope Nhân viên kinh doanh mà tài khoản đang đăng nhập được phép xem (Mục Phân quyền dữ liệu người dùng).   * Theo TKTT # Sales rep: Cây SFA * Theo TKTT = Sales rep: Chính mình * Theo Admin HO: Phân quyền Vùng/khu vực * Theo Admin NPP: Phân quyền theo NPP đã chọn |
+| Làm mới | Button | Có | Có | Xóa toàn bộ điều kiện lọc đã chọn, load lại danh sách mặc định. |
+| Tìm kiếm | Button (primary) | Có | Có | Áp dụng toàn bộ điều kiện lọc hiện tại, load lại Grid + dòng Tổng tiền thanh toán. |
+|  | | | | |
+| Tổng tiền thanh toán (VNĐ) | Label (summary) | Không | N/A | = SUM(Tổng tiền thanh toán) của TOÀN BỘ đơn hàng thỏa bộ lọc hiện hành (Tất cả các trang được tìm thấy) — ví dụ: 692.738 cho 3 đơn hàng. |
+| Cập nhật trạng thái | Button (bulk, disabled mặc định) | Có | N/A | Khi người dùng chọn ≥ 1 checkbox dòng trong Grid. Cho phép cập nhật trạng thái hàng loạt (Duyệt/Hủy) cho các đơn đã chọn chỉ áp dụng được cho các đơn đang Khởi tạo  (Luồng xử lý hiện tại không thay đổi) |
+| + Tạo mới | Button (primary) | Có | Có | Điều hướng sang màn Tạo mới đơn hàng **(SO\_US\_02).** |
+| Checkbox chọn dòng | Checkbox (theo dòng + chọn tất cả) | Có | Không | Chọn 1 hoặc nhiều dòng để dùng với "Cập nhật trạng thái". |
+| Bảng dữ liệu (Grid) | Grid | Không | N/A | Cột: Mã đơn hàng (link) | Mã đơn hàng ERP | Ngày đặt hàng | Tổng tiền thanh toán (VNĐ) | Loại đơn | Trạng thái (chip màu) | Nhân viên | Ngày tạo | Người tạo | Ngày cập nhật | Người cập nhật | Tùy chỉnh. |
+| Cột Tùy chỉnh (action icons) | Icon Buttons | Có | N/A | Icon "In" (phiếu bán hàng) hiển thị cho MỌI trạng thái.  Icon "Sửa" (bút chì) / "Duyệt" (đồng hồ) / "Hủy" (thùng rác) CHỈ hiển thị khi đơn ở trạng thái Khởi tạo - Theo phân quyền Nhóm quyền  Chọn Mã đơn hàng để "Xem chi tiết" đơn hàng nếu được phân quyền Nhóm quyền |
+| Phân trang | Pagination | Có | N/A | Hiển thị "x-y trên z đơn hàng"; chọn số dòng/trang (mặc định 10/trang). |
+
+## **Màn hình Tạo mới/Chỉnh sửa/Xem chi tiết đơn hàng (SO\_US\_02)**
+
+Mô tả:  Tạo mới đơn hàng SO trên Web Admin/Distributor Portal (HO/NPP): thiết lập Header, thêm dòng sản phẩm, tính giá 5 bước, khối Khuyến mãi, khối tổng cộng.
+
+| Tên Trường | Loại dữ liệu/Loại field | Thao tác? | Bắt buộc? | **Mô tả nghiệp vụ** |
+| --- | --- | --- | --- | --- |
+| Tạo mới đơn hàng bán | Label | Không | Không | Tên màn hình  Chọn Button "Tạo mới" hiển thị màn hình "Tạo mới đơn hàng bán"  Chọn dấu x để đóng màn hình và không lưu dữ liệu. |
+| Loại đơn hàng | Label-Tag /ẩn | Không | Có (ẩn, default = "Đơn bán hàng") | Khi tạo mới lưu mặc định Đơn bán hàng  Khi xem chi tiết đơn hàng hiển thị Nhãn cố định "Đơn bán hàng" hiển thị dạng chip xanh dương ở đầu mọi màn Tạo mới/Chỉnh sửa/Xem chi tiết. Phân biệt với các loại đơn khác có thể có trong tương lai của hệ thống |
+| NPP | Label/ẩn | Không | Có (ẩn, default) | Default = NPP ERP tạo trên Portal HO  Portal NPP => Theo rule chọn NPP khi login |
+| Ngày đặt hàng | Date | Có | Có | Mặc định hôm nay, cho phép chọn ngày quá khứ. Là field neo tra cứu Bảng giá + CTKM. Đổi ngày sau khi đã nhập SP → tự động tính lại toàn bộ giá theo bảng giá /CTKM. |
+| Kho ERP | Selectbox onechoice | Có | Có | Danh sách kho vật lý của ERP. Cho phép chọn Kho ERP tương ứng NPP. Là kho dùng để kiểm tra tồn kho SKU |
+| Nhân viên | Selectbox onechoice | Có | Điều kiện | Theo Rule xác định đối tượng tạo đơn |
+| Khách hàng | Selectbox onechoice | Có | Có | Hiển thị danh sách khách hàng đang hoạt động và Khách hàng có ngày hiện tại thuộc startdate → Enddate.  Chọn Nhân viên → Danh sách khách hàng load theo tất cả tuyến chăm sóc của nhân viên  Chọn Nhân viên → Chọn Tuyến chăm sóc → Danh sách khách hàng load theo tuyến chăm sóc đang chọn |
+| Kênh bán hàng | Label/Selectbox onechoice (auto) | Không (auto) | Có | Theo Rule xác định đối tượng tạo đơn  Disable khi chọn Khách hàng. |
+| Tuyến chăm sóc | Label/Selectbox (auto) | Không | Điều kiện | Chỉ bắt buộc và hiển thị khi có chọn NVBH; tự động load theo NVBH được chọn, Cho chọn lại nếu có nhiều tuyến  Không chọn nhân viên thì disable không cho chọn. |
+| Địa chỉ khách hàng | Label (readonly) | Không | N/A | Auto-fill theo "Địa chỉ Khách hàng" theo dữ liệu Khách hàng([VG] Danh sách khách hàng) ngay khi chọn Khách hàng; không cho sửa trên màn SO |
+| Địa chỉ giao hàng | Selectbox onechoice | Có | Không | KHÁC với Địa chỉ khách hàng: đây là danh sách các địa chỉ giao hàng đã đăng ký của Khách hàng (có thể nhiều địa chỉ giao hàng cho 1 khách hàng); mặc định chọn địa chỉ chính, cho phép đổi sang địa chỉ khác trong danh sách.  Hiển thị trong danh sách gồm: Tên - SĐT - Địa chỉ. Sau khi chọn thì hiển thị địa chỉ vào khung.   * Khách hàng có Địa chỉ giao hàng mặc định => Hiển thị mặc định lựa chọn này. * Khách hàng không có → Nhưng người liên hệ gắn với khách hàng có Địa chỉ giao hàng mặc định => Hiển thị placeholder: Chọn địa chỉ giao hàng. Hoặc chọn sẵn một địa chỉ bất kỳ * Cả khách hàng và Người liên hệ đều không có Địa chỉ giao hàng mặc định. cho phép để trống. |
+| Ghi chú | Text Area (placeholder "Nhập vào Ghi chú") | Có | Không | Free text; giới hạn độ dài tối đa (Tối đa 256 ký tự)  Placeholder UI: "Nhập vào Ghi chú". |
+| Danh sách sản phẩm Mặc định hiển thị nút "Thêm sản phẩm". Chọn nhập mã  hoặc tên sản phẩm → Hiển thị popup chứa Mã - Tên -Đơn vị  *Rule xử lý chọn trùng sản phẩm không thay đổi:*   * *Web: SKU đã tồn tại trong đơn sẽ tự động bị ẩn khỏi danh sách/kết quả tìm kiếm sản phẩm khi thêm dòng mới — ngăn việc thêm trùng ngay từ bước tìm kiếm. Muốn thay đổi số lượng, người dùng sửa trực tiếp trên dòng đã có trong bảng.* | | | | |
+| Mã SKU / Tên sản phẩm / Đơn vị tính | Data Column | Không | N/A | Nếu người tạo đơn Không chọn Nhân viên kinh doanh + Tuyến bán hàng => Lấy từ Master Data sản phẩm của NPP đang chọn.  Có chọn => Dựa vào tuyến bán hàng để load danh sách sản phẩm theo Nhãn hàng của Tuyến  Lưu ý: "Đơn vị tính" : Hiển thị đơn vị bán hàng của sản phẩm để chọn - dữ liệu đơn vị này được phân loại khi Sync sản phẩm |
+| Số lượng | Number (số nguyên) | Có | Có | Nhập tay, LUÔN LÀ SỐ NGUYÊN DƯƠNG  Thay đổi số lượng kích hoạt tự động tính lại giá dòng sản phẩm. |
+| Tồn kho | Data Column | Không | N/A | Tồn kho thực tế theo đúng Kho đang bán của đơn hàng. |
+| Đơn giá (VND) | Data Column | Không | N/A | Cột thêm mới  Là một cột mới được tính lại theo công thức Giá sau thuế = Gia\_SauVAT\_SauCK / (1−%CK) nếu có CK, ngược lại giữ nguyên giá niêm yết.  Công thức tính giá |
+| Chiết khấu % | Data Column | Không | N/A | Cột thêm mới  Lấy từ %CK Bảng giá/Nhóm KH áp dụng cho Khách hàng.  Nếu KH không thuộc nhóm nào hiển thị giá trị 0 |
+| Tiền chiết khấu | Data Column | Không | N/A | Cột thêm mới  Hiển thị số âm; = −1×(Đơn giá×SL×%CK). Theo công thức và ví dụ  Nếu không có CK hiển thị dấu - |
+| Thuế VAT (%) | Data Column | Không | N/A | Hiển thị % thuế suất VAT áp dụng riêng cho từng SKU (Master Data sản phẩm) |
+| Thành tiền trước VAT (VND) | Data Column | Không | N/A | Trước gọi "Thành tiền (chưa VAT)"; đổi nhãn cột theo đúng UI thực tế. = Thành tiền sau VAT − Tiền VAT.  Theo công thức và ví dụ |
+| Tiền VAT (VND) | Data Column | Không | N/A | Theo công thức và ví dụ   = Thành tiền sau VAT × (%VAT/(1+%VAT)). |
+| Thành tiền sau VAT (VND) | Data Column | Không | N/A | Theo công thức và ví dụ  = Số lượng × Gia\_SauVAT\_SauCK |
+| Ghi chú (cấp dòng hàng) | Text Area (inline) | Có | Không | Hiển thị/nhập được trên màn Tạo mới và Chỉnh sửa. |
+| Số lô | ẨN |  |  | Hệ thống lưu mặc định số lô N/A và ngày hết hạn là ngày tương lai xa.  Không hiển thị khi tạo đơn WEB và APP |
+| Tùy chỉnh - icon xóa (từng dòng hàng) | Icon | Có | Không | Hiển thị và Xóa dòng sản trên màn Tạo mới và Chỉnh sửa. |
+| **Khối "Khuyến mãi"**  **Sau khi chọn nút "Áp khuyến mãi"** **Hiển thị bảng thông tin khuyến mãi như hiện tại không có thay đổi hiển thị.**   * Chia 2 table Khuyến mãi ưu tiên * Khuyến mãi bình thường | | | | |
+| [HT] Áp dụng KM không đồng thời  [NPP][HT] Đơn hàng - Áp dụng CTKM đồng giá  [NPP] [HT] Đơn hàng - Áp dụng khuyến mãi bậc thang | Label (link màu xanh) |  |  | Mỗi chương trình/scheme = 1 dòng riêng.  Nếu 1 SKU có nhiều CTKM tặng hàng cùng áp dụng → nhiều dòng riêng, không gộp. Tên chương trình hiển thị dạng link (ví dụ: "Pri-Mua 4 bất kỳ tặng 1 bất kỳ"). Lưu Mã CTKM- Tên CTKM  áp dụng.   * Chương trình khuyến mãi: Hiển thị thông tin CTKM áp dụng; Giá áp dụng khuyến mãi là giá sau thuế (Đơn giá (VND)) * Mã sản phẩm / Tên sản phẩm / Số lượng / Đơn vị: Thông tin sản phẩm được tặng kèm theo điều kiện chương trình hiển thị * Khuyến mãi : Nếu khuyến mãi tiền thì Cột "Khuyến mãi " hiển thị giá trị tiền là số tiền khuyến mãi- Hiển thị số âm (ví dụ: −18.111).; Những cột còn lại không có giá trị hiển thị dấu gạch ngang. Và ngược lại * Tồn kho: hiển thị vơi sản phẩm tặng số lượng tồn tại thời điểm lên đơn. |
+| Khối tổng cộng (Header Totals)   * Trên giao diện DMS: mỗi dòng hàng được tính độc lập theo công thức 5 bước (Mục 1.5); khối tổng cộng = SUM trực tiếp các dòng tương ứng, KHÔNG áp dụng điều chỉnh riêng cho dòng cuối.   + Khối tổng cộng bổ sung cột "Tổng tiền CK bảng giá" — độc lập với Tổng khuyến mãi.   + Bỏ hẳn trường "Giảm trừ (VND)" tự do — không còn tồn tại trên UI ở bất kỳ kênh nào. * Khi ĐỒNG BỘ DỮ LIỆU SANG ERP (mapping payload- mô tả bên dưới): trường "Thành tiền trước VAT" của tổng đơn được tính theo kỹ thuật phân bổ phần dư — dòng cuối = Tổng trước VAT − Sum(Thành tiền trước VAT của các dòng còn lại), nhằm đảm bảo khớp tuyệt đối với Tổng trước VAT khi hạch toán trên ERP. CHỈ áp dụng cho mục đích đồng bộ ERP, không áp dụng cho hiển thị trên DMS. | | | | |
+| Tổng tiền trước VAT (VND) | Data Column | Không | Không | Sum(Thành tiền chưa VAT từng dòng) |
+| VAT (VND) | Data Column | Không | Không | Sum(Tiền VAT từng dòng). |
+| Khuyến mãi (VND) | Data Column | Không | Không | Hiển thị sum(số tiền trên cột Khuyến mãi trên từng dòng). |
+| Tổng tiền CK bảng giá | Data Column | Không | Không | Sum(Tiền chiết khấu từng dòng chính) — độc lập, không gộp với Tổng khuyến mãi. |
+| **Tổng tiền thanh toán (VND)** | Data Column | Không | Không | Tổng tiền thanh toán = Tổng tiền trước VAT + VAT + Khuyến mãi + Tổng tiền CK bảng giá |
+| Áp khuyến mãi | Button | Có | Không | Không đổi |
+| Tạo báo giá | Button | Có | Không | Chọn để Lưu đơn hàng Khởi tạo và hiển thị Phiếu báo giá |
+| Duyệt đơn hàng | Button | Có | Không | Chọn để tạo đơn hàng và sync đẩy vào hàng đợi của ERP. Lưu đơn Đã duyệt và nhận trạng thái cập nhật từ ERP |
+| Đóng | Button | Có | Không | Đóng và không lưu dữ liệu. |
+
+## **Màn hình Chỉnh sửa đơn hàng (SO\_US\_03)**
+
+Mô tả: Chỉ trạng thái khởi tạo mới hiển thị icon chỉnh sửa trên danh sách, chọn mở Màn hình Chỉnh sửa đơn hàng theo màn hình tạo mới.
+
+| Tên Trường | Loại dữ liệu/Loại field | Thao tác? | Bắt buộc? | **Mô tả nghiệp vụ** |
+| --- | --- | --- | --- | --- |
+| Chỉnh sửa đơn hàng bán | Label | Không | Không | Tên màn hình  Chọn dấu x để đóng màn hình và không lưu dữ liệu. |
+| Loại đơn hàng | Label-Tag | Không | Có | Khi xem chi tiết đơn hàng hiển thị Nhãn cố định "Đơn bán hàng" hiển thị dạng chip xanh dương ở đầu mọi màn Tạo mới/Chỉnh sửa/Xem chi tiết. Phân biệt với các loại đơn khác có thể có trong tương lai của hệ thống |
+| Trạng thái | Label/Chip màu (system) | Không | N/A | Hiển thị trạng thái Khởi tạo |
+| Các trường dữ liệu còn lại của đơn hàng như màn hình Khởi tạo | | | | |
+
+## **Màn hình Xem chi tiết đơn hàng (SO\_US\_04)**
+
+Mô tả:  Chọn Mã đơn hàng để xem chi tiết đơn hàng
+
+Riêng đơn hàng Đã duyệt hiển thị thêm field Text trạng thái đơn hàng nhận từ ERP. - xem bảng mapping trạng thái ở đầu tài liệu
+
+Lịch sử
+
+Phân quyền

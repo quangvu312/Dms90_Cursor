@@ -1,0 +1,13 @@
+{
+  "items": [
+    { "id": "1", "code": "RANK8", "name": "Hạng F5", "status": "INACTIVE", "createdAt": "30-09-2025 17:02:21", "updatedAt": "10-06-2026 16:43:40", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "2", "code": "RANK7", "name": "Hạng F4", "status": "INACTIVE", "createdAt": "23-09-2025 16:37:11", "updatedAt": "10-06-2026 16:45:31", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "3", "code": "RANK6", "name": "Hạng F3", "status": "INACTIVE", "createdAt": "15-07-2025 09:55:22", "updatedAt": "10-06-2026 16:43:03", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "4", "code": "RANK5", "name": "Hạng F2", "status": "INACTIVE", "createdAt": "19-06-2025 13:29:18", "updatedAt": "10-06-2026 16:42:45", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "5", "code": "RANK4", "name": "Hạng F1", "status": "INACTIVE", "createdAt": "19-06-2025 13:28:50", "updatedAt": "10-06-2026 16:42:30", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "6", "code": "RANK3", "name": "Hạng Đồng (Class C / Bronze)", "status": "ACTIVE", "createdAt": "29-05-2025 15:52:55", "updatedAt": "10-06-2026 16:41:25", "createdBy": "qcadminvi", "updatedBy": "oms" },
+    { "id": "7", "code": "RANK2", "name": "Hạng Bạc (Class B / Silver)", "status": "ACTIVE", "createdAt": "28-05-2025 14:10:00", "updatedAt": "10-06-2026 16:40:30", "createdBy": "adminho", "updatedBy": "oms" },
+    { "id": "8", "code": "RANK1", "name": "Hạng Vàng (Class A / Gold)", "status": "ACTIVE", "createdAt": "28-05-2025 14:08:28", "updatedAt": "10-06-2026 16:40:06", "createdBy": "adminho", "updatedBy": "oms" }
+  ],
+  "pagination": { "page": 1, "pageSize": 10, "total": 8 }
+}

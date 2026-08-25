@@ -1,0 +1,83 @@
+{
+  "dateRange": {
+    "start": "01/07/2026",
+    "end": "29/07/2026"
+  },
+  "stats": [
+    {
+      "label": "Số đơn hàng",
+      "icon": "🛍",
+      "iconBg": "#fff0f6",
+      "values": [{ "label": "", "value": 171 }]
+    },
+    {
+      "label": "Doanh số",
+      "icon": "💲",
+      "iconBg": "#f6ffed",
+      "values": [
+        { "label": "Trước VAT", "value": 1766666666 },
+        { "label": "Sau VAT", "value": 1766666666 }
+      ]
+    },
+    {
+      "label": "Điểm bán",
+      "icon": "🏠",
+      "iconBg": "#fff7e6",
+      "values": [
+        { "label": "Mới", "value": 22 },
+        { "label": "Đang hoạt động", "value": 40986 }
+      ]
+    },
+    {
+      "label": "Nhân viên bán hàng",
+      "icon": "👤",
+      "iconBg": "#f9f0ff",
+      "values": [
+        { "label": "Mới", "value": 21 },
+        { "label": "Đang hoạt động", "value": 8018 }
+      ]
+    },
+    {
+      "label": "Nhà phân phối",
+      "icon": "🏢",
+      "iconBg": "#e6fffb",
+      "values": [
+        { "label": "Mới", "value": 4 },
+        { "label": "Đang hoạt động", "value": 1358 }
+      ]
+    },
+    {
+      "label": "Viếng thăm",
+      "icon": "📍",
+      "iconBg": "#fffbe6",
+      "values": [
+        { "label": "Điểm bán", "value": 45 },
+        { "label": "Lượt viếng thăm", "value": 96 }
+      ]
+    }
+  ],
+  "rankings": [
+    {
+      "title": "Top 10 sản phẩm bán chạy",
+      "items": [
+        { "label": "102296 - F25-Bộ 2 Anlene Total 10 Vani 800G", "percent": 100 },
+        { "label": "102290 - TPBS Anlene Total 10 Hương Vani 800G", "percent": 85 },
+        { "label": "224035 - Kẹo Gừng Gingerbon", "percent": 70 }
+      ]
+    },
+    {
+      "title": "Top 10 nhân viên bán hàng doanh số cao nhất",
+      "items": [
+        { "label": "ERPTTSSM001 - [ERP][TTS] NVBH - Thúy Vân", "percent": 100 },
+        { "label": "CTSM001 - [TTS] CENTRAL - NVBH0", "percent": 80 }
+      ]
+    },
+    {
+      "title": "Top 10 NPP có doanh số cao nhất",
+      "items": [
+        { "label": "ERPHCM - ERP_HCM", "percent": 100 },
+        { "label": "CTNPP001100 - CENTRAL NPP 001100", "percent": 75 }
+      ]
+    }
+  ]
+}
