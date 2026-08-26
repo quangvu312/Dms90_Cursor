@@ -1,0 +1,9 @@
+# Session / credentials — không commit
+.session_cookie.tmp
+confluence_storage_state.json
+.pw_profile/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
