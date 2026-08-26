@@ -1,0 +1,272 @@
+Core DMS90 -> Core DMS90.pdf
+  Portal HO -> Portal HO/Portal HO.pdf
+    [HO] Dashboard -> Portal HO/[HO] Dashboard.pdf
+    [HO] Master Data -> Portal HO/[HO] Master Data/[HO] Master Data.pdf
+      [HO] Cấu hình chung -> Portal HO/[HO] Master Data/[HO] Cấu hình chung/[HO] Cấu hình chung.pdf
+        Danh sách cấu hình chung -> Portal HO/[HO] Master Data/[HO] Cấu hình chung/Danh sách cấu hình chung.pdf
+      [HO] Cấu hình chấm công -> Portal HO/[HO] Master Data/[HO] Cấu hình chấm công.pdf
+      [HO] Danh sách sản phẩm -> Portal HO/[HO] Master Data/[HO] Danh sách sản phẩm.pdf
+      [HO] Danh sách điểm bán -> Portal HO/[HO] Master Data/[HO] Danh sách điểm bán/[HO] Danh sách điểm bán.pdf
+        [HO] Duyệt điều chỉnh điểm bán -> Portal HO/[HO] Master Data/[HO] Danh sách điểm bán/[HO] Duyệt điều chỉnh điểm bán.pdf
+      [HO] Dữ liệu chung -> Portal HO/[HO] Master Data/[HO] Dữ liệu chung/[HO] Dữ liệu chung.pdf
+        Danh sách dữ liệu chung -> Portal HO/[HO] Master Data/[HO] Dữ liệu chung/Danh sách dữ liệu chung.pdf
+      [HO] Nhiệm vụ -> Portal HO/[HO] Master Data/[HO] Nhiệm vụ.pdf
+      [HO] Nhà phân phối -> Portal HO/[HO] Master Data/[HO] Nhà phân phối.pdf
+      [HO] Nhóm nhiệm vụ -> Portal HO/[HO] Master Data/[HO] Nhóm nhiệm vụ.pdf
+      [HO] Phân Vùng -> Portal HO/[HO] Master Data/[HO] Phân Vùng.pdf
+      [HO] Quản lý nhân viên DMS và Định nghĩa cây Salesforce -> Portal HO/[HO] Master Data/[HO] Quản lý nhân viên DMS và Định nghĩa cây Salesforce.pdf
+      [HO] Thiết lập vị trí chấm công -> Portal HO/[HO] Master Data/[HO] Thiết lập vị trí chấm công.pdf
+      [HO] Tài Khoản Người Dùng -> Portal HO/[HO] Master Data/[HO] Tài Khoản Người Dùng.pdf
+    [HO & NPP] Phân quyền dữ liệu -> Portal HO/[HO & NPP] Phân quyền dữ liệu.pdf
+    [HO] Chốt sổ/ Mở chốt sổ -> Portal HO/[HO] Chốt sổ - Mở chốt sổ/[HO] Chốt sổ - Mở chốt sổ.pdf
+      [HO] Chốt sổ/ Mở chốt sổ - Chốt sổ nhiều NPP & nhiều tháng -> Portal HO/[HO] Chốt sổ - Mở chốt sổ/[HO] Chốt sổ - Mở chốt sổ - Chốt sổ nhiều NPP & nhiều tháng.pdf
+    [HO] Tuyến bán hàng -> Portal HO/[HO] Tuyến bán hàng/[HO] Tuyến bán hàng.pdf
+      [HO] Bản đồ tuyến bán hàng -> Portal HO/[HO] Tuyến bán hàng/[HO] Bản đồ tuyến bán hàng.pdf
+    [HO] Chương trình trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Chương trình trưng bày.pdf
+      [HO] Enhance CTTB -> Portal HO/[HO] Chương trình trưng bày/[HO] Enhance CTTB.pdf
+      Màn hình tổng quan chương trình trưng bày -> Portal HO/[HO] Chương trình trưng bày/Màn hình tổng quan chương trình trưng bày.pdf
+      [HO] Khởi tạo CTTB -> Portal HO/[HO] Chương trình trưng bày/[HO] Khởi tạo CTTB/[HO] Khởi tạo CTTB.pdf
+        [HO] Chấm trưng bày bằng AI -> Portal HO/[HO] Chương trình trưng bày/[HO] Khởi tạo CTTB/[HO] Chấm trưng bày bằng AI.pdf
+        [HT] Tích hợp CTTB với Merchant APP -> Portal HO/[HO] Chương trình trưng bày/[HO] Khởi tạo CTTB/[HT] Tích hợp CTTB với Merchant APP.pdf
+      [HO] Đăng ký trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Đăng ký trưng bày.pdf
+      [HO] Tiến trình trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Tiến trình trưng bày/[HO] Tiến trình trưng bày.pdf
+        [HO-HT] [ENHANCE] Tiến trình trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Tiến trình trưng bày/[HO-HT] [ENHANCE] Tiến trình trưng bày.pdf
+      [HO] Trả thưởng trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Trả thưởng trưng bày/[HO] Trả thưởng trưng bày.pdf
+        [HO-HT] [ENHANCE] Danh sách trả thưởng trưng bày -> Portal HO/[HO] Chương trình trưng bày/[HO] Trả thưởng trưng bày/[HO-HT] [ENHANCE] Danh sách trả thưởng trưng bày.pdf
+    [HO]Chương trình tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO]Chương trình tích lũy.pdf
+      Tổng quan chương trình tích lũy -> Portal HO/[HO]Chương trình tích lũy/Tổng quan chương trình tích lũy.pdf
+      [HO] Khởi tạo chương trình tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Khởi tạo chương trình tích lũy/[HO] Khởi tạo chương trình tích lũy.pdf
+        [HT] Tích hợp CTTL _Merchant -> Portal HO/[HO]Chương trình tích lũy/[HO] Khởi tạo chương trình tích lũy/[HT] Tích hợp CTTL _Merchant.pdf
+      [HO] Đăng ký tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Đăng ký tích lũy.pdf
+      [HO] Tiến trình tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Tiến trình tích lũy/[HO] Tiến trình tích lũy.pdf
+        [HO-HT] [ENHANCE] Tiến trình tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Tiến trình tích lũy/[HO-HT] [ENHANCE] Tiến trình tích lũy.pdf
+      [HO] Trả thưởng tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Trả thưởng tích lũy/[HO] Trả thưởng tích lũy.pdf
+        [HO-HT] [ENHANCE] Danh sách trả thưởng tích lũy -> Portal HO/[HO]Chương trình tích lũy/[HO] Trả thưởng tích lũy/[HO-HT] [ENHANCE] Danh sách trả thưởng tích lũy.pdf
+    [HO] Duyệt yêu cầu nghỉ phép -> Portal HO/[HO] Duyệt yêu cầu nghỉ phép.pdf
+    [HO] Kế hoạch làm việc -> Portal HO/[HO] Kế hoạch làm việc/[HO] Kế hoạch làm việc.pdf
+      [HO] Tổng quan kế hoạch làm việc -> Portal HO/[HO] Kế hoạch làm việc/[HO] Tổng quan kế hoạch làm việc.pdf
+      [HO] Tạo kế hoạch làm việc -> Portal HO/[HO] Kế hoạch làm việc/[HO] Tạo kế hoạch làm việc.pdf
+      [HO] Duyệt kế hoạch làm việc -> Portal HO/[HO] Kế hoạch làm việc/[HO] Duyệt kế hoạch làm việc.pdf
+      [HO] Duyệt chi tiết thực hiện công việc -> Portal HO/[HO] Kế hoạch làm việc/[HO] Duyệt chi tiết thực hiện công việc.pdf
+    [HO] Khảo sát -> Portal HO/[HO] Khảo sát/[HO] Khảo sát.pdf
+      [HO] Bộ Khảo Sát -> Portal HO/[HO] Khảo sát/[HO] Bộ Khảo Sát.pdf
+      [HO] Báo cáo thống kê thực hiện khảo sát -> Portal HO/[HO] Khảo sát/[HO] Báo cáo thống kê thực hiện khảo sát.pdf
+    [HO] KPI -> Portal HO/[HO] KPI/[HO] KPI.pdf
+      [HO] Giao KPI -> Portal HO/[HO] KPI/[HO] Giao KPI/[HO] Giao KPI.pdf
+        [HO] Bổ sung chỉ tiêu mới và KPI cho cấp quản lý tại Giao KPI -> Portal HO/[HO] KPI/[HO] Giao KPI/[HO] Bổ sung chỉ tiêu mới và KPI cho cấp quản lý tại Giao KPI.pdf
+        [HO] Bổ sung điều kiện phụ đạt KPI và cho phép chỉnh sửa khi KPI đã duyệt -> Portal HO/[HO] KPI/[HO] Giao KPI/[HO] Bổ sung điều kiện phụ đạt KPI và cho phép chỉnh sửa khi KPI đã duyệt.pdf
+      [HO] Xem chỉ tiêu -> Portal HO/[HO] KPI/[HO] Xem chỉ tiêu/[HO] Xem chỉ tiêu.pdf
+        Cập nhật danh sách chỉ tiêu KPI -> Portal HO/[HO] KPI/[HO] Xem chỉ tiêu/Cập nhật danh sách chỉ tiêu KPI.pdf
+      [Phase 1] - Báo cáo KPI -> Portal HO/[HO] KPI/[Phase 1] - Báo cáo KPI.pdf
+      [Phase 2] - Báo cáo KPI -> Portal HO/[HO] KPI/[Phase 2] - Báo cáo KPI.pdf
+    [HO] Thông Báo -> Portal HO/[HO] Thông Báo/[HO] Thông Báo.pdf
+      [HO] Lịch sử thông báo -> Portal HO/[HO] Thông Báo/[HO] Lịch sử thông báo.pdf
+      [HO] Quản lý thông báo -> Portal HO/[HO] Thông Báo/[HO] Quản lý thông báo.pdf
+      [HT] [ENHANCE] Quản lý thông báo -> Portal HO/[HO] Thông Báo/[HT] [ENHANCE] Quản lý thông báo.pdf
+    [HO] Xử lý yêu cầu hỗ trợ -> Portal HO/[HO] Xử lý yêu cầu hỗ trợ.pdf
+    DMS x Promotion -> Portal HO/DMS x Promotion/DMS x Promotion.pdf
+      Promotion - DMS -> Portal HO/DMS x Promotion/Promotion - DMS/Promotion - DMS.pdf
+        Áp khuyến mãi Sell in -> Portal HO/DMS x Promotion/Promotion - DMS/Áp khuyến mãi Sell in.pdf
+      [DMS x Promotion] Mô tả luồng nghiệp vụ -> Portal HO/DMS x Promotion/[DMS x Promotion] Mô tả luồng nghiệp vụ.pdf
+      [DMS x Promotion] Research & Analyze -> Portal HO/DMS x Promotion/[DMS x Promotion] Research & Analyze.pdf
+      [Purchase Order] Áp dụng khuyến mãi -> Portal HO/DMS x Promotion/[Purchase Order] Áp dụng khuyến mãi.pdf
+      [Sell in] Áp khuyến mãi cho đơn hàng bán NPP -> Portal HO/DMS x Promotion/[Sell in] Áp khuyến mãi cho đơn hàng bán NPP.pdf
+      [Sell-out] Áp dụng khuyến mãi cho đơn hàng bán cửa hàng -> Portal HO/DMS x Promotion/[Sell-out] Áp dụng khuyến mãi cho đơn hàng bán cửa hàng.pdf
+      Điểm bán Trả hàng khuyến mãi nguyên đơn -> Portal HO/DMS x Promotion/Điểm bán Trả hàng khuyến mãi nguyên đơn.pdf
+    [HO] Quản lý kho -> Portal HO/[HO] Quản lý kho/[HO] Quản lý kho.pdf
+      NPP trả hàng -> Portal HO/[HO] Quản lý kho/NPP trả hàng.pdf
+      [HO] Báo cáo Nhập/Xuất kho -> Portal HO/[HO] Quản lý kho/[HO] Báo cáo Nhập - Xuất kho.pdf
+      [HO] Duyệt trả hàng nguyên đơn -> Portal HO/[HO] Quản lý kho/[HO] Duyệt trả hàng nguyên đơn.pdf
+      [HO] Import tồn kho đầu kỳ NPP -> Portal HO/[HO] Quản lý kho/[HO] Import tồn kho đầu kỳ NPP.pdf
+    Quản Lý Bán Hàng -> Portal HO/Quản Lý Bán Hàng/Quản Lý Bán Hàng.pdf
+      Form in HO bán NPP -> Portal HO/Quản Lý Bán Hàng/Form in HO bán NPP.pdf
+      Sell-in/ Đơn bán hàng của HO cho NPP -> Portal HO/Quản Lý Bán Hàng/Sell-in - Đơn bán hàng của HO cho NPP/Sell-in - Đơn bán hàng của HO cho NPP.pdf
+        Sell-in - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết -> Portal HO/Quản Lý Bán Hàng/Sell-in - Đơn bán hàng của HO cho NPP/Sell-in - Duyệt - Hủy đơn hàng tại màn hình xem chi tiết.pdf
+      [HO] Cài đặt sản phẩm gợi ý -> Portal HO/Quản Lý Bán Hàng/[HO] Cài đặt sản phẩm gợi ý.pdf
+      [HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out) -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out).pdf
+        [HO] Quản lý mẫu hóa đơn điện tử -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[HO] Quản lý mẫu hóa đơn điện tử.pdf
+        [NPP] Đăng ký hóa đơn điện tử và chữ ký số -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[NPP] Đăng ký hóa đơn điện tử và chữ ký số.pdf
+        [HO] Quản lý hóa đơn điện tử -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[HO] Quản lý hóa đơn điện tử.pdf
+        [HO] Danh mục điểm bán - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[HO] Danh mục điểm bán - Thêm thông tin xuất hóa đơn.pdf
+        [HO] Đơn bán hàng - Thêm thông tin hóa đơn trên đơn hàng -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[HO] Đơn bán hàng - Thêm thông tin hóa đơn trên đơn hàng.pdf
+        [SM-APP] Tạo mới điểm bán - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[SM-APP] Tạo mới điểm bán - Thêm thông tin xuất hóa đơn.pdf
+        [SM-APP] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[SM-APP] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn.pdf
+        [SM-APP] Đặt hàng - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[SM-APP] Đặt hàng - Thêm thông tin xuất hóa đơn.pdf
+        [Manager_App] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[Manager_App] Chi tiết điểm bán - Thêm thông tin xuất hóa đơn.pdf
+        [Manager_App] Chỉnh sửa điểm bán - Thêm thông tin xuất hóa đơn -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[Manager_App] Chỉnh sửa điểm bán - Thêm thông tin xuất hóa đơn.pdf
+        [Manager_App] Thông tin đơn hàng - Xem thông tin đơn hàng -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý HĐĐT đơn bán hàng (Đơn sell out)/[Manager_App] Thông tin đơn hàng - Xem thông tin đơn hàng.pdf
+      [HO] Quản lý bảng giá bán -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý bảng giá bán/[HO] Quản lý bảng giá bán.pdf
+        [HO] Enhance bảng giá bán nhiều cấp -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý bảng giá bán/[HO] Enhance bảng giá bán nhiều cấp/[HO] Enhance bảng giá bán nhiều cấp.pdf
+          Đối tượng áp dụng = Nhà phân phối -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý bảng giá bán/[HO] Enhance bảng giá bán nhiều cấp/Đối tượng áp dụng = Nhà phân phối.pdf
+          Đối tượng áp dụng = Điểm bán -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý bảng giá bán/[HO] Enhance bảng giá bán nhiều cấp/Đối tượng áp dụng = Điểm bán.pdf
+        [HO] Thiết lập NPP chỉnh sửa giá bán -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý bảng giá bán/[HO] Thiết lập NPP chỉnh sửa giá bán.pdf
+      [HO] Quản lý giá bán cho NPP (Bảng Giá mua) -> Portal HO/Quản Lý Bán Hàng/[HO] Quản lý giá bán cho NPP (Bảng Giá mua).pdf
+      [HO] Tổng hợp đơn hàng điểm bán -> Portal HO/Quản Lý Bán Hàng/[HO] Tổng hợp đơn hàng điểm bán.pdf
+    [HO] Báo Cáo -> Portal HO/[HO] Báo Cáo/[HO] Báo Cáo.pdf
+      Tổng hợp quy tắc tính doanh số tại các chức năng và báo cáo -> Portal HO/[HO] Báo Cáo/Tổng hợp quy tắc tính doanh số tại các chức năng và báo cáo.pdf
+      [HO] Báo cáo giám sát -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo giám sát.pdf
+        [HO] Báo cáo chấm công -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo chấm công.pdf
+        [HO] Báo cáo Tổng Hợp Viếng Thăm Điểm Bán -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo Tổng Hợp Viếng Thăm Điểm Bán.pdf
+        [HO] Báo cáo Chi Tiết Viếng Thăm Điểm Bán -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo Chi Tiết Viếng Thăm Điểm Bán.pdf
+        [HO] Báo cáo Phân Tích Hiệu Quả Tuyến -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo Phân Tích Hiệu Quả Tuyến.pdf
+        [HO] Báo cáo Độ Phủ Theo Sản Phẩm -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Báo cáo Độ Phủ Theo Sản Phẩm.pdf
+        [HO] Truy vấn tọa độ nhân viên -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo giám sát/[HO] Truy vấn tọa độ nhân viên.pdf
+      [HO] Báo cáo Hình Ảnh Bày Hàng -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo Hình Ảnh Bày Hàng.pdf
+      [HO] Báo cáo kiểm tồn điểm bán -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo kiểm tồn điểm bán.pdf
+      [HO] Báo cáo Nhập Xuất Tồn -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo Nhập Xuất Tồn.pdf
+      [HO] Báo cáo sell-in -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo sell-in.pdf
+      [HO] Báo cáo Tổng hợp đơn hàng -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo Tổng hợp đơn hàng.pdf
+      [HO] Báo cáo Tồn kho hiện tại NPP -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo Tồn kho hiện tại NPP.pdf
+      [HO] Báo cáo đơn hàng hủy NPP -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo đơn hàng hủy NPP.pdf
+      [HO] Báo cáo đơn trả hàng NPP -> Portal HO/[HO] Báo Cáo/[HO] Báo cáo đơn trả hàng NPP.pdf
+      Báo cáo phân tích -> Portal HO/[HO] Báo Cáo/Báo cáo phân tích/Báo cáo phân tích.pdf
+        Báo cáo doanh thu theo Nhân viên bán hàng -> Portal HO/[HO] Báo Cáo/Báo cáo phân tích/Báo cáo doanh thu theo Nhân viên bán hàng.pdf
+        Báo cáo doanh thu theo Sản phẩm -> Portal HO/[HO] Báo Cáo/Báo cáo phân tích/Báo cáo doanh thu theo Sản phẩm.pdf
+        Báo cáo doanh thu theo điểm bán -> Portal HO/[HO] Báo Cáo/Báo cáo phân tích/Báo cáo doanh thu theo điểm bán.pdf
+    NPP trả hàng nguyên đơn -> Portal HO/NPP trả hàng nguyên đơn.pdf
+    [HO] Đổi mật khẩu cho EndUser -> Portal HO/[HO] Đổi mật khẩu cho EndUser.pdf
+    [HO] Duyệt chuyển kho nội bộ NPP -> Portal HO/[HO] Duyệt chuyển kho nội bộ NPP.pdf
+  Portal NPP -> Portal NPP/Portal NPP.pdf
+    [NPP] Dashboard -> Portal NPP/[NPP] Dashboard.pdf
+    [NPP] Bán hàng vansales -> Portal NPP/[NPP] Bán hàng vansales.pdf
+    [NPP] Báo cáo Nhập/Xuất Kho -> Portal NPP/[NPP] Báo cáo Nhập - Xuất Kho.pdf
+    [NPP] Báo cáo Nhập Xuất Tồn -> Portal NPP/[NPP] Báo cáo Nhập Xuất Tồn.pdf
+    [NPP] Báo cáo Tổng hợp đơn hàng -> Portal NPP/[NPP] Báo cáo Tổng hợp đơn hàng.pdf
+    [NPP] Báo cáo Tồn kho hiện tại NPP -> Portal NPP/[NPP] Báo cáo Tồn kho hiện tại NPP.pdf
+    [NPP] Form in Đơn hàng bán -> Portal NPP/[NPP] Form in Đơn hàng bán.pdf
+    [NPP] Quản lý bảng giá bán -> Portal NPP/[NPP] Quản lý bảng giá bán.pdf
+    [NPP] Trả hàng nguyên đơn HO -> Portal NPP/[NPP] Trả hàng nguyên đơn HO.pdf
+    [NPP] Xuất kho -> Portal NPP/[NPP] Xuất kho/[NPP] Xuất kho.pdf
+      [NPP] Xuất kho - Huỷ phiếu xuất kho đã duyệt -> Portal NPP/[NPP] Xuất kho/[NPP] Xuất kho - Huỷ phiếu xuất kho đã duyệt.pdf
+    [NPP] Đơn hàng trả trưng bày, tích luỹ -> Portal NPP/[NPP] Đơn hàng trả trưng bày, tích luỹ.pdf
+    Báo cáo -> Portal NPP/Báo cáo/Báo cáo.pdf
+      NPP_Báo cáo phân tích -> Portal NPP/Báo cáo/NPP_Báo cáo phân tích/NPP_Báo cáo phân tích.pdf
+        NPP_Báo cáo doanh thu theo Nhân viên bán hàng -> Portal NPP/Báo cáo/NPP_Báo cáo phân tích/NPP_Báo cáo doanh thu theo Nhân viên bán hàng.pdf
+        NPP_Báo cáo doanh thu theo Sản phẩm -> Portal NPP/Báo cáo/NPP_Báo cáo phân tích/NPP_Báo cáo doanh thu theo Sản phẩm.pdf
+        NPP_Báo cáo doanh thu theo điểm bán -> Portal NPP/Báo cáo/NPP_Báo cáo phân tích/NPP_Báo cáo doanh thu theo điểm bán.pdf
+      [NPP] Báo cáo Điểm bán trả hàng -> Portal NPP/Báo cáo/[NPP] Báo cáo Điểm bán trả hàng.pdf
+    Form in Chuyển kho NPP -> Portal NPP/Form in Chuyển kho NPP.pdf
+    Form in Phiếu kiểm kho -> Portal NPP/Form in Phiếu kiểm kho.pdf
+    Form in Purchase Order -> Portal NPP/Form in Purchase Order.pdf
+    Form in Xuất kho (theo từng đơn) -> Portal NPP/Form in Xuất kho (theo từng đơn).pdf
+    Quản lý Kho -> Portal NPP/Quản lý Kho/Quản lý Kho.pdf
+      Chuyển kho NPP -> Portal NPP/Quản lý Kho/Chuyển kho NPP.pdf
+      Chuyển kho vansales -> Portal NPP/Quản lý Kho/Chuyển kho vansales.pdf
+      [NPP] Chuyển kho nội bộ -> Portal NPP/Quản lý Kho/[NPP] Chuyển kho nội bộ.pdf
+      [NPP] Kiểm kho -> Portal NPP/Quản lý Kho/[NPP] Kiểm kho/[NPP] Kiểm kho.pdf
+        [HO] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho -> Portal NPP/Quản lý Kho/[NPP] Kiểm kho/[HO] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho.pdf
+        [NPP] Kiểm kho - Import phiếu kiểm kho -> Portal NPP/Quản lý Kho/[NPP] Kiểm kho/[NPP] Kiểm kho - Import phiếu kiểm kho.pdf
+        [NPP] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho -> Portal NPP/Quản lý Kho/[NPP] Kiểm kho/[NPP] Kiểm kho - Điều chỉnh thông tin phiếu kiểm kho.pdf
+    Report -> Portal NPP/Report.pdf
+    Sell-out / Đơn hàng bán (NPP) -> Portal NPP/Sell-out - Đơn hàng bán (NPP)/Sell-out - Đơn hàng bán (NPP).pdf
+      Sell-out - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết -> Portal NPP/Sell-out - Đơn hàng bán (NPP)/Sell-out - Duyệt - Hủy đơn hàng tại màn hình xem chi tiết.pdf
+      [NPP] Sell-out - Khởi tạo lại đơn hàng đã duyệt -> Portal NPP/Sell-out - Đơn hàng bán (NPP)/[NPP] Sell-out - Khởi tạo lại đơn hàng đã duyệt.pdf
+    Trả hàng NCC -> Portal NPP/Trả hàng NCC.pdf
+    Điểm bán trả hàng nguyên đơn -> Portal NPP/Điểm bán trả hàng nguyên đơn.pdf
+    Điểm bán trả lẻ -> Portal NPP/Điểm bán trả lẻ.pdf
+    [NPP] Nhập kho -> Portal NPP/[NPP] Nhập kho.pdf
+    Đơn đặt hàng (PO) -> Portal NPP/Đơn đặt hàng (PO)/Đơn đặt hàng (PO).pdf
+      Đơn đặt hàng (PO) - Duyệt/Hủy đơn hàng tại màn hình xem chi tiết -> Portal NPP/Đơn đặt hàng (PO)/Đơn đặt hàng (PO) - Duyệt - Hủy đơn hàng tại màn hình xem chi tiết.pdf
+  Salesman App -> Salesman App/Salesman App.pdf
+    Phân quyền trên Salesman App -> Salesman App/Phân quyền trên Salesman App.pdf
+    [SM-APP] Login/Logout Salesman App -> Salesman App/[SM-APP] Login - Logout Salesman App.pdf
+    [SM-APP] Chấm công trên Salesman App - Chức năng cũ -> Salesman App/[SM-APP] Chấm công trên Salesman App - Chức năng cũ/[SM-APP] Chấm công trên Salesman App - Chức năng cũ.pdf
+      [SM-APP] Chấm công cuối ngày -> Salesman App/[SM-APP] Chấm công trên Salesman App - Chức năng cũ/[SM-APP] Chấm công cuối ngày.pdf
+      [SM-APP] Chấm công đầu ngày -> Salesman App/[SM-APP] Chấm công trên Salesman App - Chức năng cũ/[SM-APP] Chấm công đầu ngày.pdf
+      [SM-APP] Các chức năng yêu cầu chấm công đầu ngày -> Salesman App/[SM-APP] Chấm công trên Salesman App - Chức năng cũ/[SM-APP] Các chức năng yêu cầu chấm công đầu ngày.pdf
+    [SM-APP] Màn hình Viếng Thăm Salesman App -> Salesman App/[SM-APP] Màn hình Viếng Thăm Salesman App/[SM-APP] Màn hình Viếng Thăm Salesman App.pdf
+      [SM-APP] Nhiệm vụ trong tuyến -> Salesman App/[SM-APP] Màn hình Viếng Thăm Salesman App/[SM-APP] Nhiệm vụ trong tuyến.pdf
+    [SM-APP] Kiểm tra tồn kho -> Salesman App/[SM-APP] Kiểm tra tồn kho.pdf
+    [SM-APP] Chụp hình bày hàng -> Salesman App/[SM-APP] Chụp hình bày hàng.pdf
+    [SM-APP] Chương trình trưng bày -> Salesman App/[SM-APP] Chương trình trưng bày/[SM-APP] Chương trình trưng bày.pdf
+      [SM APP] Chấm trưng bày AI -> Salesman App/[SM-APP] Chương trình trưng bày/[SM APP] Chấm trưng bày AI.pdf
+      [SM-APP] Enhance CTTB -> Salesman App/[SM-APP] Chương trình trưng bày/[SM-APP] Enhance CTTB.pdf
+    [SM-APP] Chương trình tích lũy -> Salesman App/[SM-APP] Chương trình tích lũy.pdf
+    [SM - APP] Khảo sát trên app saleman -> Salesman App/[SM - APP] Khảo sát trên app saleman.pdf
+    [SM-APP] Đặt hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Đặt hàng.pdf
+      [SM-APP] Đặt hàng ở nhiệm vụ viếng thăm (không khuyến mãi) -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Đặt hàng ở nhiệm vụ viếng thăm (không khuyến mãi).pdf
+      [SM-APP] Đặt hàng ở nhiệm vụ chăm sóc (không khuyến mãi) -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Đặt hàng ở nhiệm vụ chăm sóc (không khuyến mãi).pdf
+      [SM-APP] Menu đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Menu đơn hàng.pdf
+      [SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng.pdf
+      [SM-APP] Khuyến mãi đặt hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/[SM-APP] Khuyến mãi đặt hàng.pdf
+        Khuyến mãi Ontop -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/Khuyến mãi Ontop.pdf
+          [KM ontop] Điều kiện mua số lượng sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/[KM ontop] Điều kiện mua số lượng sản phẩm.pdf
+          [KM ontop] Điều kiện mua số tiền sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/[KM ontop] Điều kiện mua số tiền sản phẩm.pdf
+          [KM ontop] Điều kiện mua số lượng nhóm sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/[KM ontop] Điều kiện mua số lượng nhóm sản phẩm.pdf
+          [KM ontop] Điều kiện mua số tiền nhóm sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/[KM ontop] Điều kiện mua số tiền nhóm sản phẩm.pdf
+          [KM ontop] Điều kiện mua số tiền đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi Ontop/[KM ontop] Điều kiện mua số tiền đơn hàng.pdf
+        Khuyến mãi bình thường -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/Khuyến mãi bình thường.pdf
+          [KM giảm trừ] Điều kiện mua số lượng sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/[KM giảm trừ] Điều kiện mua số lượng sản phẩm.pdf
+          [KM giảm trừ] Điều kiện mua số tiền sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/[KM giảm trừ] Điều kiện mua số tiền sản phẩm.pdf
+          [KM giảm trừ] Điều kiện mua số lượng nhóm sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/[KM giảm trừ] Điều kiện mua số lượng nhóm sản phẩm.pdf
+          [KM giảm trừ] Điều kiện mua số tiền nhóm sản phẩm -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/[KM giảm trừ] Điều kiện mua số tiền nhóm sản phẩm.pdf
+          [KM giảm trừ] Điều kiện mua số tiền đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Khuyến mãi đặt hàng/Khuyến mãi bình thường/[KM giảm trừ] Điều kiện mua số tiền đơn hàng.pdf
+      [SM-APP] Chỉnh sửa/Hủy đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Chỉnh sửa - Hủy đơn hàng.pdf
+      [SM-APP] Bán hàng Vansales -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Bán hàng Vansales.pdf
+      [SM-APP] Đặt lại đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Đặt lại đơn hàng.pdf
+      [SM-APP] Danh sách Sản phẩm gợi ý -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Danh sách Sản phẩm gợi ý.pdf
+      [SM-APP] Đặt hàng - Thêm thông tin vào card đơn hàng và chi tiết đơn hàng -> Salesman App/[SM-APP] Đặt hàng/[SM-APP] Đặt hàng - Thêm thông tin vào card đơn hàng và chi tiết đơn hàng.pdf
+    [SM-APP] Danh sách cửa hàng chăm sóc -> Salesman App/[SM-APP] Danh sách cửa hàng chăm sóc/[SM-APP] Danh sách cửa hàng chăm sóc.pdf
+      [SM-APP] Checkin khảo sát -> Salesman App/[SM-APP] Danh sách cửa hàng chăm sóc/[SM-APP] Checkin khảo sát.pdf
+      [SM-APP] Nhiệm vụ chăm sóc -> Salesman App/[SM-APP] Danh sách cửa hàng chăm sóc/[SM-APP] Nhiệm vụ chăm sóc.pdf
+    [SM-APP] Tạo mới điểm bán -> Salesman App/[SM-APP] Tạo mới điểm bán/[SM-APP] Tạo mới điểm bán.pdf
+      [SM-APP] Chỉnh sửa thông tin điểm bán -> Salesman App/[SM-APP] Tạo mới điểm bán/[SM-APP] Chỉnh sửa thông tin điểm bán.pdf
+    [SM-APP] Yêu cầu hỗ trợ -> Salesman App/[SM-APP] Yêu cầu hỗ trợ.pdf
+    [SM-APP] Tạo Yêu Cầu Nghỉ Phép -> Salesman App/[SM-APP] Tạo Yêu Cầu Nghỉ Phép.pdf
+    [SM-APP] Các màn hình chặn vuốt ngang 2 bên thành thiết bị -> Salesman App/[SM-APP] Các màn hình chặn vuốt ngang 2 bên thành thiết bị.pdf
+    [SM-APP] Thông báo -> Salesman App/[SM-APP] Thông báo.pdf
+    [SM-APP] Khác -> Salesman App/[SM-APP] Khác.pdf
+    [SM-APP] Báo Cáo -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo Cáo.pdf
+      [SM-APP] Báo cáo doanh số ngày -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo doanh số ngày.pdf
+      [SM-APP] Báo cáo doanh số tháng -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo doanh số tháng.pdf
+      [SM-APP] Báo cáo KPI -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo KPI.pdf
+      [SM-App] Báo cáo theo dõi đơn hàng -> Salesman App/[SM-APP] Báo Cáo/[SM-App] Báo cáo theo dõi đơn hàng.pdf
+      [SM-App] Báo cáo tồn kho hiện tại NPP -> Salesman App/[SM-APP] Báo Cáo/[SM-App] Báo cáo tồn kho hiện tại NPP.pdf
+      [SM-APP] Lịch sử chấm công -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Lịch sử chấm công.pdf
+      [SM-APP] Báo cáo viếng thăm điểm bán -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo viếng thăm điểm bán.pdf
+      [SM-APP] Báo cáo chương trình trưng bày -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo chương trình trưng bày.pdf
+      [SM-APP] Báo cáo chương trình tích lũy -> Salesman App/[SM-APP] Báo Cáo/[SM-APP] Báo cáo chương trình tích lũy.pdf
+    [SM-APP] Trả hàng -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng.pdf
+      [SM-APP] Trả hàng ở nhiệm vụ viếng thăm -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng ở nhiệm vụ viếng thăm/[SM-APP] Trả hàng ở nhiệm vụ viếng thăm.pdf
+        [SM-APP] Trả hàng - Trả hàng lẻ -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng ở nhiệm vụ viếng thăm/[SM-APP] Trả hàng - Trả hàng lẻ.pdf
+        [SM-APP] Trả hàng - Trả hàng nguyên đơn -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng ở nhiệm vụ viếng thăm/[SM-APP] Trả hàng - Trả hàng nguyên đơn.pdf
+      [SM-APP] Trả hàng ở nhiệm vụ chăm sóc -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng ở nhiệm vụ chăm sóc.pdf
+      [SM-APP] Menu đơn hàng - Thêm nút trả hàng - Chi tiết đơn trả hàng -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Menu đơn hàng - Thêm nút trả hàng - Chi tiết đơn trả hàng.pdf
+      [SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng - Chi tiết đơn trả hàng -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Chi tiết điểm bán - Lịch sử đơn hàng - Chi tiết đơn trả hàng.pdf
+      [SM-APP][Manager-APP] Đơn trả hàng - Báo cáo theo dõi đơn hàng -> Salesman App/[SM-APP] Trả hàng/[SM-APP][Manager-APP] Đơn trả hàng - Báo cáo theo dõi đơn hàng.pdf
+      [SM-APP] Trả hàng - Chỉnh sửa đơn trả hàng lẻ -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng - Chỉnh sửa đơn trả hàng lẻ.pdf
+      [SM-APP] Trả hàng - Hủy đơn trả hàng -> Salesman App/[SM-APP] Trả hàng/[SM-APP] Trả hàng - Hủy đơn trả hàng.pdf
+    [SM-APP] Chương trình khuyến mãi -> Salesman App/[SM-APP] Chương trình khuyến mãi.pdf
+  Manager App -> Manager App/Manager App.pdf
+    [Manager_App] Đăng nhập -> Manager App/[Manager_App] Đăng nhập.pdf
+    [Manager_App] Đăng xuất -> Manager App/[Manager_App] Đăng xuất.pdf
+    [Manager_App] Homepage -> Manager App/[Manager_App] Homepage.pdf
+    [Manager App] Chọn nhân viên và xem danh sách cây Salesforce nhân viên -> Manager App/[Manager App] Chọn nhân viên và xem danh sách cây Salesforce nhân viên.pdf
+    [Manager_App] Chấm công đầu ngày -> Manager App/[Manager_App] Chấm công đầu ngày/[Manager_App] Chấm công đầu ngày.pdf
+      [Manager_App] Các chức năng yêu cầu chấm công đầu ngày -> Manager App/[Manager_App] Chấm công đầu ngày/[Manager_App] Các chức năng yêu cầu chấm công đầu ngày.pdf
+    [Manager_App] Chấm công cuối ngày -> Manager App/[Manager_App] Chấm công cuối ngày.pdf
+    [Manager_App] Bản đồ tuyến bán hàng -> Manager App/[Manager_App] Bản đồ tuyến bán hàng.pdf
+    [Manager_App] Duyệt yêu cầu nghỉ phép -> Manager App/[Manager_App] Duyệt yêu cầu nghỉ phép.pdf
+    [Manager_App] Duyệt điểm bán mới -> Manager App/[Manager_App] Duyệt điểm bán mới/[Manager_App] Duyệt điểm bán mới.pdf
+      [Manager_App] Duyệt điều chỉnh điểm bán -> Manager App/[Manager_App] Duyệt điểm bán mới/[Manager_App] Duyệt điều chỉnh điểm bán.pdf
+    [Manager_App] Kế hoạch làm việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Kế hoạch làm việc.pdf
+      [Manager_App] Tổng quan kế hoạch làm việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Tổng quan kế hoạch làm việc.pdf
+      [Manager_App] Tạo kế hoạch làm việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Tạo kế hoạch làm việc.pdf
+      [Manager_App] Duyệt kế hoạch làm việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Duyệt kế hoạch làm việc.pdf
+      [Manager_App] Thực hiện công việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Thực hiện công việc.pdf
+      [Manager_App] Duyệt thực hiện công việc -> Manager App/[Manager_App] Kế hoạch làm việc/[Manager_App] Duyệt thực hiện công việc.pdf
+    [Manager_App] Khác -> Manager App/[Manager_App] Khác.pdf
+    [Manager_App] Thông báo -> Manager App/[Manager_App] Thông báo.pdf
+    [Manager_App] Xét duyệt đăng ký CTTB -> Manager App/[Manager_App] Xét duyệt đăng ký CTTB/[Manager_App] Xét duyệt đăng ký CTTB.pdf
+      [Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTB -> Chương trình trưng bày -> Manager App/[Manager_App] Xét duyệt đăng ký CTTB/[Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTB - - Chương trình trưng bày.pdf
+    [Manager_App] Xét duyệt đăng ký CTTL -> Manager App/[Manager_App] Xét duyệt đăng ký CTTL/[Manager_App] Xét duyệt đăng ký CTTL.pdf
+      [Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTL - Chương trình tích lũy -> Manager App/[Manager_App] Xét duyệt đăng ký CTTL/[Manager_App] ENHANCE Chức năng Xét duyệt đăng ký CTTL - Chương trình tích lũy.pdf
+    [Manager_App] Báo Cáo -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo Cáo.pdf
+      [Manager_App] Báo cáo doanh số ngày -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo cáo doanh số ngày.pdf
+      [Manager_App] Báo cáo doanh số tháng -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo cáo doanh số tháng.pdf
+      [Manager_APP] Báo cáo KPI -> Manager App/[Manager_App] Báo Cáo/[Manager_APP] Báo cáo KPI.pdf
+      [Manager_App] Báo cáo theo dõi đơn hàng -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo cáo theo dõi đơn hàng.pdf
+      [Manager_App] Báo cáo tồn kho hiện tại NPP -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo cáo tồn kho hiện tại NPP.pdf
+      [Manager_App] Giám sát lộ trình nhân viên -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Giám sát lộ trình nhân viên.pdf
+      [Manager_App] Lịch sử chấm công -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Lịch sử chấm công.pdf
+      [Manager_App] Báo Cáo Viếng Thăm Điểm Bán -> Manager App/[Manager_App] Báo Cáo/[Manager_App] Báo Cáo Viếng Thăm Điểm Bán.pdf
